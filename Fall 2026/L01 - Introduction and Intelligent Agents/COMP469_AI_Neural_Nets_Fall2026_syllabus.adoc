@@ -260,6 +260,242 @@ Due dates and in-class activities may be adjusted if the assigned class meeting 
 | 16 | Dec 7-12 | Final Examination Period | Comprehensive final review + exam. | **Final Exam:** Tuesday, December 8, 2026, 7:00 PM-9:00 PM. | Final exam in Gateway Hall 3540.
 |===
 
+==== Lab Overview and Policies
+
+All labs are *hands-on Jupyter Notebook* based and designed for the 3-hour weekly lab sessions.
+
+* *Format*: Students receive a starter `.ipynb` notebook.
+* *Deliverables*: Completed notebook with:
+** Code implementations
+** Experimental results and visualizations
+** Markdown analysis and reflections
+* *Submission*: Upload to CI Learn, or GitHub Classroom if set up, by the following lab day.
+* *Grading Rubric* (25% of final grade total):
+** Code correctness and completeness: 50%
+** Experimentation, results, and analysis: 30%
+** Clarity, documentation, and reflection: 20%
+
+*Recommended Environment*:
+
+* Python 3.10+
+* Jupyter Notebook or VS Code with Jupyter extension
+* Core packages: `numpy`, `pandas`, `matplotlib`, `scikit-learn`, `torch`, `torchvision`
+
+==== Weekly Lab Schedule
+
+[cols="1,1,3,3,2",options="header"]
+|===
+| Week | Dates | Lab Title | Main Topics | AIMA Reference
+
+| 1 | Aug 24-28 | Intelligent Agents | Reflex, model-based, goal-based agents | Ch. 1-2
+| 2 | Aug 31-Sep 4 | Uninformed Search | BFS, DFS, UCS | Ch. 3
+| 3 | Sep 7-11 | Informed and Adversarial Search | A*, minimax, alpha-beta | Ch. 3 + Ch. 5
+| 4 | Sep 14-18 | Propositional Logic | Wumpus World, inference | Ch. 7
+| 5 | Sep 21-25 | First-Order Logic | Knowledge representation and queries | Ch. 8
+| 6 | Sep 28-Oct 2 | Probability and Naive Bayes | Bayes' rule, naive Bayes classifier | Ch. 12
+| 7 | Oct 5-9 | Bayesian Networks | Building and querying BNs | Ch. 13
+| 8 | Oct 12-16 | Decision Trees | ID3 / scikit-learn decision trees | Ch. 19
+| 9 | Oct 19-23 | Perceptron and Linear Models | Perceptron, logistic regression | Ch. 19
+| 10 | Oct 26-30 | Feedforward Neural Networks | MLP, XOR problem | Ch. 21
+| 11 | Nov 2-6 | Backpropagation and Optimization | Training MLPs | Ch. 21
+| 12 | Nov 9-13 | Computer Vision with Neural Nets | CNN basics, image classification | Ch. 21 + Ch. 25
+| 13 | Nov 16-20 | Natural Language Processing | Text classification, sentiment | Ch. 23-24
+| 14 | Nov 23-27 | Reinforcement Learning | Q-learning on Gridworld | Ch. 22
+| 15 | Nov 30-Dec 5 | Final Project Studio | Project work and presentations | N/A
+|===
+
+==== Detailed Lab Descriptions
+
+===== Lab 1: Intelligent Agents (Week 1)
+
+*Objectives*:
+
+* Understand the PEAS framework.
+* Implement different types of agents.
+* Compare agent performance in different environments.
+
+*Starter Code*: Use or adapt from `aima-python/agents.ipynb`.
+
+*Tasks*:
+
+. Implement a simple Vacuum World environment.
+. Create `ReflexVacuumAgent`, `ModelBasedVacuumAgent`, and `GoalBasedAgent`.
+. Run simulations with different environment configurations.
+. Analyze which agent performs best and why.
+
+*Deliverable*: Notebook with agent code, simulation results, and 1-page reflection.
+
+===== Lab 2: Uninformed Search (Week 2)
+
+*Objectives*:
+
+* Implement core search algorithms from scratch.
+* Understand time and space tradeoffs.
+
+*Tasks*:
+
+. Implement BFS, DFS, and UCS using Python.
+. Solve the Romania map problem and maze navigation.
+. Measure nodes expanded and path cost.
+
+*Resources*: `aima-python/search.ipynb` and Berkeley Pacman Project 1.
+
+===== Lab 3: Informed and Adversarial Search (Week 3)
+
+*Objectives*:
+
+* Apply heuristic search with A*.
+* Implement game tree search.
+
+*Tasks*:
+
+. Implement A* with Manhattan and misplaced-tile heuristics on the 8-puzzle.
+. Implement minimax and alpha-beta pruning for tic-tac-toe or Pacman.
+. Compare performance.
+
+*Resources*: Berkeley Pacman Projects 1 and 2.
+
+===== Lab 4: Propositional Logic - Wumpus World (Week 4)
+
+*Objectives*:
+
+* Model a world using propositional logic.
+* Implement basic inference.
+
+*Tasks*:
+
+. Build a Wumpus World knowledge base.
+. Use model checking or resolution to answer queries, such as whether square `[2,2]` is safe.
+
+*Resources*: `aima-python/logic.ipynb`.
+
+===== Lab 5: First-Order Logic (Week 5)
+
+*Objectives*:
+
+* Represent knowledge using FOL.
+* Perform inference.
+
+*Tasks*:
+
+. Create a family relationship knowledge base.
+. Implement forward chaining or use an existing solver for queries.
+
+*Resources*: `aima-python/knowledge.ipynb`.
+
+===== Lab 6: Probability and Naive Bayes (Week 6)
+
+*Objectives*:
+
+* Apply probability theory.
+* Build a simple classifier.
+
+*Tasks*:
+
+. Complete manual Bayes calculations.
+. Implement naive Bayes on the Iris or spam dataset using scikit-learn.
+
+===== Lab 7: Bayesian Networks (Week 7)
+
+*Objectives*:
+
+* Represent uncertain knowledge graphically.
+* Perform inference.
+
+*Tasks*:
+
+. Build the Alarm network or a similar Bayesian network.
+. Implement enumeration-based inference.
+
+===== Lab 8: Decision Trees (Week 8)
+
+*Objectives*:
+
+* Understand information gain and tree induction.
+* Evaluate model performance.
+
+*Tasks*:
+
+. Implement basic ID3 or use `sklearn.tree.DecisionTreeClassifier`.
+. Experiment with `max_depth` and analyze overfitting.
+
+===== Lab 9: Perceptron and Linear Models (Week 9)
+
+*Objectives*:
+
+* Implement linear classifiers.
+* Understand gradient descent.
+
+*Tasks*:
+
+. Implement the perceptron from scratch.
+. Compare with logistic regression on linearly separable data.
+
+===== Lab 10: Feedforward Neural Networks (Week 10)
+
+*Objectives*:
+
+* Build and train simple MLPs.
+
+*Tasks*:
+
+. Solve the XOR problem.
+. Train an MLP on a small classification dataset using PyTorch.
+
+===== Lab 11: Backpropagation (Week 11)
+
+*Objectives*:
+
+* Understand training dynamics.
+
+*Tasks*:
+
+. Trace backpropagation on a small network.
+. Experiment with learning rate, momentum, and regularization.
+
+===== Lab 12: Computer Vision (Week 12)
+
+*Objectives*:
+
+* Apply CNNs to image data.
+
+*Tasks*:
+
+. Train a simple CNN on MNIST or Fashion-MNIST.
+. Visualize filters and predictions.
+
+===== Lab 13: Natural Language Processing (Week 13)
+
+*Objectives*:
+
+* Work with text representation and classification.
+
+*Tasks*:
+
+. Use bag-of-words and TF-IDF features.
+. Perform sentiment analysis using naive Bayes or a simple neural network.
+
+===== Lab 14: Reinforcement Learning (Week 14)
+
+*Objectives*:
+
+* Learn from rewards.
+
+*Tasks*:
+
+. Implement Q-learning on a Gridworld environment.
+. Experiment with different exploration strategies.
+
+===== Lab 15: Final Project Studio (Week 15)
+
+Open lab for final project development and peer presentations.
+
+==== Additional Lab Resources
+
+* https://github.com/aimacode/aima-python
+* Berkeley CS188 Pacman Projects
+* Geron _Hands-On Machine Learning_ GitHub notebooks
+
 === Student Support Services
 
 CSUCI’s Syllabus Policies and Assistance Website (go.csuci.edu/syllabuspolicies) provides important details about academic policies, campus expectations, and student support services that are all highly applicable to your success as a student both in and outside of the classroom.

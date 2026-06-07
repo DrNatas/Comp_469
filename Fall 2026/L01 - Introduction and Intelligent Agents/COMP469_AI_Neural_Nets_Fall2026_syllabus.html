@@ -468,7 +468,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_major_assignments_and_assessments_for_artificial_intelligenceneural_nets">Major Assignments and Assessments for Artificial Intelligence/Neural Nets</a></li>
 </ul>
 </li>
-<li><a href="#_tentative_course_schedule_or_course_outline">3.7. Tentative Course Schedule or Course Outline</a></li>
+<li><a href="#_tentative_course_schedule_or_course_outline">3.7. Tentative Course Schedule or Course Outline</a>
+<ul class="sectlevel3">
+<li><a href="#_lab_overview_and_policies">Lab Overview and Policies</a></li>
+<li><a href="#_weekly_lab_schedule">Weekly Lab Schedule</a></li>
+<li><a href="#_detailed_lab_descriptions">Detailed Lab Descriptions</a></li>
+<li><a href="#_additional_lab_resources">Additional Lab Resources</a></li>
+</ul>
+</li>
 <li><a href="#_student_support_services">3.8. Student Support Services</a>
 <ul class="sectlevel3">
 <li><a href="#_disability_statement">Disability Statement</a></li>
@@ -1129,6 +1136,647 @@ Due dates and in-class activities may be adjusted if the assigned class meeting 
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="_lab_overview_and_policies">Lab Overview and Policies</h4>
+<div class="paragraph">
+<p>All labs are <strong>hands-on Jupyter Notebook</strong> based and designed for the 3-hour weekly lab sessions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Format</strong>: Students receive a starter <code>.ipynb</code> notebook.</p>
+</li>
+<li>
+<p><strong>Deliverables</strong>: Completed notebook with:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Code implementations</p>
+</li>
+<li>
+<p>Experimental results and visualizations</p>
+</li>
+<li>
+<p>Markdown analysis and reflections</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Submission</strong>: Upload to CI Learn, or GitHub Classroom if set up, by the following lab day.</p>
+</li>
+<li>
+<p><strong>Grading Rubric</strong> (25% of final grade total):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Code correctness and completeness: 50%</p>
+</li>
+<li>
+<p>Experimentation, results, and analysis: 30%</p>
+</li>
+<li>
+<p>Clarity, documentation, and reflection: 20%</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Recommended Environment</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Python 3.10+</p>
+</li>
+<li>
+<p>Jupyter Notebook or VS Code with Jupyter extension</p>
+</li>
+<li>
+<p>Core packages: <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, <code>scikit-learn</code>, <code>torch</code>, <code>torchvision</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_weekly_lab_schedule">Weekly Lab Schedule</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Week</th>
+<th class="tableblock halign-left valign-top">Dates</th>
+<th class="tableblock halign-left valign-top">Lab Title</th>
+<th class="tableblock halign-left valign-top">Main Topics</th>
+<th class="tableblock halign-left valign-top">AIMA Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aug 24-28</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intelligent Agents</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reflex, model-based, goal-based agents</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 1-2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aug 31-Sep 4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uninformed Search</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BFS, DFS, UCS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sep 7-11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informed and Adversarial Search</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A*, minimax, alpha-beta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 3 + Ch. 5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sep 14-18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Propositional Logic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wumpus World, inference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sep 21-25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First-Order Logic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Knowledge representation and queries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sep 28-Oct 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Probability and Naive Bayes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bayes' rule, naive Bayes classifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Oct 5-9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bayesian Networks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Building and querying BNs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Oct 12-16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decision Trees</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID3 / scikit-learn decision trees</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Oct 19-23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perceptron and Linear Models</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perceptron, logistic regression</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Oct 26-30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feedforward Neural Networks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MLP, XOR problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 21</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nov 2-6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backpropagation and Optimization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Training MLPs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 21</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nov 9-13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computer Vision with Neural Nets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNN basics, image classification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 21 + Ch. 25</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nov 16-20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Natural Language Processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text classification, sentiment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 23-24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nov 23-27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reinforcement Learning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q-learning on Gridworld</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ch. 22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nov 30-Dec 5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final Project Studio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Project work and presentations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_detailed_lab_descriptions">Detailed Lab Descriptions</h4>
+<div class="sect4">
+<h5 id="_lab_1_intelligent_agents_week_1">Lab 1: Intelligent Agents (Week 1)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Understand the PEAS framework.</p>
+</li>
+<li>
+<p>Implement different types of agents.</p>
+</li>
+<li>
+<p>Compare agent performance in different environments.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Starter Code</strong>: Use or adapt from <code>aima-python/agents.ipynb</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implement a simple Vacuum World environment.</p>
+</li>
+<li>
+<p>Create <code>ReflexVacuumAgent</code>, <code>ModelBasedVacuumAgent</code>, and <code>GoalBasedAgent</code>.</p>
+</li>
+<li>
+<p>Run simulations with different environment configurations.</p>
+</li>
+<li>
+<p>Analyze which agent performs best and why.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Deliverable</strong>: Notebook with agent code, simulation results, and 1-page reflection.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_2_uninformed_search_week_2">Lab 2: Uninformed Search (Week 2)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Implement core search algorithms from scratch.</p>
+</li>
+<li>
+<p>Understand time and space tradeoffs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implement BFS, DFS, and UCS using Python.</p>
+</li>
+<li>
+<p>Solve the Romania map problem and maze navigation.</p>
+</li>
+<li>
+<p>Measure nodes expanded and path cost.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Resources</strong>: <code>aima-python/search.ipynb</code> and Berkeley Pacman Project 1.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_3_informed_and_adversarial_search_week_3">Lab 3: Informed and Adversarial Search (Week 3)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apply heuristic search with A*.</p>
+</li>
+<li>
+<p>Implement game tree search.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implement A* with Manhattan and misplaced-tile heuristics on the 8-puzzle.</p>
+</li>
+<li>
+<p>Implement minimax and alpha-beta pruning for tic-tac-toe or Pacman.</p>
+</li>
+<li>
+<p>Compare performance.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Resources</strong>: Berkeley Pacman Projects 1 and 2.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_4_propositional_logic_wumpus_world_week_4">Lab 4: Propositional Logic - Wumpus World (Week 4)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Model a world using propositional logic.</p>
+</li>
+<li>
+<p>Implement basic inference.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build a Wumpus World knowledge base.</p>
+</li>
+<li>
+<p>Use model checking or resolution to answer queries, such as whether square <code>[2,2]</code> is safe.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Resources</strong>: <code>aima-python/logic.ipynb</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_5_first_order_logic_week_5">Lab 5: First-Order Logic (Week 5)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Represent knowledge using FOL.</p>
+</li>
+<li>
+<p>Perform inference.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a family relationship knowledge base.</p>
+</li>
+<li>
+<p>Implement forward chaining or use an existing solver for queries.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Resources</strong>: <code>aima-python/knowledge.ipynb</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_6_probability_and_naive_bayes_week_6">Lab 6: Probability and Naive Bayes (Week 6)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apply probability theory.</p>
+</li>
+<li>
+<p>Build a simple classifier.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Complete manual Bayes calculations.</p>
+</li>
+<li>
+<p>Implement naive Bayes on the Iris or spam dataset using scikit-learn.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_7_bayesian_networks_week_7">Lab 7: Bayesian Networks (Week 7)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Represent uncertain knowledge graphically.</p>
+</li>
+<li>
+<p>Perform inference.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build the Alarm network or a similar Bayesian network.</p>
+</li>
+<li>
+<p>Implement enumeration-based inference.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_8_decision_trees_week_8">Lab 8: Decision Trees (Week 8)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Understand information gain and tree induction.</p>
+</li>
+<li>
+<p>Evaluate model performance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implement basic ID3 or use <code>sklearn.tree.DecisionTreeClassifier</code>.</p>
+</li>
+<li>
+<p>Experiment with <code>max_depth</code> and analyze overfitting.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_9_perceptron_and_linear_models_week_9">Lab 9: Perceptron and Linear Models (Week 9)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Implement linear classifiers.</p>
+</li>
+<li>
+<p>Understand gradient descent.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implement the perceptron from scratch.</p>
+</li>
+<li>
+<p>Compare with logistic regression on linearly separable data.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_10_feedforward_neural_networks_week_10">Lab 10: Feedforward Neural Networks (Week 10)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Build and train simple MLPs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Solve the XOR problem.</p>
+</li>
+<li>
+<p>Train an MLP on a small classification dataset using PyTorch.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_11_backpropagation_week_11">Lab 11: Backpropagation (Week 11)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Understand training dynamics.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Trace backpropagation on a small network.</p>
+</li>
+<li>
+<p>Experiment with learning rate, momentum, and regularization.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_12_computer_vision_week_12">Lab 12: Computer Vision (Week 12)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apply CNNs to image data.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Train a simple CNN on MNIST or Fashion-MNIST.</p>
+</li>
+<li>
+<p>Visualize filters and predictions.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_13_natural_language_processing_week_13">Lab 13: Natural Language Processing (Week 13)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Work with text representation and classification.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use bag-of-words and TF-IDF features.</p>
+</li>
+<li>
+<p>Perform sentiment analysis using naive Bayes or a simple neural network.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_14_reinforcement_learning_week_14">Lab 14: Reinforcement Learning (Week 14)</h5>
+<div class="paragraph">
+<p><strong>Objectives</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Learn from rewards.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tasks</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implement Q-learning on a Gridworld environment.</p>
+</li>
+<li>
+<p>Experiment with different exploration strategies.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_lab_15_final_project_studio_week_15">Lab 15: Final Project Studio (Week 15)</h5>
+<div class="paragraph">
+<p>Open lab for final project development and peer presentations.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_additional_lab_resources">Additional Lab Resources</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/aimacode/aima-python" class="bare">https://github.com/aimacode/aima-python</a></p>
+</li>
+<li>
+<p>Berkeley CS188 Pacman Projects</p>
+</li>
+<li>
+<p>Geron <em>Hands-On Machine Learning</em> GitHub notebooks</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_student_support_services">3.8. Student Support Services</h3>
