@@ -1,0 +1,109 @@
+= COMP 469 Lab 01 Instructor Guide: Intelligent Agents
+:toc:
+:sectnums:
+
+== Overview
+
+This guide supports `Lab01_Intelligent_Agents_3hr.ipynb`, a three-hour introductory lab aligned with AIMA Chapters 1 and 2.
+
+Students implement a Vacuum World environment, build several agents, compare their performance, and explain their design choices using AIMA vocabulary.
+
+== Three-Hour Pacing Plan
+
+[cols="1,3,3", options="header"]
+|===
+| Time
+| Activity
+| Instructor Notes
+
+| 0:00-0:10
+| Setup and orientation
+| Confirm students can open the notebook and run the setup cell. Frame the lab as a bridge from AIMA definitions to executable agents.
+
+| 0:10-0:30
+| PEAS and environment properties
+| Have students complete the tables individually first, then compare with a partner. Emphasize that the same physical world can be framed differently depending on the sensors, actuators, and performance measure.
+
+| 0:30-1:05
+| Build and inspect the environment
+| Walk through state, percepts, actions, and scoring. Ask students what information belongs to the environment versus the agent.
+
+| 1:05-1:35
+| Simple reflex agent
+| Students implement or revise the deterministic movement rule. Encourage them to test with multiple random dirt maps.
+
+| 1:35-1:45
+| Break
+| Use this time to identify students blocked by syntax or environment setup.
+
+| 1:45-2:15
+| Model-based reflex agent
+| Focus on the purpose of internal state. Students do not need a perfect path planner; a thoughtful improvement and explanation is enough for Lab 01.
+
+| 2:15-2:45
+| Controlled experiments
+| Highlight why each agent receives the same dirt map per trial. Ask students to interpret average score, average steps, and remaining dirt together.
+
+| 2:45-3:00
+| Reflection and submission
+| Students complete the exit ticket and connect their results to rational agents in AIMA Chapter 2.
+|===
+
+== Suggested Facilitation Questions
+
+* What is the agent allowed to know from its percept?
+* Does the performance measure reward the behavior we actually want?
+* When does memory help an agent?
+* Is random movement irrational, or just poorly matched to this task environment?
+* How would the agent design change if dirt could appear after the lab starts?
+
+== Expected Student Deliverables
+
+Students should submit a completed notebook containing:
+
+* Completed PEAS and environment property tables.
+* Working `SimpleReflexAgent`.
+* Attempted or improved `ModelBasedReflexAgent`.
+* Experiment results comparing random, simple reflex, and model-based reflex agents.
+* Responses to both checkpoints.
+* Final reflection paragraph on rationality and performance measures.
+
+== Grading Guidance
+
+[cols="3,1,4", options="header"]
+|===
+| Category
+| Points
+| Notes
+
+| PEAS and environment analysis
+| 20
+| Look for correct use of AIMA terminology and brief justifications.
+
+| Environment and simulation understanding
+| 20
+| Code should run, and students should understand percept-action flow.
+
+| Simple reflex agent
+| 20
+| Agent should clean dirty squares and use a coherent movement rule.
+
+| Model-based reflex agent
+| 20
+| Award full credit for meaningful internal state and a clear design explanation, even if exploration is not optimal.
+
+| Experiments and reflection
+| 20
+| Results should compare agents fairly and interpret the performance measure.
+|===
+
+== Common Issues
+
+* Students may confuse the full environment state with the agent's percept. Reinforce the boundary.
+* The simple reflex agent's starter rule assumes a 5x5 grid. Advanced students can generalize it using environment dimensions passed into the agent.
+* The model-based agent has an intentionally weak fallback. This is a design opportunity, not a bug.
+* Average score alone may hide agents that leave dirt behind. Encourage students to inspect all summary metrics.
+
+== Optional Follow-Up
+
+For Lab 02 or homework, ask students to implement a search-based cleaning agent that plans a path through known dirty squares. This creates a natural transition from agents to uninformed search.
