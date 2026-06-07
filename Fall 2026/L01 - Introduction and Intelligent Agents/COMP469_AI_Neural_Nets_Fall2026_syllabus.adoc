@@ -1,0 +1,572 @@
+= COMP 469: Artificial Intelligence/Neural Nets
+:doctype: book
+:reproducible:
+:source-highlighter: rouge
+:rouge-style: github
+:toc: left
+:toclevels: 3
+:sectnums:
+:sectnumlevels: 2
+:icons: font
+:pdf-themesdir: themes
+:pdf-theme: basic
+:experimental:
+:stem: latexmath
+:description: Syllabus for COMP 469 Artificial Intelligence/Neural Nets at CSU Channel Islands - Fall 2026
+:keywords: Artificial Intelligence, Neural Networks, Machine Learning, Data Mining, CSUCI, Syllabus
+
+// Professional Header Branding
+[.text-center]
+image:https://www.csuci.edu/cpr/isg/isgimages/correctlogo.jpg[CSUCI Logo, 300, 100]
+
+[quote]
+_The syllabus and course schedule are subject to change without notice in the event of extenuating circumstances. Updates will be shared on CI Learn._
+
+This syllabus is compliant with _Syllabus Policy SP 24-07_, a requirement for all courses on campus.
+
+== Instructor Information
+
+* *Instructor*: Juan Rios
+* *Office Location*: Lindro Hall 2896
+* *Office Hours*: Monday - Friday by appointment 8:00-17:00
+* *Contact*: mailto:juan.rios381@csuci.edu[juan.rios381@csuci.edu]
+* *Office Phone*: 805-437-3627
+
+== Course Information
+
+* *Course*: COMP 469 - Artificial Intelligence/Neural Nets
+* *Units*: 3
+* *Term*: Fall 2026
+* *Class Format*: Three hours lecture in the lab per week
+* *Class Meeting*: In person; day, time, and assigned lab room to be confirmed in CI Learn
+* *Final Exam*: Tuesday, December 8, 2026, 7:00 PM-9:00 PM, Gateway Hall 3540.
+
+=== Course Format
+
+This is a synchronous in-person class. This means we will meet on campus for class sessions in a computer lab during the times listed in CI Learn.
+The course combines lecture, guided demonstrations, hands-on programming labs, discussion, and project work.
+In addition to attending class sessions, you need to log in to the course 2-3 times a week to complete coursework and make sure you are up to date on what is due.
+
+=== Course Description
+
+_Prerequisites: COMP 350 and COMP 362_
+
+An exploration of the use of computers to perform computations normally associated with intelligence.
+Topics include rational agents, state-space search, knowledge representation, logical inference, probability and uncertainty, data mining, decision trees, machine learning, pattern formation and recognition, neural networks, backpropagation, and computational models for intelligent behavior.
+Additional topics may include natural language processing, computer vision/imaging, reinforcement learning, responsible AI, and the limits of modern AI systems.
+
+=== Course Requirements
+
+* Regular access to a computer capable of running Python, Jupyter notebooks, and modern machine learning libraries
+* Regular access to the Internet and CI Learn
+* A CSUCI account for course communication and submissions
+* A working programming environment with Python 3, Jupyter, NumPy, pandas, scikit-learn, and either PyTorch or TensorFlow, as directed by the instructor
+* A willingness to read code, debug code, work with datasets, and explain model behavior in writing
+
+A GPU is not required for this course. Labs and projects will be designed to run on ordinary student-accessible hardware or campus lab systems.
+
+=== Student Learning Outcomes
+
+On completion of the course, students should be able to:
+
+* Explain major approaches to artificial intelligence, including symbolic reasoning, probabilistic reasoning, machine learning, and neural networks.
+* Formulate AI problems using agents, state spaces, actions, transition models, goal tests, and evaluation functions.
+* Implement and compare uninformed and informed search algorithms, including breadth-first search, depth-first search, uniform-cost search, and A* search.
+* Represent knowledge using logical rules or structured representations and apply basic inference techniques.
+* Use probability to reason under uncertainty, including Bayes' theorem, naive Bayes classifiers, and Bayesian network concepts.
+* Prepare datasets, train models, evaluate performance, and explain the tradeoffs among accuracy, generalization, interpretability, and computational cost.
+* Implement or apply decision trees, clustering, linear classifiers, perceptrons, and multilayer neural networks.
+* Explain the role of gradient descent and backpropagation in training neural networks.
+* Apply AI techniques to small problems involving search, classification, text, images, or decision making.
+* Analyze ethical, social, privacy, security, and fairness issues associated with AI systems.
+* Communicate AI design decisions, experimental results, and limitations clearly in oral and written forms.
+
+=== AI Use Policy
+
+This is an artificial intelligence course, so students will discuss, evaluate, and sometimes use AI tools as part of the learning process.
+You are welcome to consult AI agents to ask questions about the course material, but you must use these tools in a way that helps you create your own solutions, rather than as a replacement for learning.
+
+* You may use AI tools to ask conceptual questions, generate small examples, review error messages, help debug code, or compare possible approaches.
+* You may not use AI tools to complete assignments, labs, projects, quizzes, or exams for you.
+* You may not submit code, text, analysis, diagrams, or experimental results generated by an AI tool unless the assignment explicitly permits it and you clearly disclose how the tool was used.
+* You may not use AI tools during exams or in-class assessments unless explicitly authorized by the instructor.
+* For assignments where AI tool use is permitted, include a brief disclosure in your submission describing the tool used, the prompt or type of help requested, and what you changed or verified yourself.
+
+You must understand your submitted work well enough to explain it without any assistance from an AI agent.
+The instructor may ask students to explain code, results, or written responses as part of assessment.
+
+=== Late Work Statement
+
+If you think there may be a problem that will interfere with submitting an assignment on time, it is expected you will communicate your concern with me well in advance (several days before) the due date.
+Late assignments will only be accepted with prior permission from the professor or at the professor's discretion.
+If you are absent from class, it is your responsibility to check on Canvas/CI Learn for announcements and assignments given while you were absent.
+
+=== Course Communication Policy
+
+Please contact me via email (your MyCI account) or through Canvas if you have any questions about the material, the course, assignments, etc.
+Attachments and formatting work much better through email.
+
+== Course Policies
+
+=== Build Rapport
+
+If you find that you have any trouble keeping up with assignments or other aspects of the course, make sure you let your instructor know as early as possible.
+As you will find, building rapport and effective relationships are key to becoming an effective professional.
+Make sure that you are proactive in informing your instructors when difficulties arise during the semester so that they can help you find a solution.
+
+=== Group Work Policy
+
+Some labs and project milestones may involve pair or small-group work.
+The lab grades may be split into individual contribution and group contribution when group work is assigned.
+By default, each student will receive the same grade for the group contribution portion of a group lab or project milestone.
+However, I reserve the right to modify individual grades based on unacceptable contribution.
+I also reserve the right to modify team membership if necessary.
+
+Students are responsible for understanding all code, results, and written analysis submitted under their name.
+
+=== Grading Policy
+
+.Letter Grade Assignment
+[cols="1,1,2",options="header"]
+|===
+| Letter Grade | Percentage | Performance
+| A   | 93-100% | Excellent Work
+| A-  | 90-92%  | Nearly Excellent Work
+| B+  | 87-89%  | Very Good Work
+| B   | 83-86%  | Good Work
+| B-  | 80-82%  | Mostly Good Work
+| C+  | 75-79%  | Above Average Work
+| C   | 74-71%  | Average Work
+| C-  | 70-67%  | Mostly Average Work
+| D+  | 66-64%  | Below Average Work
+| D   | 63-60%  | Poor Work
+| F   | 59-0%   | Failing Work
+|===
+
+=== Policy on Academic Integrity
+
+By enrolling at CSU Channel Islands, students are responsible for upholding the University's policies and the Student Conduct Code.
+Academic integrity and scholarship are values of the institution that ensure respect for the academic reputation of the University, students, faculty, and staff.
+Cheating, plagiarism, unauthorized collaboration with another student, knowingly furnishing false information to the University, buying, selling or stealing any material for an examination, or substituting for another person may be considered violations of the link:http://www.csuci.edu/campuslife/student-conduct/academic-dishonesty.htm[Student Conduct Code].
+If a student is found responsible for committing an act of academic dishonesty in this course, the student may receive academic penalties including a failing grade on an assignment or in the course, and a disciplinary referral will be made and submitted to the Dean of Students office.
+Please ask about my expectations regarding academic dishonesty in this course if they are unclear.
+
+=== Attendance Policy
+
+Students are expected to attend each class session.
+If you cannot attend a session, contact the course instructor prior to the meeting time to explain your circumstances.
+Missing class will impact your final grade.
+
+For absences with extenuating circumstances related to a medical condition or disability for which you may require reasonable accommodation, please refer to the Disability Statement.
+
+=== Curricular Elements
+
+* Activities
+** Short in-class activities will reinforce core concepts such as search traces, probability calculations, model evaluation, and neural network training behavior.
+* Labs
+** Labs are completed in person in the lab unless otherwise stated. Labs may include Python notebooks, short programming tasks, model analysis, and written reflections.
+* Projects
+** Several coding and analysis projects will be given throughout the semester. Projects will emphasize implementation, experimentation, model evaluation, and clear explanation of results.
+* Final Project
+** Students will complete a small AI application or analysis project that demonstrates course concepts. The final project will include a proposal or checkpoint, working implementation, evaluation, written summary, and presentation.
+* Exams
+** A midterm and final exam are given. Exams may include conceptual questions, algorithm tracing, short written responses, code reading, and practical analysis. The computers in the lab must be used, save for accommodations provided by DASS.
+
+==== Major Readings and Required Materials
+
+Required readings will be provided through CI Learn and may include instructor notes, notebooks, textbook excerpts, and open educational resources.
+The following references are recommended for students who want a structured textbook treatment of the material:
+
+* *Reference Textbook:* _Artificial Intelligence: A Modern Approach_
+** *Authors:* Stuart Russell and Peter Norvig
+** *Edition:* 4th Edition
+** *Publisher:* Pearson
+* *Applied ML Reference:* _Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow_
+** *Author:* Aurelien Geron
+** *Edition:* 3rd Edition
+** *Publisher:* O'Reilly Media
+
+==== Major Assignments and Assessments for Artificial Intelligence/Neural Nets
+
+.Percentage Breakdown
+[cols="1,1",options="header"]
+|===
+| Percentage | Assignment
+| 5   | Attendance and in-class activities
+| 25  | Labs
+| 20  | Programming and analysis projects
+| 15  | Midterm exam
+| 20  | Final project and presentation
+| 15  | Final exam
+| 100 | Total
+|===
+
+=== Tentative Course Schedule or Course Outline
+
+This schedule assumes the Fall 2026 CSUCI semester. Weekday classes begin on August 24, Labor Day is September 7, Veterans Day is November 11, Thanksgiving closure is November 26-27, the last day of formal instruction is December 5, and final examinations are scheduled for December 7-12.
+Due dates and in-class activities may be adjusted if the assigned class meeting day falls on a campus holiday or if class progress requires adjustment.
+
+**Note on Readings:** The primary textbook is *Artificial Intelligence: A Modern Approach*, 4th Edition by Stuart Russell and Peter Norvig. Because the full book is designed for a two-semester sequence, we will focus on carefully selected chapters and sections. Full weekly reading assignments and optional deeper sections will be posted on CI Learn.
+
+[cols="1,1,2,3,3,3",options="header"]
+|===
+| Week | Dates | Core Concept | Key Topics and Reading Focus | Lab/Assignment Focus | Calendar Notes
+
+| 1 | Aug 24-28 | AI Agents and Foundations | What is AI? Rational agents, PEAS framework, agent types and environments. 
+**AIMA:** Ch. 1 (all) + Ch. 2 (all) | Lab: Simple grid-world / vacuum agent simulation in Python. | Weekday classes begin Aug 24.
+
+| 2 | Aug 31-Sep 4 | State-Space Search | Problem formulation, uninformed search strategies. 
+**AIMA:** Ch. 3 (3.1–3.5) | Lab: Implement BFS, DFS, UCS on graph problems. | Normal instructional week.
+
+| 3 | Sep 7-11 | Informed and Adversarial Search | Heuristics, A*, game trees, minimax, alpha-beta. 
+**AIMA:** Ch. 3 (3.6) + Ch. 5 (5.1–5.3) | Lab: A* pathfinding + minimax / alpha-beta (Pacman or tic-tac-toe). | Labor Day holiday Sep 7; campus closed. Adjust deadlines.
+
+| 4 | Sep 14-18 | Knowledge Representation and Logic | Knowledge-based agents, propositional logic, inference. 
+**AIMA:** Ch. 7 (all) | Lab: Wumpus World or simple propositional logic KB. | Normal instructional week.
+
+| 5 | Sep 21-25 | First-Order Logic | FOL syntax, semantics, and usage. 
+**AIMA:** Ch. 8 (all) | Lab: First-order knowledge base and queries. | Normal instructional week.
+
+| 6 | Sep 28-Oct 2 | Probability and Uncertainty | Acting under uncertainty, Bayes’ rule, naive Bayes. 
+**AIMA:** Ch. 12 (all) | Lab: Bayes’ theorem exercises and naive Bayes classifier. | Normal instructional week.
+
+| 7 | Oct 5-9 | Bayesian Networks | Representing and reasoning with uncertain knowledge. 
+**AIMA:** Ch. 13 (all) | Lab: Build and query a small Bayesian network. | Normal instructional week.
+
+| 8 | Oct 12-16 | Decision Trees and Midterm | Learning decision trees, model evaluation, entropy. 
+**AIMA:** Ch. 19 (19.1–19.3, 19.9) | Midterm review (first class); **Midterm Exam** (second class). Lab: Decision tree implementation. | Mid-semester assessment and final project proposal/checkpoint.
+
+| 9 | Oct 19-23 | Machine Learning Foundations | Supervised learning, linear models, perceptron, gradient descent. 
+**AIMA:** Ch. 19 (19.4–19.6) | Lab: Perceptron and linear classifiers. | Normal instructional week.
+
+| 10 | Oct 26-30 | Neural Networks I | Feedforward networks, backpropagation basics. 
+**AIMA:** Ch. 21 (21.1–21.4) | Lab: Simple MLP for classification (XOR or small dataset). | Normal instructional week.
+
+| 11 | Nov 2-6 | Neural Networks II | Optimization, regularization, generalization. 
+**AIMA:** Ch. 21 (21.5–21.6) | Lab: Backpropagation implementation + MLP training. | Normal instructional week.
+
+| 12 | Nov 9-13 | Neural Networks III: Vision | Convolutional networks and image tasks. 
+**AIMA:** Ch. 21 (21.3, 21.8) + Ch. 25 (selected sections) | Lab: Image classification with neural net / simple CNN. | Veterans Day holiday Nov 11; campus closed. Adjust deadlines.
+
+| 13 | Nov 16-20 | Natural Language Processing | Language models, embeddings, basic NLP tasks. 
+**AIMA:** Ch. 23 (selected) + Ch. 24 (24.1–24.2) | Lab: Text classification or sentiment analysis. | Normal instructional week.
+
+| 14 | Nov 23-27 | Reinforcement Learning | MDPs, value iteration, Q-learning. 
+**AIMA:** Ch. 22 (22.1–22.4) | Lab: Grid-world reinforcement learning; final project work. | Thanksgiving holiday Nov 26-27; campus closed.
+
+| 15 | Nov 30-Dec 5 | Responsible AI and Synthesis | Ethics, risks, limits of AI; connecting symbolic and neural approaches. 
+**AIMA:** Ch. 1.5 + Ch. 27 (all) | Final project presentations; course synthesis and review. | Last day of formal instruction Dec 5.
+
+| 16 | Dec 7-12 | Final Examination Period | Comprehensive final review + exam. | **Final Exam:** Tuesday, December 8, 2026, 7:00 PM-9:00 PM. | Final exam in Gateway Hall 3540.
+|===
+
+==== Lab Overview and Policies
+
+All labs are *hands-on Jupyter Notebook* based and designed for the 3-hour weekly lab sessions.
+
+* *Format*: Students receive a starter `.ipynb` notebook.
+* *Deliverables*: Completed notebook with:
+** Code implementations
+** Experimental results and visualizations
+** Markdown analysis and reflections
+* *Submission*: Upload to CI Learn, or GitHub Classroom if set up, by the following lab day.
+* *Grading Rubric* (25% of final grade total):
+** Code correctness and completeness: 50%
+** Experimentation, results, and analysis: 30%
+** Clarity, documentation, and reflection: 20%
+
+*Recommended Environment*:
+
+* Python 3.10+
+* Jupyter Notebook or VS Code with Jupyter extension
+* Core packages: `numpy`, `pandas`, `matplotlib`, `scikit-learn`, `torch`, `torchvision`
+
+==== Weekly Lab Schedule
+
+[cols="1,1,3,3,2",options="header"]
+|===
+| Week | Dates | Lab Title | Main Topics | AIMA Reference
+
+| 1 | Aug 24-28 | Intelligent Agents | Reflex, model-based, goal-based agents | Ch. 1-2
+| 2 | Aug 31-Sep 4 | Uninformed Search | BFS, DFS, UCS | Ch. 3
+| 3 | Sep 7-11 | Informed and Adversarial Search | A*, minimax, alpha-beta | Ch. 3 + Ch. 5
+| 4 | Sep 14-18 | Propositional Logic | Wumpus World, inference | Ch. 7
+| 5 | Sep 21-25 | First-Order Logic | Knowledge representation and queries | Ch. 8
+| 6 | Sep 28-Oct 2 | Probability and Naive Bayes | Bayes' rule, naive Bayes classifier | Ch. 12
+| 7 | Oct 5-9 | Bayesian Networks | Building and querying BNs | Ch. 13
+| 8 | Oct 12-16 | Decision Trees | ID3 / scikit-learn decision trees | Ch. 19
+| 9 | Oct 19-23 | Perceptron and Linear Models | Perceptron, logistic regression | Ch. 19
+| 10 | Oct 26-30 | Feedforward Neural Networks | MLP, XOR problem | Ch. 21
+| 11 | Nov 2-6 | Backpropagation and Optimization | Training MLPs | Ch. 21
+| 12 | Nov 9-13 | Computer Vision with Neural Nets | CNN basics, image classification | Ch. 21 + Ch. 25
+| 13 | Nov 16-20 | Natural Language Processing | Text classification, sentiment | Ch. 23-24
+| 14 | Nov 23-27 | Reinforcement Learning | Q-learning on Gridworld | Ch. 22
+| 15 | Nov 30-Dec 5 | Final Project Studio | Project work and presentations | N/A
+|===
+
+==== Detailed Lab Descriptions
+
+===== Lab 1: Intelligent Agents (Week 1)
+
+*Objectives*:
+
+* Understand the PEAS framework.
+* Implement different types of agents.
+* Compare agent performance in different environments.
+
+*Starter Code*: Use or adapt from `aima-python/agents.ipynb`.
+
+*Tasks*:
+
+. Implement a simple Vacuum World environment.
+. Create `ReflexVacuumAgent`, `ModelBasedVacuumAgent`, and `GoalBasedAgent`.
+. Run simulations with different environment configurations.
+. Analyze which agent performs best and why.
+
+*Deliverable*: Notebook with agent code, simulation results, and 1-page reflection.
+
+===== Lab 2: Uninformed Search (Week 2)
+
+*Objectives*:
+
+* Implement core search algorithms from scratch.
+* Understand time and space tradeoffs.
+
+*Tasks*:
+
+. Implement BFS, DFS, and UCS using Python.
+. Solve the Romania map problem and maze navigation.
+. Measure nodes expanded and path cost.
+
+*Resources*: `aima-python/search.ipynb` and Berkeley Pacman Project 1.
+
+===== Lab 3: Informed and Adversarial Search (Week 3)
+
+*Objectives*:
+
+* Apply heuristic search with A*.
+* Implement game tree search.
+
+*Tasks*:
+
+. Implement A* with Manhattan and misplaced-tile heuristics on the 8-puzzle.
+. Implement minimax and alpha-beta pruning for tic-tac-toe or Pacman.
+. Compare performance.
+
+*Resources*: Berkeley Pacman Projects 1 and 2.
+
+===== Lab 4: Propositional Logic - Wumpus World (Week 4)
+
+*Objectives*:
+
+* Model a world using propositional logic.
+* Implement basic inference.
+
+*Tasks*:
+
+. Build a Wumpus World knowledge base.
+. Use model checking or resolution to answer queries, such as whether square `[2,2]` is safe.
+
+*Resources*: `aima-python/logic.ipynb`.
+
+===== Lab 5: First-Order Logic (Week 5)
+
+*Objectives*:
+
+* Represent knowledge using FOL.
+* Perform inference.
+
+*Tasks*:
+
+. Create a family relationship knowledge base.
+. Implement forward chaining or use an existing solver for queries.
+
+*Resources*: `aima-python/knowledge.ipynb`.
+
+===== Lab 6: Probability and Naive Bayes (Week 6)
+
+*Objectives*:
+
+* Apply probability theory.
+* Build a simple classifier.
+
+*Tasks*:
+
+. Complete manual Bayes calculations.
+. Implement naive Bayes on the Iris or spam dataset using scikit-learn.
+
+===== Lab 7: Bayesian Networks (Week 7)
+
+*Objectives*:
+
+* Represent uncertain knowledge graphically.
+* Perform inference.
+
+*Tasks*:
+
+. Build the Alarm network or a similar Bayesian network.
+. Implement enumeration-based inference.
+
+===== Lab 8: Decision Trees (Week 8)
+
+*Objectives*:
+
+* Understand information gain and tree induction.
+* Evaluate model performance.
+
+*Tasks*:
+
+. Implement basic ID3 or use `sklearn.tree.DecisionTreeClassifier`.
+. Experiment with `max_depth` and analyze overfitting.
+
+===== Lab 9: Perceptron and Linear Models (Week 9)
+
+*Objectives*:
+
+* Implement linear classifiers.
+* Understand gradient descent.
+
+*Tasks*:
+
+. Implement the perceptron from scratch.
+. Compare with logistic regression on linearly separable data.
+
+===== Lab 10: Feedforward Neural Networks (Week 10)
+
+*Objectives*:
+
+* Build and train simple MLPs.
+
+*Tasks*:
+
+. Solve the XOR problem.
+. Train an MLP on a small classification dataset using PyTorch.
+
+===== Lab 11: Backpropagation (Week 11)
+
+*Objectives*:
+
+* Understand training dynamics.
+
+*Tasks*:
+
+. Trace backpropagation on a small network.
+. Experiment with learning rate, momentum, and regularization.
+
+===== Lab 12: Computer Vision (Week 12)
+
+*Objectives*:
+
+* Apply CNNs to image data.
+
+*Tasks*:
+
+. Train a simple CNN on MNIST or Fashion-MNIST.
+. Visualize filters and predictions.
+
+===== Lab 13: Natural Language Processing (Week 13)
+
+*Objectives*:
+
+* Work with text representation and classification.
+
+*Tasks*:
+
+. Use bag-of-words and TF-IDF features.
+. Perform sentiment analysis using naive Bayes or a simple neural network.
+
+===== Lab 14: Reinforcement Learning (Week 14)
+
+*Objectives*:
+
+* Learn from rewards.
+
+*Tasks*:
+
+. Implement Q-learning on a Gridworld environment.
+. Experiment with different exploration strategies.
+
+===== Lab 15: Final Project Studio (Week 15)
+
+Open lab for final project development and peer presentations.
+
+==== Additional Lab Resources
+
+* https://github.com/aimacode/aima-python
+* Berkeley CS188 Pacman Projects
+* Geron _Hands-On Machine Learning_ GitHub notebooks
+
+=== Student Support Services
+
+CSUCI’s Syllabus Policies and Assistance Website (go.csuci.edu/syllabuspolicies) provides important details about academic policies, campus expectations, and student support services that are all highly applicable to your success as a student both in and outside of the classroom.
+Ensure that you review this site on a regular basis to stay informed about the policies and resources that support your success, as campus resources or policies may change semester to semester.
+
+==== Disability Statement
+
+If you are a student with a disability requesting reasonable accommodations in this course, please contact the student disability accommodations office.
+All requests for reasonable accommodations require registration with the accommodations office in advance of needed services.
+Faculty, students, and the accommodations office will work together regarding academic accommodations.
+Students are encouraged to discuss approved accommodations with your faculty
+
+Please visit Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall or call 805-437-3331.
+All requests for reasonable accommodations require registration with DASS in advance of need.
+You can link:https://www.csuci.edu/dass/students/apply-for-services.htm[apply for DASS services online].
+
+==== Basic Needs and Emergency Intervention
+
+Please use the link to the link:https://www.csuci.edu/basicneeds/[Basic Needs Program] on the link:http://go.csuci.edu/syllabuspolicies[Syllabus Policies and Assistance] website (go.csuci.edu/syllabuspolicies) for information on emergency food, housing accommodations, toiletries, and connections to critical resources.
+
+== Additional Elements
+
+=== Campus Tutoring Services - Learning Resource Center (LRC)
+
+CSUCI has many free services to help you achieve your academic goals!
+You are encouraged to make early and regular use of the tutoring centers located in Broome Library, which offer free in-person and online tutoring support and academic success workshops.
+Many courses also have Embedded Peer Educators who lead regular study groups and exam review sessions.
+Working with a tutor is a great way to develop your learning habits, get clarification on an assignment, study for an exam, or get feedback on a paper or project.
+
+For writing assignments, communication-based projects, and multiliteracy development, please visit the link:https://www.csuci.edu/wmc/[Writing and Multiliteracy Center].
+For subject-specific tutoring across many courses and disciplines, please visit the link:https://www.csuci.edu/learningresourcecenter/[Learning Resource Center].
+
+=== CI Mission Statement
+
+Placing students at the center of the educational experience, California State University Channel Islands provides undergraduate and graduate education that facilitates learning within and across disciplines through integrative approaches, emphasizes experiential and service learning, and graduates students with multicultural and international perspectives.
+
+=== Civil Discourse Statement
+
+All students, staff and faculty on our campus are expected to join in making our campus a safe space for communication and civil discourse.
+If you are experiencing discomfort related to the language you are hearing or seeing on campus (in or out of classes), please talk with a trusted faculty or staff member.
+Similarly, please consider whether the language that you are using (in person or on Canvas) respects the rights of others to “engage in informed discourse and express a diversity of opinions freely and in a civil manner”
+(language from link:[https://senate.csuci.edu/resolutions/2016-2017/sr-16-01-resolution-on-commitment-to-equity-inclusion-civil-discourse-at-ci.pdf], Commitment to Equity, Inclusion, and Civil Discourse within our Diverse Campus Community).
+
+In addition, students whose conduct adversely affects the learning environment in this classroom may be subject to disciplinary action.
+Students that disrupt this course may receive a verbal and written warning from the instructor, they may be excused from the class for the day, they may be excused from the class for up to one class period, and/or they may be referred to the Dean of Students office for further review and possible disciplinary action.
+
+=== Counseling and Psychological Services (CAPS)
+
+Counseling and Psychological Services (CAPS) provides a wide range of confidential services to assist students in achieving their academic and personal goals and well-being.
+Services include confidential short-term counseling, crisis intervention, group therapy, and assistance with community referrals for a wide range of mental health concerns.
+Students can also meet with trained Mental Health Peers for support regarding school-related anxiety.
+
+CAPS is located in Bell Tower East Room 1867.
+Appointments are available in person and via telehealth.
+Appointments can be scheduled by calling 805-437-2088, by email at mailto:caps@csuci.edu[caps@csuci.edu], or walking into the clinic.
+For more information, visit the link:https://www.csuci.edu/caps[CAPS website].
+Crisis phone support is available 24/7 by calling 855-854-1747 and by calling or texting 988.
+
+=== Names and Pronouns Statement
+
+I will gladly honor your request to address you by a name or pronoun that is not on the roster or on Canvas/CI Learn.
+Please advise me early in the semester so that I may make appropriate changes to my records.
+You may also update this information in the myCI Student Center.
+For more information, visit the link:https://www.csuci.edu/registrar/personal-info-update.htm[Preferred Names and Pronouns webpage].
+
+=== Title IX and Inclusion
+
+Title IX & Inclusion manages the University’s equal opportunity compliance, including the areas of affirmative action and Title IX.
+Title IX & Inclusion also oversees the campus’ response to the University’s nondiscrimination policies.
+
+CSU Channel Islands prohibits discrimination and harassment of any kind on the basis of a protected status (i.e., age, disability, gender, genetic information, gender identity, gender expression, marital status, medical condition, nationality, race or ethnicity, religion or religious creed, sexual orientation, and Veteran or Military Status).
+This prohibition on harassment includes sexual harassment, as well as sexual misconduct, dating and domestic violence, and stalking.
+
+For more information regarding CSU Channel Islands' commitment to diversity and inclusion or to report a potential violation, please contact Title IX & Inclusion at 805.437.2077 or visit the link:https://www.csuci.edu/titleix[Title IX & Inclusion website].

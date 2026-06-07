@@ -1,2 +1,8 @@
 # Temporary/editor files that begin with tilde.
 ~*
+
+# Local Python virtual environments.
+.venv/
+
+# Separate nested workspace repository.
+openclaw/

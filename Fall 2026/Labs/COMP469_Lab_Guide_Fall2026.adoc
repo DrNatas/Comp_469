@@ -1,0 +1,206 @@
+= COMP 469: Artificial Intelligence/Neural Nets - Lab Guide
+:doctype: book
+:reproducible:
+:toc: left
+:sectnums:
+:sectnumlevels: 3
+:icons: font
+:source-highlighter: rouge
+:rouge-style: github
+
+== Lab Overview and Policies
+
+All labs are **hands-on Jupyter Notebook** based and designed for the 3-hour weekly lab sessions.
+
+* **Format**: Students receive a starter `.ipynb` notebook.
+* **Deliverables**: Completed notebook with:
+  ** Code implementations
+  ** Experimental results and visualizations
+  ** Markdown analysis and reflections
+* **Submission**: Upload to CI Learn (or GitHub Classroom if set up) by the following lab day.
+* **Grading Rubric** (25% of final grade total):
+  ** Code correctness & completeness: 50%
+  ** Experimentation, results, and analysis: 30%
+  ** Clarity, documentation, and reflection: 20%
+
+**Recommended Environment**:
+- Python 3.10+
+- Jupyter Notebook / VS Code with Jupyter extension
+- Core packages: `numpy pandas matplotlib scikit-learn torch torchvision`
+
+---
+
+== Weekly Lab Schedule
+
+[cols="1,1,3,3,2",options="header"]
+|===
+| Week | Dates | Lab Title | Main Topics | AIMA Reference
+
+| 1 | Aug 24-28 | Intelligent Agents | Reflex, Model-based, Goal-based agents | Ch. 1–2
+| 2 | Aug 31-Sep 4 | Uninformed Search | BFS, DFS, UCS | Ch. 3
+| 3 | Sep 7-11 | Informed & Adversarial Search | A*, Minimax, Alpha-Beta | Ch. 3 + Ch. 5
+| 4 | Sep 14-18 | Propositional Logic | Wumpus World, Inference | Ch. 7
+| 5 | Sep 21-25 | First-Order Logic | Knowledge Representation & Queries | Ch. 8
+| 6 | Sep 28-Oct 2 | Probability & Naive Bayes | Bayes Rule, Naive Bayes Classifier | Ch. 12
+| 7 | Oct 5-9 | Bayesian Networks | Building and Querying BNs | Ch. 13
+| 8 | Oct 12-16 | Decision Trees | ID3 / scikit-learn Decision Trees | Ch. 19
+| 9 | Oct 19-23 | Perceptron & Linear Models | Perceptron, Logistic Regression | Ch. 19
+| 10 | Oct 26-30 | Feedforward Neural Networks | MLP, XOR problem | Ch. 21
+| 11 | Nov 2-6 | Backpropagation & Optimization | Training MLPs | Ch. 21
+| 12 | Nov 9-13 | Computer Vision with Neural Nets | CNN basics, Image Classification | Ch. 21 + 25
+| 13 | Nov 16-20 | Natural Language Processing | Text Classification, Sentiment | Ch. 23–24
+| 14 | Nov 23-27 | Reinforcement Learning | Q-Learning on Gridworld | Ch. 22
+| 15 | Nov 30-Dec 5 | Final Project Studio | Project work & presentations | —
+|===
+
+---
+
+== Detailed Lab Descriptions
+
+=== Lab 1: Intelligent Agents (Week 1)
+**Objectives**:
+* Understand PEAS framework
+* Implement different types of agents
+* Compare agent performance in different environments
+
+**Starter Code**: Use or adapt from `aima-python/agents.ipynb`
+
+**Tasks**:
+. Implement a simple Vacuum World environment
+. Create ReflexVacuumAgent, ModelBasedVacuumAgent, GoalBasedAgent
+. Run simulations with different environment configurations
+. Analyze which agent performs best and why
+
+**Deliverable**: Notebook with agent code, simulation results, and 1-page reflection.
+
+=== Lab 2: Uninformed Search (Week 2)
+**Objectives**:
+* Implement core search algorithms from scratch
+* Understand time/space tradeoffs
+
+**Tasks**:
+. Implement BFS, DFS, UCS using Python
+. Solve Romania map problem and maze navigation
+. Measure nodes expanded and path cost
+
+**Resources**: aima-python `search.ipynb` + Berkeley Pacman Project 1
+
+=== Lab 3: Informed & Adversarial Search (Week 3)
+**Objectives**:
+* Heuristic search (A*)
+* Game tree search
+
+**Tasks**:
+. Implement A* with Manhattan and Misplaced Tile heuristics on 8-puzzle
+. Implement Minimax + Alpha-Beta for Tic-Tac-Toe or Pacman
+. Compare performance
+
+**Resources**: Berkeley Pacman Projects 1 & 2
+
+=== Lab 4: Propositional Logic – Wumpus World (Week 4)
+**Objectives**:
+* Model a world using propositional logic
+* Implement basic inference
+
+**Tasks**:
+. Build Wumpus World KB
+. Use model checking or resolution to answer queries (e.g., "Is square [2,2] safe?")
+
+**Resources**: aima-python `logic.ipynb`
+
+=== Lab 5: First-Order Logic (Week 5)
+**Objectives**:
+* Represent knowledge using FOL
+* Perform inference
+
+**Tasks**:
+. Create a family relationship knowledge base
+. Implement forward chaining or use existing solver for queries
+
+**Resources**: aima-python `knowledge.ipynb`
+
+=== Lab 6: Probability and Naive Bayes (Week 6)
+**Objectives**:
+* Apply probability theory
+* Build a simple classifier
+
+**Tasks**:
+. Manual Bayes calculations
+. Implement Naive Bayes on Iris or spam dataset using scikit-learn
+
+=== Lab 7: Bayesian Networks (Week 7)
+**Objectives**:
+* Represent uncertain knowledge graphically
+* Perform inference
+
+**Tasks**:
+. Build the Alarm network (or similar)
+. Implement enumeration-based inference
+
+=== Lab 8: Decision Trees (Week 8)
+**Objectives**:
+* Understand information gain and tree induction
+* Evaluate model performance
+
+**Tasks**:
+. Implement basic ID3 or use `sklearn.tree.DecisionTreeClassifier`
+. Experiment with max_depth and analyze overfitting
+
+=== Lab 9: Perceptron and Linear Models (Week 9)
+**Objectives**:
+* Implement linear classifiers
+* Understand gradient descent
+
+**Tasks**:
+. Implement Perceptron from scratch
+. Compare with Logistic Regression on linearly separable data
+
+=== Lab 10: Feedforward Neural Networks (Week 10)
+**Objectives**:
+* Build and train simple MLPs
+
+**Tasks**:
+. Solve XOR problem
+. Train MLP on small classification dataset using PyTorch
+
+=== Lab 11: Backpropagation (Week 11)
+**Objectives**:
+* Understand training dynamics
+
+**Tasks**:
+. Trace backpropagation on a small network
+. Experiment with learning rate, momentum, regularization
+
+=== Lab 12: Computer Vision (Week 12)
+**Objectives**:
+* Apply CNNs to image data
+
+**Tasks**:
+. Train a simple CNN on MNIST or Fashion-MNIST
+. Visualize filters and predictions
+
+=== Lab 13: Natural Language Processing (Week 13)
+**Objectives**:
+* Text representation and classification
+
+**Tasks**:
+. Bag-of-words + TF-IDF
+. Sentiment analysis using Naive Bayes or simple neural net
+
+=== Lab 14: Reinforcement Learning (Week 14)
+**Objectives**:
+* Learn from rewards
+
+**Tasks**:
+. Implement Q-Learning on a Gridworld environment
+. Experiment with different exploration strategies
+
+=== Lab 15: Final Project Studio (Week 15)
+Open lab for final project development and peer presentations.
+
+---
+
+**Additional Resources**:
+* https://github.com/aimacode/aima-python
+* Berkeley CS188 Pacman Projects
+* Géron "Hands-On Machine Learning" GitHub notebooks
