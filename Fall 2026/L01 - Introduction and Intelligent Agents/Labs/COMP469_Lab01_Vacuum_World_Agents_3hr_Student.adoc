@@ -1,0 +1,807 @@
+= COMP 469 Lab 01: Vacuum World Agents
+:doctype: article
+:toc: left
+:toclevels: 3
+:sectnums:
+:source-highlighter: highlight.js
+:icons: font
+:stem: latexmath
+
+**Week 1** | **AIMA Chapters 1-2** | **3-hour student lab**
+
+== Lab Goal
+
+In this lab, you will build a Vacuum World environment and program three increasingly capable agents:
+
+* A reflex agent that reacts only to the current percept.
+* A model-based agent that remembers what it has seen.
+* A goal-based agent that plans a path toward dirty squares.
+
+By the end of the lab, you should be able to explain how agent design depends on percepts, actions, the performance measure, and environment properties.
+
+== What You Are Expected To Do
+
+This is a coding-and-reasoning lab. You are not just running finished code; you are completing selected TODOs, testing your work, and explaining what your results mean using AIMA vocabulary.
+
+You will:
+
+. Analyze the task using PEAS and environment properties.
+. Complete a grid-based Vacuum World environment.
+. Implement and compare simple reflex, model-based, and goal-based agents.
+. Run controlled experiments so each agent faces the same worlds.
+. Use plots and written checkpoints to explain the tradeoffs.
+
+The goal-based agent uses breadth-first search as a preview of the next topic. You are expected to complete the guided BFS code, but the main Chapter 1-2 focus is understanding agents, environments, percepts, actions, rationality, and performance measures.
+
+== What You Will Submit
+
+Submit this completed notebook with:
+
+* Completed PEAS and environment-property tables.
+* Working environment code.
+* Working reflex, model-based, and goal-based agents.
+* Experiment results and at least two plots.
+* Written answers to all checkpoints.
+* A final reflection paragraph.
+
+== How To Know You Are On Track
+
+By the end of the lab, your notebook should run from top to bottom without errors. Your agents do not need to be perfect, but each one should clearly demonstrate its design idea: reflex reaction, internal memory, or goal-directed planning. Your written answers should connect your code behavior to the vocabulary from AIMA Chapters 1-2.
+
+== 0. Python `.env` Setup
+
+Before opening or running the notebook, activate your course Python environment.
+
+=== First-Time Setup
+
+Run these commands from the folder where this notebook is located.
+
+**macOS/Linux:**
+
+[source,bash]
+----
+python3 -m venv .env
+source .env/bin/activate
+python -m pip install --upgrade pip
+python -m pip install ipykernel notebook jupyter matplotlib
+python -m ipykernel install --user --name comp469 --display-name "COMP 469 (.env)"
+----
+
+**Windows PowerShell:**
+
+[source,powershell]
+----
+py -m venv .env
+.\.env\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install ipykernel notebook jupyter matplotlib
+python -m ipykernel install --user --name comp469 --display-name "COMP 469 (.env)"
+----
+
+If PowerShell blocks activation, run this once in the same terminal:
+
+[source,powershell]
+----
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+.\.env\Scripts\Activate.ps1
+----
+
+=== Returning Later
+
+Always activate the environment before launching Jupyter.
+
+**macOS/Linux:**
+
+[source,bash]
+----
+source .env/bin/activate
+jupyter notebook
+----
+
+**Windows PowerShell:**
+
+[source,powershell]
+----
+.\.env\Scripts\Activate.ps1
+jupyter notebook
+----
+
+In Jupyter, choose the kernel named **COMP 469 (.env)** if it appears.
+
+== 1. Setup Cell
+
+Run this cell first. Do not edit it unless your instructor asks you to.
+
+.Notebook Code Cell 4
+[source,python]
+----
+import random
+from collections import deque
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Tuple
+
+import matplotlib.pyplot as plt
+
+Position = Tuple[int, int]
+ACTIONS = ["Suck", "Up", "Down", "Left", "Right", "NoOp"]
+
+random.seed(469)
+print("Setup complete. You are ready for Lab 01.")
+----
+
+== 2. PEAS Analysis
+
+Complete the table for this Vacuum World environment.
+
+[cols="1,1",options="header"]
+|===
+| PEAS Component | Your Answer
+| Performance measure | TODO
+| Environment | TODO
+| Actuators | TODO
+| Sensors | TODO
+|===
+
+Now classify the environment using AIMA vocabulary.
+
+[cols="1,1,1",options="header"]
+|===
+| Property | Choice | Brief justification
+| Fully or partially observable? | TODO | TODO
+| Single-agent or multi-agent? | TODO | TODO
+| Deterministic or stochastic? | TODO | TODO
+| Episodic or sequential? | TODO | TODO
+| Static or dynamic? | TODO | TODO
+| Discrete or continuous? | TODO | TODO
+| Known or unknown? | TODO | TODO
+|===
+
+=== Checkpoint 1
+
+In 3-5 sentences, explain why the same physical environment might lead to different agent designs if the sensors or performance measure changed.
+
+== 3. Build the Vacuum World Environment
+
+The environment owns the true world state. The agent should receive only a percept and return an action.
+
+Your environment will support:
+
+* A rectangular grid.
+* Clean and dirty squares.
+* Optional obstacles.
+* A score that rewards cleaning and penalizes action costs.
+* A percept containing only the agent's current location and current square status.
+
+Complete the TODO sections in the class below.
+
+Use these rules when completing the environment:
+
+* `Suck` cleans the current square if it is dirty.
+* Every action costs 1 point.
+* Successfully cleaning a dirty square adds 10 points.
+* Moving into an accessible neighboring square changes the agent's location.
+* Moving into a wall or obstacle is a bump and costs 2 extra points.
+* Obstacles should never be dirty and should not be placed at the start location.
+
+After this section, the smoke test should show a valid start location, a percept, a dirty-square count, and an obstacle count.
+
+.Notebook Code Cell 7
+[source,python]
+----
+@dataclass
+class Percept:
+    location: Position
+    status: str
+
+
+class VacuumEnvironment:
+    def __init__(
+        self,
+        width: int = 5,
+        height: int = 5,
+        dirt_probability: float = 0.30,
+        obstacle_probability: float = 0.0,
+        start: Position = (0, 0),
+        seed: Optional[int] = None,
+    ):
+        if seed is not None:
+            random.seed(seed)
+
+        self.width = width
+        self.height = height
+        self.start = start
+        self.agent_location = start
+        self.status: Dict[Position, str] = {}
+        self.obstacles = set()
+        self.score = 0
+        self.steps = 0
+        self.cleaned_count = 0
+
+        # TODO 1: Create obstacles.
+        # Do not place an obstacle at the start location.
+        for x in range(width):
+            for y in range(height):
+                location = (x, y)
+                # Replace this condition with obstacle placement logic.
+                if False:
+                    self.obstacles.add(location)
+
+        # TODO 2: Initialize each non-obstacle square as "Dirty" or "Clean".
+        # Obstacle squares should have status "Obstacle".
+        for x in range(width):
+            for y in range(height):
+                location = (x, y)
+                if location in self.obstacles:
+                    self.status[location] = "Obstacle"
+                else:
+                    self.status[location] = "Clean"  # Replace with random dirt logic.
+
+        self.status[start] = "Clean"
+
+    def in_bounds(self, location: Position) -> bool:
+        x, y = location
+        return 0 <= x < self.width and 0 <= y < self.height
+
+    def is_accessible(self, location: Position) -> bool:
+        return self.in_bounds(location) and location not in self.obstacles
+
+    def get_percept(self) -> Percept:
+        return Percept(self.agent_location, self.status[self.agent_location])
+
+    def get_neighbors(self, location: Position) -> Dict[str, Position]:
+        x, y = location
+        candidates = {
+            "Up": (x, y - 1),
+            "Down": (x, y + 1),
+            "Left": (x - 1, y),
+            "Right": (x + 1, y),
+        }
+        return {
+            action: next_location
+            for action, next_location in candidates.items()
+            if self.is_accessible(next_location)
+        }
+
+    def execute_action(self, action: str) -> None:
+        if action not in ACTIONS:
+            raise ValueError(f"Unknown action: {action}")
+
+        self.steps += 1
+        self.score -= 1
+
+        # TODO 3: Implement Suck.
+        # If the current square is dirty, clean it, add 10 points, and increment cleaned_count.
+
+        # TODO 4: Implement movement.
+        # If the move is legal, update agent_location.
+        # If the move hits a wall or obstacle, subtract 2 more points.
+
+    def count_dirty_squares(self) -> int:
+        return sum(1 for value in self.status.values() if value == "Dirty")
+
+    def count_clean_squares(self) -> int:
+        return sum(
+            1
+            for location, value in self.status.items()
+            if value == "Clean" and location not in self.obstacles
+        )
+
+    def is_done(self) -> bool:
+        return self.count_dirty_squares() == 0
+
+    def copy_world(self):
+        return dict(self.status), set(self.obstacles)
+
+    def load_world(self, status: Dict[Position, str], obstacles: set) -> None:
+        self.status = dict(status)
+        self.obstacles = set(obstacles)
+        self.agent_location = self.start
+        self.score = 0
+        self.steps = 0
+        self.cleaned_count = 0
+
+
+# Quick smoke test after you complete the TODOs above.
+env = VacuumEnvironment(width=5, height=5, dirt_probability=0.35, obstacle_probability=0.10, seed=469)
+print("Start:", env.agent_location)
+print("Percept:", env.get_percept())
+print("Dirty squares:", env.count_dirty_squares())
+print("Obstacles:", len(env.obstacles))
+----
+
+== 4. Visualize and Inspect the World
+
+Complete the visualization function. The goal is to make debugging easier.
+
+Suggested display choices:
+
+* `A` or blue marker for the agent.
+* Dark cells for dirty squares.
+* Light cells for clean squares.
+* Black cells for obstacles.
+
+.Notebook Code Cell 9
+[source,python]
+----
+def display_text(env: VacuumEnvironment) -> None:
+    for y in range(env.height):
+        row = []
+        for x in range(env.width):
+            location = (x, y)
+            if location == env.agent_location:
+                row.append("A")
+            elif location in env.obstacles:
+                row.append("#")
+            elif env.status[location] == "Dirty":
+                row.append("D")
+            else:
+                row.append(".")
+        print(" ".join(row))
+    print(f"Score: {env.score}, Steps: {env.steps}, Dirty left: {env.count_dirty_squares()}")
+
+
+def plot_environment(env: VacuumEnvironment, title: str = "Vacuum World") -> None:
+    grid = []
+    for y in range(env.height):
+        row = []
+        for x in range(env.width):
+            location = (x, y)
+            if location in env.obstacles:
+                row.append(2)
+            elif env.status[location] == "Dirty":
+                row.append(1)
+            else:
+                row.append(0)
+        grid.append(row)
+
+    plt.figure(figsize=(5, 5))
+    plt.imshow(grid, cmap="Greys", vmin=0, vmax=2)
+    ax = plt.gca()
+    ax.set_xticks(range(env.width))
+    ax.set_yticks(range(env.height))
+    ax.set_xticks([i - 0.5 for i in range(1, env.width)], minor=True)
+    ax.set_yticks([i - 0.5 for i in range(1, env.height)], minor=True)
+    ax.grid(which="minor", color="black", linewidth=1)
+    ax.scatter([env.agent_location[0]], [env.agent_location[1]], c="tab:blue", s=250)
+    ax.set_title(title)
+    plt.show()
+
+
+display_text(env)
+plot_environment(env, "Initial Vacuum World")
+----
+
+== 5. Agent Interface and Random Baseline
+
+Every agent will implement `choose_action(percept, environment)`. The random agent is a baseline: it cleans when it sees dirt and otherwise moves randomly.
+
+.Notebook Code Cell 11
+[source,python]
+----
+class Agent:
+    name = "Base Agent"
+
+    def choose_action(self, percept: Percept, environment: VacuumEnvironment) -> str:
+        raise NotImplementedError
+
+
+class RandomVacuumAgent(Agent):
+    name = "Random Vacuum Agent"
+
+    def choose_action(self, percept: Percept, environment: VacuumEnvironment) -> str:
+        if percept.status == "Dirty":
+            return "Suck"
+        return random.choice(["Up", "Down", "Left", "Right"])
+
+
+random_agent = RandomVacuumAgent()
+print(random_agent.name, "chooses", random_agent.choose_action(env.get_percept(), env))
+----
+
+== 6. Simulation Runner
+
+Complete the runner so that it repeatedly:
+
+. Gets the current percept.
+. Asks the agent for an action.
+. Applies the action to the environment.
+. Records score and dirty-square history.
+. Stops if the environment is clean or the agent returns `NoOp`.
+
+.Notebook Code Cell 13
+[source,python]
+----
+def run_simulation(
+    agent: Agent,
+    env: VacuumEnvironment,
+    max_steps: int = 100,
+    verbose: bool = False,
+) -> dict:
+    score_history = []
+    dirty_history = []
+    action_history = []
+
+    for step in range(max_steps):
+        # TODO 5: Get percept, choose action, execute action, record history.
+        percept = env.get_percept()
+        action = agent.choose_action(percept, env)
+
+        if action == "NoOp":
+            break
+
+        env.execute_action(action)
+
+        score_history.append(env.score)
+        dirty_history.append(env.count_dirty_squares())
+        action_history.append(action)
+
+        if verbose:
+            print(f"step={step:02d} loc={percept.location} status={percept.status} action={action} score={env.score}")
+
+        if env.is_done():
+            break
+
+    return {
+        "agent": agent.name,
+        "score": env.score,
+        "steps": env.steps,
+        "cleaned": env.cleaned_count,
+        "dirty_left": env.count_dirty_squares(),
+        "score_history": score_history,
+        "dirty_history": dirty_history,
+        "action_history": action_history,
+    }
+
+
+test_env = VacuumEnvironment(width=5, height=5, dirt_probability=0.35, obstacle_probability=0.0, seed=101)
+test_result = run_simulation(RandomVacuumAgent(), test_env, max_steps=25)
+test_result
+----
+
+== 7. Program a Reflex Agent
+
+A reflex agent reacts only to the current percept. It does not remember where it has been.
+
+Your task:
+
+* Return `Suck` if the current square is dirty.
+* Otherwise, use a deterministic movement rule.
+* Your rule should work reasonably well on an open 5x5 grid.
+
+Hint: A serpentine pattern is a good starting point.
+
+A reflex agent is allowed to be limited. If it gets stuck near obstacles or wastes moves, explain that limitation in Checkpoint 2. The important point is that its action depends only on the current percept, not on memory of previous squares.
+
+.Notebook Code Cell 15
+[source,python]
+----
+class ReflexVacuumAgent(Agent):
+    name = "Reflex Vacuum Agent"
+
+    def choose_action(self, percept: Percept, environment: VacuumEnvironment) -> str:
+        x, y = percept.location
+
+        if percept.status == "Dirty":
+            return "Suck"
+
+        # TODO 6: Replace this with a deterministic movement rule.
+        # Suggested strategy: serpentine sweep across rows.
+        return random.choice(["Up", "Down", "Left", "Right"])
+
+
+reflex_env = VacuumEnvironment(width=5, height=5, dirt_probability=0.35, obstacle_probability=0.0, seed=202)
+reflex_result = run_simulation(ReflexVacuumAgent(), reflex_env, max_steps=100)
+reflex_result
+----
+
+=== Checkpoint 2
+
+Answer in 4-6 sentences:
+
+. What information does your reflex agent use?
+. What information does it ignore?
+. Where does your rule perform well?
+. Where does your rule perform poorly?
+
+== 8. Program a Model-Based Agent
+
+A model-based agent keeps internal state. In this lab, it should remember visited squares and use that memory to avoid wasting moves.
+
+Your task:
+
+* Store visited locations.
+* Clean dirty squares.
+* Prefer unvisited accessible neighbors.
+* Add a fallback behavior when all neighbors have been visited.
+
+Optional stronger version: keep a stack of previous locations and backtrack when stuck.
+
+.Notebook Code Cell 18
+[source,python]
+----
+class ModelBasedVacuumAgent(Agent):
+    name = "Model-Based Vacuum Agent"
+
+    def __init__(self):
+        self.visited = set()
+        self.known_status: Dict[Position, str] = {}
+
+    def choose_action(self, percept: Percept, environment: VacuumEnvironment) -> str:
+        location = percept.location
+        self.visited.add(location)
+        self.known_status[location] = percept.status
+
+        if percept.status == "Dirty":
+            self.known_status[location] = "Clean"
+            return "Suck"
+
+        neighbors = environment.get_neighbors(location)
+        unvisited_actions = [
+            action
+            for action, next_location in neighbors.items()
+            if next_location not in self.visited
+        ]
+
+        # TODO 7: Prefer an unvisited action when possible.
+        if unvisited_actions:
+            return random.choice(unvisited_actions)
+
+        # TODO 8: Improve this fallback.
+        # Basic version: choose any legal neighbor.
+        # Stronger version: use a stack to backtrack.
+        if neighbors:
+            return random.choice(list(neighbors.keys()))
+
+        return "NoOp"
+
+
+model_env = VacuumEnvironment(width=5, height=5, dirt_probability=0.35, obstacle_probability=0.10, seed=303)
+model_result = run_simulation(ModelBasedVacuumAgent(), model_env, max_steps=100)
+model_result
+----
+
+=== Checkpoint 3
+
+Answer in 4-6 sentences:
+
+. What internal state does your model-based agent store?
+. How does that memory change its behavior?
+. Does the agent know the full environment state? Why or why not?
+. What fallback behavior did you choose, and what weakness does it still have?
+
+== 9. Program a Goal-Based Agent with BFS
+
+A goal-based agent chooses actions that move it toward a goal. Here, the goal is to reach and clean dirty squares.
+
+For this lab, the goal-based agent is allowed to inspect the full environment object. This makes it less realistic than the model-based agent, but it helps connect agents to search algorithms before Lab 02.
+
+This section is a bridge from Chapters 1-2 into Chapter 3. Focus on the agent idea first: the agent chooses an action by considering a desired future state. The BFS details will be developed more fully in the search lab.
+
+Your task:
+
+* If the current square is dirty, return `Suck`.
+* Find all dirty locations.
+* Use breadth-first search to find a path to the nearest reachable dirty square.
+* Return the first action in that path.
+
+A correct solution should return a list of actions leading from the current square to the nearest reachable dirty square, or an empty path if no dirty square can be reached.
+
+.Notebook Code Cell 21
+[source,python]
+----
+class GoalBasedVacuumAgent(Agent):
+    name = "Goal-Based Vacuum Agent"
+
+    def choose_action(self, percept: Percept, environment: VacuumEnvironment) -> str:
+        if percept.status == "Dirty":
+            return "Suck"
+
+        dirty_locations = [
+            location
+            for location, status in environment.status.items()
+            if status == "Dirty"
+        ]
+
+        if not dirty_locations:
+            return "NoOp"
+
+        path = self.bfs_to_nearest_dirty(percept.location, dirty_locations, environment)
+
+        if path:
+            return path[0]
+
+        return "NoOp"
+
+    def bfs_to_nearest_dirty(
+        self,
+        start: Position,
+        dirty_locations: List[Position],
+        environment: VacuumEnvironment,
+    ) -> List[str]:
+        dirty_set = set(dirty_locations)
+        frontier = deque([(start, [])])
+        visited = {start}
+
+        # TODO 9: Implement BFS.
+        # Each frontier item should store (location, path_so_far).
+        # Return path_so_far when location is dirty.
+        # Add accessible neighbors to the frontier.
+
+        return []
+
+
+goal_env = VacuumEnvironment(width=5, height=5, dirt_probability=0.35, obstacle_probability=0.10, seed=404)
+goal_result = run_simulation(GoalBasedVacuumAgent(), goal_env, max_steps=100)
+goal_result
+----
+
+=== Checkpoint 4
+
+Answer in 4-6 sentences:
+
+. What is the goal of the goal-based agent?
+. Why is BFS appropriate for this grid environment?
+. What information does the goal-based agent use that the model-based agent did not use?
+. Is this comparison completely fair? Explain.
+
+== 10. Controlled Experiments
+
+To compare agents fairly, each agent should face the same world in each trial. The function below creates one world, copies it, and then reloads that same world for each agent.
+
+Complete or inspect the code, then run the experiment.
+
+When you interpret the results, remember that "best" depends on the performance measure. A high score, fewer dirty squares left, and fewer steps are related, but they are not always the same outcome.
+
+.Notebook Code Cell 24
+[source,python]
+----
+def evaluate_agents(
+    agent_factories,
+    trials: int = 30,
+    max_steps: int = 100,
+    width: int = 5,
+    height: int = 5,
+    dirt_probability: float = 0.35,
+    obstacle_probability: float = 0.10,
+) -> List[dict]:
+    rows = []
+
+    for trial in range(trials):
+        base_env = VacuumEnvironment(
+            width=width,
+            height=height,
+            dirt_probability=dirt_probability,
+            obstacle_probability=obstacle_probability,
+            seed=1000 + trial,
+        )
+        status, obstacles = base_env.copy_world()
+
+        for make_agent in agent_factories:
+            env = VacuumEnvironment(width=width, height=height, dirt_probability=0.0, obstacle_probability=0.0)
+            env.load_world(status, obstacles)
+            agent = make_agent()
+            result = run_simulation(agent, env, max_steps=max_steps)
+            result["trial"] = trial
+            rows.append(result)
+
+    return rows
+
+
+agent_factories = [
+    lambda: RandomVacuumAgent(),
+    lambda: ReflexVacuumAgent(),
+    lambda: ModelBasedVacuumAgent(),
+    lambda: GoalBasedVacuumAgent(),
+]
+
+results = evaluate_agents(agent_factories, trials=30, max_steps=100)
+results[:4]
+----
+
+.Notebook Code Cell 25
+[source,python]
+----
+def summarize_results(results: List[dict]) -> Dict[str, dict]:
+    summary = {}
+    agent_names = sorted({row["agent"] for row in results})
+
+    for agent_name in agent_names:
+        rows = [row for row in results if row["agent"] == agent_name]
+        summary[agent_name] = {
+            "avg_score": sum(row["score"] for row in rows) / len(rows),
+            "avg_steps": sum(row["steps"] for row in rows) / len(rows),
+            "avg_cleaned": sum(row["cleaned"] for row in rows) / len(rows),
+            "avg_dirty_left": sum(row["dirty_left"] for row in rows) / len(rows),
+        }
+
+    return summary
+
+
+summary = summarize_results(results)
+summary
+----
+
+== 11. Plot Your Results
+
+Create at least two plots:
+
+. Average score by agent.
+. Average dirty squares left by agent.
+
+You may add more plots if they help your analysis.
+
+.Notebook Code Cell 27
+[source,python]
+----
+def plot_summary_metric(summary: Dict[str, dict], metric: str, title: str, ylabel: str) -> None:
+    names = list(summary.keys())
+    values = [summary[name][metric] for name in names]
+
+    plt.figure(figsize=(9, 4))
+    plt.bar(names, values)
+    plt.title(title)
+    plt.ylabel(ylabel)
+    plt.xticks(rotation=20, ha="right")
+    plt.tight_layout()
+    plt.show()
+
+
+plot_summary_metric(summary, "avg_score", "Average Score by Agent", "Average score")
+plot_summary_metric(summary, "avg_dirty_left", "Average Dirt Left by Agent", "Average dirty squares left")
+----
+
+=== Checkpoint 5
+
+Answer in 5-7 sentences:
+
+. Which agent had the highest average score?
+. Which agent left the least dirt behind?
+. Did the highest-scoring agent also use the fewest steps?
+. How did obstacles affect the agents?
+. How does the performance measure influence which agent looks best?
+
+== 12. Extension Challenge
+
+Choose one extension if you finish early.
+
+=== Option A: Backtracking Model-Based Agent
+
+Improve the model-based agent by storing a stack of previous positions and backtracking when no unvisited neighbor is available.
+
+=== Option B: Random New Dirt
+
+Modify the environment so that after each action, a clean square has a small probability of becoming dirty.
+
+=== Option C: New Performance Measure
+
+Change the score rule. For example, make movement free, make bumps more costly, or add a larger bonus for finishing.
+
+=== Option D: Larger World
+
+Run experiments on a 10x10 world. Explain what changes.
+
+.Notebook Code Cell 30
+[source,python]
+----
+# Extension workspace.
+# Put your optional extension code here.
+----
+
+== 13. Final Reflection
+
+Write one well-developed paragraph answering the prompt below.
+
+> In this Vacuum World, what does it mean for an agent to be rational? Is the highest-scoring agent always the most rational agent? Explain using evidence from your experiments and vocabulary from AIMA Chapters 1-2.
+
+== Submission Checklist
+
+Before submitting, confirm that:
+
+* Your notebook restarts and runs from top to bottom without errors.
+* All TODO sections are completed or clearly attempted.
+* Your PEAS table and environment-property table use AIMA vocabulary correctly.
+* Each agent's behavior matches its intended design: reflex, model-based, or goal-based.
+* All five checkpoints are answered.
+* Your experiment summary is visible.
+* Your plots are visible.
+* Your final reflection is complete and uses evidence from your experiment results.
