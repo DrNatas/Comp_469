@@ -1,0 +1,700 @@
+= COMP 469 Canvas Question Bank: AIMA Chapters 1-2 Multiple Choice
+:toc:
+:sectnums:
+
+== Suggested Canvas Setup
+
+Course:: COMP 469 - Artificial Intelligence/Neural Nets
+Week:: Week 1
+Reading:: AIMA Chapter 1 - Introduction and Chapter 2 - Intelligent Agents
+Lab Alignment:: Lab 01 - Vacuum World Agents
+Recommended Use:: Canvas quiz, reading check, lab readiness quiz, or midterm review
+Question Style:: Multiple choice
+Recommended Points:: 1 point each
+Recommended Time Limit:: 35-50 minutes for all 50 questions, or 15-25 minutes for a random draw of 20-25 questions
+Canvas Notes:: Enter each item as a Multiple Choice question. Use the listed Correct Answer letter as the correct option. Randomize question order and answer-choice order if using the full bank.
+
+== Learning Targets
+
+Students should be able to:
+
+* Explain the four major AIMA approaches to defining AI.
+* Distinguish human-centered AI from rationality-centered AI.
+* Explain the Turing test, total Turing test, and rational-agent approach.
+* Identify major AI capabilities, foundations, benefits, and risks.
+* Define agents, percepts, percept sequences, agent functions, and agent programs.
+* Explain rationality in terms of expected performance.
+* Apply PEAS to the Vacuum World lab.
+* Classify task environments using AIMA Chapter 2 vocabulary.
+* Compare table-driven, reflex, model-based, goal-based, utility-based, and learning agents.
+
+== Canvas Question Bank
+
+=== Chapter 1 Multiple-Choice Questions
+
+==== Question 1
+
+Type:: Multiple Choice
+Points:: 1
+Question:: According to AIMA Chapter 1, artificial intelligence is mainly concerned with:
+
+A. Building machines that only copy human mistakes.
+B. Understanding and building intelligent entities that act effectively and safely.
+C. Replacing all computer science with robotics.
+D. Writing programs that never use data.
+
+Correct Answer:: B
+
+==== Question 2
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which two dimensions produce AIMA's four approaches to AI?
+
+A. Fast versus slow, and hardware versus software.
+B. Human versus rational, and thinking versus acting.
+C. Symbolic versus numeric, and local versus global.
+D. Search versus logic, and learning versus planning.
+
+Correct Answer:: B
+
+==== Question 3
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which list correctly names the four AIMA approaches to AI?
+
+A. Acting humanly, thinking humanly, thinking rationally, acting rationally.
+B. Searching quickly, learning slowly, storing data, showing results.
+C. Programming, compiling, testing, deploying.
+D. Sensing, moving, cleaning, stopping.
+
+Correct Answer:: A
+
+==== Question 4
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The acting humanly approach is most closely associated with:
+
+A. Proving every conclusion with formal logic.
+B. Maximizing a mathematical utility function only.
+C. Matching human behavior.
+D. Avoiding natural language.
+
+Correct Answer:: C
+
+==== Question 5
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The Turing test asks whether:
+
+A. A program can always find the shortest path.
+B. A robot can clean a room with no sensors.
+C. A computer can run without an operating system.
+D. A human interrogator can distinguish a machine's written responses from a person's.
+
+Correct Answer:: D
+
+==== Question 6
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which capability is needed for a system to communicate successfully in a human language?
+
+A. Natural language processing.
+B. Disk scheduling.
+C. Packet routing.
+D. Memory paging.
+
+Correct Answer:: A
+
+==== Question 7
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which pair of capabilities is especially important for the total Turing test?
+
+A. Spreadsheet formatting and file compression.
+B. Computer vision and robotics.
+C. Sorting and hashing.
+D. Static typing and compiling.
+
+Correct Answer:: B
+
+==== Question 8
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The thinking humanly approach tries to:
+
+A. Ignore human cognition completely.
+B. Maximize score without any mental model.
+C. Build systems that model how humans think.
+D. Replace psychology with hardware design only.
+
+Correct Answer:: C
+
+==== Question 9
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which set lists three ways researchers can study human thinking?
+
+A. Sorting, searching, and hashing.
+B. Introspection, psychological experiments, and brain imaging.
+C. Compiling, linking, and debugging.
+D. Cleaning, moving, and stopping.
+
+Correct Answer:: B
+
+==== Question 10
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Cognitive science combines AI models with:
+
+A. Only operating system scheduling algorithms.
+B. Only database indexing methods.
+C. Only computer graphics.
+D. Experimental methods from psychology and related fields.
+
+Correct Answer:: D
+
+==== Question 11
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The thinking rationally approach is most closely connected to:
+
+A. Formal logic and correct reasoning.
+B. Human imitation only.
+C. Random movement.
+D. Image compression.
+
+Correct Answer:: A
+
+==== Question 12
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why is pure logic not enough for many real-world AI problems?
+
+A. Logic cannot be written down.
+B. Real-world tasks often involve uncertainty and incomplete information.
+C. Logic only applies to vacuum cleaners.
+D. Logical systems cannot store facts.
+
+Correct Answer:: B
+
+==== Question 13
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Probability is important in AI because it helps systems:
+
+A. Avoid using data.
+B. Remove all possible risks automatically.
+C. Reason rigorously under uncertainty.
+D. Guarantee perfect outcomes.
+
+Correct Answer:: C
+
+==== Question 14
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The acting rationally approach tries to build agents that:
+
+A. Always behave exactly like humans.
+B. Act to achieve the best outcome or best expected outcome.
+C. Never use sensors.
+D. Only memorize previous answers.
+
+Correct Answer:: B
+
+==== Question 15
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Chapter 1, a rational agent is one that:
+
+A. Has perfect knowledge of every future event.
+B. Always imitates the average human.
+C. Never updates its behavior.
+D. Acts to achieve the best outcome, or best expected outcome under uncertainty.
+
+Correct Answer:: D
+
+==== Question 16
+
+Type:: Multiple Choice
+Points:: 1
+Question:: What is the key difference between acting humanly and acting rationally?
+
+A. Acting humanly focuses on matching human behavior; acting rationally focuses on best expected outcomes.
+B. Acting humanly uses sensors; acting rationally cannot use sensors.
+C. Acting humanly requires probability; acting rationally forbids probability.
+D. Acting humanly is always safer than acting rationally.
+
+Correct Answer:: A
+
+==== Question 17
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why does AIMA use the rational-agent approach as a central organizing idea?
+
+A. It avoids the need to define tasks.
+B. It proves all AI systems are already safe.
+C. It provides a clear way to connect actions, environments, and performance.
+D. It requires every AI system to be humanoid.
+
+Correct Answer:: C
+
+==== Question 18
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Knowledge representation is used to:
+
+A. Randomize all agent actions.
+B. Replace sensors with actuators.
+C. Make all environments episodic.
+D. Store information about the world in a usable form.
+
+Correct Answer:: D
+
+==== Question 19
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Automated reasoning is used to:
+
+A. Prevent a program from using memory.
+B. Draw conclusions and answer questions from available knowledge.
+C. Convert all problems into images.
+D. Remove the need for algorithms.
+
+Correct Answer:: B
+
+==== Question 20
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Machine learning is primarily used to:
+
+A. Improve performance from data, experience, or patterns.
+B. Guarantee that all actions are optimal.
+C. Eliminate the need for performance measures.
+D. Make a program act without input.
+
+Correct Answer:: A
+
+==== Question 21
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why does AIMA describe AI as a universal field?
+
+A. AI only studies one kind of robot.
+B. AI only applies to games.
+C. AI methods can apply to many intellectual tasks.
+D. AI avoids reasoning, learning, and perception.
+
+Correct Answer:: C
+
+==== Question 22
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which list contains disciplines that helped form the foundations of AI?
+
+A. Typography, painting, cooking, and music theory only.
+B. Marketing, accounting, athletics, and journalism only.
+C. None; AI has no foundations outside programming.
+D. Philosophy, mathematics, economics, neuroscience, psychology, computer engineering, control theory, and linguistics.
+
+Correct Answer:: D
+
+==== Question 23
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which is a reasonable example of an AI benefit?
+
+A. Making uncertainty impossible.
+B. Better decision support, diagnosis, accessibility, scientific discovery, or safer automation.
+C. Removing all need for human judgment.
+D. Preventing all software bugs automatically.
+
+Correct Answer:: B
+
+==== Question 24
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which is a reasonable AI risk or concern?
+
+A. Bias, privacy loss, misuse, unsafe behavior, or optimizing the wrong objective.
+B. The impossibility of storing data.
+C. The disappearance of all uncertainty.
+D. The inability of computers to calculate.
+
+Correct Answer:: A
+
+==== Question 25
+
+Type:: Multiple Choice
+Points:: 1
+Question:: How does the Vacuum World lab connect to Chapter 1?
+
+A. It proves that all AI must use humanoid robots.
+B. It removes the need to discuss environments.
+C. It gives a simple setting for studying rational action, performance measures, and agent outcomes.
+D. It focuses only on operating system design.
+
+Correct Answer:: C
+
+=== Chapter 2 Multiple-Choice Questions
+
+==== Question 26
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In AIMA Chapter 2, an agent is:
+
+A. Anything that perceives an environment through sensors and acts through actuators.
+B. Any program that stores files.
+C. Any system that has no environment.
+D. Any object that cannot act.
+
+Correct Answer:: A
+
+==== Question 27
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A percept is:
+
+A. The complete source code of the agent.
+B. The agent's sensory input at a particular instant.
+C. The performance measure itself.
+D. The environment's final score only.
+
+Correct Answer:: B
+
+==== Question 28
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A percept sequence is:
+
+A. Only the most recent action.
+B. The list of possible actuators.
+C. The complete history of everything the agent has perceived so far.
+D. The final state of the environment only.
+
+Correct Answer:: C
+
+==== Question 29
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An agent function maps:
+
+A. Actions to course grades.
+B. Actuators to sensors only.
+C. Environments to textbooks.
+D. Percept sequences to actions.
+
+Correct Answer:: D
+
+==== Question 30
+
+Type:: Multiple Choice
+Points:: 1
+Question:: What is the difference between an agent function and an agent program?
+
+A. The agent function is the abstract mapping from percept sequences to actions; the agent program is the concrete implementation.
+B. The agent function is Python only; the agent program is always handwritten math.
+C. The agent function is the sensor; the agent program is the environment.
+D. There is no difference in AIMA.
+
+Correct Answer:: A
+
+==== Question 31
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An agent's architecture is:
+
+A. The final answer key for a quiz.
+B. The complete history of all AI research.
+C. The computing platform, sensors, and actuators on which the agent program runs.
+D. The list of student names in a class.
+
+Correct Answer:: C
+
+==== Question 32
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A performance measure is:
+
+A. The same thing as the agent's current percept.
+B. The standard used to evaluate how successful the agent's behavior is.
+C. A random action generator.
+D. A rule that forbids learning.
+
+Correct Answer:: B
+
+==== Question 33
+
+Type:: Multiple Choice
+Points:: 1
+Question:: PEAS stands for:
+
+A. Program, Evaluation, Algorithm, Search.
+B. Percepts, Energy, Actions, States.
+C. Planning, Execution, Analysis, Simulation.
+D. Performance measure, Environment, Actuators, Sensors.
+
+Correct Answer:: D
+
+==== Question 34
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In PEAS, the Performance measure describes:
+
+A. How success or failure will be measured.
+B. Only the programming language used.
+C. Only the number of sensors.
+D. The color of the visualization.
+
+Correct Answer:: A
+
+==== Question 35
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which PEAS description best fits the Vacuum World lab?
+
+A. Performance: write an essay; Environment: a spreadsheet; Actuators: keyboard only; Sensors: none.
+B. Performance: sort numbers; Environment: a database; Actuators: SQL joins; Sensors: network traffic.
+C. Performance: clean efficiently; Environment: grid with dirt, obstacles, and boundaries; Actuators: Suck, movement, NoOp; Sensors: current location and square status.
+D. Performance: draw images; Environment: color palette; Actuators: paintbrush; Sensors: microphone only.
+
+Correct Answer:: C
+
+==== Question 36
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Rationality differs from omniscience because rationality:
+
+A. Requires knowing every outcome in advance.
+B. Uses available information to choose the best expected action, not perfect knowledge of the future.
+C. Means the agent never makes a bad move.
+D. Forbids uncertainty.
+
+Correct Answer:: B
+
+==== Question 37
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A rational action can still lead to a bad result because:
+
+A. Rational agents are not allowed to use percepts.
+B. Performance measures do not matter.
+C. Rationality means acting randomly.
+D. The agent may face uncertainty, incomplete information, or bad luck.
+
+Correct Answer:: D
+
+==== Question 38
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Autonomy in an intelligent agent means the agent:
+
+A. Can rely on its own experience and learning rather than only built-in knowledge.
+B. Has no sensors.
+C. Never changes behavior.
+D. Ignores the environment.
+
+Correct Answer:: A
+
+==== Question 39
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An environment is fully observable when:
+
+A. The agent receives no percepts.
+B. The performance measure is hidden from the instructor.
+C. The agent's sensors provide all information relevant to choosing an action.
+D. The world is always continuous.
+
+Correct Answer:: C
+
+==== Question 40
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The Lab 01 Vacuum World is usually partially observable because:
+
+A. The agent always sees the entire grid perfectly.
+B. The agent typically perceives only its current location and current square status.
+C. The environment has no boundaries.
+D. The agent has no actions.
+
+Correct Answer:: B
+
+==== Question 41
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which statement best distinguishes deterministic and stochastic environments?
+
+A. Deterministic environments require two agents; stochastic environments require one.
+B. Deterministic environments are always continuous; stochastic environments are always discrete.
+C. Deterministic environments have no states.
+D. Deterministic outcomes are fixed by the current state and action; stochastic outcomes involve uncertainty.
+
+Correct Answer:: D
+
+==== Question 42
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which statement best distinguishes episodic and sequential environments?
+
+A. In episodic environments, each decision is independent; in sequential environments, current actions affect future states and choices.
+B. Episodic environments always require robots; sequential environments never use actions.
+C. Episodic environments are always unknown; sequential environments are always known.
+D. Episodic environments cannot have percepts.
+
+Correct Answer:: A
+
+==== Question 43
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An environment is dynamic when:
+
+A. It never changes during the agent's deliberation.
+B. It contains only one state.
+C. It can change while the agent is deciding what to do.
+D. It has no performance measure.
+
+Correct Answer:: C
+
+==== Question 44
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An environment is discrete when:
+
+A. Every value can vary over a continuous range.
+B. It has distinct states, percepts, actions, or time steps.
+C. It has no actions.
+D. It changes randomly every time step.
+
+Correct Answer:: B
+
+==== Question 45
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A known environment is one where:
+
+A. The agent sees the entire world at every moment.
+B. The agent has no uncertainty about the future.
+C. The environment must be episodic.
+D. The agent knows the rules of the environment, including how actions affect states.
+
+Correct Answer:: D
+
+==== Question 46
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which environment type is generally easiest for agent design?
+
+A. Fully observable, single-agent, deterministic, episodic, static, discrete, and known.
+B. Partially observable, multiagent, stochastic, sequential, dynamic, continuous, and unknown.
+C. Unknown, dynamic, continuous, and adversarial only.
+D. Random, invisible, changing, and unmeasurable.
+
+Correct Answer:: A
+
+==== Question 47
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why are table-driven agents impractical for most real tasks?
+
+A. They cannot be described mathematically.
+B. They require no memory at all.
+C. The table becomes enormous because possible percept sequences grow very quickly.
+D. They always outperform every other agent design.
+
+Correct Answer:: C
+
+==== Question 48
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A simple reflex agent chooses actions mainly by:
+
+A. Searching the entire future state space every time.
+B. Applying condition-action rules to the current percept.
+C. Reading the instructor's answer key.
+D. Maximizing a learned neural network loss function only.
+
+Correct Answer:: B
+
+==== Question 49
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A model-based reflex agent improves on a simple reflex agent by:
+
+A. Ignoring all previous percepts.
+B. Removing all sensors.
+C. Making the environment fully observable.
+D. Keeping internal state about the world.
+
+Correct Answer:: D
+
+==== Question 50
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which statement best describes AIMA's learning agent structure?
+
+A. It includes a performance element, learning element, critic, and problem generator.
+B. It includes only a table of fixed answers.
+C. It cannot use feedback from experience.
+D. It has sensors but no actuators.
+
+Correct Answer:: A
+
+== Instructor Notes
+
+This file is designed for Canvas entry as a multiple-choice bank. It is balanced across the two assigned readings:
+
+* Questions 1-25 cover AIMA Chapter 1 foundations, AI definitions, the Turing test, rational agents, AI capabilities, benefits, and risks.
+* Questions 26-50 cover AIMA Chapter 2 agents, percepts, PEAS, rationality, environment classifications, and agent program types.
+
+Suggested Canvas use:
+
+* Use all 50 for a full Week 1 study quiz.
+* Randomly draw 20-25 items for a shorter reading check.
+* Use Questions 1-25 before or after the Chapter 1 lecture.
+* Use Questions 26-50 before or after Lab 01 Vacuum World.
+* Keep all questions at 1 point each for straightforward scoring.
