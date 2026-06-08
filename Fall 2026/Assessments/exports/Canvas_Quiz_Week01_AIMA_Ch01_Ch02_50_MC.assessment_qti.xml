@@ -1,0 +1,2463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="ia9902d681c67af557f5c85e3937a298c" title="COMP 469 Week 1: AIMA Chapters 1-2 Multiple Choice">
+    <qtimetadata>
+      <qtimetadatafield><fieldlabel>cc_profile</fieldlabel><fieldentry>cc.exam.v0p1</fieldentry></qtimetadatafield>
+      <qtimetadatafield><fieldlabel>qmd_assessmenttype</fieldlabel><fieldentry>Examination</fieldentry></qtimetadatafield>
+      <qtimetadatafield><fieldlabel>qmd_scoretype</fieldlabel><fieldentry>Percentage</fieldentry></qtimetadatafield>
+      <qtimetadatafield><fieldlabel>cc_maxattempts</fieldlabel><fieldentry>1</fieldentry></qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <item ident="i8d3a09d3f83107da57e4a4c22b290668" title="Question 1">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i2181ddf83889ec5cb28baee0b9922dd8</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;According to AIMA Chapter 1, artificial intelligence is mainly concerned with:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i2a6f69364b4">
+                <material>
+                  <mattext texttype="text/plain">Building machines that only copy human mistakes.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id877792c59a">
+                <material>
+                  <mattext texttype="text/plain">Understanding and building intelligent entities that act effectively and safely.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="idf97f0011e7">
+                <material>
+                  <mattext texttype="text/plain">Replacing all computer science with robotics.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i790ed4002f2">
+                <material>
+                  <mattext texttype="text/plain">Writing programs that never use data.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">id877792c59a</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i53b10243d65140020dc58907777c909e" title="Question 2">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ifaf4f96886443db2d455fae8baf2bc48</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which two dimensions produce AIMA's four approaches to AI?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ie4b97e7f91d">
+                <material>
+                  <mattext texttype="text/plain">Fast versus slow, and hardware versus software.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i0109b4512c3">
+                <material>
+                  <mattext texttype="text/plain">Human versus rational, and thinking versus acting.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia619d714a71">
+                <material>
+                  <mattext texttype="text/plain">Symbolic versus numeric, and local versus global.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ie54239f69b4">
+                <material>
+                  <mattext texttype="text/plain">Search versus logic, and learning versus planning.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i0109b4512c3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ib4cc972f26a76436fb652308716f0912" title="Question 3">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i84ffbea172dfb186790467ac6c67e457</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which list correctly names the four AIMA approaches to AI?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i116a0431b2d">
+                <material>
+                  <mattext texttype="text/plain">Acting humanly, thinking humanly, thinking rationally, acting rationally.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i1f0377b9173">
+                <material>
+                  <mattext texttype="text/plain">Searching quickly, learning slowly, storing data, showing results.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i32f29a7bfac">
+                <material>
+                  <mattext texttype="text/plain">Programming, compiling, testing, deploying.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8699a05a033">
+                <material>
+                  <mattext texttype="text/plain">Sensing, moving, cleaning, stopping.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i116a0431b2d</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ic5466c9dd203a482fae8b8779f02ef9b" title="Question 4">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i8f348af429a448daece7fa687bf5e421</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;The acting humanly approach is most closely associated with:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i44ac422c68c">
+                <material>
+                  <mattext texttype="text/plain">Proving every conclusion with formal logic.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8f8c5b63aac">
+                <material>
+                  <mattext texttype="text/plain">Maximizing a mathematical utility function only.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ie228fdc0dee">
+                <material>
+                  <mattext texttype="text/plain">Matching human behavior.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ic7da03982e1">
+                <material>
+                  <mattext texttype="text/plain">Avoiding natural language.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ie228fdc0dee</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="icf133911e99eb3057a845c693c004ff7" title="Question 5">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i4d6b8d016e051525c36add2bfc2c6e1b</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;The Turing test asks whether:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ie1e81143d4e">
+                <material>
+                  <mattext texttype="text/plain">A program can always find the shortest path.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i063397effaf">
+                <material>
+                  <mattext texttype="text/plain">A robot can clean a room with no sensors.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i5569c7b9060">
+                <material>
+                  <mattext texttype="text/plain">A computer can run without an operating system.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i3f5c3b91301">
+                <material>
+                  <mattext texttype="text/plain">A human interrogator can distinguish a machine's written responses from a person's.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i3f5c3b91301</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i5732ba3514c5af04c6de3793fd33161c" title="Question 6">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ic9b073171f4b7ddea04f5fb44db93a07</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which capability is needed for a system to communicate successfully in a human language?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ib595876811a">
+                <material>
+                  <mattext texttype="text/plain">Natural language processing.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i2ddef34c6f6">
+                <material>
+                  <mattext texttype="text/plain">Disk scheduling.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i4fc93aa1f7b">
+                <material>
+                  <mattext texttype="text/plain">Packet routing.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ibde80940ca2">
+                <material>
+                  <mattext texttype="text/plain">Memory paging.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ib595876811a</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i313be6ac859978aeff07cc31ba6cb392" title="Question 7">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i2ab26e034d87523a54261d33e4ad058b</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which pair of capabilities is especially important for the total Turing test?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i85798d7a5c8">
+                <material>
+                  <mattext texttype="text/plain">Spreadsheet formatting and file compression.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i6c1c932bf90">
+                <material>
+                  <mattext texttype="text/plain">Computer vision and robotics.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i45ac419c49e">
+                <material>
+                  <mattext texttype="text/plain">Sorting and hashing.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i38a44cc4588">
+                <material>
+                  <mattext texttype="text/plain">Static typing and compiling.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i6c1c932bf90</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i91c2f995f3cb2d53c53d8eb9cc8eea59" title="Question 8">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i352440f5359918c05c12402279f7c563</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;The thinking humanly approach tries to:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i9225eb125c4">
+                <material>
+                  <mattext texttype="text/plain">Ignore human cognition completely.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i3b7223d4688">
+                <material>
+                  <mattext texttype="text/plain">Maximize score without any mental model.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i64261d8fbde">
+                <material>
+                  <mattext texttype="text/plain">Build systems that model how humans think.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i4ec24b51b33">
+                <material>
+                  <mattext texttype="text/plain">Replace psychology with hardware design only.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i64261d8fbde</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i23c98e1334f8d7105ede3af1d495b5b3" title="Question 9">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i8ea08aa297b8823e0b37734c0e95e785</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which set lists three ways researchers can study human thinking?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ie2c29d3c18d">
+                <material>
+                  <mattext texttype="text/plain">Sorting, searching, and hashing.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id6d3e23f9f0">
+                <material>
+                  <mattext texttype="text/plain">Introspection, psychological experiments, and brain imaging.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i23eea635b1f">
+                <material>
+                  <mattext texttype="text/plain">Compiling, linking, and debugging.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ieb3895f6d5b">
+                <material>
+                  <mattext texttype="text/plain">Cleaning, moving, and stopping.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">id6d3e23f9f0</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i8a5237325505835e5c5ac47397839848" title="Question 10">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ic7ed54e2ca4fd01c94702e261a5641da</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Cognitive science combines AI models with:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i062e1d4e5b1">
+                <material>
+                  <mattext texttype="text/plain">Only operating system scheduling algorithms.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i69edf10a136">
+                <material>
+                  <mattext texttype="text/plain">Only database indexing methods.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i2ebfa4c7078">
+                <material>
+                  <mattext texttype="text/plain">Only computer graphics.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i337f56355ce">
+                <material>
+                  <mattext texttype="text/plain">Experimental methods from psychology and related fields.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i337f56355ce</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i9e1f476eefcf6ec3536e600346b2d9b3" title="Question 11">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i71b6120b0cbcc4cf17a10465f1dad8af</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;The thinking rationally approach is most closely connected to:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i7054df3d83a">
+                <material>
+                  <mattext texttype="text/plain">Formal logic and correct reasoning.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i85cbd8dd1ab">
+                <material>
+                  <mattext texttype="text/plain">Human imitation only.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i56b66620d4c">
+                <material>
+                  <mattext texttype="text/plain">Random movement.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id566cb95813">
+                <material>
+                  <mattext texttype="text/plain">Image compression.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i7054df3d83a</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i6f8f87ffce2879914ebc25ae04dc893c" title="Question 12">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ie897b0d20ca0dfbda95378591e9952b0</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Why is pure logic not enough for many real-world AI problems?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i4e4bab0e035">
+                <material>
+                  <mattext texttype="text/plain">Logic cannot be written down.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i7aebf063e2e">
+                <material>
+                  <mattext texttype="text/plain">Real-world tasks often involve uncertainty and incomplete information.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i61c8ad388b7">
+                <material>
+                  <mattext texttype="text/plain">Logic only applies to vacuum cleaners.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ic21fb962ae2">
+                <material>
+                  <mattext texttype="text/plain">Logical systems cannot store facts.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i7aebf063e2e</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i922668170533ce220b347750686b2a84" title="Question 13">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ic4c4b79237d22bc01e89a3c01f87d5bd</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Probability is important in AI because it helps systems:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ia64ccc0d163">
+                <material>
+                  <mattext texttype="text/plain">Avoid using data.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i933ba1e7bbf">
+                <material>
+                  <mattext texttype="text/plain">Remove all possible risks automatically.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i399adc8e787">
+                <material>
+                  <mattext texttype="text/plain">Reason rigorously under uncertainty.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia5227ad6042">
+                <material>
+                  <mattext texttype="text/plain">Guarantee perfect outcomes.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i399adc8e787</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ida0c57dfe7555e30d61b0474c9e6fa4a" title="Question 14">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i8426abd5a9a9d7890124f30ac6c0de0a</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;The acting rationally approach tries to build agents that:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="id1b9d0d0733">
+                <material>
+                  <mattext texttype="text/plain">Always behave exactly like humans.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i11b022ea326">
+                <material>
+                  <mattext texttype="text/plain">Act to achieve the best outcome or best expected outcome.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8bf02111bb2">
+                <material>
+                  <mattext texttype="text/plain">Never use sensors.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i426aaba7e8b">
+                <material>
+                  <mattext texttype="text/plain">Only memorize previous answers.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i11b022ea326</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ia118152dc4b8c9980843d494c9fe4836" title="Question 15">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i20cedec94c05bfc166d866cdb26c2b3d</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;In Chapter 1, a rational agent is one that:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i8a355eaa0d7">
+                <material>
+                  <mattext texttype="text/plain">Has perfect knowledge of every future event.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ie14a8699940">
+                <material>
+                  <mattext texttype="text/plain">Always imitates the average human.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id53ea21b9c8">
+                <material>
+                  <mattext texttype="text/plain">Never updates its behavior.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8db15eed7af">
+                <material>
+                  <mattext texttype="text/plain">Acts to achieve the best outcome, or best expected outcome under uncertainty.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i8db15eed7af</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="idcaf0991097644cfe0fcf6053f8c8f62" title="Question 16">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i439c8c659580ce80280384be8e99d58b</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;What is the key difference between acting humanly and acting rationally?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i90f4598473f">
+                <material>
+                  <mattext texttype="text/plain">Acting humanly focuses on matching human behavior; acting rationally focuses on best expected outcomes.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ie6e4bf18459">
+                <material>
+                  <mattext texttype="text/plain">Acting humanly uses sensors; acting rationally cannot use sensors.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i00723a51ff0">
+                <material>
+                  <mattext texttype="text/plain">Acting humanly requires probability; acting rationally forbids probability.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i555fcb40713">
+                <material>
+                  <mattext texttype="text/plain">Acting humanly is always safer than acting rationally.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i90f4598473f</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ifd8e3d99142da00ed0b6f49a7f7e64c4" title="Question 17">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ia53093332c268e3ca158764752475072</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Why does AIMA use the rational-agent approach as a central organizing idea?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="iba901aabeb1">
+                <material>
+                  <mattext texttype="text/plain">It avoids the need to define tasks.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i0524a9f8727">
+                <material>
+                  <mattext texttype="text/plain">It proves all AI systems are already safe.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8ab02ec63fa">
+                <material>
+                  <mattext texttype="text/plain">It provides a clear way to connect actions, environments, and performance.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ie11ed55e652">
+                <material>
+                  <mattext texttype="text/plain">It requires every AI system to be humanoid.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i8ab02ec63fa</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i4e95685d27730fcb0d1628aab3ac3e37" title="Question 18">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>id44a42359a44e99abf7cb17e6e6ebc1c</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Knowledge representation is used to:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="icc6142aa9b8">
+                <material>
+                  <mattext texttype="text/plain">Randomize all agent actions.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i79e99c5f6a6">
+                <material>
+                  <mattext texttype="text/plain">Replace sensors with actuators.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i7e7674ee7cd">
+                <material>
+                  <mattext texttype="text/plain">Make all environments episodic.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i4dfe2e2c67d">
+                <material>
+                  <mattext texttype="text/plain">Store information about the world in a usable form.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i4dfe2e2c67d</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ifcf5dfa9baebb47ce235cc7cc4135f28" title="Question 19">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ic8cee007cc447e0726d0e11862ecd50a</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Automated reasoning is used to:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i0cdfc524bc0">
+                <material>
+                  <mattext texttype="text/plain">Prevent a program from using memory.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i1f7361f1526">
+                <material>
+                  <mattext texttype="text/plain">Draw conclusions and answer questions from available knowledge.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i228709f1a2f">
+                <material>
+                  <mattext texttype="text/plain">Convert all problems into images.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i1d4ed5463c6">
+                <material>
+                  <mattext texttype="text/plain">Remove the need for algorithms.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i1f7361f1526</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ieffd481684d950f452a410cb7600daef" title="Question 20">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i675fa0fc03d50a28b3896f5e31973931</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Machine learning is primarily used to:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="iccdeebe6894">
+                <material>
+                  <mattext texttype="text/plain">Improve performance from data, experience, or patterns.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ib8ef8c3a9fe">
+                <material>
+                  <mattext texttype="text/plain">Guarantee that all actions are optimal.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i9eb51b60ac5">
+                <material>
+                  <mattext texttype="text/plain">Eliminate the need for performance measures.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8460edf391b">
+                <material>
+                  <mattext texttype="text/plain">Make a program act without input.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">iccdeebe6894</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i5652a1a54b546118650d30a3becc3237" title="Question 21">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i7470414f87fad892dfda7d5c53e90560</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Why does AIMA describe AI as a universal field?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="if35d050a9e9">
+                <material>
+                  <mattext texttype="text/plain">AI only studies one kind of robot.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8fe3ea988b9">
+                <material>
+                  <mattext texttype="text/plain">AI only applies to games.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i2ca5ad85bfa">
+                <material>
+                  <mattext texttype="text/plain">AI methods can apply to many intellectual tasks.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iae724b62b7c">
+                <material>
+                  <mattext texttype="text/plain">AI avoids reasoning, learning, and perception.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i2ca5ad85bfa</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i19424715de9aec8e072bfb72e7541e95" title="Question 22">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i91c63fa1aee4f41158bc157727da92e6</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which list contains disciplines that helped form the foundations of AI?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i3223ad85b2e">
+                <material>
+                  <mattext texttype="text/plain">Typography, painting, cooking, and music theory only.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ib406de00aa4">
+                <material>
+                  <mattext texttype="text/plain">Marketing, accounting, athletics, and journalism only.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i6728d5d42bd">
+                <material>
+                  <mattext texttype="text/plain">None; AI has no foundations outside programming.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i6823eaa6c33">
+                <material>
+                  <mattext texttype="text/plain">Philosophy, mathematics, economics, neuroscience, psychology, computer engineering, control theory, and linguistics.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i6823eaa6c33</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i2a7214a758368120f6339170da898646" title="Question 23">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i8c8152df9175226e99c68609ca415c85</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which is a reasonable example of an AI benefit?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i5842e0268f1">
+                <material>
+                  <mattext texttype="text/plain">Making uncertainty impossible.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia289db4cbc5">
+                <material>
+                  <mattext texttype="text/plain">Better decision support, diagnosis, accessibility, scientific discovery, or safer automation.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ibdc299ebc68">
+                <material>
+                  <mattext texttype="text/plain">Removing all need for human judgment.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i3bfda3b277a">
+                <material>
+                  <mattext texttype="text/plain">Preventing all software bugs automatically.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ia289db4cbc5</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i0954649b99917e9421a0615cba710a91" title="Question 24">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i067689779c789175e394555d8c54f432</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which is a reasonable AI risk or concern?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i5707473412f">
+                <material>
+                  <mattext texttype="text/plain">Bias, privacy loss, misuse, unsafe behavior, or optimizing the wrong objective.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i4b9f80af2e0">
+                <material>
+                  <mattext texttype="text/plain">The impossibility of storing data.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="if87a692fc33">
+                <material>
+                  <mattext texttype="text/plain">The disappearance of all uncertainty.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i89064b60550">
+                <material>
+                  <mattext texttype="text/plain">The inability of computers to calculate.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i5707473412f</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i583fb0f935c34069df77380f2efde78f" title="Question 25">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i332c2cfe61b4c80e137f7d540cefd8fc</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;How does the Vacuum World lab connect to Chapter 1?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ibf3efdb4dd9">
+                <material>
+                  <mattext texttype="text/plain">It proves that all AI must use humanoid robots.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i17e4b592d28">
+                <material>
+                  <mattext texttype="text/plain">It removes the need to discuss environments.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i5d4a8f69ad0">
+                <material>
+                  <mattext texttype="text/plain">It gives a simple setting for studying rational action, performance measures, and agent outcomes.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i25c7c476d84">
+                <material>
+                  <mattext texttype="text/plain">It focuses only on operating system design.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i5d4a8f69ad0</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i405500fa59c52b926c8105274e6991d7" title="Question 26">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i3db6d01c8a6a877790181783945085f3</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;In AIMA Chapter 2, an agent is:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i1d603198a08">
+                <material>
+                  <mattext texttype="text/plain">Anything that perceives an environment through sensors and acts through actuators.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i4e7a1a75d15">
+                <material>
+                  <mattext texttype="text/plain">Any program that stores files.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i1c5b10659ba">
+                <material>
+                  <mattext texttype="text/plain">Any system that has no environment.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i4968f7d5a8b">
+                <material>
+                  <mattext texttype="text/plain">Any object that cannot act.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i1d603198a08</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i748ebf1226036c898681bf3ec39579c1" title="Question 27">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i36320046869360810df1cc3f8a0bbdec</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;A percept is:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i5d214516c2b">
+                <material>
+                  <mattext texttype="text/plain">The complete source code of the agent.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i92f8f5d1d5e">
+                <material>
+                  <mattext texttype="text/plain">The agent's sensory input at a particular instant.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i856fd1c9e92">
+                <material>
+                  <mattext texttype="text/plain">The performance measure itself.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i00c210554bb">
+                <material>
+                  <mattext texttype="text/plain">The environment's final score only.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i92f8f5d1d5e</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i15cbdf2a66cbe96573e49d90c0a615a4" title="Question 28">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i4b29febc8ffad4f6893c3efc375688cd</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;A percept sequence is:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ieb834c95cf6">
+                <material>
+                  <mattext texttype="text/plain">Only the most recent action.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i9234c6e4c4a">
+                <material>
+                  <mattext texttype="text/plain">The list of possible actuators.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="idac485db4cd">
+                <material>
+                  <mattext texttype="text/plain">The complete history of everything the agent has perceived so far.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iad4b0133268">
+                <material>
+                  <mattext texttype="text/plain">The final state of the environment only.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">idac485db4cd</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i08a25fa0f23445b62f99ebb2e1a79792" title="Question 29">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i0d35ea011e797a8cb4458724876d4d59</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;An agent function maps:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ic9f80a1569c">
+                <material>
+                  <mattext texttype="text/plain">Actions to course grades.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iac78ad50035">
+                <material>
+                  <mattext texttype="text/plain">Actuators to sensors only.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="icf81472cc03">
+                <material>
+                  <mattext texttype="text/plain">Environments to textbooks.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ifc84c8afb6d">
+                <material>
+                  <mattext texttype="text/plain">Percept sequences to actions.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ifc84c8afb6d</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="idabf08cd76123fbea603ba90cb7de10c" title="Question 30">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i0fb98fc13c713d039b0e2c3839690f0a</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;What is the difference between an agent function and an agent program?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ia31dbe4f594">
+                <material>
+                  <mattext texttype="text/plain">The agent function is the abstract mapping from percept sequences to actions; the agent program is the concrete implementation.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i45bccedf2bb">
+                <material>
+                  <mattext texttype="text/plain">The agent function is Python only; the agent program is always handwritten math.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i5c69344aca6">
+                <material>
+                  <mattext texttype="text/plain">The agent function is the sensor; the agent program is the environment.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i7320b6cd00a">
+                <material>
+                  <mattext texttype="text/plain">There is no difference in AIMA.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ia31dbe4f594</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i91da9500944ce763c820dc8bf9a1c035" title="Question 31">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i1b37c0db91b58c16659534b2e7c3205b</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;An agent's architecture is:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ib478a0f73d3">
+                <material>
+                  <mattext texttype="text/plain">The final answer key for a quiz.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="if09f136d51a">
+                <material>
+                  <mattext texttype="text/plain">The complete history of all AI research.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iaba48fe05d6">
+                <material>
+                  <mattext texttype="text/plain">The computing platform, sensors, and actuators on which the agent program runs.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iaf3c6b18f74">
+                <material>
+                  <mattext texttype="text/plain">The list of student names in a class.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">iaba48fe05d6</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ib58a995c56bbda2fe4112aaebba41a1b" title="Question 32">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ia7c790fd482db473b707fe55004a70fd</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;A performance measure is:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i671072d17b8">
+                <material>
+                  <mattext texttype="text/plain">The same thing as the agent's current percept.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i31e9a399cc7">
+                <material>
+                  <mattext texttype="text/plain">The standard used to evaluate how successful the agent's behavior is.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ib69ae57ab30">
+                <material>
+                  <mattext texttype="text/plain">A random action generator.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iccf2bb1e3b0">
+                <material>
+                  <mattext texttype="text/plain">A rule that forbids learning.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i31e9a399cc7</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i7ee02a6f800cbb174a52885deaaf621c" title="Question 33">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i09799bc1733b1c6d8c20ed35651c4753</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;PEAS stands for:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i1d4c8dea90f">
+                <material>
+                  <mattext texttype="text/plain">Program, Evaluation, Algorithm, Search.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id28a2d08fb4">
+                <material>
+                  <mattext texttype="text/plain">Percepts, Energy, Actions, States.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="if225f33466c">
+                <material>
+                  <mattext texttype="text/plain">Planning, Execution, Analysis, Simulation.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i77ab80deda7">
+                <material>
+                  <mattext texttype="text/plain">Performance measure, Environment, Actuators, Sensors.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i77ab80deda7</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i339866a077b1cd8ad57db25947b435dc" title="Question 34">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ib35febe52d431bdf0d82beb3e01aed00</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;In PEAS, the Performance measure describes:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ia53ca4336c5">
+                <material>
+                  <mattext texttype="text/plain">How success or failure will be measured.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="icf0b9a4a655">
+                <material>
+                  <mattext texttype="text/plain">Only the programming language used.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id9a798cc7da">
+                <material>
+                  <mattext texttype="text/plain">Only the number of sensors.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ibb79b42b5e1">
+                <material>
+                  <mattext texttype="text/plain">The color of the visualization.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ia53ca4336c5</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i8238fc99e3f4e3c823bd956409df74f7" title="Question 35">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i66b5cca46f34440e068f352c3b5e1c57</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which PEAS description best fits the Vacuum World lab?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i063d82e409e">
+                <material>
+                  <mattext texttype="text/plain">Performance: write an essay; Environment: a spreadsheet; Actuators: keyboard only; Sensors: none.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id68e9d1bd13">
+                <material>
+                  <mattext texttype="text/plain">Performance: sort numbers; Environment: a database; Actuators: SQL joins; Sensors: network traffic.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i5e8f5131e9b">
+                <material>
+                  <mattext texttype="text/plain">Performance: clean efficiently; Environment: grid with dirt, obstacles, and boundaries; Actuators: Suck, movement, NoOp; Sensors: current location and square status.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="if3b35f99644">
+                <material>
+                  <mattext texttype="text/plain">Performance: draw images; Environment: color palette; Actuators: paintbrush; Sensors: microphone only.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i5e8f5131e9b</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="if9db2ee2c5f542b0d2fa7df0ae4f7a93" title="Question 36">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ibb3f163b7211f5ad2f3f81be1d135b69</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Rationality differs from omniscience because rationality:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ib27144633e5">
+                <material>
+                  <mattext texttype="text/plain">Requires knowing every outcome in advance.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ic472e5fb153">
+                <material>
+                  <mattext texttype="text/plain">Uses available information to choose the best expected action, not perfect knowledge of the future.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i5c83cff0c2a">
+                <material>
+                  <mattext texttype="text/plain">Means the agent never makes a bad move.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ie534ea84aa1">
+                <material>
+                  <mattext texttype="text/plain">Forbids uncertainty.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ic472e5fb153</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i34e82ad1da013c0d19b008a9666d7d3c" title="Question 37">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i1c863d8614440966653ce57e5585ace5</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;A rational action can still lead to a bad result because:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ie848beffb22">
+                <material>
+                  <mattext texttype="text/plain">Rational agents are not allowed to use percepts.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id16827a9fab">
+                <material>
+                  <mattext texttype="text/plain">Performance measures do not matter.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i2a1f07460d0">
+                <material>
+                  <mattext texttype="text/plain">Rationality means acting randomly.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia596de04062">
+                <material>
+                  <mattext texttype="text/plain">The agent may face uncertainty, incomplete information, or bad luck.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ia596de04062</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i8edb0a8543a866d0f6c6c2bde385aee2" title="Question 38">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i67bd15da36c457f09addced6853f3ae7</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Autonomy in an intelligent agent means the agent:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i6c4a2218481">
+                <material>
+                  <mattext texttype="text/plain">Can rely on its own experience and learning rather than only built-in knowledge.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ib9b2b099242">
+                <material>
+                  <mattext texttype="text/plain">Has no sensors.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8e93340f80d">
+                <material>
+                  <mattext texttype="text/plain">Never changes behavior.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i1195ededfcd">
+                <material>
+                  <mattext texttype="text/plain">Ignores the environment.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i6c4a2218481</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ifd47603e60a667b29ac582a06aba18ba" title="Question 39">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ia6427badf4e84417a5253b5e42aca730</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;An environment is fully observable when:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="idf493835004">
+                <material>
+                  <mattext texttype="text/plain">The agent receives no percepts.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ic56323fd94c">
+                <material>
+                  <mattext texttype="text/plain">The performance measure is hidden from the instructor.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia788cb05492">
+                <material>
+                  <mattext texttype="text/plain">The agent's sensors provide all information relevant to choosing an action.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia9e520d8382">
+                <material>
+                  <mattext texttype="text/plain">The world is always continuous.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">ia788cb05492</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="if56a10df6398056ea1deb0a4dd565f7a" title="Question 40">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i8dd8cd4ba909827db3cadb2efeb0b879</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;The Lab 01 Vacuum World is usually partially observable because:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ia276f3ec33d">
+                <material>
+                  <mattext texttype="text/plain">The agent always sees the entire grid perfectly.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iae1c20bbd99">
+                <material>
+                  <mattext texttype="text/plain">The agent typically perceives only its current location and current square status.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ib987617d5e7">
+                <material>
+                  <mattext texttype="text/plain">The environment has no boundaries.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i8ea6af705c8">
+                <material>
+                  <mattext texttype="text/plain">The agent has no actions.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">iae1c20bbd99</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i49e101fcf6c457d74cfb5bb8c59ec1b5" title="Question 41">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ia4a0483d4928ae921013eedab9d603eb</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which statement best distinguishes deterministic and stochastic environments?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i9f82514b90a">
+                <material>
+                  <mattext texttype="text/plain">Deterministic environments require two agents; stochastic environments require one.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ifd5849c34d6">
+                <material>
+                  <mattext texttype="text/plain">Deterministic environments are always continuous; stochastic environments are always discrete.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i7cfb56bcf6e">
+                <material>
+                  <mattext texttype="text/plain">Deterministic environments have no states.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iebe47f56aca">
+                <material>
+                  <mattext texttype="text/plain">Deterministic outcomes are fixed by the current state and action; stochastic outcomes involve uncertainty.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">iebe47f56aca</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i81cc22b92306e62e9db738f4fd5d85cc" title="Question 42">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i1b38636055ee920148006c8d7d378917</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which statement best distinguishes episodic and sequential environments?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i989c77248f1">
+                <material>
+                  <mattext texttype="text/plain">In episodic environments, each decision is independent; in sequential environments, current actions affect future states and choices.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i92625ce2750">
+                <material>
+                  <mattext texttype="text/plain">Episodic environments always require robots; sequential environments never use actions.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="iff1ebbef821">
+                <material>
+                  <mattext texttype="text/plain">Episodic environments are always unknown; sequential environments are always known.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia8e2528fd3d">
+                <material>
+                  <mattext texttype="text/plain">Episodic environments cannot have percepts.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i989c77248f1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ib99fa282e7f50621000bc45213b2ff45" title="Question 43">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i689f23da319edc03ed52d673aa937355</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;An environment is dynamic when:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i4ac6ec1282a">
+                <material>
+                  <mattext texttype="text/plain">It never changes during the agent's deliberation.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ic4560a7dcea">
+                <material>
+                  <mattext texttype="text/plain">It contains only one state.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i6881010e408">
+                <material>
+                  <mattext texttype="text/plain">It can change while the agent is deciding what to do.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i22f6ccc760b">
+                <material>
+                  <mattext texttype="text/plain">It has no performance measure.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i6881010e408</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i2af01b62a813ec9c72e09cde0717aae5" title="Question 44">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i4da65263cc9b2f57c0cec5e5fdb2e4a9</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;An environment is discrete when:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ifa2ecc34cb6">
+                <material>
+                  <mattext texttype="text/plain">Every value can vary over a continuous range.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="icbd7d69d83e">
+                <material>
+                  <mattext texttype="text/plain">It has distinct states, percepts, actions, or time steps.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia0e65c5d5b0">
+                <material>
+                  <mattext texttype="text/plain">It has no actions.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="if790383c30b">
+                <material>
+                  <mattext texttype="text/plain">It changes randomly every time step.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">icbd7d69d83e</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="ia9615d87105fd87b99e0507947797bfe" title="Question 45">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i5be307fa82d789b6df60e53ae97a1f0f</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;A known environment is one where:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="ic04f4303d8e">
+                <material>
+                  <mattext texttype="text/plain">The agent sees the entire world at every moment.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i928d5b0ed92">
+                <material>
+                  <mattext texttype="text/plain">The agent has no uncertainty about the future.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i82ad5fb42e3">
+                <material>
+                  <mattext texttype="text/plain">The environment must be episodic.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id0c606ac691">
+                <material>
+                  <mattext texttype="text/plain">The agent knows the rules of the environment, including how actions affect states.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">id0c606ac691</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i19d04c9d7e0fc32cdcff58f6b68b1716" title="Question 46">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>ib3f47c58b3d8a6e20ea420dad13a8811</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which environment type is generally easiest for agent design?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="icc9661e7e21">
+                <material>
+                  <mattext texttype="text/plain">Fully observable, single-agent, deterministic, episodic, static, discrete, and known.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ifdef3f5a30e">
+                <material>
+                  <mattext texttype="text/plain">Partially observable, multiagent, stochastic, sequential, dynamic, continuous, and unknown.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ie827af7aa1a">
+                <material>
+                  <mattext texttype="text/plain">Unknown, dynamic, continuous, and adversarial only.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ia58c56b83a7">
+                <material>
+                  <mattext texttype="text/plain">Random, invisible, changing, and unmeasurable.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">icc9661e7e21</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i32e16062544a3ad15d8739603141c72c" title="Question 47">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>if1d27578644f053969125b36bf20d82e</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Why are table-driven agents impractical for most real tasks?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i7cd87bee524">
+                <material>
+                  <mattext texttype="text/plain">They cannot be described mathematically.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i08bffc6ff2c">
+                <material>
+                  <mattext texttype="text/plain">They require no memory at all.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="if145e496164">
+                <material>
+                  <mattext texttype="text/plain">The table becomes enormous because possible percept sequences grow very quickly.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i3035bb27f1d">
+                <material>
+                  <mattext texttype="text/plain">They always outperform every other agent design.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">if145e496164</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="id7e7d1c780daf4dbb1344d858f423c59" title="Question 48">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>i824585d5aa5322b06503cd3f2d9494c7</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;A simple reflex agent chooses actions mainly by:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i2b23f1e1aa9">
+                <material>
+                  <mattext texttype="text/plain">Searching the entire future state space every time.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="idc62fed119e">
+                <material>
+                  <mattext texttype="text/plain">Applying condition-action rules to the current percept.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="idd1493c6287">
+                <material>
+                  <mattext texttype="text/plain">Reading the instructor's answer key.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i25757902093">
+                <material>
+                  <mattext texttype="text/plain">Maximizing a learned neural network loss function only.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">idc62fed119e</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i4ddc91d0cc15222abaf0a88a1818dc7e" title="Question 49">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>id0c4225461e8423fbc05892dabe06b99</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;A model-based reflex agent improves on a simple reflex agent by:&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="i0bc525703d8">
+                <material>
+                  <mattext texttype="text/plain">Ignoring all previous percepts.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i051998d3e9a">
+                <material>
+                  <mattext texttype="text/plain">Removing all sensors.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ibaf6d6c3d56">
+                <material>
+                  <mattext texttype="text/plain">Making the environment fully observable.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i7b8daf37111">
+                <material>
+                  <mattext texttype="text/plain">Keeping internal state about the world.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">i7b8daf37111</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i74ee08dfe36ab60b6355bde6cb61ff1f" title="Question 50">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield><fieldlabel>question_type</fieldlabel><fieldentry>multiple_choice_question</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>points_possible</fieldlabel><fieldentry>1.0</fieldentry></qtimetadatafield>
+            <qtimetadatafield><fieldlabel>assessment_question_identifierref</fieldlabel><fieldentry>iead9ac59900987ba117813691669e1e2</fieldentry></qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Which statement best describes AIMA's learning agent structure?&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="icfe21e3ac7f">
+                <material>
+                  <mattext texttype="text/plain">It includes a performance element, learning element, critic, and problem generator.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i4d56fa7ce12">
+                <material>
+                  <mattext texttype="text/plain">It includes only a table of fixed answers.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="id99eb9fad1d">
+                <material>
+                  <mattext texttype="text/plain">It cannot use feedback from experience.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="i19510ac3867">
+                <material>
+                  <mattext texttype="text/plain">It has sensors but no actuators.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">icfe21e3ac7f</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>
