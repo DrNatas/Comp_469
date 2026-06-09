@@ -1,0 +1,1116 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMP 469: Adversarial Search and Games (Slides 1-40)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CORE DESIGN SYSTEM (Theme 1 Variant) */
+        * { box-sizing: border-box; }
+        body {
+            background-color: #f4f1de; /* Clean, presentation-grade cream background */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            padding: 40px 0;
+            font-family: 'DM Sans', sans-serif;
+            color: #005088; /* High-contrast Navy text color */
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background-color: #f4f1de;
+            border: 3px solid #005088;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, #005088 0%, #3d5a80 100%);
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+        }
+        
+        .slide-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #005088;
+            border-bottom: 3px solid #3d5a80;
+            padding-bottom: 12px;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p, li {
+            font-size: 22px;
+            line-height: 1.55;
+            color: #1e293b; /* Dark Slate for excellent clarity and readability */
+        }
+
+        ul, ol { margin: 10px 0; }
+        li { margin-bottom: 12px; }
+
+        /* HEADER AND LAYOUT MODULES */
+        .slide-counter {
+            position: absolute;
+            top: 30px;
+            right: 60px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #3d5a80;
+            background: rgba(0, 80, 136, 0.08);
+            padding: 5px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .slide.dark-title {
+            background-color: #005088;
+            color: #f4f1de;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px;
+        }
+        .slide.dark-title h1 { font-size: 68px; color: #f4f1de; margin-bottom: 25px; line-height: 1.2; }
+        .slide.dark-title h2 { font-size: 32px; color: #e0f2fe; font-weight: 400; margin-bottom: 15px; }
+        .slide.dark-title p { color: #93c5fd; font-size: 24px; }
+        .slide.dark-title::after { display: none; }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tile {
+            background-color: rgba(0, 80, 136, 0.05);
+            border-left: 6px solid #005088;
+            padding: 24px;
+            border-radius: 4px;
+            height: 100%;
+        }
+        .tile h3 { font-size: 24px; color: #005088; margin-bottom: 12px; }
+        .tile p, .tile li { font-size: 19px; }
+
+        .highlight-box {
+            background-color: #005088;
+            color: #f4f1de;
+            padding: 24px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+        .highlight-box p, .highlight-box li { color: #f4f1de; }
+
+        .equation-block {
+            background-color: #1e293b;
+            color: #38bdf8;
+            padding: 18px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 26px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            margin: 15px 0;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        pre {
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 22px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            overflow: auto;
+            margin: 0;
+            border: 1px solid #334155;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+        .keyword { color: #f43f5e; font-weight: bold; }
+        .def { color: #38bdf8; }
+        .comment { color: #64748b; font-style: italic; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+        th {
+            background-color: #005088;
+            color: #f4f1de;
+            padding: 14px 16px;
+            font-size: 19px;
+            text-align: left;
+        }
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 18px;
+            color: #334155;
+        }
+        tr:nth-child(even) td { background-color: #f8fafc; }
+
+        /* SPEAKER NOTES COMPONENT */
+        .speaker-notes {
+            width: 1280px;
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 30px 45px;
+            border-radius: 0 0 8px 8px;
+            margin-top: -61px;
+            margin-bottom: 50px;
+            border: 3px solid #005088;
+            border-top: none;
+            font-size: 17px;
+            line-height: 1.65;
+        }
+        .speaker-notes strong {
+            color: #f43f5e;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide dark-title" id="slide1">
+    <div class="slide-counter">Slide 1 / 40</div>
+    <h1>Adversarial Search and Games</h1>
+    <h2>COMP 469: Introduction to Artificial Intelligence</h2>
+    <p>California State University Channel Islands</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Welcome to COMP 469. Today we move into multi-agent competitive spaces where other actors plan specifically to counter our objectives. We are detailing Chapter 5 thoroughly—from the basic mathematical axioms of game definitions to production optimizations like Late Move Reduction and Monte Carlo Tree Search. By the end of this 2-hour session, you will possess real, structural competency in tracing and proving competitive network properties.
+</div>
+
+<div class="slide" id="slide2">
+    <div class="slide-counter">Slide 2 / 40</div>
+    <h2 class="slide-title">Lecture Agenda & Student Competencies</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Structural Curriculum Paths</h3>
+            <ul>
+                <li><strong>5.1 - 5.2:</strong> Formal Formulations & Minimax Axioms</li>
+                <li><strong>5.3:</strong> Alpha-Beta Pruning Structural Proofs</li>
+                <li><strong>5.4:</strong> Evaluation Functions & Evaluation Horizonal Anomalies</li>
+                <li><strong>5.5 - 5.7:</strong> Stochastic Spaces, Belief Tables, & Modern Pruning Variants</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Target Student Competencies</h3>
+            <ul>
+                <li>Formulate complex rulesets into functional 5-tuple game engines.</li>
+                <li>Trace and backpropagate value states across multi-tier networks perfectly.</li>
+                <li>Identify dead branches instantly using explicit Alpha-Beta constraints.</li>
+                <li>Design unexploitable mixed strategies for hidden environments.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This structural plan is rigorous. We are balancing theoretical foundations with applied engineering. Do not treat these concepts as abstract overview bullets. Your engineering lab assignments require you to build these precise optimizations from scratch, so use this session to lock down the core algorithmic mechanics.
+</div>
+
+<div class="slide" id="slide3">
+    <div class="slide-counter">Slide 3 / 40</div>
+    <h2 class="slide-title">Section 5.1: Game Theory Foundations</h2>
+    <div class="grid-2">
+        <div>
+            <p>In AI, we study board games because their environments are characterized by clear rules, discrete steps, and easily tracked state profiles.</p>
+            <div class="highlight-box">
+                <p><strong>The Operational Contrast:</strong> Unlike single-agent pathfinding where the world remains passive, competitive spaces require managing active, plotting opponents.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Strategic Engineering Perspectives</h3>
+            <ul>
+                <li><strong>Aggregate Aggregate View:</strong> Models massive agent populations collectively using macro-economic models.</li>
+                <li><strong>Nondeterministic Environmental View:</strong> Treats opponents as random, unpredictable noise (like rain).</li>
+                <li><strong>Adversarial Strategy View:</strong> Tracks the explicit choices of a rational, value-maximizing competitor.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> In Section 5.1, Russell & Norvig contrast the three viewpoints we can take toward multi-agent environments. When we opt for the third viewpoint—the adversarial stance—we treat the opponent as a rational entity who is actively trying to minimize our utility. This strategic model underpins all classical game-playing AI engines.
+</div>
+
+<div class="slide" id="slide4">
+    <div class="slide-counter">Slide 4 / 40</div>
+    <h2 class="slide-title">Taxonomy of Competitive Spaces</h2>
+    <p>Games are systematically categorized by their observability and operational determinism parameters:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Environmental Type</th>
+                <th>Deterministic Framework</th>
+                <th>Stochastic / Chance Framework</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Fully Observable</strong></td>
+                <td>Chess, Checkers, Go, Othello</td>
+                <td>Backgammon, Monopoly</td>
+            </tr>
+            <tr>
+                <td><strong>Partially Observable</strong></td>
+                <td>Battleship, Kriegspiel Chess</td>
+                <td>Poker, Blackjack, Bridge</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top: 25px; font-size: 19px; font-style: italic; text-align: center;">
+        We will trace our way from fully observable, deterministic foundations up to complex stochastic and hidden information configurations.
+    </p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Take time to memorize this classification matrix. Each cell demands a fundamentally different algorithmic solution. Fully observable, deterministic fields are mapped using search trees. Introduce chance, and you need expectation models. Introduce hidden info, and you must reason over clouds of hidden possibilities.
+</div>
+
+<div class="slide" id="slide5">
+    <div class="slide-counter">Slide 5 / 40</div>
+    <h2 class="slide-title">Section 5.2: Formal Game Formulation</h2>
+    <p>A rigorous competitive architecture is defined mathematically as a formal system containing:</p>
+    <div class="grid-3">
+        <div class="tile">
+            <h3>States & Turns</h3>
+            <p><strong>$S$:</strong> The total set of valid states, beginning at initial root $S_0$.<br><br><strong>$\text{TO-MOVE}(s)$:</strong> Identifies which specific player acts in state $s$.</p>
+        </div>
+        <div class="tile">
+            <h3>Actions & Transitions</h3>
+            <p><strong>$\text{ACTIONS}(s)$:</strong> Returns the complete set of all legal moves available in state $s$.<br><br><strong>$\text{RESULT}(s, a)$:</strong> The transition model mapping actions to states.</p>
+        </div>
+        <div class="tile">
+            <h3>Terminals & Payoffs</h3>
+            <p><strong>$\text{IS-TERMINAL}(s)$:</strong> A boolean function checking if the game has ended.<br><br><strong>$\text{UTILITY}(s, p)$:</strong> The precise numeric payoff for player $p$ at terminal node $s$.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This formal layout builds on the 5-tuple from Chapter 3, but introduces two crucial updates for adversarial tracking: `TO-MOVE` keeps track of whose turn it is, and `UTILITY` replaces simple path costs with multi-agent payoff evaluations at the terminal leaves.
+</div>
+
+<div class="slide" id="slide6">
+    <div class="slide-counter">Slide 6 / 40</div>
+    <h2 class="slide-title">The Zero-Sum Property Axiom</h2>
+    <div class="grid-2">
+        <div>
+            <p>In a zero-sum game, the total total utility allocated to all competing players remains constant across all terminal states.</p>
+            <div class="equation-block">
+                Utility(Max) + Utility(Min) = 0
+            </div>
+            <p style="margin-top: 15px;">Any advantage secured by one player represents an equal, direct loss for the opponent, creating an environment of pure, uncompromised competition.</p>
+        </div>
+        <div class="tile">
+            <h3>Game Tree Conventions</h3>
+            <ul>
+                <li><strong>Nodes:</strong> Represent exact environmental configurations.</li>
+                <li><strong>Edges:</strong> Represent valid player transitions.</li>
+                <li><strong>Max Nodes ($\mathbf{\triangle}$):</strong> Transitions controlled by our maximizing agent.</li>
+                <li><strong>Min Nodes ($\mathbf{\nabla}$):</strong> Transitions controlled by the minimizing competitor.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Zero-sum properties mean there is zero room for cooperation. Max and Min are locked in absolute opposition. When graphing these trees, we use upward-pointing triangles for Max layers and downward-pointing triangles for Min layers to clarify selection directions.
+</div>
+
+<div class="slide" id="slide7">
+    <div class="slide-counter">Slide 7 / 40</div>
+    <h2 class="slide-title">The Minimax Value Equation</h2>
+    <p>The optimal strategy for a zero-sum game is determined by recursively computing the **Minimax Value** for every state in the tree:</p>
+    <div class="equation-block" style="font-size: 19px; text-align: left; padding-left: 50px; line-height: 1.4;">
+        MINIMAX(s) = <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;UTILITY(s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if IS-TERMINAL(s)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;max<sub>a &in; ACTIONS(s)</sub> MINIMAX(RESULT(s, a))&nbsp;&nbsp;&nbsp;if TO-MOVE(s) == MAX<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;min<sub>a &in; ACTIONS(s)</sub> MINIMAX(RESULT(s, a))&nbsp;&nbsp;&nbsp;if TO-MOVE(s) == MIN
+    </div>
+    <div class="tile">
+        <p>This recursive backing-up of values assumes that both players play with perfect rationality from any state onward.</p>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This piecewise definition forms the mathematical core of adversarial search. Value propagation flows from the bottom up. We can't know the value of the root node without first computing the values of the terminal states and passing them back up through the decision tree layers.
+</div>
+
+<div class="slide" id="slide8">
+    <div class="slide-counter">Slide 8 / 40</div>
+    <h2 class="slide-title">Worked Example: Minimax Tracing</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Tree Architecture</h3>
+            <ul>
+                <li>Root Node $A$ (Max turn).</li>
+                <li>Children of $A$: Min Nodes $B$ and $C$.</li>
+                <li>Children of $B$: Leaves $D(3)$ and $E(12)$.</li>
+                <li>Children of $C$: Leaves $F(8)$ and $G(2)$.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Value Backpropagation Trace</h3>
+            <ol>
+                <li>Evaluate Min Node $B$: $\min(3, 12) = \mathbf{3}$.</li>
+                <li>Evaluate Min Node $C$: $\min(8, 2) = \mathbf{2}$.</li>
+                <li>Evaluate Max Root $A$: $\max(B, C) = \max(3, 2) = \mathbf{3}$.</li>
+            </ol>
+            <div class="highlight-box" style="margin-top: 15px; padding: 12px;">
+                <p><strong>Decision:</strong> Max selects the action leading to $B$. Looking for the 12 at node $E$ is a trap; a rational Min player will force the game to 3.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Look at this choice. A common mistake is for an agent to chase the high score of 12 at node $E$. But because it is Min's turn at node $B$, Min will always pick the move that minimizes the score. Minimax correctly anticipates this choice and routes the game through $B$, securing a guaranteed value of 3 instead of risking a drop to 2 at node $G$.
+</div>
+
+<div class="slide" id="slide9">
+    <div class="slide-counter">Slide 9 / 40</div>
+    <h2 class="slide-title">Standard Minimax Implementation</h2>
+    <pre style="line-height: 1.35;">
+<span class="keyword">def</span> <span class="def">MINIMAX-DECISION</span>(state):
+    <span class="keyword">return</span> max(problem.ACTIONS(state), key=<span class="keyword">lambda</span> a: MIN-VALUE(problem.RESULT(state, a)))
+
+<span class="keyword">def</span> <span class="def">MAX-VALUE</span>(state):
+    <span class="keyword">if</span> problem.IS-TERMINAL(state): <span class="keyword">return</span> problem.UTILITY(state)
+    v = -float(<span class="comment">'inf'</span>)
+    <span class="keyword">for</span> a <span class="keyword">in</span> problem.ACTIONS(state): v = max(v, MIN-VALUE(problem.RESULT(state, a)))
+    <span class="keyword">return</span> v
+
+<span class="keyword">def</span> <span class="def">MIN-VALUE</span>(state):
+    <span class="keyword">if</span> problem.IS-TERMINAL(state): <span class="keyword">return</span> problem.UTILITY(state)
+    v = float(<span class="comment">'inf'</span>)
+    <span class="keyword">for</span> a <span class="keyword">in</span> problem.ACTIONS(state): v = min(v, MAX-VALUE(problem.RESULT(state, a)))
+    <span class="keyword">return</span> v
+    </pre>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This implementation uses mutually recursive functions: `MAX-VALUE` and `MIN-VALUE`. It performs a full depth-first traversal of the game tree. Notice that it visits every single node down to the terminal leaves, which leads us directly to our next problem: resource consumption.
+</div>
+
+<div class="slide" id="slide10">
+    <div class="slide-counter">Slide 10 / 40</div>
+    <h2 class="slide-title">Asymptotic Scaling Limits of Minimax</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Complexity Equations</h3>
+            <ul>
+                <li><strong>Time Complexity:</strong> $O(b^m)$</li>
+                <li><strong>Space Complexity:</strong> $O(bm)$</li>
+            </ul>
+            <p style="font-size: 16px; margin-top: 15px;">Where $b$ represents the branching factor (legal moves) and $m$ is the maximum depth of the tree.</p>
+        </div>
+        <div class="tile">
+            <h3>The Real-World Scale</h3>
+            <p><strong>Chess Bounds:</strong> $b \approx 35, m \approx 80 \rightarrow 35^{80}$ leaf nodes.</p>
+            <div class="highlight-box">
+                <p>The universe contains roughly $10^{80}$ atoms. Running an unoptimized Minimax search for chess is physically impossible due to this exponential explosion of states.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Raw Minimax is completely impractical for complex real-world games. If your tree search requires more states than there are atoms in the universe, it will never finish running. We need a way to prune the tree without losing our optimality guarantees.
+</div>
+
+<div class="slide dark-title" id="slide11">
+    <div class="slide-counter">Slide 11 / 40</div>
+    <h1>Section 5.3: Alpha-Beta Pruning</h1>
+    <h2>Pruning Unproductive Subtrees Optimally</h2>
+    <p>Eliminating entire branches of the search tree when we can prove a rational opponent will never allow them to be reached.</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> We are now entering Section 5.3: Alpha-Beta Pruning. This optimization technique lets us skip expanding massive subtrees without changing the final Minimax decision. It is an exact method, meaning it provides the same optimal move choice as a full tree search, but much faster.
+</div>
+
+<div class="slide" id="slide12">
+    <div class="slide-counter">Slide 12 / 40</div>
+    <h2 class="slide-title">Anatomy of Alpha and Beta Bounds</h2>
+    <p>We maintain two tracking metrics dynamically during our depth-first traversal of the game tree:</p>
+    <div class="grid-2" style="margin-top: 25px;">
+        <div class="tile">
+            <h3>Alpha (&alpha;) Parameters</h3>
+            <ul>
+                <li>Tracks the **highest value** found so far along any choice path for **Max**.</li>
+                <li>Initialized globally to $-\infty$.</li>
+                <li>Max updates $\alpha$ whenever a child node offers a higher guaranteed payoff.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Beta (&beta;) Parameters</h3>
+            <ul>
+                <li>Tracks the **lowest value** found so far along any choice path for **Min**.</li>
+                <li>Initialized globally to $+\infty$.</li>
+                <li>Min updates $\beta$ whenever a child node reveals a lower alternative payoff.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Alpha is Max's best alternative, and Beta is Min's best alternative. As we dive deeper into the tree, these bounds tighten. If Alpha ever becomes greater than or equal to Beta, it means the current path is worse than a previously discovered option for one of the players, allowing us to safely prune the remaining branches.
+</div>
+
+<div class="slide" id="slide13">
+    <div class="slide-counter">Slide 13 / 40</div>
+    <h2 class="slide-title">The Alpha-Beta Pruning Axiom</h2>
+    <p>The standard condition for pruning a branch is absolute and immediate:</p>
+    <div class="equation-block">
+        Prune immediately if: &alpha; &ge; &beta;
+    </div>
+    <div class="grid-2" style="margin-top: 20px;">
+        <div class="tile">
+            <h3>Max Layer Pruning</h3>
+            <p>If a Max node discovers a child value greater than or equal to the current $\beta$ bound, stop expanding its remaining siblings. Min further up the tree would never allow this path to occur.</p>
+        </div>
+        <div class="tile">
+            <h3>Min Layer Pruning</h3>
+            <p>If a Min node discovers a child value less than or equal to the current $\alpha$ bound, stop expanding its remaining siblings. Max further up the tree would choose a better alternative path elsewhere.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Understand this deeply: we prune because we assume rational play. If Max can force a score of 5 on a different branch, and the current Min node reveals a child value of 3, Max will never pick the path leading to this Min node. There's no reason to waste compute power looking at the rest of this Min node's options.
+</div>
+
+<div class="slide" id="slide14">
+    <div class="slide-counter">Slide 14 / 40</div>
+    <h2 class="slide-title">Alpha-Beta Pruning Code Engine</h2>
+    <pre style="font-size: 13px; line-height: 1.25;">
+<span class="keyword">def</span> <span class="def">ALPHA-BETA-SEARCH</span>(state):
+    v = MAX-VALUE(state, -float(<span class="comment">'inf'</span>), float(<span class="comment">'inf'</span>))
+    <span class="keyword">return</span> best_action_matching_v
+
+<span class="keyword">def</span> <span class="def">MAX-VALUE</span>(state, alpha, beta):
+    <span class="keyword">if</span> problem.IS-TERMINAL(state): <span class="keyword">return</span> problem.UTILITY(state)
+    v = -float(<span class="comment">'inf'</span>)
+    <span class="keyword">for</span> a <span class="keyword">in</span> problem.ACTIONS(state):
+        v = max(v, MIN-VALUE(problem.RESULT(state, a), alpha, beta))
+        <span class="keyword">if</span> v >= beta: <span class="keyword">return</span> v  <span class="comment"># Prune remaining sibling branches</span>
+        alpha = max(alpha, v)
+    <span class="keyword">return</span> v
+
+<span class="keyword">def</span> <span class="def">MIN-VALUE</span>(state, alpha, beta):
+    <span class="keyword">if</span> problem.IS-TERMINAL(state): <span class="keyword">return</span> problem.UTILITY(state)
+    v = float(<span class="comment">'inf'</span>)
+    <span class="keyword">for</span> a <span class="keyword">in</span> problem.ACTIONS(state):
+        v = min(v, MAX-VALUE(problem.RESULT(state, a), alpha, beta))
+        <span class="keyword">if</span> v <= alpha: <span class="keyword">return</span> v  <span class="comment"># Prune remaining sibling branches</span>
+        beta = min(beta, v)
+    <span class="keyword">return</span> v
+    </pre>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This code extends our standard Minimax recursive loop by passing and updating `alpha` and `beta` downward. The early return statements (`return v`) break out of the expansion loop entirely, skipping remaining siblings and saving massive amounts of processing time.
+</div>
+
+<div class="slide" id="slide15">
+    <div class="slide-counter">Slide 15 / 40</div>
+    <h2 class="slide-title">Worked Numerical Trace: Alpha-Beta</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Tree Node Architecture</h3>
+            <ul>
+                <li>Max Root $A$. Children: Min Nodes $B$ and $C$.</li>
+                <li>Children of $B$: Leaves $D(4)$ and $E(5)$.</li>
+                <li>Children of $C$: Leaves $F(2)$ and $G(9)$.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Step-by-Step Traversal Trace</h3>
+            <ol>
+                <li>Evaluate $B$: Check $D(4) \rightarrow \beta=4$. Check $E(5) \rightarrow \beta$ stays 4. $B$ returns 4.</li>
+                <li>Root $A$ updates its $\alpha = \max(-\infty, 4) = \mathbf{4}$.</li>
+                <li>Evaluate $C$ with parameters $\alpha=4, \beta=+\infty$.</li>
+                <li>Check leaf $F(2)$. Min node $C$ updates its $\beta = \min(+\infty, 2) = \mathbf{2}$.</li>
+                <li>Check Pruning Axiom: Is $\alpha \ge \beta$? $4 \ge 2 \rightarrow$ **True**.</li>
+                <li><strong>Prune Node $G$!</strong> Return 2 from $C$ immediately without ever expanding $G$.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Let's follow this trace carefully. Once node $C$ sees the 2 at leaf $F$, it knows its final value will be 2 or lower. Since Max already has a guaranteed option of 4 at node $B$, Max will never choose node $C$. We can safely prune node $G$ without ever looking at its value of 9.
+</div>
+
+<div class="slide" id="slide16">
+    <div class="slide-counter">Slide 16 / 40</div>
+    <h2 class="slide-title">The Crucial Role of Move Ordering</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Perfect Move Ordering</h3>
+            <p>If choices are sorted so that Max examines the best moves first and Min examines the worst moves first, Alpha-Beta efficiency peaks.</p>
+            <div class="equation-block" style="font-size:20px;">
+                Optimal Time Complexity = O(b<sup>m/2</sup>)
+            </div>
+            <p style="font-size:16px;">This effectively doubles our search depth, allowing an agent to look twice as far ahead using the same compute budget.</p>
+        </div>
+        <div class="tile">
+            <h3>Pessimistic Ordering</h3>
+            <p>If moves are sorted in the worst possible order, Alpha-Beta finds zero pruning opportunities.</p>
+            <div class="equation-block" style="font-size:20px;">
+                Worst Case Complexity = O(b<sup>m</sup>)
+            </div>
+            <p style="font-size:16px;">The algorithm is forced to evaluate every single leaf node, collapsing back to the performance of raw Minimax.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Move ordering is what makes Alpha-Beta pruning work in practice. Under perfect ordering, our time complexity drops to $O(b^{m/2})$. In other words, you can search twice as deep in the same amount of time. This shows why sorting moves using basic heuristics before pushing them to the frontier queue is so critical.
+</div>
+
+<div class="slide dark-title" id="slide17">
+    <div class="slide-counter">Slide 17 / 40</div>
+    <h1>Section 5.4: Imperfect Real-Time Decisions</h1>
+    <h2>Heuristic Truncation Under Strict Time Bounds</h2>
+    <p>Modifying search frameworks to enforce real-time processing constraints by replacing terminal evaluations with fixed depth cutoffs.</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Even with Alpha-Beta pruning, we cannot search all the way to the end of a game like chess within a reasonable time limit. Section 5.4 addresses this by introducing heuristic evaluation functions that estimate state values at a fixed depth cutoff, turning our ideal search into a real-time decision engine.
+</div>
+
+<div class="slide" id="slide18">
+    <div class="slide-counter">Slide 18 / 40</div>
+    <h2 class="slide-title">The Cutoff Search Modification</h2>
+    <p>To operate safely within real-time time boxes, we alter our search mechanics using two core modifications:</p>
+    <div class="grid-2" style="margin-top: 25px;">
+        <div class="tile">
+            <h3>1. The CUTOFF-TEST Strategy</h3>
+            <p>Replaces the standard <code>IS-TERMINAL</code> evaluation. It returns True if the game is over OR if the current search depth hits a predefined limit $d$.</p>
+        </div>
+        <div class="tile">
+            <h3>2. The EVAL Heuristic Function</h3>
+            <p>Replaces the true <code>UTILITY</code> function at cutoff points, returning an estimate of the expected utility from that state onward.</p>
+        </div>
+    </div>
+    <div class="equation-block">
+        Altered Condition: if CUTOFF-TEST(state, depth): return EVAL(state)
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This change turns our exhaustive search into an approximation. Instead of evaluating true wins or losses at terminal leaves, we stop searching at a fixed depth limit and use `EVAL` to guess how good the position is for our agent.
+</div>
+
+<div class="slide" id="slide19">
+    <div class="slide-counter">Slide 19 / 40</div>
+    <h2 class="slide-title">Designing Linear Evaluation Functions</h2>
+    <div class="grid-2">
+        <div>
+            <p>A standard evaluation function computes a weighted linear combination of distinct state features:</p>
+            <div class="equation-block" style="font-size:22px;">
+                EVAL(s) = w<sub>1</sub>f<sub>1</sub>(s) + w<sub>2</sub>f<sub>2</sub>(s) + ... + w<sub>n</sub>f<sub>n</sub>(s)
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Chess Evaluation Example</h3>
+            <ul>
+                <li>Features ($f_i$): Material counts (Pawn=1, Knight=3, Rook=5, Queen=9).</li>
+                <li>Weights ($w_i$): Strategic values assigned to each piece based on position or developmental stage.</li>
+                <li>Positive scores favor Max; negative scores favor Min.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Linear evaluation functions are incredibly efficient to compute. In chess, for example, features represent piece counts, and weights reflect their relative value. A positive total score means Max is ahead, while a negative score means Min holds the advantage.
+</div>
+
+<div class="slide" id="slide20">
+    <div class="slide-counter">Slide 20 / 40</div>
+    <h2 class="slide-title">The Horizon Effect & Quiescence</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>The Horizon Effect</h3>
+            <p>Occurs when a severe, unavoidable threat is pushed just past the search depth limit (the horizon). The agent remains oblivious to the danger because it cuts off search right before the trap snaps shut.</p>
+        </div>
+        <div class="tile">
+            <h3>Quiescence Search Solution</h3>
+            <p>Prevents cutting off search during volatile, unstable game states (like a piece capture in progress).</p>
+            <div class="highlight-box">
+                <p><strong>Rule:</strong> Only apply `EVAL` to *quiescent* (stable) states. If a state is volatile, extend the search depth automatically until positions stabilize.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> The horizon effect is a classic pitfall in adversarial search. If an agent's search depth is capped at 4, it might make a move that delays a major loss until turn 5, thinking it safe. We mitigate this with a quiescence search, extending the search deeper along volatile paths to ensure our evaluation estimates are stable and accurate.
+</div>
+
+<div class="slide dark-title" id="slide21">
+    <div class="slide-counter">Slide 21 / 40</div>
+    <h1>Section 5.5: Stochastic (Chance) Games</h1>
+    <h2>Modeling Environments with Random Outcomes</h2>
+    <p>Integrating random events—such as rolling dice or shuffling cards—directly into our game tree search using Expectiminimax.</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> We now move to Section 5.5: Stochastic Games. Games like Backgammon or Monopoly introduce elements of chance that cannot be predicted deterministically. To handle this randomness, we introduce a new type of node to our game tree: the Chance Node.
+</div>
+
+<div class="slide" id="slide22">
+    <div class="slide-counter">Slide 22 / 40</div>
+    <h2 class="slide-title">The Expectiminimax Tree Structure</h2>
+    <p>Stochastic game trees alternate between Max nodes, Min nodes, and **Chance nodes** (represented as circles):</p>
+    
+    
+    
+    <div class="tile" style="margin-top: 20px;">
+        <h3>The Probabilistic Calculation</h3>
+        <p>Instead of choosing the max or min value among its children, a Chance node computes a weighted average based on the probabilities of each random outcome occurring:</p>
+        <div class="equation-block" style="font-size:20px;">
+            EXPECTIMINIMAX(Chance Node) = &Sigma;<sub>r</sub> P(r) &times; EXPECTIMINIMAX(RESULT(s, r))
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Notice how the structural logic changes. A chance node doesn't pick a favorite child. Instead, it calculates the mathematical expectation across all possible random outcomes, multiplying the probability of each event by its resulting node value.
+</div>
+
+<div class="slide" id="slide23">
+    <div class="slide-counter">Slide 23 / 40</div>
+    <h2 class="slide-title">Worked Example: Expectiminimax</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Tree Architecture Setup</h3>
+            <ul>
+                <li>Max Root Node $A$.</li>
+                <li>Action choices lead to Chance Nodes $B$ and $C$.</li>
+                <li>Chance Node $B$ paths: Outcome 1 [Prob 0.5] leads to value 10. Outcome 2 [Prob 0.5] leads to value 2.</li>
+                <li>Chance Node $C$ paths: Outcome 1 [Prob 0.9] leads to value 3. Outcome 2 [Prob 0.1] leads to value 40.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Expectation Computations</h3>
+            <ol>
+                <li>Evaluate Chance Node $B$:<br>
+                $(0.5 \times 10) + (0.5 \times 2) = 5 + 1 = \mathbf{5}$.</li>
+                <li>Evaluate Chance Node $C$:<br>
+                $(0.9 \times 3) + (0.1 \times 40) = 2.7 + 4 = \mathbf{6.7}$.</li>
+                <li>Evaluate Max Root $A$:<br>
+                $\max(B, C) = \max(5, 6.7) = \mathbf{6.7}$.</li>
+            </ol>
+            <p style="font-size: 16px; font-style: italic; margin-top: 10px;">Max chooses the path to node $C$ to maximize expected value.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Walk through this math step by step with the class. Chance node $B$ yields an expected value of 5, while node $C$ yields 6.7. Even though node $B$ offers a potential payout of 10, the high probability of landing a low score at node $C$ is offset by its outlier payout of 40, making $C$ the mathematically superior strategic choice.
+</div>
+
+<div class="slide" id="slide24">
+    <div class="slide-counter">Slide 24 / 40</div>
+    <h2 class="slide-title">Complexity and Pruning Bounds of Chance</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Complexity Scaling Expansion</h3>
+            <div class="equation-block" style="font-size:22px;">
+                Complexity = O(b<sup>m</sup> &times; n<sup>m</sup>)
+            </div>
+            <p style="font-size:16px;">Where $n$ represents the total number of distinct random outcomes possible at each chance node step.</p>
+        </div>
+        <div class="tile">
+            <h3>The Pruning Barrier</h3>
+            <ul>
+                <li>Pruning branches under chance conditions is incredibly difficult.</li>
+                <li>Because chance nodes calculate averages rather than simple minimums or maximums, a single unexamined leaf node with a massive outlier value can completely shift the expected value of a branch.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Randomness causes our search trees to explode in size, with a time complexity of $O(b^m \cdot n^m)$. Alpha-Beta pruning becomes much less effective here because an unvisited leaf node hidden under a chance branch could have a massive value that completely changes the calculated average.
+</div>
+
+<div class="slide" id="slide25">
+    <div class="slide-counter">Slide 25 / 40</div>
+    <h2 class="slide-title">Sensitivity to Heuristic Scale Transformations</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Minimax Scale Invariance</h3>
+            <p>Standard Minimax decisions are completely invariant under any monotonic, order-preserving transformations of the evaluation scale (like multiplying all scores by 10 or adding 5).</p>
+        </div>
+        <div class="tile">
+            <h3>Expectiminimax Scale Sensitivity</h3>
+            <p>Stochastic searches are highly sensitive to linear scaling transformations. Modifying the evaluation scale changes the calculated averages, which can completely alter the agent's preferred move choices.</p>
+        </div>
+    </div>
+    <div class="highlight-box" style="margin-top: 15px;">
+        <p><strong>Rule:</strong> When designing heuristics for stochastic games, your evaluation values must map strictly and linearly to the true probabilities of winning.</p>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This is a crucial theoretical distinction. In pure Minimax, changing your evaluation values from 1, 2, 3 to 1, 10, 100 doesn't change the final decision because the relative ordering of moves remains identical. In Expectiminimax, however, changing the scale alters the calculated averages, which can completely shift your agent's preferred strategy.
+</div>
+
+<div class="slide dark-title" id="slide26">
+    <div class="slide-counter">Slide 26 / 40</div>
+    <h1>Section 5.6: Partially Observable Games</h1>
+    <h2>Reasoning Competently Under Imperfect Information</h2>
+    <p>Navigating competitive games like Poker or Battleship where critical parts of the environmental state are hidden from the agent.</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> We now enter Section 5.6: Partially Observable Games. In games of imperfect information, you can no longer see the exact state of the world. You must reason over belief states—the set of all possible actual game states that match your current sensory observations.
+</div>
+
+<div class="slide" id="slide27">
+    <div class="slide-counter">Slide 27 / 40</div>
+    <h2 class="slide-title">The Foundation of Belief States</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Belief State Modeling</h3>
+            <ul>
+                <li>The agent can no longer isolate its exact location down to a single definitive node point in the tree.</li>
+                <li>Instead, it evaluates a **Belief State**: the set of all possible actual game states that are consistent with the cards, board layouts, and move histories observed so far.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Kriegspiel Chess Example</h3>
+            <p>A variant of chess where you cannot see your opponent's pieces. Your belief state contains thousands of alternative board layouts where the enemy's pieces could legally be positioned given the historical move announcements.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Think of a belief state as a cloud of possibilities. When playing poker, your belief state contains every possible combination of cards your opponent could be holding given the cards face up on the table and their betting behavior. Your strategic choices must perform well across this entire cloud of possibilities.
+</div>
+
+<div class="slide" id="slide28">
+    <div class="slide-counter">Slide 28 / 40</div>
+    <h2 class="slide-title">The Trap of "Average Case" Approximations</h2>
+    <div class="highlight-box">
+        <h3>The Deterministic Trap Blueprint</h3>
+        <p>A common mistake when designing card-game AI is to generate a single "average" board layout by guessing the hidden items, solve that specific layout using standard Minimax, and assume the resulting move is optimal.</p>
+    </div>
+    <p style="margin-top: 25px;">
+        This approach fails completely because it ignores the strategic value of **information gathering** actions, bluffs, and defensive play designed to protect hidden data.
+    </p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Do not fall into the average-case trap. If you assume a single average hand for your opponent, your AI will never learn to play defensively against outliers, bluff effectively, or make moves purely to gather information about the opponent's hidden state.
+</div>
+
+<div class="slide" id="slide29">
+    <div class="slide-counter">Slide 29 / 40</div>
+    <h2 class="slide-title">The Strategy of Information Gathering</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Active Epistemic Actions</h3>
+            <p>Moves executed specifically to reveal hidden data and shrink the size of the agent's belief state cloud.</p>
+            <ul>
+                <li>Executing a probe bet in poker to test an opponent's strength.</li>
+                <li>Firing at target coordinates in Battleship to find enemy assets.</li>
+                <li>Sacrificing a minor piece in Kriegspiel to force a referee declaration.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Mathematical Value</h3>
+            <p>The strategic value of an information-gathering action is measured by how effectively it reduces the entropy of the agent's belief state, paving the way for safer, more optimal decisions on subsequent turns.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Information is a tangible resource in partially observable games. Sometimes, the mathematically optimal move is not the one that scores points directly, but the one that forces your opponent to reveal their hidden cards or positions, significantly simplifying your future planning.
+</div>
+
+<div class="slide" id="slide30">
+    <div class="slide-counter">Slide 30 / 40</div>
+    <h2 class="slide-title">Game Theory Matrix Representation</h2>
+    <p>When hidden state variables prevent us from using explicit tree graphs, we evaluate payoffs using a **Payoff Matrix**:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Player Strategies</th>
+                <th>Opponent Chooses Action Y</th>
+                <th>Opponent Chooses Action Z</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Agent Chooses Action W</strong></td>
+                <td>Utility: +3</td>
+                <td>Utility: -2</td>
+            </tr>
+            <tr>
+                <td><strong>Agent Chooses Action X</strong></td>
+                <td>Utility: -1</td>
+                <td>Utility: +4</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top: 20px;">
+        <p>If neither strategy choice yields a stable equilibrium point under pure execution conditions, the agent must employ a **Mixed Strategy** profile.</p>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> When a game cannot be mapped to a clean search tree, we fall back on standard game theory payoff matrices. Look at this matrix: if Max always chooses Action W, Min will adapt and choose Z, handing Max a loss of -2. To remain unpredictable and prevent exploitation, Max must randomize its choices.
+</div>
+
+<div class="slide" id="slide31">
+    <div class="slide-counter">Slide 31 / 40</div>
+    <h2 class="slide-title">Pure vs. Mixed Strategy Profiles</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Pure Strategies</h3>
+            <p>The agent commits 100% of its choices to a single deterministic action path.</p>
+            <p style="margin-top: 10px; color: #dc2626;"><strong>Risk:</strong> Highly exploitable in partially observable environments, as an opponent can decode your deterministic pattern and design a direct counter-strategy.</p>
+        </div>
+        <div class="tile">
+            <h3>Mixed Strategies</h3>
+            <p>The agent chooses actions probabilistically based on a carefully calculated optimal distribution.</p>
+            <div class="equation-block" style="font-size:20px;">
+                Distribution Profile: [W: 0.60, X: 0.40]
+            </div>
+            <p style="font-size:16px;">This introduces optimal unpredictability, ensuring a guaranteed baseline expected return regardless of how the opponent responds.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Mixed strategies are mandatory in games of imperfect information like Rock-Paper-Scissors or Poker. If your strategy is pure and deterministic, a smart opponent will decode your pattern and exploit it. By playing a mixed strategy based on an optimal probability distribution, you make your play unexploitable.
+</div>
+
+<div class="slide dark-title" id="slide32">
+    <div class="slide-counter">Slide 32 / 40</div>
+    <h1>Section 5.7: Alternative Search Optimizations</h1>
+    <h2>Advanced Strategic Search Architectures</h2>
+    <p>Exploring the optimization algorithms used by world-class game engines to prune state spaces and accelerate search processing speeds.</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> We conclude our material by looking at modern, alternative optimization techniques in Section 5.7. While classic Alpha-Beta pruning forms the baseline foundation, elite game engines implement advanced pruning variations to search significantly deeper into massive state spaces.
+</div>
+
+<div class="slide" id="slide33">
+    <div class="slide-counter">Slide 33 / 40</div>
+    <h2 class="slide-title">The Transposition Table Cache</h2>
+    <div class="grid-2">
+        <div>
+            <p>A **Transposition Table** caches previously evaluated state positions within a global hash map to prevent re-computing identical positions reached via alternative move sequences.</p>
+            <div class="highlight-box">
+                <p>Identical positions reached via different paths are called <em>transpositions</em> (e.g., reaching the same board state via move order A then B versus move order B then A).</p>
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Cached Data Record</h3>
+            <ul>
+                <li>The exact hash key of the game state configuration.</li>
+                <li>The backed-up Minimax value or bounding parameters ($\alpha, \beta$).</li>
+                <li>The maximum depth evaluated along that branch.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Transposition tables are essentially large-scale memoization tools for game trees. In many games, different sequences of moves lead to the exact same board position. By caching these results in a hash table, we can reuse the previously calculated values instantly instead of re-searching the entire subtree.
+</div>
+
+<div class="slide" id="slide34">
+    <div class="slide-counter">Slide 34 / 40</div>
+    <h2 class="slide-title">The Mechanics of Forward Pruning</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Standard Alpha-Beta Pruning</h3>
+            <p>Only eliminates branches that are *provably* worse than existing options, ensuring zero risk of missing the optimal move.</p>
+        </div>
+        <div class="tile">
+            <h3>Forward Pruning Strategy</h3>
+            <p>Intentionally discards branches that look highly unlikely to be good based on early heuristics, sacrificing absolute guarantees to save massive compute time.</p>
+            <p style="margin-top: 10px; color:#dc2626; font-size:16px;"><strong>Risk:</strong> Risks missing a brilliant, counter-intuitive move that appeared weak during initial shallow evaluations.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Forward pruning is where we trade absolute mathematical certainty for raw speed and depth. Instead of waiting for a rigorous proof to prune, we use heuristics to discard unpromising lines early on. This lets our search run significantly deeper, but introduces the risk of overlooking a brilliant, hidden masterstroke move.
+</div>
+
+<div class="slide" id="slide35">
+    <div class="slide-counter">Slide 35 / 40</div>
+    <h2 class="slide-title">The PROBCUT Search Algorithm</h2>
+    <div class="grid-2">
+        <div>
+            <p>The **PROBCUT** (Probabilistic Cut) algorithm uses historical game data and statistics to optimize forward pruning decisions.</p>
+            <div class="highlight-box">
+                <p>It performs a quick, shallow search to estimate a node's value ($v$), then uses past statistical data to calculate the probability that a full-depth search would yield a score outside the current $[\alpha, \beta]$ window.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Historical Performance</h3>
+            <p>When applied to the Othello program LOGISTELLO, adding PROBCUT enabled the engine to defeat its standard, non-probabilistic counterpart 64% of the time, even when the standard version was granted twice as much processing time.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> PROBCUT brings statistics to adversarial search. Instead of spending valuable compute time verifying an option down to depth 10, it runs a quick search to depth 2, looks up past game data to see how likely that score is to be useful, and prunes the entire branch immediately if the odds are low.
+</div>
+
+<div class="slide" id="slide36">
+    <div class="slide-counter">Slide 36 / 40</div>
+    <h2 class="slide-title">Late Move Reduction (LMR)</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Core Underlying Assumption</h3>
+            <p>LMR assumes that if your move-sorting heuristic is highly effective, moves that appear late in the sorted list are unlikely to be optimal.</p>
+        </div>
+        <div class="tile">
+            <h3>The Search Depth Reduction</h3>
+            <ul>
+                <li>Instead of pruning late options completely, LMR searches them to a **reduced depth**, saving massive amounts of time.</li>
+                <li>If a reduced-depth search unexpectedly returns a high score above $\alpha$, the engine catches the anomaly, resets parameters, and re-runs a full-depth search along that branch.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Late Move Reduction is a highly effective compromise. We don't discard late, unpromising moves completely; we just search them shallowly to save time. If a shallow search reveals a surprise opportunity, our engine catches it, scales up the search depth, and evaluates the path thoroughly.
+</div>
+
+<div class="slide" id="slide37">
+    <div class="slide-counter">Slide 37 / 40</div>
+    <h2 class="slide-title">Monte Carlo Tree Search (MCTS)</h2>
+    <p>When a game's massive branching factor makes traditional evaluation functions impossible, we turn to MCTS:</p>
+    <div class="grid-2" style="margin-top: 10px;">
+        <div class="tile">
+            <h3>The 4-Step MCTS Core Loop</h3>
+            <ol>
+                <li><strong>Selection:</strong> Traverse down known nodes using selection rules like UCB1.</li>
+                <li><strong>Expansion:</strong> Create a new child leaf node to extend the tree.</li>
+                <li><strong>Simulation (Rollout):</strong> Play out the game completely to the finish line using random or semi-random choices.</li>
+                <li><strong>Backpropagation:</strong> Use the rollout's win/loss outcome to update statistical records along the path.</li>
+            </ol>
+        </div>
+        <div class="tile">
+            <h3>The AlphaGo Breakthrough</h3>
+            <p>MCTS forms the core architecture behind AlphaGo, bypassing the need for handcrafted chess-like evaluation functions by using deep neural networks to guide rollouts and selection paths across Go's massive state space.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Monte Carlo Tree Search revolutionized AI for games like Go, where traditional evaluation functions fail because even a single stone placement changes the entire board dynamics. Instead of guessing a state's value, MCTS plays out thousands of rapid, random games to the finish line, using the actual win-loss ratios to determine the best move.
+</div>
+
+<div class="slide" id="slide38">
+    <div class="slide-counter">Slide 38 / 40</div>
+    <h2 class="slide-title">Historical Milestones in Game AI</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Engine Name</th>
+                <th>Target Game Space</th>
+                <th>Core Architecture Pattern</th>
+                <th>Historical Significance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Chinook</strong></td>
+                <td>Checkers</td>
+                <td>Alpha-Beta Search + Endgame Databases</td>
+                <td>First engine to win a human world championship title (1994). Solved Checkers completely in 2007.</td>
+            </tr>
+            <tr>
+                <td><strong>Deep Blue</strong></td>
+                <td>Chess</td>
+                <td>Custom VLSI Hardware + Optimized Alpha-Beta</td>
+                <td>Defeated World Champion Garry Kasparov in a formal match (1997).</td>
+            </tr>
+            <tr>
+                <td><strong>AlphaGo</strong></td>
+                <td>Go</td>
+                <td>MCTS + Policy/Value Neural Networks</td>
+                <td>Defeated world champion Lee Sedol (2016), cracking a game long thought impossible for brute-force AI.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This historical timeline highlights the evolution of game AI. We advanced from Chinook's brute-force checkers lookup tables, to Deep Blue's heavily optimized hardware execution for chess, and finally to AlphaGo's fusion of Monte Carlo Tree Search and Deep Learning, which redefined how machines tackle complex human reasoning tasks.
+</div>
+
+<div class="slide" id="slide39">
+    <div class="slide-counter">Slide 39 / 40</div>
+    <h2 class="slide-title">Adversarial Search Review Map</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Deterministic Fields</h3>
+            <ul>
+                <li>Deploy **Alpha-Beta Pruning** with optimized move ordering to maximize branch elimination.</li>
+                <li>Incorporate global **Transposition Tables** to cache state records and prevent duplicate work.</li>
+                <li>Utilize **Quiescence Search** strategies to protect evaluations from horizon anomalies.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Stochastic & Hidden Fields</h3>
+            <ul>
+                <li>Run **Expectiminimax** searches across chance nodes, mapping evaluation scales linearly to true win odds.</li>
+                <li>Reason over global **Belief States** in partially observable spaces to avoid the average-case trap.</li>
+                <li>Design unexploitable **Mixed Strategy Profiles** to maintain necessary strategic unpredictability.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Let's summarize our technical architecture map. Your choice of algorithm depends entirely on the game's environment. If the game is deterministic and fully observable, use Alpha-Beta with transposition tables. If chance is introduced, switch to Expectiminimax. If info is hidden, reason over belief states and use mixed strategies to avoid exploitation.
+</div>
+
+<div class="slide" id="slide40">
+    <div class="slide-counter">Slide 40 / 40</div>
+    <h2 class="slide-title">Lab Assignment & Deliverables</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Programming Objectives</h3>
+            <ul>
+                <li><strong>Task 1:</strong> Implement a clean, functional Alpha-Beta Search engine for Tic-Tac-Toe within the course repository.</li>
+                <li><strong>Task 2:</strong> Expand your engine to handle Isolation board states, track total node counts, and document pruning efficiency gains.</li>
+                <li><strong>Reading Requirement:</strong> Read Chapter 5.1 through 5.7 in your textbook.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Support & Office Hours</h3>
+            <ul>
+                <li><strong>Next Lecture:</strong> Constraint Satisfaction Problems (CSPs) and Backtracking Search.</li>
+                <li><strong>Office Hours Location:</strong> Sierra Hall, Room 2140.</li>
+                <li><strong>Schedule:</strong> Mon/Wed 4:00 PM – 5:30 PM.</li>
+                <li><strong>Contact Support:</strong> vidad.valencia@csuci.edu</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> That concludes today's session. Your lab assignment is live in the repository. You will write an Alpha-Beta engine and output performance metrics showing exactly how many nodes your pruning code eliminates compared to standard Minimax. Put these concepts into practice, and I'll see you all in the lab!
+</div>
+
+</body>
+</html>
+
+```
