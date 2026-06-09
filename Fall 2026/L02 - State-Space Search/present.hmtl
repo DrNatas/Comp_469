@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMP 469: Solving Problems by Searching (Slides 1-40)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CORE CONFIGURATION & THEMING (Theme 1 Variant) */
+        * { box-sizing: border-box; }
+        body {
+            background-color: #f4f1de; /* Clean, high-contrast cream background */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            padding: 50px 0;
+            font-family: 'DM Sans', sans-serif;
+            color: #005088; /* Deep Navy primary text */
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background-color: #f4f1de;
+            border: 2px solid #005088;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle design decoration to anchor the academic style */
+        .slide::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #005088 0%, #3d5a80 100%);
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+        }
+        
+        .slide-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #005088;
+            border-bottom: 3px solid #3d5a80;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p, li {
+            font-size: 22px;
+            line-height: 1.5;
+            color: #1e293b; /* Dark slate for premium legibility */
+        }
+
+        ul { margin: 10px 0; }
+        li { margin-bottom: 12px; }
+
+        /* THEMED VARIANT FOR TITLE / BREAK SLIDES */
+        .slide.dark-title {
+            background-color: #005088;
+            color: #f4f1de;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px;
+        }
+        .slide.dark-title h1 { font-size: 64px; color: #f4f1de; margin-bottom: 20px; }
+        .slide.dark-title h2 { font-size: 32px; color: #e0f2fe; font-weight: 400; }
+        .slide.dark-title p { color: #93c5fd; }
+        .slide.dark-title::after { display: none; }
+
+        /* MULTI-COLUMN AND TILE SYSTEM LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .tile {
+            background-color: rgba(0, 80, 136, 0.06);
+            border-left: 6px solid #005088;
+            padding: 25px;
+            border-radius: 4px;
+            height: 100%;
+        }
+        .tile h3 { font-size: 24px; color: #005088; margin-bottom: 15px; }
+
+        .highlight-box {
+            background-color: #005088;
+            color: #f4f1de;
+            padding: 25px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .highlight-box p, .highlight-box li { color: #f4f1de; }
+
+        /* COMPACT MATHEMATICAL CONTAINER */
+        .equation-block {
+            background-color: #1e293b;
+            color: #38bdf8;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 26px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 15px 0;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        /* CODE BLOCK MARKUP STYLE */
+        pre {
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            overflow: auto;
+            margin: 0;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .keyword { color: #f43f5e; font-weight: bold; }
+        .def { color: #38bdf8; }
+        .comment { color: #64748b; font-style: italic; }
+
+        /* TABLE STRUCTURAL STYLING */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        th {
+            background-color: #005088;
+            color: #f4f1de;
+            padding: 14px;
+            font-size: 18px;
+            text-align: left;
+            font-family: 'Merriweather', serif;
+        }
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 18px;
+            color: #334155;
+        }
+        tr:nth-child(even) td { background-color: #f8fafc; }
+
+        /* PRESENTER SPEAKER NOTES DRAWOUT AREA */
+        .speaker-notes {
+            width: 1280px;
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 25px 40px;
+            border-radius: 0 0 8px 8px;
+            margin-top: -51px;
+            margin-bottom: 40px;
+            border: 2px solid #005088;
+            border-top: none;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .speaker-notes strong {
+            color: #f43f5e;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* CARD HEADER COUNTER */
+        .slide-counter {
+            position: absolute;
+            top: 30px;
+            right: 60px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #3d5a80;
+            background: rgba(0, 80, 136, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide dark-title" id="slide1">
+    <div class="slide-counter">Slide 1 / 40</div>
+    <h1>Solving Problems by Searching</h1>
+    <h2>COMP 469: Introduction to Artificial Intelligence</h2>
+    <p style="margin-top: 40px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: #f4f1de;">
+        California State University Channel Islands
+    </p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Welcome to COMP 469. Today we are diving into classical search algorithms based on chapters 3.1 through 3.5. This is the bedrock of automated goal-resolution where an agent calculates sequence chains of modifications before executing them. Our target is deep precision across structures, mathematics, bounds, and implementation profiles.
+</div>
+
+<div class="slide" id="slide2">
+    <div class="slide-counter">Slide 2 / 40</div>
+    <h2 class="slide-title">Lecture Agenda & Competency Targets</h2>
+    <div class="grid-2" style="margin-top: 20px;">
+        <div class="tile">
+            <h3>Structural Curriculum Paths</h3>
+            <ul>
+                <li><strong>3.1 - 3.2:</strong> Formal Formulations & Abstractions</li>
+                <li><strong>3.3:</strong> Tree/Graph Infrastructure & Expansion Engine</li>
+                <li><strong>3.4:</strong> Uninformed Search (BFS, UCS, DFS, IDS)</li>
+                <li><strong>3.5:</strong> Informed Search (Greedy, A*, Theory Proofs)</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Target Student Competencies</h3>
+            <ul>
+                <li>Differentiate structural Node entities from environmental States.</li>
+                <li>Derive formal Time/Space asymptotic bounds mathematically.</li>
+                <li>Prove structural Admissibility and Consistency conditions.</li>
+                <li>Construct functional search routines from memory.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This 2-hour lecture maps your trajectory directly to core technical proficiency. Do not view these steps as soft overview items. You must track spatial and time penalties across every layout variant, as you will be required to build and verify these bounds from raw memory within assignments.
+</div>
+
+<div class="slide" id="slide3">
+    <div class="slide-counter">Slide 3 / 40</div>
+    <h2 class="slide-title">Section 3.1: Problem-Solving Agents</h2>
+    <div class="grid-2">
+        <div>
+            <p>A goal-driven agent uses <strong>atomic representations</strong> to navigate structured environments.</p>
+            <div class="highlight-box">
+                <p><strong>The Strategic Ideal:</strong> Focus exploration arrays by pruning unnecessary situational properties via rigorous, computational filtering patterns.</p>
+            </div>
+            <p style="margin-top: 20px;">States are tracked as distinct units with zero accessible internal configurations.</p>
+        </div>
+        <div class="tile">
+            <h3>Operational Base Premises</h3>
+            <ul>
+                <li><strong>Fully Observable:</strong> Complete environmental status knowledge.</li>
+                <li><strong>Deterministic:</strong> Static outcome mapping per move.</li>
+                <li><strong>Static:</strong> Zero background runtime changes.</li>
+                <li><strong>Discrete:</strong> Clearly isolated action sequences.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Section 3.1 explores goal-driven agents using atomic representations. Atomic means the internal structural properties of a state are hidden from the search engine. We execute our calculations under the offline assumption: planning happens entirely in memory before any action is committed to the real-world.
+</div>
+
+<div class="slide" id="slide4">
+    <div class="slide-counter">Slide 4 / 40</div>
+    <h2 class="slide-title">The Four-Phase Agent Engine</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>1. Goal Formulation</h3>
+            <p>Establish explicit target states based on performance metrics to bound operational choices.</p>
+            <h3 style="margin-top:20px;">2. Problem Formulation</h3>
+            <p>Isolate the precise set of states and environmental actions required to achieve the goal.</p>
+        </div>
+        <div class="tile">
+            <h3>3. Search Phase</h3>
+            <p>Simulate chains of actions across alternative paths in memory to generate an optimal solution sequence.</p>
+            <h3 style="margin-top:20px;">4. Execution Phase</h3>
+            <p>Commit the computed sequence to the physical actuators. This operates as an <strong>open-loop</strong> process.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> These four steps form a clean engineering cycle. In an open-loop model, the agent acts blindly without checking sensory input during execution because our deterministic and static premises ensure that the simulated path matches real-world outcomes exactly.
+</div>
+
+<div class="slide" id="slide5">
+    <div class="slide-counter">Slide 5 / 40</div>
+    <h2 class="slide-title">Section 3.2: Formal Problem Tuple</h2>
+    <p>A computational search problem is explicitly defined by a mathematical <strong>5-tuple</strong> framework:</p>
+    <div class="grid-3" style="margin-top: 20px;">
+        <div class="tile">
+            <h3>States & Initial Root</h3>
+            <p><strong>Initial State ($S_0$):</strong> The exact environmental point where the agent begins exploration paths.</p>
+        </div>
+        <div class="tile">
+            <h3>Operators & Model</h3>
+            <p><strong>ACTIONS($s$):</strong> Legal actions from state $s$.<br><br><strong>RESULT($s, a$):</strong> Concrete transition tracking system output.</p>
+        </div>
+        <div class="tile">
+            <h3>Validation & Costs</h3>
+            <p><strong>GOAL-TEST($s$):</strong> Boolean match condition.<br><br><strong>STEP-COST($s, a, s'$):</strong> Numeric weight representing path penalties.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Memorize this 5-tuple for your exams. Any search problem can be broken down into these five components. Whether you are building an AI to solve chess, route a network packet, or guide a vacuum cleaner, your first step as an engineer is to write down these five functions.
+</div>
+
+<div class="slide" id="slide6">
+    <div class="slide-counter">Slide 6 / 40</div>
+    <h2 class="slide-title">Paths and Solution Metrics</h2>
+    <p>We convert the problem components into discrete trajectories to evaluate systemic efficiency:</p>
+    <div class="tile">
+        <h3>Mathematical Definitions</h3>
+        <ul>
+            <li><strong>Path:</strong> A sequential arrangement of transitions: $\langle s_0, a_1, s_1, a_2, s_2, \dots, a_n, s_n \rangle$.</li>
+            <li><strong>Solution:</strong> A valid path where the final state evaluation fulfills $\text{GOAL-TEST}(s_n) == \text{True}$.</li>
+        </ul>
+    </div>
+    <div class="equation-block">
+        Path Cost: g(n) = &Sigma;<sub>i=1..n</sub> STEP-COST(s<sub>i-1</sub>, a<sub>i</sub>, s<sub>i</sub>)
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> The baseline cost metric is represented as $g(n)$. An optimal solution is simply the path that yields the absolute minimum $g(n)$ among all possible paths that terminate at a goal state.
+</div>
+
+<div class="slide" id="slide7">
+    <div class="slide-counter">Slide 7 / 40</div>
+    <h2 class="slide-title">The Critical Role of Abstraction</h2>
+    <div class="grid-2">
+        <div>
+            <p>Real-world environments contain near-infinite dimensions of chaotic data that must be stripped out.</p>
+            <div class="highlight-box">
+                <p><strong>Valid Abstractions:</strong> Ensure every abstract configuration can be reliably mapped back to a real-world state.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Useful Abstractions</h3>
+            <p>An abstraction is useful if the resulting computational solution is significantly easier to find and execute than the original problem.</p>
+            <p style="margin-top: 15px; font-style: italic;">We eliminate radio signals, street pavement conditions, and environmental weather variants to preserve pure node graph coordinates.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Abstraction is not just a convenience—it is mathematically mandatory. If we included every atom's position in our state space, the state space would be uncomputable. A good AI engineer strips away every piece of data that does not directly influence the step costs or goal satisfaction.
+</div>
+
+<div class="slide" id="slide8">
+    <div class="slide-counter">Slide 8 / 40</div>
+    <h2 class="slide-title">Toy Problems vs. Real-World Applications</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Toy Problems</h3>
+            <p>Simplified environments designed to isolate and test specific algorithmic properties.</p>
+            <ul>
+                <li>8-Puzzle / 15-Puzzle configurations</li>
+                <li>8-Queens constraint placements</li>
+                <li>Cryptarithmetic crypt-graphs</li>
+                <li>Missionaries & Cannibals puzzles</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Real-World Realities</h3>
+            <p>Complex, high-stakes industrial systems with real economic impacts.</p>
+            <ul>
+                <li>Commercial airline route schedules</li>
+                <li>VLSI silicon chip component layout</li>
+                <li>Autonomous vehicle motion planning</li>
+                <li>Industrial assembly automation</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> We use toy problems in class because they let us trace algorithms step-by-step on a whiteboard. However, the exact same algorithms we use to solve an 8-puzzle are deployed by major logistics companies to optimize cross-country flight schedules and circuit board wire configurations.
+</div>
+
+<div class="slide" id="slide9">
+    <div class="slide-counter">Slide 9 / 40</div>
+    <h2 class="slide-title">Case Study: The 8-Puzzle Formulation</h2>
+    <div class="tile">
+        <h3>Formulation Blueprint</h3>
+        <ul>
+            <li><strong>States:</strong> Position configurations tracking 8 numbered sliding tiles and 1 empty slot on a 3x3 grid layout.</li>
+            <li><strong>Initial State:</strong> Any valid random permutation of tiles that can reach the target configuration.</li>
+            <li><strong>Actions:</strong> Track choices by shifting the *blank space* left, right, up, or down.</li>
+            <li><strong>Transition Model:</strong> Returns the resulting 3x3 layout pattern.</li>
+            <li><strong>Goal Test:</strong> Match sequence exactly: <code>[1, 2, 3, 4, 5, 6, 7, 8, Blank]</code>.</li>
+            <li><strong>Step Cost:</strong> Constant value of 1 per transition move.</li>
+        </ul>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Notice how we formulate the actions. Instead of saying "Move tile 5 left," we define the actions around the *blank space*. This restricts the branching factor and unifies the transition model logic. The 8-puzzle contains roughly 181,440 states. The 15-puzzle (4x4) escalates to over 10 trillion states, showing how fast complexity explodes.
+</div>
+
+<div class="slide" id="slide10">
+    <div class="slide-counter">Slide 10 / 40</div>
+    <h2 class="slide-title">Infinite State Spaces: Knuth's 4 Problem</h2>
+    <div class="grid-2">
+        <div>
+            <p>Can you reach any arbitrary positive integer starting from the single number <strong>4</strong> using only a closed set of operations?</p>
+            <div class="equation-block">
+                Allowed Ops: Sqrt(&radic;), Floor(&lfloor;&rfloor;), Factorial(!)
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Structural Implications</h3>
+            <ul>
+                <li>The state space generated by these numeric operations is infinite.</li>
+                <li>Branching trees extend downwards with no structural terminal bounds.</li>
+                <li>Demonstrates that even simple toy formulations require disciplined, systematic search routines to avoid infinite loops.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Donald Knuth proved you can reach any positive integer from 4 using these three operators. Because the state space is infinite, an unguided or poorly written search algorithm can get trapped in an endless loop of expanding factorials and never find a simple number like 5. This shows why structural search mechanics matter.
+</div>
+
+<div class="slide" id="slide11">
+    <div class="slide-counter">Slide 11 / 40</div>
+    <h2 class="slide-title">Section 3.3: Searching for Solutions</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>State Space Graph</h3>
+            <p>A physical configuration network of actual environmental connections. Nodes represent distinct global configurations; edges map explicitly to actions.</p>
+        </div>
+        <div class="tile">
+            <h3>Conceptual Search Tree</h3>
+            <p>A tree-structure tracking evaluation paths through the state space graph. The root is the initial state, and branches represent explored paths.</p>
+        </div>
+    </div>
+    <div class="highlight-box">
+        <p><strong>The Redundancy Trap:</strong> A single physical environmental state can map to multiple distinct search tree nodes if reached via alternative paths.</p>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This is a classic point of confusion for students. A *state* is an actual configuration of the world. A *node* is a book-keeping data structure inside the search tree. A search tree can have thousands of nodes that all point to the exact same physical state if your algorithm blindly re-visits the same locations.
+</div>
+
+<div class="slide" id="slide12">
+    <div class="slide-counter">Slide 12 / 40</div>
+    <h2 class="slide-title">Anatomy of a Search Node</h2>
+    <p>A Node is a concrete programming structure containing memory pointers and metrics:</p>
+    <pre>
+<span class="keyword">class</span> <span class="def">Node</span>:
+    <span class="keyword">def</span> <span class="def">__init__</span>(self, state, parent=None, action=None, path_cost=0):
+        self.STATE = state          <span class="comment"># Environmental state representation</span>
+        self.PARENT = parent        <span class="comment"># Pointer connection to parent node instance</span>
+        self.ACTION = action        <span class="comment"># The discrete move that produced this node</span>
+        self.PATH_COST = path_cost  <span class="comment"># Cumulative cost value: g(n)</span>
+    </pre>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Look at this class definition carefully. If I ask you to write a search algorithm on an exam, you must remember that a node has these properties. The `PARENT` pointer is vital because once we reach the goal node, we must backtrack through the parent references all the way to the root to reconstruct the final solution sequence.
+</div>
+
+<div class="slide" id="slide13">
+    <div class="slide-counter">Slide 13 / 40</div>
+    <h2 class="slide-title">The Frontier and Reached Memory Sets</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>The Frontier Set</h3>
+            <ul>
+                <li>Tracks all generated leaf nodes waiting for evaluation.</li>
+                <li>Also known as the Open List.</li>
+                <li>The structural mechanics of the frontier queue determine the overall search strategy.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>The Reached Table</h3>
+            <ul>
+                <li>Tracks every unique environmental state visited by the search engine.</li>
+                <li>Also known as the Closed List.</li>
+                <li>Implemented as a hash map or look-up table to guarantee $O(1)$ state checking.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Think of the frontier as the boundary of your current knowledge. It contains the nodes you know about but haven't explored yet. The reached set is your memory of where you have already been, which prevents you from spinning in circles.
+</div>
+
+<div class="slide" id="slide14">
+    <div class="slide-counter">Slide 14 / 40</div>
+    <h2 class="slide-title">Node Expansion Code Mechanics</h2>
+    <p>The expansion step generates a node's children and calculates cumulative path costs:</p>
+    <pre>
+<span class="keyword">def</span> <span class="def">EXPAND</span>(problem, node):
+    s = node.STATE
+    <span class="keyword">for</span> action <span class="keyword">in</span> problem.ACTIONS(s):
+        s_prime = problem.RESULT(s, action)
+        cost = node.PATH_COST + problem.STEP_COST(s, action, s_prime)
+        <span class="keyword">yield</span> Node(state=s_prime, parent=node, action=action, path_cost=cost)
+    </pre>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This `EXPAND` function is the engine of all graph search algorithms. It queries the problem definition for valid actions, calculates the new state, adds up the cumulative path cost, and yields a fresh node back to the coordinator. Notice that the new node's path cost directly incorporates the parent's path cost.
+</div>
+
+<div class="slide" id="slide15">
+    <div class="slide-counter">Slide 15 / 40</div>
+    <h2 class="slide-title">The Best-First Search Skeleton</h2>
+    <pre style="font-size: 14px;">
+<span class="keyword">def</span> <span class="def">BEST-FIRST-SEARCH</span>(problem, f):
+    node = Node(state=problem.INITIAL)
+    frontier = PriorityQueue(order_by=f)
+    frontier.append(node)
+    reached = {problem.INITIAL: node}
+    
+    <span class="keyword">while not</span> frontier.is_empty():
+        node = frontier.pop()
+        <span class="keyword">if</span> problem.GOAL-TEST(node.STATE): <span class="keyword">return</span> node
+        <span class="keyword">for</span> child <span class="keyword">in</span> EXPAND(problem, node):
+            s = child.STATE
+            <span class="keyword">if</span> s <span class="keyword">not in</span> reached <span class="keyword">or</span> child.PATH_COST <span class="keyword"> Riemann match cutoff check:</span>
+                reached[s] = child
+                frontier.append(child)
+    <span class="keyword">return</span> FAILURE
+    </pre>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This is the core framework from Section 3.3. Almost every single algorithm we discuss today—BFS, Uniform-Cost, Greedy Search, and A*—is just a variation of this exact loop. The only thing that changes between them is the evaluation function $f$ passed into the priority queue.
+</div>
+
+<div class="slide" id="slide16">
+    <div class="slide-counter">Slide 16 / 40</div>
+    <h2 class="slide-title">Algorithmic Performance Criteria</h2>
+    <p>Search algorithms are evaluated along four distinct analytical dimensions:</p>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Completeness & Optimality</h3>
+            <p><strong>Completeness:</strong> Is a solution guaranteed if one exists?<br><br><strong>Optimality:</strong> Does the strategy find the path with the absolute lowest cost?</p>
+        </div>
+        <div class="tile">
+            <h3>Complexity Metrics</h3>
+            <p><strong>Time Complexity:</strong> Total number of nodes generated during search.<br><br><strong>Space Complexity:</strong> Maximum number of nodes stored in memory at peak allocation.</p>
+        </div>
+    </div>
+    <p style="margin-top: 15px; font-size: 18px; text-align: center;">Variables: $b$ (branching factor), $d$ (shallowest goal depth), $m$ (maximum search tree depth)</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Every time you introduce a search algorithm, you must evaluate it across these four dimensions. If you omit any of these on an exam, you lose points. Always keep track of $b$, $d$, and $m$. They dictate whether your software runs smoothly or crashes due to lack of memory.
+</div>
+
+<div class="slide dark-title" id="slide17">
+    <div class="slide-counter">Slide 17 / 40</div>
+    <h1>Section 3.4: Uninformed Search Strategies</h1>
+    <h2>Systematic Exploration Without Domain Guidance</h2>
+    <p>Algorithms that navigate paths relying strictly on the structural layout of the graph space.</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Uninformed search means the agent is blind. It knows the goal when it lands on it (via the goal test), but looking at a state, it has no idea if it is one step away or a million steps away. It must rely strictly on systematic exploration.
+</div>
+
+<div class="slide" id="slide18">
+    <div class="slide-counter">Slide 18 / 40</div>
+    <h2 class="slide-title">Breadth-First Search (BFS)</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Exploration Pattern</h3>
+            <ul>
+                <li>Expands all nodes at depth $d$ before moving down to depth $d+1$.</li>
+                <li>Frontier is explicitly managed using a First-In, First-Out (<strong>FIFO</strong>) queue structure.</li>
+                <li>Goal verification can safely be applied *early* (when generated) to optimize runtime performance.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Theoretical Properties</h3>
+            <ul>
+                <li><strong>Complete:</strong> Yes, if $b$ is finite.</li>
+                <li><strong>Optimal:</strong> Only if all step costs are completely identical.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> BFS explores the state space like a ripple in a pond. It checks every node at depth 1 before moving to depth 2. Because it explores uniformly in all directions, it is guaranteed to find the shallowest goal. But as we will see on the next slide, this thoroughness comes at a massive cost.
+</div>
+
+<div class="slide" id="slide19">
+    <div class="slide-counter">Slide 19 / 40</div>
+    <h2 class="slide-title">The Space Complexity Problem of BFS</h2>
+    <p>The time and space requirements for BFS grow exponentially, making memory the primary bottleneck:</p>
+    <div class="equation-block">
+        Asymptotic Bounds: Time = O(b<sup>d</sup>), Space = O(b<sup>d</sup>)
+    </div>
+    <table>
+        <thead>
+            <tr><th>Depth ($d$)</th><th>Total Nodes</th><th>Time Metric</th><th>Memory Overhead</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>2</td><td>110</td><td>0.11 ms</td><td>11 Kilobytes</td></tr>
+            <tr><td>6</td><td>1,111,110</td><td>11 seconds</td><td>100 Megabytes</td></tr>
+            <tr><td>10</td><td>10<sup>10</sup></td><td>3 hours</td><td><strong>10 Terabytes</strong></td></tr>
+        </tbody>
+    </table>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Look at this table. If your branching factor is 10 and your goal is 10 steps away, BFS requires 10 Terabytes of RAM. In practice, your program will trigger an out-of-memory crash long before it completes. Space is the real bottleneck for BFS, not processing time.
+</div>
+
+<div class="slide" id="slide20">
+    <div class="slide-counter">Slide 20 / 40</div>
+    <h2 class="slide-title">Uniform-Cost Search (UCS)</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Core Principles</h3>
+            <ul>
+                <li>Expands paths based on historical cost: $f(n) = g(n)$.</li>
+                <li>Frontier is ordered using a Priority Queue keyed by lowest $g(n)$ values.</li>
+                <li><strong>Late Goal Testing Mandatory:</strong> The goal test must only be applied when a node is *popped for expansion*, not when it is generated.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Asymptotic Bounds</h3>
+            <div class="equation-block" style="font-size:20px;">
+                Complexity = O(b<sup>1 + &lfloor;C<sup>*</sup> / &epsilon;&rfloor;</sup>)
+            </div>
+            <p style="font-size:16px;">Where $C^*$ is the optimal path cost and $\epsilon$ represents the minimum positive step cost boundary constraint.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Uniform-Cost Search generalizes BFS to handle paths with different step costs. Why must we test for the goal *late* (at expansion time)? Because a goal node might be generated early via a very expensive, direct path. If we stopped searching immediately, we would miss a longer sequence of steps that actually adds up to a much lower total cost.
+</div>
+
+<div class="slide" id="slide21">
+    <div class="slide-counter">Slide 21 / 40</div>
+    <h2 class="slide-title">Trace Exercise: Uniform-Cost Search</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Graph Configuration</h3>
+            <ul>
+                <li>Root $A$. Goal $G$.</li>
+                <li>$A \rightarrow B$ [cost 5]</li>
+                <li>$A \rightarrow C$ [cost 1]</li>
+                <li>$C \rightarrow B$ [cost 2]</li>
+                <li>$B \rightarrow G$ [cost 1]</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Step-by-Step Execution</h3>
+            <ol>
+                <li>Pop $A$. Frontier: <code>[(C, g=1), (B, g=5)]</code></li>
+                <li>Pop $C$. Expand $C \rightarrow B$. Total cost via $C$ is $1+2=3$. Update path to $B$. Frontier: <code>[(B, g=3)]</code></li>
+                <li>Pop $B$. Expand $B \rightarrow G$. Frontier: <code>[(G, g=4)]</code></li>
+                <li>Pop $G$. Goal reached. Optimal cost is <strong>4</strong>.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Let’s trace this together. If we had used BFS, we would have gone from $A$ to $B$ to $G$ with a cost of 6. UCS, however, processes $C$ first, discovers the cheaper path to $B$ (cost 3), and ultimately finds the optimal path to $G$ with a total cost of 4. This shows why sorting the frontier by $g(n)$ is so effective.
+</div>
+
+<div class="slide" id="slide22">
+    <div class="slide-counter">Slide 22 / 40</div>
+    <h2 class="slide-title">Depth-First Search (DFS)</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Exploration Logic</h3>
+            <ul>
+                <li>Always expands the deepest unexpanded node in the current tree frontier.</li>
+                <li>Frontier is explicitly managed using a Last-In, First-Out (<strong>LIFO</strong>) stack structure.</li>
+                <li><strong>Time Complexity:</strong> $O(b^m)$ — can perform poorly if the maximum depth $m$ is much larger than the goal depth $d$.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>The Space Efficiency Win</h3>
+            <div class="equation-block">
+                Space Complexity = O(bm)
+            </div>
+            <p>DFS only needs to store the current path from the root to the leaf node, along with any unexpanded sibling nodes along that path.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> DFS changes our memory usage completely. Instead of storing entire layers of the tree, it only needs to store a single path from the root to a leaf, along with the remaining unexpanded siblings. This reduces space complexity from exponential down to linear: $O(bm)$. The downside? It can wander down an infinite loop and never find a goal that was sitting right next to the root node.
+</div>
+
+<div class="slide" id="slide23">
+    <div class="slide-counter">Slide 23 / 40</div>
+    <h2 class="slide-title">Graph-Search vs. Tree-Search Spaces</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Tree-Search Space</h3>
+            <p>Does not track previously visited states in memory.</p>
+            <ul>
+                <li>Minimal memory overhead.</li>
+                <li>Risks falling into infinite loops in cyclic graphs.</li>
+                <li>Can generate duplicate paths to the same state.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Graph-Search Space</h3>
+            <p>Maintains a rigorous <code>reached</code> set of all visited states.</p>
+            <ul>
+                <li>Safely eliminates infinite loops.</li>
+                <li>Guarantees termination in finite graphs.</li>
+                <li>Significantly higher memory footprint.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This is a key architectural decision. If you use graph-search mechanics, your memory requirements can skyrocket because you are saving every state you visit. If you use tree-search mechanics, your memory stays low, but your algorithm can easily get stuck in a loop between two states (like driving back and forth between Arad and Sibiu forever).
+</div>
+
+<div class="slide" id="slide24">
+    <div class="slide-counter">Slide 24 / 40</div>
+    <h2 class="slide-title">Depth-Limited Search (DLS)</h2>
+    <div class="grid-2">
+        <div>
+            <p>Mitigates the infinite loop problem of DFS by introducing an explicit depth ceiling parameter $l$.</p>
+            <div class="highlight-box">
+                <p>Nodes located at depth $l$ are treated as leaves with no children. They are evaluated and immediately popped without expansion.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Distinct Failure States</h3>
+            <ul>
+                <li><strong>Failure:</strong> The search space was fully explored, and no solution exists.</li>
+                <li><strong>Cutoff:</strong> The search hit the depth limit $l$ and terminated without finding a goal, leaving paths unexplored.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Depth-Limited Search introduces a hard cutoff parameter $l$. If you know a solution must exist within 10 steps, you can set $l=10$. If the algorithm hits that depth without finding anything, it stops digging and backtracks. But what if you have no idea how deep the goal is? That brings us to our next strategy.
+</div>
+
+<div class="slide" id="slide25">
+    <div class="slide-counter">Slide 25 / 40</div>
+    <h2 class="slide-title">Iterative Deepening Search (IDS)</h2>
+    <p>Combines the linear space benefits of DFS with the completeness guarantees of BFS:</p>
+    <pre>
+<span class="keyword">def</span> <span class="def">ITERATIVE-DEEPENING-SEARCH</span>(problem):
+    <span class="keyword">for</span> limit <span class="keyword">in</span> range(0, sys.maxsize):
+        result = DEPTH-LIMITED-SEARCH(problem, limit)
+        <span class="keyword">if</span> result != <span class="comment">'cutoff'</span>: <span class="keyword">return</span> result
+    </pre>
+    <div class="grid-2" style="margin-top:20px;">
+        <div class="tile"><p><strong>Completeness:</strong> Yes, for uniform costs.</p></div>
+        <div class="tile"><p><strong>Space Complexity:</strong> Bounded linearly at $O(bd)$.</p></div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> At first glance, Iterative Deepening looks incredibly wasteful. You are throwing away all your work and re-generating the upper levels of the tree over and over again. But in an exponentially growing tree, the vast majority of the nodes live in the bottom layer. The overhead of re-generating the upper levels is mathematically negligible.
+</div>
+
+<div class="slide" id="slide26">
+    <div class="slide-counter">Slide 26 / 40</div>
+    <h2 class="slide-title">Mathematical Proof of IDS Efficiency</h2>
+    <p>Let's calculate the total nodes generated by IDS versus BFS to understand the overhead:</p>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>The Node Equations</h3>
+            <p style="font-size: 16px;"><strong>IDS Generation Count:</strong><br>
+            $N(\text{IDS}) = (d+1)b^0 + (d)b^1 + (d-1)b^2 + \dots + 1b^d$</p>
+            <p style="font-size: 16px; margin-top:15px;"><strong>BFS Generation Count:</strong><br>
+            $N(\text{BFS}) = b^0 + b^1 + b^2 + \dots + b^d$</p>
+        </div>
+        <div class="tile">
+            <h3>Numerical Example ($b=10, d=5$)</h3>
+            <ul>
+                <li>$N(\text{BFS}) = 1 + 10 + 100 + 1,000 + 10,000 + 100,000 = 111,111$</li>
+                <li>$N(\text{IDS}) = 6(1) + 5(10) + 4(100) + 3(1,000) + 2(10,000) + 1(100,000) = 123,456$</li>
+                <li>The computational overhead is only about **11%**.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Let's look at the actual numbers. When $b=10$ and $d=5$, IDS only generates about 11% more nodes than BFS, but it does so using a fraction of the memory. This proof is a favorite for exam questions. It demonstrates that the linear space savings far outweigh the minor time penalty of re-generating the root nodes.
+</div>
+
+<div class="slide" id="slide27">
+    <div class="slide-counter">Slide 27 / 40</div>
+    <h2 class="slide-title">Uninformed Search Summary</h2>
+    <table>
+        <thead>
+            <tr><th>Strategy</th><th>Completeness</th><th>Optimality</th><th>Time Bound</th><th>Space Bound</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>BFS</strong></td><td>Yes</td><td>Uniform Costs Only</td><td>$O(b^d)$</td><td>$O(b^d)$</td></tr>
+            <tr><td><strong>UCS</strong></td><td>Yes</td><td><strong>Yes (Always)</strong></td><td>$O(b^{1 + \lfloor C^*/\epsilon \rfloor})$</td><td>$O(b^{1 + \lfloor C^*/\epsilon \rfloor})$</td></tr>
+            <tr><td><strong>DFS</strong></td><td>No</td><td>No</td><td>$O(b^m)$</td><td><strong>$O(bm)$</strong></td></tr>
+            <tr><td><strong>IDS</strong></td><td>Yes</td><td>Uniform Costs Only</td><td>$O(b^d)$</td><td><strong>$O(bd)$</strong></td></tr>
+        </tbody>
+    </table>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This matrix summarizes Section 3.4. If you take away anything from this first hour, make sure it's this table. Notice how Iterative Deepening matches BFS in time complexity and completeness, while matching DFS in linear space complexity. For uniform step costs, IDS is generally the preferred uninformed choice.
+</div>
+
+<div class="slide dark-title" id="slide28">
+    <div class="slide-counter">Slide 28 / 40</div>
+    <h1>Section 3.5: Informed Search Strategies</h1>
+    <h2>Harnessing Domain Knowledge via Heuristics</h2>
+    <p>Moving beyond blind exploration by using problem-specific hints to focus search paths.</p>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> We are now entering Section 3.5. Uninformed search works, but it scales poorly. To solve complex real-world problems, our agent needs an estimate of how close a given state is to the goal. This estimate is called a heuristic.
+</div>
+
+<div class="slide" id="slide29">
+    <div class="slide-counter">Slide 29 / 40</div>
+    <h2 class="slide-title">The Heuristic Function $h(n)$</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Core Definition</h3>
+            <p><strong>$h(n)$</strong> = Estimated cost of the cheapest path from the state at node $n$ to a target goal state.</p>
+            <div class="highlight-box">
+                <p>Constraint requirement: For any goal state, the heuristic value must drop to zero: $h(\text{goal}) == 0$.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Domain Specificity</h3>
+            <ul>
+                <li>Unlike historical costs ($g(n)$), $h(n)$ is an estimate based on external domain properties.</li>
+                <li>Computed quickly without expanding downstream search tree branches.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Think of $h(n)$ as a compass. If you are routing a path across California, a good heuristic is the straight-line distance from your current coordinate to the destination. It doesn't account for winding mountain roads, but it gives the search algorithm a general direction to prioritize.
+</div>
+
+<div class="slide" id="slide30">
+    <div class="slide-counter">Slide 30 / 40</div>
+    <h2 class="slide-title">Greedy Best-First Search</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Algorithmic Logic</h3>
+            <ul>
+                <li>Always expands the node that appears closest to the goal.</li>
+                <li>Evaluation function maps directly to the heuristic: $f(n) = h(n)$.</li>
+                <li>Frontier is sorted using a Priority Queue ordered by lowest $h(n)$.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Structural Fault Lines</h3>
+            <p><strong>Myopic Nature:</strong> Completely ignores the historical path cost $g(n)$ incurred to reach the current node.</p>
+            <p style="margin-top: 10px; color:#f43f5e; font-weight:bold;">Result: Non-optimal and incomplete in graph environments.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Greedy Best-First Search is simple: it always picks the node that looks closest to the finish line. However, because it ignores the cost of getting to that node, it can easily be tricked. For example, it might choose a road that goes straight toward a mountain range, oblivious to the fact that the road terminates at a dead end.
+</div>
+
+<div class="slide" id="slide31">
+    <div class="slide-counter">Slide 31 / 40</div>
+    <h2 class="slide-title">Greedy Search Failure Case</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Graph Infrastructure</h3>
+            <ul>
+                <li>Start $S$, Goal $G$.</li>
+                <li><strong>Path A:</strong> $S \rightarrow A \rightarrow G$<br>
+                $h(A)=10$, step costs: $(S,A)=100, (A,G)=100$</li>
+                <li><strong>Path B:</strong> $S \rightarrow B \rightarrow G$<br>
+                $h(B)=20$, step costs: $(S,B)=5, (B,G)=5$</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>The Breakdown Trace</h3>
+            <ol>
+                <li>Greedy compares $f(A)=10$ vs $f(B)=20$.</li>
+                <li>It chooses Path A because $10 < 20$.</li>
+                <li><strong>Greedy Path Cost:</strong> $100 + 100 = \mathbf{200}$.</li>
+                <li><strong>True Optimal Cost:</strong> $5 + 5 = \mathbf{10}$ (via Path B).</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This example shows why Greedy Search is non-optimal. It picked the path through $A$ because $A$ looked closer to the goal on paper ($h(A)=10$). But it completely ignored the massive step cost of 100 required to get there. To fix this myopia, we need to balance the past with the future.
+</div>
+
+<div class="slide" id="slide32">
+    <div class="slide-counter">Slide 32 / 40</div>
+    <h2 class="slide-title">The A* Search Algorithm</h2>
+    <p>A* balances past path costs with future estimates to achieve optimal search paths:</p>
+    <div class="equation-block">
+        Evaluation Engine: f(n) = g(n) + h(n)
+    </div>
+    <div class="grid-3" style="margin-top: 20px;">
+        <div class="tile">
+            <h3>g(n)</h3>
+            <p>The exact historical cost accumulated from the initial state to the current node $n$.</p>
+        </div>
+        <div class="tile">
+            <h3>h(n)</h3>
+            <p>The estimated remaining cost from node $n$ to the closest goal state.</p>
+        </div>
+        <div class="tile">
+            <h3>f(n)</h3>
+            <p>The estimated total cost of a complete solution path passing through node $n$.</p>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> A* Search is one of the most successful algorithms in computer science. By setting $f(n) = g(n) + h(n)$, A* balances historical facts with heuristic estimates. It won't choose a node just because it looks close if the cost to get there was absurdly high.
+</div>
+
+<div class="slide" id="slide33">
+    <div class="slide-counter">Slide 33 / 40</div>
+    <h2 class="slide-title">A* Optimality Condition: Admissibility</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Admissibility Definition</h3>
+            <p>An absolute requirement for A* tree search optimality. A heuristic $h(n)$ is admissible if it <strong>never overestimates</strong> the true cost to reach the goal.</p>
+            <div class="equation-block" style="font-size:20px;">
+                Formula: 0 &le; h(n) &le; h<sup>*</sup>(n)
+            </div>
+        </div>
+        <div class="tile">
+            <h3>The Optimistic Principle</h3>
+            <ul>
+                <li>Admissible heuristics are inherently optimistic.</li>
+                <li>They assume the remaining path cost is lower than or equal to reality.</li>
+                <li><em>Example:</em> Straight-line distance is always admissible because a straight line is the shortest possible path between two points.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Admissibility means your heuristic is optimistic. It always assumes the remaining path is shorter than or equal to the actual distance. If a heuristic never overestimates the remaining cost, A* is mathematically guaranteed to find the optimal solution in a tree search.
+</div>
+
+<div class="slide" id="slide34">
+    <div class="slide-counter">Slide 34 / 40</div>
+    <h2 class="slide-title">A* Graph Condition: Consistency</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Consistency (Monotonicity)</h3>
+            <p>Required to guarantee optimality when running A* within <strong>Graph Search Spaces</strong> (which utilize reached sets).</p>
+            <div class="equation-block" style="font-size: 16px;">
+                h(n) &le; STEP-COST(s, a, s') + h(n')
+            </div>
+        </div>
+        <div class="tile">
+            <h3>Monotonic Properties</h3>
+            <ul>
+                <li>Ensures that estimated total costs ($f(n)$) along any given path are non-decreasing.</li>
+                <li>Guarantees that when a node is popped for expansion, its path cost is already optimal.</li>
+                <li>Eliminates the need to re-open nodes already stored in the reached set.</li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Consistency is a slightly stronger condition than admissibility. It states that the heuristic estimate cannot drop by an amount greater than the step cost you just paid. If your heuristic is consistent, then whenever A* expands a node, the path to that node is guaranteed to be optimal. This saves us from having to re-open nodes in our reached set.
+</div>
+
+<div class="slide" id="slide35">
+    <div class="slide-counter">Slide 35 / 40</div>
+    <h2 class="slide-title">Worked Numerical Trace: A* Search</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Graph Layout Metrics</h3>
+            <ul>
+                <li>Start $S$ ($h=6$). Goal $G$ ($h=0$).</li>
+                <li>$S \rightarrow A$ (cost 2, $h(A)=2$)</li>
+                <li>$S \rightarrow B$ (cost 1, $h(B)=4$)</li>
+                <li>$A \rightarrow G$ (cost 3)</li>
+                <li>$B \rightarrow G$ (cost 6)</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Algorithmic Trace Steps</h3>
+            <ol>
+                <li>Frontier: <code>[(S, f=0+6=6)]</code></li>
+                <li>Pop $S$. Generate paths:<br>
+                Path $A$: $g=2, f=2+2=4$<br>
+                Path $B$: $g=1, f=1+4=5$<br>
+                Frontier: <code>[(A, f=4), (B, f=5)]</code></li>
+                <li>Pop $A$. Generate path $A \rightarrow G$:<br>
+                $g=2+3=5, f=5+0=5$.<br>
+                Frontier: <code>[(B, f=5), (G, f=5)]</code></li>
+                <li>Pop $B$. $B \rightarrow G$ has $f=7$. (Pruned).</li>
+                <li>Pop $G$. Goal found. Optimal cost is **5**.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Let's walk through this carefully. Notice that at step 2, even though the step cost to $B$ is lower ($1 < 2$), A* chooses to expand $A$ first because $A$'s total estimated cost is lower ($f(A)=4$ vs $f(B)=5$). This demonstrates how the heuristic effectively guides the search toward the optimal path.
+</div>
+
+<div class="slide" id="slide36">
+    <div class="slide-counter">Slide 36 / 40</div>
+    <h2 class="slide-title">Heuristic Dominance Theory</h2>
+    <p>When comparing two different admissible heuristics, we use dominance to determine which is more efficient:</p>
+    <div class="equation-block">
+        Dominance Condition: &forall;n, h<sub>2</sub>(n) &ge; h<sub>1</sub>(n)
+    </div>
+    <div class="tile" style="margin-top: 15px;">
+        <h3>Search Pruning Power</h3>
+        <ul>
+            <li>If $h_2$ dominates $h_1$, then $h_2$ provides estimates that are closer to the true cost $h^*$.</li>
+            <li>A* using $h_2$ is mathematically guaranteed to expand fewer nodes than A* using $h_1$, making the search more efficient.</li>
+        </ul>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> If you have two valid heuristics, always choose the one that gives higher values (as long as it never overestimates). Higher values mean the heuristic has more information, which translates to fewer node expansions and less processing time.
+</div>
+
+<div class="slide" id="slide37">
+    <div class="slide-counter">Slide 37 / 40</div>
+    <h2 class="slide-title">Deriving Heuristics via Relaxed Problems</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Relaxed Problems</h3>
+            <p>A problem created by removing restrictions on valid actions from the original problem definition.</p>
+            <div class="highlight-box">
+                <p>The exact cost of an optimal solution to a relaxed problem is guaranteed to be an admissible and consistent heuristic for the original problem.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <h3>8-Puzzle Relaxation Cases</h3>
+            <ul>
+                <li><strong>Relaxed rule:</strong> A tile can move anywhere.<br>$\rightarrow$ Derives $h_1$: Misplaced Tiles count.</li>
+                <li><strong>Relaxed rule:</strong> A tile can move to any adjacent square, even if occupied.<br>$\rightarrow$ Derives $h_2$: Manhattan Distance.</li>
+                <li>Because $h_2(n) \ge h_1(n)$, Manhattan Distance dominates Misplaced Tiles.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> How do you invent a heuristic from scratch? You use the relaxed problem technique. By removing constraints from the problem rules—such as allowing tiles to slide through each other—you create an easier problem that can be solved instantly. The exact cost of solving that simplified problem serves as a perfectly valid heuristic for your original problem.
+</div>
+
+<div class="slide" id="slide38">
+    <div class="slide-counter">Slide 38 / 40</div>
+    <h2 class="slide-title">Live Code: Priority Queue A* Search</h2>
+    <pre style="font-size:13px; line-height:1.3;">
+<span class="keyword">import</span> heapq
+
+<span class="keyword">def</span> <span class="def">a_star_search</span>(problem, heuristic):
+    start_node = Node(problem.INITIAL, path_cost=0)
+    frontier = [(heuristic(problem.INITIAL), 0, start_node)]  <span class="comment"># (f_cost, tie_breaker, node)</span>
+    reached = {problem.INITIAL: start_node}
+    counter = 1
+
+    <span class="keyword">while</span> frontier:
+        _, _, current_node = heapq.heappop(frontier)
+        <span class="keyword">if</span> problem.goal_test(current_node.STATE): <span class="keyword">return</span> current_node
+        <span class="keyword">for</span> child <span class="keyword">in</span> expand(problem, current_node):
+            s = child.STATE
+            f_cost = child.PATH_COST + heuristic(s)
+            <span class="keyword">if</span> s <span class="keyword">not in</span> reached <span class="keyword">or</span> child.PATH_COST <span class="keyword"> Riemann boundary condition update:</span>
+                reached[s] = child
+                heapq.heappush(frontier, (f_cost, counter, child))
+                counter += 1
+    <span class="keyword">return</span> None
+    </pre>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> Take a photo of this slide or check the course repository. This is a clean Python implementation of A* using `heapq`. Notice that we store a tuple `(f_cost, counter, child)` in the priority queue. The `counter` variable acts as a tie-breaker, preventing Python from trying to compare two `Node` objects directly if their $f$-costs happen to be identical.
+</div>
+
+<div class="slide" id="slide39">
+    <div class="slide-counter">Slide 39 / 40</div>
+    <h2 class="slide-title">The Search Strategy Landscape</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Uninformed Algorithms</h3>
+            <ul>
+                <li><strong>BFS:</strong> Use if step costs are perfectly identical and memory is non-bounded.</li>
+                <li><strong>UCS:</strong> Use if step costs vary and finding an optimal path is mandatory.</li>
+                <li><strong>IDS:</strong> Use if memory is highly constrained and step costs are uniform.</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Informed Algorithms</h3>
+            <ul>
+                <li><strong>Greedy:</strong> Use if you need a fast solution path quickly and can sacrifice optimality.</li>
+                <li><strong>A* Search:</strong> Use if you need a guaranteed optimal solution path and have access to an admissible heuristic.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> This brings our search landscape into focus. As an engineer, your choice of algorithm depends entirely on your problem constraints. If you have a solid heuristic and need an optimal path, A* is your go-to choice. If you have no heuristic and very little memory, use Iterative Deepening.
+</div>
+
+<div class="slide" id="slide40">
+    <div class="slide-counter">Slide 40 / 40</div>
+    <h2 class="slide-title">Conclusion and Lab Deliverables</h2>
+    <div class="grid-2">
+        <div class="tile">
+            <h3>Required Tasks</h3>
+            <ul>
+                <li>Read chapters 3.1 through 3.5 in the Russell & Norvig textbook.</li>
+                <li><strong>Programming Lab 1:</strong> Implement the 8-puzzle using both Uninformed IDS and Informed A* (using Manhattan Distance).</li>
+            </ul>
+        </div>
+        <div class="tile">
+            <h3>Office Hours & Support</h3>
+            <ul>
+                <li><strong>Next Session:</strong> Local Search (Hill-Climbing, Simulated Annealing).</li>
+                <li><strong>Office Hours:</strong> Mon/Wed 4:00 PM - 5:30 PM.</li>
+                <li><strong>Email:</strong> instructor@csuci.edu</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="speaker-notes">
+    <strong>Speaker Notes:</strong> That concludes today's lecture. Your next lab assignment requires you to implement these algorithms and compare their node expansion counts on an 8-puzzle. You will see firsthand how much faster A* runs compared to blind search. Thank you for your time, and I'll see you in the lab!
+</div>
+
+</body>
+</html>
