@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chapter 8 First-Order Logic Visual Playground</title>
+<style>
+  :root {
+    --bg: #101828;
+    --panel: #182235;
+    --panel2: #202c44;
+    --text: #f4f7fb;
+    --muted: #b7c2d6;
+    --green: #40d17d;
+    --red: #ff5d73;
+    --yellow: #ffd166;
+    --blue: #5db7ff;
+    --purple: #c084fc;
+    --cyan: #44d9e8;
+    --line: #34425e;
+  }
+  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: var(--bg); color: var(--text); }
+  header { padding: 28px 34px; background: linear-gradient(90deg, #0f172a, #26375c); border-bottom: 1px solid var(--line); }
+  h1 { margin: 0; font-size: 30px; }
+  h2 { margin-top: 0; color: var(--cyan); }
+  h3 { color: var(--yellow); }
+  .subtitle { color: var(--muted); margin-top: 8px; }
+  main { padding: 24px; display: grid; gap: 22px; max-width: 1200px; margin: 0 auto; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: 0 8px 24px rgba(0,0,0,.24); }
+  .row { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
+  .grow { flex: 1 1 420px; }
+  code, pre { background: #0b1220; color: #dbeafe; padding: 2px 6px; border-radius: 6px; }
+  pre { padding: 14px; overflow-x: auto; border: 1px solid var(--line); }
+  button { background: var(--blue); color: #07111f; border: 0; padding: 10px 14px; border-radius: 10px; font-weight: 700; cursor: pointer; margin: 4px; }
+  button.secondary { background: var(--panel2); color: var(--text); border: 1px solid var(--line); }
+  button:hover { filter: brightness(1.12); }
+  .grid { display: grid; grid-template-columns: repeat(4, 70px); grid-template-rows: repeat(4, 70px); gap: 6px; }
+  .cell { border-radius: 12px; border: 2px solid #51617e; display: grid; place-items: center; font-weight: 900; font-size: 18px; color: #08111f; }
+  .ok { background: var(--green); }
+  .possible { background: var(--yellow); }
+  .pit { background: var(--red); }
+  .wumpus { background: var(--purple); }
+  .agent { background: var(--cyan); }
+  .unknown { background: #8ea0bd; }
+  .gold { outline: 4px solid var(--yellow); }
+  .truth { display: inline-block; padding: 4px 8px; border-radius: 8px; margin: 2px; font-weight: 800; }
+  .true { background: rgba(64,209,125,.15); color: var(--green); border: 1px solid var(--green); }
+  .false { background: rgba(255,93,115,.15); color: var(--red); border: 1px solid var(--red); }
+  .unknown-label { background: rgba(255,209,102,.15); color: var(--yellow); border: 1px solid var(--yellow); }
+  .table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+  .table th, .table td { border: 1px solid var(--line); padding: 8px; text-align: center; }
+  .table th { color: var(--cyan); background: #0b1220; }
+  .signal { display: inline-block; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 900; color: #08111f; }
+  .one { background: var(--green); }
+  .zero { background: var(--red); }
+  .muted { color: var(--muted); }
+  .formula { color: var(--green); font-weight: 800; }
+  .formula2 { color: var(--yellow); font-weight: 800; }
+  .diagram { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; line-height: 1.25; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Chapter 8: First-Order Logic Visual Playground</h1>
+  <div class="subtitle">A browser-based companion to the Python demos. Open this file and teach with color, grids, circuits, and logic.</div>
+</header>
+<main>
+  <section class="card">
+    <h2>1. Rule compression: propositional logic vs first-order logic</h2>
+    <div class="row">
+      <div class="grow">
+        <p>Propositional logic needs a separate breeze rule for each square:</p>
+        <pre>B_1_1 ⇔ (P_1_2 ∨ P_2_1)
+B_1_2 ⇔ (P_1_1 ∨ P_1_3 ∨ P_2_2)
+B_1_3 ⇔ (P_1_2 ∨ P_1_4 ∨ P_2_3)
+...</pre>
+      </div>
+      <div class="grow">
+        <p>First-order logic says it once with variables and quantifiers:</p>
+        <pre class="formula">∀s Breezy(s) ⇔ ∃p (Pit(p) ∧ Adjacent(p,s))</pre>
+        <p class="muted">Class prompt: How many rules for a 100 x 100 grid? Propositional: 10,000. FOL: one general schema.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2. Quantifier Quest</h2>
+    <p>Change the world and compare two sentences:</p>
+    <p><span class="formula">∀x ∃y Loves(x,y)</span> means everybody loves somebody.</p>
+    <p><span class="formula2">∃y ∀x Loves(x,y)</span> means there is one person loved by everybody.</p>
+    <button onclick="setLoveWorld(1)">World 1: everyone loves Bob</button>
+    <button onclick="setLoveWorld(2)">World 2: everyone loves someone different</button>
+    <div id="loveWorld"></div>
+  </section>
+
+  <section class="card">
+    <h2>3. FOL Wumpus World</h2>
+    <p>Click through the agent's observations. The map shows what the knowledge base can prove.</p>
+    <p class="formula">∀s Breezy(s) ⇔ ∃p(Pit(p) ∧ Adjacent(p,s))</p>
+    <p class="formula">∀s Smelly(s) ⇔ ∃w(Wumpus(w) ∧ Adjacent(w,s))</p>
+    <button onclick="prevWumpus()" class="secondary">Previous</button>
+    <button onclick="nextWumpus()">Next Step</button>
+    <button onclick="resetWumpus()" class="secondary">Reset</button>
+    <p id="wumpusCaption"></p>
+    <div class="row">
+      <div><div id="wumpusGrid" class="grid"></div></div>
+      <div class="grow">
+        <h3>Legend</h3>
+        <p><span class="truth true">OK</span> known safe</p>
+        <p><span class="truth unknown-label">P?</span> possible pit or uncertainty</p>
+        <p><span class="truth false">P!</span> certain pit</p>
+        <p><span class="truth" style="background:rgba(192,132,252,.15);color:var(--purple);border:1px solid var(--purple)">W!</span> certain wumpus</p>
+        <p><span class="truth" style="background:rgba(68,217,232,.15);color:var(--cyan);border:1px solid var(--cyan)">A</span> agent</p>
+        <div id="wumpusQueries"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4. Digital Circuit Logic Lab: one-bit full adder</h2>
+    <p>Use inputs A, B, and Cin. The visual circuit computes SUM and CARRY using two XOR gates, two AND gates, and one OR gate.</p>
+    <p class="formula">∀g Gate(g) ∧ Type(g)=XOR ⇒ Signal(Out(1,g))=1 ⇔ Signal(In(1,g))≠Signal(In(2,g))</p>
+    <button onclick="toggleBit('a')">Toggle A</button>
+    <button onclick="toggleBit('b')">Toggle B</button>
+    <button onclick="toggleBit('c')">Toggle Cin</button>
+    <div id="circuit"></div>
+    <div id="truthTable"></div>
+  </section>
+
+  <section class="card">
+    <h2>5. Database semantics checkpoint</h2>
+    <p>Known facts: <code>Brother(John, Richard)</code>, <code>Brother(Geoffrey, Richard)</code>, and <code>John ≠ Geoffrey</code>.</p>
+    <div class="row">
+      <div class="grow">
+        <h3>Standard FOL semantics</h3>
+        <p>Can Richard have another brother?</p>
+        <p><span class="truth unknown-label">UNKNOWN</span></p>
+        <p class="muted">The KB does not rule out extra objects or extra facts.</p>
+      </div>
+      <div class="grow">
+        <h3>Database semantics</h3>
+        <p>Are John and Geoffrey the only brothers?</p>
+        <p><span class="truth true">TRUE</span></p>
+        <p class="muted">Unique names + closed world + domain closure make the answer definite.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+let loveCase = 1;
+function setLoveWorld(n) { loveCase = n; renderLove(); }
+function renderLove() {
+  const people = ['Alice','Bob','Cara'];
+  const loves = loveCase === 1
+    ? {'Alice-Bob':true, 'Bob-Bob':true, 'Cara-Bob':true}
+    : {'Alice-Bob':true, 'Bob-Alice':true, 'Cara-Cara':true};
+  let html = '<table class="table"><tr><th>Loves(x,y)</th>' + people.map(p=>`<th>${p}</th>`).join('') + '</tr>';
+  for (const x of people) {
+    html += `<tr><th>${x}</th>`;
+    for (const y of people) html += `<td>${loves[`${x}-${y}`] ? '<span class="truth true">YES</span>' : '<span class="truth false">NO</span>'}</td>`;
+    html += '</tr>';
+  }
+  const f1 = true;
+  const f2 = loveCase === 1;
+  html += '</table>';
+  html += `<p>∀x ∃y Loves(x,y): <span class="truth ${f1?'true':'false'}">${f1?'TRUE':'FALSE'}</span></p>`;
+  html += `<p>∃y ∀x Loves(x,y): <span class="truth ${f2?'true':'false'}">${f2?'TRUE':'FALSE'}</span></p>`;
+  document.getElementById('loveWorld').innerHTML = html;
+}
+
+const wumpusStates = [
+  {cap:'Step 0: At S11. Percept: no breeze, no stench. Neighbors S12 and S21 are safe.', cells:{'1,1':'A','2,1':'OK','1,2':'OK'}},
+  {cap:'Step 1: At S21. Percept: breeze. There is a pit in S22 or S31, but not enough information yet.', cells:{'1,1':'OK','2,1':'A','1,2':'OK','2,2':'P?','3,1':'P?'}},
+  {cap:'Step 2: Back at S11. Knowledge is unchanged; safe route goes to S12.', cells:{'1,1':'A','2,1':'OK','1,2':'OK','2,2':'P?','3,1':'P?'}},
+  {cap:'Step 3: At S12. Stench but no breeze. Wumpus is proven at S13; pit is proven at S31; S22 is safe.', cells:{'1,1':'OK','2,1':'OK','1,2':'A','2,2':'OK','1,3':'W!','3,1':'P!'}},
+  {cap:'Step 4: At S22. No breeze and no stench. S23 is now known safe.', cells:{'1,1':'OK','2,1':'OK','1,2':'OK','2,2':'A','1,3':'W!','3,1':'P!','2,3':'OK'}},
+  {cap:'Step 5: At S23. Breeze, stench, glitter. Grab the gold and go home.', cells:{'1,1':'OK','2,1':'OK','1,2':'OK','2,2':'OK','1,3':'W!','3,1':'P!','2,3':'A'}}
+];
+let wStep = 0;
+function classFor(label) {
+  if (label === 'A') return 'agent';
+  if (label === 'OK') return 'ok';
+  if (label === 'P!') return 'pit';
+  if (label === 'W!') return 'wumpus';
+  if (label === 'P?' || label === 'W?') return 'possible';
+  return 'unknown';
+}
+function renderWumpus() {
+  const state = wumpusStates[wStep];
+  document.getElementById('wumpusCaption').textContent = state.cap;
+  const grid = document.getElementById('wumpusGrid');
+  grid.innerHTML = '';
+  for (let y=4; y>=1; y--) {
+    for (let x=1; x<=4; x++) {
+      const key = `${x},${y}`;
+      const label = state.cells[key] || '?';
+      const div = document.createElement('div');
+      div.className = 'cell ' + classFor(label);
+      if (key === '2,3' && wStep === 5) div.className += ' gold';
+      div.textContent = label;
+      grid.appendChild(div);
+    }
+  }
+  document.getElementById('wumpusQueries').innerHTML = `
+    <h3>ASK examples</h3>
+    <p>ASK(KB, OK(S22)) = ${wStep>=3 ? '<span class="truth true">TRUE</span>' : '<span class="truth unknown-label">UNKNOWN</span>'}</p>
+    <p>ASK(KB, Wumpus(S13)) = ${wStep>=3 ? '<span class="truth true">TRUE</span>' : '<span class="truth unknown-label">UNKNOWN</span>'}</p>
+    <p>ASK(KB, Pit(S31)) = ${wStep>=3 ? '<span class="truth true">TRUE</span>' : '<span class="truth unknown-label">UNKNOWN</span>'}</p>`;
+}
+function nextWumpus(){ wStep = Math.min(wumpusStates.length-1, wStep+1); renderWumpus(); }
+function prevWumpus(){ wStep = Math.max(0, wStep-1); renderWumpus(); }
+function resetWumpus(){ wStep = 0; renderWumpus(); }
+
+let bits = {a:1,b:0,c:1};
+function bitSpan(v){ return `<span class="signal ${v ? 'one':'zero'}">${v}</span>`; }
+function xor(a,b){ return a===b ? 0 : 1; }
+function and(a,b){ return a && b ? 1 : 0; }
+function or(a,b){ return a || b ? 1 : 0; }
+function toggleBit(k){ bits[k] = bits[k] ? 0 : 1; renderCircuit(); }
+function fullAdder(a,b,c){ const x1=xor(a,b), a1=and(a,b), x2=xor(x1,c), a2=and(x1,c), o1=or(a1,a2); return {x1,a1,x2,a2,o1,sum:x2,carry:o1}; }
+function renderCircuit(){
+  const r = fullAdder(bits.a,bits.b,bits.c);
+  document.getElementById('circuit').innerHTML = `<div class="diagram">
+A=${bitSpan(bits.a)} ─────┐
+            ├── [X1 XOR] = ${bitSpan(r.x1)} ───┐
+B=${bitSpan(bits.b)} ─────┘                      ├── [X2 XOR] = SUM ${bitSpan(r.sum)}
+                                   │
+Cin=${bitSpan(bits.c)} ─────────────────────────┘
+
+A=${bitSpan(bits.a)} ─────┐
+            ├── [A1 AND] = ${bitSpan(r.a1)} ───┐
+B=${bitSpan(bits.b)} ─────┘                      ├── [O1 OR] = CARRY ${bitSpan(r.carry)}
+X1=${bitSpan(r.x1)} ────┐                       │
+            ├── [A2 AND] = ${bitSpan(r.a2)} ───┘
+Cin=${bitSpan(bits.c)} ─┘
+</div>`;
+  renderTruthTable();
+}
+function renderTruthTable(){
+  let html = '<table class="table"><tr><th>A</th><th>B</th><th>Cin</th><th>Sum</th><th>Carry</th><th>Check</th></tr>';
+  for (let a=0;a<=1;a++) for (let b=0;b<=1;b++) for (let c=0;c<=1;c++) {
+    const r = fullAdder(a,b,c), total=a+b+c, sum=total%2, carry=total>=2?1:0;
+    html += `<tr><td>${a}</td><td>${b}</td><td>${c}</td><td>${r.sum}</td><td>${r.carry}</td><td>${r.sum===sum&&r.carry===carry?'<span class="truth true">OK</span>':'<span class="truth false">BAD</span>'}</td></tr>`;
+  }
+  html += '</table>';
+  document.getElementById('truthTable').innerHTML = html;
+}
+renderLove(); renderWumpus(); renderCircuit();
+</script>
+</body>
+</html>

@@ -39,7 +39,7 @@ This syllabus is compliant with _Syllabus Policy SP 24-07_, a requirement for al
 * *Term*: Fall 2026
 * *Class Format*: Three hours lecture in the lab per week
 * *Class Meeting*: In person; day, time, and assigned lab room to be confirmed in CI Learn
-* *Final Exam*: Tuesday, December 8, 2026, 7:00 PM-9:00 PM, Gateway Hall 3540.
+* *Final Exam*: Tuesday, December 8, 2026, 7:00 PM–9:00 PM, Gateway Hall 3540.
 
 === Course Format
 
@@ -203,61 +203,60 @@ The following references are recommended for students who want a structured text
 
 === Tentative Course Schedule or Course Outline
 
-This schedule assumes the Fall 2026 CSUCI semester. Weekday classes begin on August 24, Labor Day is September 7, Veterans Day is November 11, Thanksgiving closure is November 26-27, the last day of formal instruction is December 5, and final examinations are scheduled for December 7-12.
-Due dates and in-class activities may be adjusted if the assigned class meeting day falls on a campus holiday or if class progress requires adjustment.
+**Note on Schedule:** This course follows a review-before-exam rhythm. Week 7 includes a dedicated review session for the midterm. Week 8 is used for the midterm itself. Week 15 serves as final project presentations and comprehensive final review.
 
-**Note on Readings:** The primary textbook is *Artificial Intelligence: A Modern Approach*, 4th Edition by Stuart Russell and Peter Norvig. Because the full book is designed for a two-semester sequence, we will focus on carefully selected chapters and sections. Full weekly reading assignments and optional deeper sections will be posted on CI Learn.
+**Note on Readings:** The primary textbook is *Artificial Intelligence: A Modern Approach*, 4th Edition by Stuart Russell and Peter Norvig. We will cover selected chapters and sections. Full weekly reading assignments will be posted on CI Learn.
 
 [cols="1,1,2,3,3,3",options="header"]
 |===
 | Week | Dates | Core Concept | Key Topics and Reading Focus | Lab/Assignment Focus | Calendar Notes
 
-| 1 | Aug 24-28 | AI Agents and Foundations | What is AI? Rational agents, PEAS framework, agent types and environments. 
-**AIMA:** Ch. 1 (all) + Ch. 2 (all) | Lab: Simple grid-world / vacuum agent simulation in Python. | Weekday classes begin Aug 24.
+| 1 | Aug 24-28 | AI Agents and Foundations | What is AI? Rational agents, PEAS framework, agent architectures. 
+**AIMA:** Ch. 1 (all) + Ch. 2 (all) | Lab: Vacuum/Gridworld agents. | Classes begin Aug 24.
 
-| 2 | Aug 31-Sep 4 | State-Space Search | Problem formulation, uninformed search strategies. 
-**AIMA:** Ch. 3 (3.1–3.5) | Lab: Implement BFS, DFS, UCS on graph problems. | Normal instructional week.
+| 2 | Aug 31-Sep 4 | State-Space Search | Problem formulation, uninformed search. 
+**AIMA:** Ch. 3 (3.1–3.5) | Lab: Implement BFS, DFS, UCS. | Normal week.
 
-| 3 | Sep 7-11 | Informed and Adversarial Search | Heuristics, A*, game trees, minimax, alpha-beta. 
-**AIMA:** Ch. 3 (3.6) + Ch. 5 (5.1–5.3) | Lab: A* pathfinding + minimax / alpha-beta (Pacman or tic-tac-toe). | Labor Day holiday Sep 7; campus closed. Adjust deadlines.
+| 3 | Sep 7-11 | Informed & Adversarial Search | Heuristics, A*, minimax, alpha-beta. 
+**AIMA:** Ch. 3 (3.6) + Ch. 5 (5.1–5.3) | Lab: A* + minimax. | Labor Day (Sep 7).
 
-| 4 | Sep 14-18 | Knowledge Representation and Logic | Knowledge-based agents, propositional logic, inference. 
-**AIMA:** Ch. 7 (all) | Lab: Wumpus World or simple propositional logic KB. | Normal instructional week.
+| 4 | Sep 14-18 | Propositional Logic | Knowledge-based agents, propositional logic & inference. 
+**AIMA:** Ch. 7 (all) | Lab: Wumpus World. | Normal week.
 
 | 5 | Sep 21-25 | First-Order Logic | FOL syntax, semantics, and usage. 
-**AIMA:** Ch. 8 (all) | Lab: First-order knowledge base and queries. | Normal instructional week.
+**AIMA:** Ch. 8 (all) | Lab: Family knowledge base. | Normal week.
 
-| 6 | Sep 28-Oct 2 | Probability and Uncertainty | Acting under uncertainty, Bayes’ rule, naive Bayes. 
-**AIMA:** Ch. 12 (all) | Lab: Bayes’ theorem exercises and naive Bayes classifier. | Normal instructional week.
+| 6 | Sep 28-Oct 2 | Quantifying Uncertainty | Probability, Bayes’ rule, naive Bayes. 
+**AIMA:** Ch. 12 (all) | Lab: Probability + Naive Bayes classifier. | Normal week.
 
-| 7 | Oct 5-9 | Bayesian Networks | Representing and reasoning with uncertain knowledge. 
-**AIMA:** Ch. 13 (all) | Lab: Build and query a small Bayesian network. | Normal instructional week.
+| 7 | Oct 5-9 | Bayesian Networks + Midterm Review | Bayesian networks + **Midterm Review** (student-driven). 
+**AIMA:** Ch. 13 (all) + review | Bayesian network lab + review activities. | Midterm review week.
 
-| 8 | Oct 12-16 | Decision Trees and Midterm | Learning decision trees, model evaluation, entropy. 
-**AIMA:** Ch. 19 (19.1–19.3, 19.9) | Midterm review (first class); **Midterm Exam** (second class). Lab: Decision tree implementation. | Mid-semester assessment and final project proposal/checkpoint.
+| 8 | Oct 12-16 | Decision Trees & Midterm | Decision trees, entropy, model evaluation. 
+**AIMA:** Ch. 19 (19.1–19.3, 19.9) | **Midterm Exam** + Decision tree lab. Project proposal due. | Midterm week.
 
-| 9 | Oct 19-23 | Machine Learning Foundations | Supervised learning, linear models, perceptron, gradient descent. 
-**AIMA:** Ch. 19 (19.4–19.6) | Lab: Perceptron and linear classifiers. | Normal instructional week.
+| 9 | Oct 19-23 | Machine Learning Foundations | Supervised learning, perceptron, linear models. 
+**AIMA:** Ch. 19 (19.4–19.6) | Lab: Perceptron & logistic regression. | Normal week.
 
-| 10 | Oct 26-30 | Neural Networks I | Feedforward networks, backpropagation basics. 
-**AIMA:** Ch. 21 (21.1–21.4) | Lab: Simple MLP for classification (XOR or small dataset). | Normal instructional week.
+| 10 | Oct 26-30 | Neural Networks I | Feedforward networks, activations, XOR. 
+**AIMA:** Ch. 21 (21.1–21.4) | Lab: Simple MLP. | Normal week.
 
-| 11 | Nov 2-6 | Neural Networks II | Optimization, regularization, generalization. 
-**AIMA:** Ch. 21 (21.5–21.6) | Lab: Backpropagation implementation + MLP training. | Normal instructional week.
+| 11 | Nov 2-6 | Neural Networks II | Backpropagation, optimization, regularization. 
+**AIMA:** Ch. 21 (21.5–21.6) | Lab: Backpropagation + training. | Normal week.
 
-| 12 | Nov 9-13 | Neural Networks III: Vision | Convolutional networks and image tasks. 
-**AIMA:** Ch. 21 (21.3, 21.8) + Ch. 25 (selected sections) | Lab: Image classification with neural net / simple CNN. | Veterans Day holiday Nov 11; campus closed. Adjust deadlines.
+| 12 | Nov 9-13 | Neural Networks III: Computer Vision | Convolutional neural networks, image classification, basic computer vision concepts. 
+**AIMA:** Ch. 21 (21.3 Convolutional Networks, 21.8 Applications) + Ch. 25 (**25.1 Introduction, 25.4 Classifying Images**, and selected sections) | Lab: Image classification with a simple CNN (e.g. MNIST or Fashion-MNIST). | Veterans Day (Nov 11); campus closed. Adjust deadlines.
 
-| 13 | Nov 16-20 | Natural Language Processing | Language models, embeddings, basic NLP tasks. 
-**AIMA:** Ch. 23 (selected) + Ch. 24 (24.1–24.2) | Lab: Text classification or sentiment analysis. | Normal instructional week.
+| 13 | Nov 16-20 | Natural Language Processing | Language models and common NLP tasks. 
+**AIMA:** Ch. 23 (**23.1 + 23.5 + 23.6**) | Lab: Sentiment analysis / text classification. | Normal week.
 
-| 14 | Nov 23-27 | Reinforcement Learning | MDPs, value iteration, Q-learning. 
-**AIMA:** Ch. 22 (22.1–22.4) | Lab: Grid-world reinforcement learning; final project work. | Thanksgiving holiday Nov 26-27; campus closed.
+| 14 | Nov 23-27 | Reinforcement Learning | MDPs, Q-learning on Gridworld. 
+**AIMA:** Ch. 22 (22.1–22.4) | Lab: Q-learning. | Thanksgiving (Nov 26-27).
 
-| 15 | Nov 30-Dec 5 | Responsible AI and Synthesis | Ethics, risks, limits of AI; connecting symbolic and neural approaches. 
-**AIMA:** Ch. 1.5 + Ch. 27 (all) | Final project presentations; course synthesis and review. | Last day of formal instruction Dec 5.
+| 15 | Nov 30-Dec 5 | Responsible AI, Synthesis & Final Review | Philosophy, ethics, and safety of AI + course synthesis + final review. 
+**AIMA:** Ch. 1.5 + **Ch. 27 (all)** | Final project presentations + Final Review Session. | Last day of instruction Dec 5.
 
-| 16 | Dec 7-12 | Final Examination Period | Comprehensive final review + exam. | **Final Exam:** Tuesday, December 8, 2026, 7:00 PM-9:00 PM. | Final exam in Gateway Hall 3540.
+| 16 | Dec 7-12 | Final Examination Period | Final Exam. | **Final Exam:** Tuesday, December 8, 2026, 7:00–9:00 PM. | Final exam week.
 |===
 
 ==== Lab Overview and Policies
@@ -281,31 +280,6 @@ All labs are *hands-on Jupyter Notebook* based and designed for the 3-hour weekl
 * Jupyter Notebook or VS Code with Jupyter extension
 * Core packages: `numpy`, `pandas`, `matplotlib`, `scikit-learn`, `torch`, `torchvision`
 
-==== Weekly Lab Schedule
-
-[cols="1,1,3,3,2",options="header"]
-|===
-| Week | Dates | Lab Title | Main Topics | AIMA Reference
-
-| 1 | Aug 24-28 | Intelligent Agents | Reflex, model-based, goal-based agents | Ch. 1-2
-| 2 | Aug 31-Sep 4 | Uninformed Search | BFS, DFS, UCS | Ch. 3
-| 3 | Sep 7-11 | Informed and Adversarial Search | A*, minimax, alpha-beta | Ch. 3 + Ch. 5
-| 4 | Sep 14-18 | Propositional Logic | Wumpus World, inference | Ch. 7
-| 5 | Sep 21-25 | First-Order Logic | Knowledge representation and queries | Ch. 8
-| 6 | Sep 28-Oct 2 | Probability and Naive Bayes | Bayes' rule, naive Bayes classifier | Ch. 12
-| 7 | Oct 5-9 | Bayesian Networks | Building and querying BNs | Ch. 13
-| 8 | Oct 12-16 | Decision Trees | ID3 / scikit-learn decision trees | Ch. 19
-| 9 | Oct 19-23 | Perceptron and Linear Models | Perceptron, logistic regression | Ch. 19
-| 10 | Oct 26-30 | Feedforward Neural Networks | MLP, XOR problem | Ch. 21
-| 11 | Nov 2-6 | Backpropagation and Optimization | Training MLPs | Ch. 21
-| 12 | Nov 9-13 | Computer Vision with Neural Nets | CNN basics, image classification | Ch. 21 + Ch. 25
-| 13 | Nov 16-20 | Natural Language Processing | Text classification, sentiment | Ch. 23-24
-| 14 | Nov 23-27 | Reinforcement Learning | Q-learning on Gridworld | Ch. 22
-| 15 | Nov 30-Dec 5 | Final Project Studio | Project work and presentations | N/A
-|===
-
-==== Detailed Lab Descriptions
-
 ===== Lab 1: Intelligent Agents (Week 1)
 
 *Objectives*:
@@ -324,171 +298,6 @@ All labs are *hands-on Jupyter Notebook* based and designed for the 3-hour weekl
 . Analyze which agent performs best and why.
 
 *Deliverable*: Notebook with agent code, simulation results, and 1-page reflection.
-
-===== Lab 2: Uninformed Search (Week 2)
-
-*Objectives*:
-
-* Implement core search algorithms from scratch.
-* Understand time and space tradeoffs.
-
-*Tasks*:
-
-. Implement BFS, DFS, and UCS using Python.
-. Solve the Romania map problem and maze navigation.
-. Measure nodes expanded and path cost.
-
-*Resources*: `aima-python/search.ipynb` and Berkeley Pacman Project 1.
-
-===== Lab 3: Informed and Adversarial Search (Week 3)
-
-*Objectives*:
-
-* Apply heuristic search with A*.
-* Implement game tree search.
-
-*Tasks*:
-
-. Implement A* with Manhattan and misplaced-tile heuristics on the 8-puzzle.
-. Implement minimax and alpha-beta pruning for tic-tac-toe or Pacman.
-. Compare performance.
-
-*Resources*: Berkeley Pacman Projects 1 and 2.
-
-===== Lab 4: Propositional Logic - Wumpus World (Week 4)
-
-*Objectives*:
-
-* Model a world using propositional logic.
-* Implement basic inference.
-
-*Tasks*:
-
-. Build a Wumpus World knowledge base.
-. Use model checking or resolution to answer queries, such as whether square `[2,2]` is safe.
-
-*Resources*: `aima-python/logic.ipynb`.
-
-===== Lab 5: First-Order Logic (Week 5)
-
-*Objectives*:
-
-* Represent knowledge using FOL.
-* Perform inference.
-
-*Tasks*:
-
-. Create a family relationship knowledge base.
-. Implement forward chaining or use an existing solver for queries.
-
-*Resources*: `aima-python/knowledge.ipynb`.
-
-===== Lab 6: Probability and Naive Bayes (Week 6)
-
-*Objectives*:
-
-* Apply probability theory.
-* Build a simple classifier.
-
-*Tasks*:
-
-. Complete manual Bayes calculations.
-. Implement naive Bayes on the Iris or spam dataset using scikit-learn.
-
-===== Lab 7: Bayesian Networks (Week 7)
-
-*Objectives*:
-
-* Represent uncertain knowledge graphically.
-* Perform inference.
-
-*Tasks*:
-
-. Build the Alarm network or a similar Bayesian network.
-. Implement enumeration-based inference.
-
-===== Lab 8: Decision Trees (Week 8)
-
-*Objectives*:
-
-* Understand information gain and tree induction.
-* Evaluate model performance.
-
-*Tasks*:
-
-. Implement basic ID3 or use `sklearn.tree.DecisionTreeClassifier`.
-. Experiment with `max_depth` and analyze overfitting.
-
-===== Lab 9: Perceptron and Linear Models (Week 9)
-
-*Objectives*:
-
-* Implement linear classifiers.
-* Understand gradient descent.
-
-*Tasks*:
-
-. Implement the perceptron from scratch.
-. Compare with logistic regression on linearly separable data.
-
-===== Lab 10: Feedforward Neural Networks (Week 10)
-
-*Objectives*:
-
-* Build and train simple MLPs.
-
-*Tasks*:
-
-. Solve the XOR problem.
-. Train an MLP on a small classification dataset using PyTorch.
-
-===== Lab 11: Backpropagation (Week 11)
-
-*Objectives*:
-
-* Understand training dynamics.
-
-*Tasks*:
-
-. Trace backpropagation on a small network.
-. Experiment with learning rate, momentum, and regularization.
-
-===== Lab 12: Computer Vision (Week 12)
-
-*Objectives*:
-
-* Apply CNNs to image data.
-
-*Tasks*:
-
-. Train a simple CNN on MNIST or Fashion-MNIST.
-. Visualize filters and predictions.
-
-===== Lab 13: Natural Language Processing (Week 13)
-
-*Objectives*:
-
-* Work with text representation and classification.
-
-*Tasks*:
-
-. Use bag-of-words and TF-IDF features.
-. Perform sentiment analysis using naive Bayes or a simple neural network.
-
-===== Lab 14: Reinforcement Learning (Week 14)
-
-*Objectives*:
-
-* Learn from rewards.
-
-*Tasks*:
-
-. Implement Q-learning on a Gridworld environment.
-. Experiment with different exploration strategies.
-
-===== Lab 15: Final Project Studio (Week 15)
-
-Open lab for final project development and peer presentations.
 
 ==== Additional Lab Resources
 
