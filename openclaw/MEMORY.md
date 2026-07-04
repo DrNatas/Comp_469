@@ -1,0 +1,1 @@
+Based on the text content provided (as the image could not be loaded for transcription), here is the extracted and transcribed text, ensuring all words, including those emphasized with bolding in the original source, are captured:
