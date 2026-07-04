@@ -1,4 +1,4 @@
-= COMP 469: Artificial Intelligence/Neural Nets
+= COMP 469: Introduction To Artificial Intelligence
 :doctype: book
 :reproducible:
 :source-highlighter: rouge
@@ -12,7 +12,7 @@
 :pdf-theme: basic
 :experimental:
 :stem: latexmath
-:description: Syllabus for COMP 469 Artificial Intelligence/Neural Nets at CSU Channel Islands - Fall 2026
+:description: Syllabus for COMP 469 Introduction To Artificial Intelligence at CSU Channel Islands - Fall 2026
 :keywords: Artificial Intelligence, Neural Networks, Machine Learning, Data Mining, CSUCI, Syllabus
 
 // Professional Header Branding
@@ -34,7 +34,7 @@ This syllabus is compliant with _Syllabus Policy SP 24-07_, a requirement for al
 
 == Course Information
 
-* *Course*: COMP 469 - Artificial Intelligence/Neural Nets
+* *Course*: COMP 469 - Introduction To Artificial Intelligence
 * *Units*: 3
 * *Term*: Fall 2026
 * *Class Format*: Three hours lecture in the lab per week
@@ -186,7 +186,7 @@ The following references are recommended for students who want a structured text
 ** *Edition:* 3rd Edition
 ** *Publisher:* O'Reilly Media
 
-==== Major Assignments and Assessments for Artificial Intelligence/Neural Nets
+==== Major Assignments and Assessments for Introduction To Artificial Intelligence
 
 .Percentage Breakdown
 [cols="1,1",options="header"]
@@ -273,12 +273,6 @@ All labs are *hands-on Jupyter Notebook* based and designed for the 3-hour weekl
 ** Code correctness and completeness: 50%
 ** Experimentation, results, and analysis: 30%
 ** Clarity, documentation, and reflection: 20%
-
-*Recommended Environment*:
-
-* Python 3.10+
-* Jupyter Notebook or VS Code with Jupyter extension
-* Core packages: `numpy`, `pandas`, `matplotlib`, `scikit-learn`, `torch`, `torchvision`
 
 ===== Lab 1: Intelligent Agents (Week 1)
 
