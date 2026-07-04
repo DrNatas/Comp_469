@@ -1,5 +1,15 @@
 {
   "version": 1,
   "bootstrapSeededAt": "2026-06-07T09:36:02.494Z",
-  "setupCompletedAt": "2026-06-07T10:15:12.860Z"
+  "setupCompletedAt": "2026-06-07T10:15:12.860Z",
+  "agentId": "comp_469",
+  "globalWorkspaceRoot": "/home/jrios/.openclaw/workspace",
+  "agentMemoryRoot": "/home/jrios/Documents/Github/Comp_469/openclaw",
+  "agentDir": "/home/jrios/.openclaw/agents/comp_469/agent",
+  "toolsProfile": "full",
+  "memoryFiles": {
+    "instructions": "/home/jrios/Documents/Github/Comp_469/openclaw/AGENTS.md",
+    "longTerm": "/home/jrios/Documents/Github/Comp_469/openclaw/MEMORY.md",
+    "heartbeat": "/home/jrios/Documents/Github/Comp_469/openclaw/HEARTBEAT.md"
+  }
 }
