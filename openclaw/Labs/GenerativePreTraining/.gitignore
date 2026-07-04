@@ -1,0 +1,52 @@
+# Generative Pre-Training NLP Class Project - Gitignore
+
+# This file is used to ignore certain files during development
+# It helps keep the repository clean for both development and submission
+
+# Python files
+*.pyc
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.pyd
+*.pyo.d
+
+# Environment files
+.env
+*.env
+venv/
+env/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Notebook metadata
+.notebook-metadata.json
+.ipynb_checkpoints
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs and temporary files
+*.log
+temp/
+tmp/
+*.tmp
+cache/
+
+# Generated files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Test files (can be ignored if you want tests in your repo)
+.pytest_cache/
+.coverage
+htmlcov/
