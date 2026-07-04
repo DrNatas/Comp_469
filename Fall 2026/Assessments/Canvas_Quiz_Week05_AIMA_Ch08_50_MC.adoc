@@ -1,0 +1,719 @@
+= COMP 469 Canvas Question Bank: AIMA Chapter 8 Multiple Choice
+:toc:
+:sectnums:
+
+== Suggested Canvas Setup
+
+Course:: COMP 469 - Artificial Intelligence/Neural Nets
+Week:: Week 5
+Reading:: AIMA Chapter 8 - First-Order Logic
+Source File:: `Fall 2026/L05 - First-Order Logic/Chapter 8 - First-Order Logic.docx`
+Lab Alignment:: L05 - First-Order Logic
+Recommended Use:: Canvas quiz, reading check, lab readiness quiz, first-order logic review, or midterm review
+Question Style:: Multiple choice
+Recommended Points:: 1 point each
+Recommended Time Limit:: 35-50 minutes for all 50 questions, or 15-25 minutes for a random draw of 20-25 questions
+Canvas Notes:: Enter each item as a Multiple Choice question. Use the listed Correct Answer letter as the correct option. Randomize question order and answer-choice order if using the full bank.
+
+== Learning Targets
+
+Students should be able to:
+
+* Explain why first-order logic is more expressive than propositional logic.
+* Distinguish declarative, procedural, compositional, ambiguous, and context-dependent representations.
+* Explain the ontological commitment of first-order logic to objects and relations.
+* Define domains, objects, interpretations, constant symbols, predicate symbols, function symbols, and arity.
+* Explain terms, complex terms, ground terms, atomic sentences, and complex sentences.
+* Interpret universal and existential quantifiers.
+* Recognize common quantifier mistakes, including using conjunction with universal quantification or implication with existential quantification in the wrong place.
+* Explain nested quantifiers and why quantifier order matters.
+* Explain the connections between universal and existential quantification through negation.
+* Compare standard first-order semantics with database semantics.
+* Describe the knowledge-engineering process for building a first-order knowledge base.
+* Apply first-order logic ideas to the electronic circuits domain.
+
+== Canvas Question Bank
+
+=== Chapter 8 Multiple-Choice Questions
+
+==== Question 1
+
+Type:: Multiple Choice
+Points:: 1
+Question:: First-order logic improves on propositional logic mainly because it can:
+
+A. Avoid all inference.
+B. Represent objects, relations, and general rules compactly.
+C. Store only true/false constants.
+D. Eliminate the need for a knowledge base.
+
+Correct Answer:: B
+
+==== Question 2
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A drawback of ordinary programming-language data structures as knowledge representations is that they:
+
+A. Lack a general domain-independent inference mechanism.
+B. Cannot store arrays.
+C. Are always declarative.
+D. Automatically support partial information.
+
+Correct Answer:: A
+
+==== Question 3
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A declarative representation separates:
+
+A. The keyboard from the monitor.
+B. Training data from validation data.
+C. Knowledge from the inference procedure that reasons with it.
+D. Functions from arguments by forbidding functions.
+
+Correct Answer:: C
+
+==== Question 4
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Compositionality means that:
+
+A. A sentence has no parts.
+B. The meaning of a sentence is unrelated to its symbols.
+C. Sentences must be written in English.
+D. The meaning of a sentence depends on the meanings of its parts.
+
+Correct Answer:: D
+
+==== Question 5
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 8 says propositional logic has trouble concisely representing:
+
+A. Environments with many objects and repeated relational patterns.
+B. Simple truth values.
+C. Negation and disjunction.
+D. A single named fact.
+
+Correct Answer:: A
+
+==== Question 6
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Natural language is not ideal as a formal representation language because it is often:
+
+A. Too mathematical.
+B. Unable to communicate.
+C. Ambiguous and context-dependent.
+D. Less expressive than propositional logic.
+
+Correct Answer:: C
+
+==== Question 7
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The ontological commitment of first-order logic is to:
+
+A. Only atomic facts.
+B. Objects and relations.
+C. Probability distributions only.
+D. Continuous control signals only.
+
+Correct Answer:: B
+
+==== Question 8
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In first-order logic, the domain of a model is:
+
+A. The set of legal actions.
+B. The set of all predicate names.
+C. The list of connectives.
+D. The set of objects or domain elements in the model.
+
+Correct Answer:: D
+
+==== Question 9
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A relation in a first-order model is formally:
+
+A. A set of tuples of objects.
+B. A Python subroutine.
+C. A truth table over proposition symbols only.
+D. A domain-independent search queue.
+
+Correct Answer:: A
+
+==== Question 10
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A binary relation relates:
+
+A. No objects.
+B. One object.
+C. Pairs of objects.
+D. All objects at once.
+
+Correct Answer:: C
+
+==== Question 11
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A unary relation is often called:
+
+A. A complete model.
+B. A function symbol.
+C. A quantifier.
+D. A property.
+
+Correct Answer:: D
+
+==== Question 12
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A function in a first-order model maps:
+
+A. Sentences to probabilities.
+B. Input tuples of objects to a single object.
+C. Search nodes to path costs.
+D. Every predicate to false.
+
+Correct Answer:: B
+
+==== Question 13
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Standard first-order logic requires functions to be:
+
+A. Total, with a value for every allowed input tuple.
+B. Written as executable subroutines.
+C. False for unnamed objects.
+D. Limited to two arguments.
+
+Correct Answer:: A
+
+==== Question 14
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A constant symbol in first-order logic stands for:
+
+A. A relation.
+B. A function.
+C. A quantifier.
+D. An object.
+
+Correct Answer:: D
+
+==== Question 15
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A predicate symbol in first-order logic stands for:
+
+A. A function from terms to actions.
+B. A connective such as and or or.
+C. A relation.
+D. A specific proof algorithm.
+
+Correct Answer:: C
+
+==== Question 16
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A function symbol in first-order logic stands for:
+
+A. A function on objects.
+B. A complete truth table.
+C. A clause in CNF only.
+D. A performance measure.
+
+Correct Answer:: A
+
+==== Question 17
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The arity of a predicate or function symbol specifies:
+
+A. Whether it is true or false.
+B. How many arguments it takes.
+C. Whether it is universal or existential.
+D. How many models exist.
+
+Correct Answer:: B
+
+==== Question 18
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An interpretation in first-order logic:
+
+A. Is always the same for all models.
+B. Names every object in the domain.
+C. Replaces all functions with probabilities.
+D. Maps constant, predicate, and function symbols to objects, relations, and functions in a model.
+
+Correct Answer:: D
+
+==== Question 19
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In standard first-order logic, different constant symbols:
+
+A. May refer to the same object unless the knowledge base rules that out.
+B. Must always refer to different objects.
+C. Cannot refer to objects.
+D. Are automatically false.
+
+Correct Answer:: A
+
+==== Question 20
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A term is:
+
+A. A complete sentence that is true or false.
+B. A logical expression that refers to an object.
+C. A list of all models.
+D. A database table.
+
+Correct Answer:: B
+
+==== Question 21
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A complex term such as `LeftLeg(John)` should be understood as:
+
+A. A complicated name that refers to an object.
+B. A command to execute a subroutine.
+C. A sentence with a truth value.
+D. A quantifier over every person.
+
+Correct Answer:: A
+
+==== Question 22
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A ground term is a term that:
+
+A. Has exactly one predicate.
+B. Is always false.
+C. Refers only to a location in a grid.
+D. Contains no variables.
+
+Correct Answer:: D
+
+==== Question 23
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An atomic sentence is formed by:
+
+A. A quantifier alone.
+B. A connective followed by two sentences.
+C. A predicate symbol applied to terms.
+D. A function symbol used as a subroutine.
+
+Correct Answer:: C
+
+==== Question 24
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An atomic sentence is true in a model when:
+
+A. Its predicate symbol names a relation that holds among the objects named by its arguments.
+B. It contains at least one variable.
+C. It uses no constant symbols.
+D. It has the shortest possible syntax.
+
+Correct Answer:: A
+
+==== Question 25
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Complex first-order sentences can be built using:
+
+A. Only array assignments.
+B. Only database rows.
+C. Only function symbols.
+D. Logical connectives such as not, and, or, implies, and iff.
+
+Correct Answer:: D
+
+==== Question 26
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The sentence `forall x King(x) => Person(x)` is best read as:
+
+A. There exists a king who is a person.
+B. If something is a person, then it is a king.
+C. Every king is a person.
+D. Everyone is both a king and a person.
+
+Correct Answer:: C
+
+==== Question 27
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A variable in first-order logic is:
+
+A. A lowercase symbol that can be assigned different domain objects by an interpretation extension.
+B. A proposition symbol with a fixed truth value.
+C. A database record.
+D. A terminal in an electronic circuit.
+
+Correct Answer:: A
+
+==== Question 28
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The sentence `exists x Crown(x) and OnHead(x, John)` says:
+
+A. Everything is a crown on John's head.
+B. If something is a crown, it is on John's head.
+C. John is on every crown.
+D. Some crown is on John's head.
+
+Correct Answer:: D
+
+==== Question 29
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The natural connective for most universal rules such as "all kings are persons" is:
+
+A. Exclusive-or.
+B. Implication.
+C. Equality only.
+D. A database join.
+
+Correct Answer:: B
+
+==== Question 30
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The natural connective for many existential statements such as "there is a crown on John's head" is:
+
+A. Implication.
+B. Biconditional only.
+C. Conjunction.
+D. Negated equality.
+
+Correct Answer:: C
+
+==== Question 31
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why is `exists x Crown(x) => OnHead(x, John)` usually too weak?
+
+A. It is false in every nonempty model.
+B. It cannot mention John.
+C. It is true whenever some object fails to be a crown.
+D. It requires every object to be a crown.
+
+Correct Answer:: C
+
+==== Question 32
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The sentence `forall x exists y Loves(x, y)` means:
+
+A. Everyone loves someone, possibly different people.
+B. There is one person loved by everyone.
+C. Everyone loves everyone.
+D. No one loves anyone.
+
+Correct Answer:: A
+
+==== Question 33
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The sentence `exists y forall x Loves(x, y)` means:
+
+A. Everyone loves someone, possibly different people.
+B. There is one person who is loved by everyone.
+C. Every person loves themselves.
+D. Some people love no one.
+
+Correct Answer:: B
+
+==== Question 34
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Quantifier order matters because:
+
+A. Universal quantifiers are illegal after existential quantifiers.
+B. It changes only the font of the formula.
+C. It can change the meaning of the sentence.
+D. It forces all variables to be constants.
+
+Correct Answer:: C
+
+==== Question 35
+
+Type:: Multiple Choice
+Points:: 1
+Question:: When nested quantifiers reuse the same variable name, the variable belongs to:
+
+A. The first predicate in the sentence.
+B. The innermost quantifier that mentions it.
+C. The outermost quantifier only.
+D. No quantifier at all.
+
+Correct Answer:: B
+
+==== Question 36
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which equivalence correctly connects universal and existential quantification?
+
+A. `forall x P` is equivalent to `exists x P`.
+B. `exists x P` is equivalent to `forall x not P`.
+C. `forall x P` is equivalent to `not exists x not P`.
+D. `not forall x P` is equivalent to `not exists x P`.
+
+Correct Answer:: C
+
+==== Question 37
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Standard first-order semantics differs from database semantics because standard FOL:
+
+A. Uses an open-world style where missing facts are not automatically false.
+B. Requires every constant to be a different object.
+C. Assumes the domain contains only named objects.
+D. Forbids unnamed objects.
+
+Correct Answer:: A
+
+==== Question 38
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The unique-names assumption says that:
+
+A. Every atomic sentence not known true is false.
+B. Each model contains only named objects.
+C. Every constant symbol refers to a distinct object.
+D. Every predicate has arity one.
+
+Correct Answer:: C
+
+==== Question 39
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The closed-world assumption says that:
+
+A. A model may contain infinitely many unnamed objects.
+B. Atomic sentences not known to be true are assumed false.
+C. Constant symbols may refer to the same object.
+D. Functions need not be total.
+
+Correct Answer:: B
+
+==== Question 40
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Domain closure says that:
+
+A. Models contain no more domain elements than those named by constant symbols.
+B. Every predicate is false.
+C. The inference engine must stop after one query.
+D. Quantifiers cannot be nested.
+
+Correct Answer:: A
+
+==== Question 41
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Database semantics is most useful when:
+
+A. The world is completely unknown.
+B. We want all missing facts to remain unknown forever.
+C. We are certain about the objects present and have all relevant facts at hand.
+D. We need to model vague personal judgments.
+
+Correct Answer:: C
+
+==== Question 42
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A knowledge-engineering process begins by:
+
+A. Choosing random predicate names.
+B. Identifying the task and the questions the KB should answer.
+C. Encoding every possible sentence in the language.
+D. Debugging before any vocabulary exists.
+
+Correct Answer:: B
+
+==== Question 43
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Knowledge acquisition is the process of:
+
+A. Randomly assigning truth values.
+B. Rendering a diagram in HTML.
+C. Deleting ambiguous symbols.
+D. Extracting relevant domain knowledge, often from experts.
+
+Correct Answer:: D
+
+==== Question 44
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In knowledge engineering, an ontology is:
+
+A. A theorem-proving algorithm.
+B. The set of all possible models.
+C. The chosen vocabulary that determines what kinds of things exist in the domain.
+D. A truth table over proposition symbols.
+
+Correct Answer:: C
+
+==== Question 45
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the electronic circuits example, gates are represented as:
+
+A. Quantifiers.
+B. Objects named by constants and described with predicates/functions.
+C. Only raw wires.
+D. Random truth assignments.
+
+Correct Answer:: B
+
+==== Question 46
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the circuits domain, `Connected` is used to represent:
+
+A. The color of each gate.
+B. The cost of the circuit.
+C. The order of proof steps.
+D. Connectivity between terminals.
+
+Correct Answer:: D
+
+==== Question 47
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the circuit ontology, `Signal(t)` denotes:
+
+A. The signal value at terminal `t`.
+B. Whether `t` is a person.
+C. The number of models in the KB.
+D. The position of a wumpus.
+
+Correct Answer:: A
+
+==== Question 48
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the full-adder circuit example, one kind of query asks:
+
+A. Whether natural language is ambiguous.
+B. Which possible inputs produce specified output bits.
+C. Whether every king is a person.
+D. Whether all objects are named.
+
+Correct Answer:: B
+
+==== Question 49
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The circuit debugging example shows that if the KB forgets to assert `1 != 0`, then:
+
+A. The theorem prover can still infer every XOR output automatically.
+B. Quantifiers stop working entirely.
+C. The circuit becomes physically disconnected.
+D. The system may fail to prove expected outputs for mixed input cases.
+
+Correct Answer:: D
+
+==== Question 50
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 8's summary says both propositional logic and first-order logic have difficulty with:
+
+A. Representing any true or false sentence.
+B. Using connectives.
+C. Naming objects with constants.
+D. Vague propositions that require personal judgment.
+
+Correct Answer:: D
+
+== Answer Key
+
+[cols="1,1,1,1",options="header"]
+|===
+| Question | Answer | Question | Answer
+| 1 | B | 26 | C
+| 2 | A | 27 | A
+| 3 | C | 28 | D
+| 4 | D | 29 | B
+| 5 | A | 30 | C
+| 6 | C | 31 | C
+| 7 | B | 32 | A
+| 8 | D | 33 | B
+| 9 | A | 34 | C
+| 10 | C | 35 | B
+| 11 | D | 36 | C
+| 12 | B | 37 | A
+| 13 | A | 38 | C
+| 14 | D | 39 | B
+| 15 | C | 40 | A
+| 16 | A | 41 | C
+| 17 | B | 42 | B
+| 18 | D | 43 | D
+| 19 | A | 44 | C
+| 20 | B | 45 | B
+| 21 | A | 46 | D
+| 22 | D | 47 | A
+| 23 | C | 48 | B
+| 24 | A | 49 | D
+| 25 | D | 50 | D
+|===

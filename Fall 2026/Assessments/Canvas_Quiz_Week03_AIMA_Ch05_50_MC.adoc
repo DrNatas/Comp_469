@@ -1,0 +1,717 @@
+= COMP 469 Canvas Question Bank: AIMA Chapter 5 Multiple Choice
+:toc:
+:sectnums:
+
+== Suggested Canvas Setup
+
+Course:: COMP 469 - Artificial Intelligence/Neural Nets
+Week:: Week 3
+Reading:: AIMA Chapter 5 - Adversarial Search and Games
+Source File:: `Fall 2026/L03 - Adversarial Search and Games/Chapter 5 -Adversarial Search and Games.docx`
+Lab Alignment:: L03 - Adversarial Search and Games
+Recommended Use:: Canvas quiz, reading check, lab readiness quiz, adversarial search review, or midterm review
+Question Style:: Multiple choice
+Recommended Points:: 1 point each
+Recommended Time Limit:: 35-50 minutes for all 50 questions, or 15-25 minutes for a random draw of 20-25 questions
+Canvas Notes:: Enter each item as a Multiple Choice question. Use the listed Correct Answer letter as the correct option. Randomize question order and answer-choice order if using the full bank.
+
+== Learning Targets
+
+Students should be able to:
+
+* Explain why adversarial environments require different search methods from single-agent search.
+* Define deterministic, two-player, turn-taking, perfect-information, zero-sum games.
+* Identify the formal components of a game: initial state, player to move, legal actions, transition model, terminal test, and utility function.
+* Explain game trees, terminal states, utilities, ply, and strategies.
+* Compute and interpret minimax values in two-player zero-sum games.
+* Explain why minimax assumes optimal play by both players.
+* Describe how minimax generalizes to multiplayer games with utility vectors.
+* Explain alpha-beta pruning and why it can return the same decision as minimax while evaluating fewer nodes.
+* Explain how move ordering, killer moves, and transposition tables improve game-tree search.
+* Explain heuristic alpha-beta search, evaluation functions, cutoff tests, quiescence search, horizon effects, and forward pruning.
+
+== Canvas Question Bank
+
+=== Chapter 5 Multiple-Choice Questions
+
+==== Question 1
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 5 focuses on adversarial search problems, where:
+
+A. Agents always share the same utility function.
+B. Two or more agents have conflicting goals.
+C. The environment contains no other agents.
+D. Actions have no consequences.
+
+Correct Answer:: B
+
+==== Question 2
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why are games such as chess, Go, and poker useful for AI research?
+
+A. Their states and legal actions are often easier to represent with precise rules than messy real-world conflicts.
+B. They never require search.
+C. They always have tiny game trees.
+D. They remove the need for decision making.
+
+Correct Answer:: A
+
+==== Question 3
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which list best summarizes the three stances toward multi-agent environments discussed in Chapter 5?
+
+A. Supervised learning, unsupervised learning, and reinforcement learning.
+B. Local search, breadth-first search, and depth-first search.
+C. Aggregate agents as an economy, treat adversaries as nondeterministic environment features, or explicitly model adversaries with game-tree search.
+D. Data cleaning, model training, and deployment.
+
+Correct Answer:: C
+
+==== Question 4
+
+Type:: Multiple Choice
+Points:: 1
+Question:: When a game-playing agent must stop searching before terminal states, Chapter 5 says it can estimate who is winning by:
+
+A. Deleting the game tree.
+B. Ignoring the opponent's moves.
+C. Replacing all utilities with zero.
+D. Applying a heuristic evaluation function or averaging outcomes from fast simulations.
+
+Correct Answer:: D
+
+==== Question 5
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In a deterministic, two-player, turn-taking, perfect-information, zero-sum game:
+
+A. Players alternate moves, the state is fully observable, and one player's gain is the other player's loss.
+B. Both players move randomly at the same time.
+C. The rules are unknown to both players.
+D. All outcomes are win-win outcomes.
+
+Correct Answer:: A
+
+==== Question 6
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In game terminology, "perfect information" is closest in meaning to:
+
+A. Stochastic.
+B. Partially observable.
+C. Fully observable.
+D. Infinite.
+
+Correct Answer:: C
+
+==== Question 7
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A zero-sum game is one in which:
+
+A. Both players always receive utility zero.
+B. What is good for one player is equally bad for the other player.
+C. No player can win.
+D. The game tree has no leaves.
+
+Correct Answer:: B
+
+==== Question 8
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Chapter 5, "move" and "position" are game terms that correspond most closely to:
+
+A. Utility and terminal state.
+B. Alpha and beta.
+C. Evaluation and pruning.
+D. Action and state.
+
+Correct Answer:: D
+
+==== Question 9
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which item is part of the formal definition of a game in Chapter 5?
+
+A. `TO-MOVE(s)`, the player whose turn it is in state `s`.
+B. The student's attendance record.
+C. The color palette for the board.
+D. The final exam room.
+
+Correct Answer:: A
+
+==== Question 10
+
+Type:: Multiple Choice
+Points:: 1
+Question:: `IS-TERMINAL(s)` is true when:
+
+A. The state has the largest branching factor.
+B. The search depth is exactly one.
+C. The game is over.
+D. The player to move is MAX.
+
+Correct Answer:: C
+
+==== Question 11
+
+Type:: Multiple Choice
+Points:: 1
+Question:: `UTILITY(s, p)` defines:
+
+A. The list of legal moves in state `s`.
+B. The next state after action `p`.
+C. The branching factor of the game tree.
+D. The final numeric value to player `p` when the game ends in terminal state `s`.
+
+Correct Answer:: D
+
+==== Question 12
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The complete game tree is:
+
+A. A table of only legal opening moves.
+B. A search tree that follows every sequence of moves all the way to terminal states.
+C. A graph containing only heuristic scores.
+D. A list of moves made by MAX only.
+
+Correct Answer:: B
+
+==== Question 13
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the tic-tac-toe game tree, terminal leaf utilities are usually shown from the point of view of:
+
+A. MAX.
+B. MIN.
+C. The referee.
+D. A random player.
+
+Correct Answer:: A
+
+==== Question 14
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why is a full chess game tree best treated as a theoretical construct?
+
+A. Chess has no legal moves.
+B. Chess is not turn-taking.
+C. Chess cannot be represented as states.
+D. The complete game tree is far too large to realize physically.
+
+Correct Answer:: D
+
+==== Question 15
+
+Type:: Multiple Choice
+Points:: 1
+Question:: MAX's strategy must be conditional because:
+
+A. The utility function is missing.
+B. The game has no terminal states.
+C. MIN's future moves affect what MAX should do next.
+D. MAX is never allowed to move first.
+
+Correct Answer:: C
+
+==== Question 16
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In game-tree search, a "ply" means:
+
+A. A complete game from start to finish.
+B. One move by one player, bringing the tree one level deeper.
+C. A terminal utility value.
+D. A legal move that is pruned.
+
+Correct Answer:: B
+
+==== Question 17
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The minimax value of a state is:
+
+A. The utility for MAX assuming both players play optimally from that state onward.
+B. The number of legal moves available to MIN.
+C. The amount of memory used by the game tree.
+D. The value of the first child generated.
+
+Correct Answer:: A
+
+==== Question 18
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The minimax value of a terminal state is:
+
+A. Always zero.
+B. The number of moves made so far.
+C. The branching factor of the parent node.
+D. Its utility.
+
+Correct Answer:: D
+
+==== Question 19
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In minimax, MAX and MIN choose successor states by:
+
+A. Both choosing randomly.
+B. MAX choosing the highest value and MIN choosing the lowest value for MAX.
+C. Both choosing the highest value for MAX.
+D. MIN refusing to move.
+
+Correct Answer:: B
+
+==== Question 20
+
+Type:: Multiple Choice
+Points:: 1
+Question:: What does the minimax definition of optimal play assume about MIN?
+
+A. MIN will always make mistakes.
+B. MIN cannot observe the board.
+C. MIN also plays optimally.
+D. MIN has no legal actions.
+
+Correct Answer:: C
+
+==== Question 21
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The minimax search algorithm works by:
+
+A. Recursing to leaves and backing up values through the tree.
+B. Training a classifier on past games only.
+C. Ignoring terminal utilities.
+D. Choosing the first legal move.
+
+Correct Answer:: A
+
+==== Question 22
+
+Type:: Multiple Choice
+Points:: 1
+Question:: If the maximum game-tree depth is `m` and each state has about `b` legal moves, minimax time complexity is:
+
+A. `O(m)`.
+B. `O(b + m)`.
+C. `O(log b)`.
+D. `O(b^m)`.
+
+Correct Answer:: D
+
+==== Question 23
+
+Type:: Multiple Choice
+Points:: 1
+Question:: If actions are generated one at a time, minimax can have space complexity:
+
+A. `O(b^m)`.
+B. `O(b^2)`.
+C. `O(m)`.
+D. `O(1/b)`.
+
+Correct Answer:: C
+
+==== Question 24
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In multiplayer games, Chapter 5 replaces a single backed-up value at each node with:
+
+A. A Boolean terminal flag only.
+B. A vector of utility values, one for each player.
+C. A random number.
+D. A list of all previous boards.
+
+Correct Answer:: B
+
+==== Question 25
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In a multiplayer game, the backed-up value of a nonterminal node is generally:
+
+A. The utility vector of the successor that is best for the player whose turn it is.
+B. Always the utility vector with the highest value for player A.
+C. Always zero.
+D. The average of every utility vector regardless of the player to move.
+
+Correct Answer:: A
+
+==== Question 26
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 5 explains that alliances in multiplayer games can emerge because:
+
+A. Utilities are always identical.
+B. No player acts selfishly.
+C. Self-interested players may temporarily benefit from cooperating against a stronger player.
+D. Game trees cannot represent multiple players.
+
+Correct Answer:: C
+
+==== Question 27
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In a non-zero-sum game, two players may cooperate when:
+
+A. The terminal test is missing.
+B. Both players are forced to lose.
+C. Utilities are always opposite.
+D. A reachable outcome is highly valuable to both players.
+
+Correct Answer:: D
+
+==== Question 28
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Alpha-beta pruning is useful because it can:
+
+A. Change the rules of the game.
+B. Compute the same minimax decision while examining fewer nodes.
+C. Guarantee a win against every opponent.
+D. Remove the need for a utility function.
+
+Correct Answer:: B
+
+==== Question 29
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Alpha-beta pruning removes a branch when:
+
+A. The branch cannot affect the final minimax decision.
+B. The branch contains a legal move.
+C. The branch starts at the root.
+D. The branch belongs to MAX.
+
+Correct Answer:: A
+
+==== Question 30
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In alpha-beta search, alpha and beta are:
+
+A. The first two legal moves.
+B. Two different terminal tests.
+C. The names of the two players.
+D. Bounds on backed-up values along the current search path.
+
+Correct Answer:: D
+
+==== Question 31
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Informally, alpha tracks the best value found so far for MAX, while beta tracks:
+
+A. The maximum depth limit.
+B. The value of the root before search begins.
+C. The best bound found so far for MIN.
+D. The number of repeated states.
+
+Correct Answer:: C
+
+==== Question 32
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The effectiveness of alpha-beta pruning depends heavily on:
+
+A. Whether the game has a colorful board.
+B. The order in which successor states are examined.
+C. Whether the state names are strings.
+D. The number of students taking the quiz.
+
+Correct Answer:: B
+
+==== Question 33
+
+Type:: Multiple Choice
+Points:: 1
+Question:: With perfect move ordering, alpha-beta pruning can reduce the number of examined nodes to roughly:
+
+A. `O(b^(m/2))`.
+B. `O(b^m)`.
+C. `O(m!)`.
+D. `O(2^b)`.
+
+Correct Answer:: A
+
+==== Question 34
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Iterative deepening can improve alpha-beta search because:
+
+A. It makes the game zero-sum.
+B. It removes the opponent from the game.
+C. Earlier shallow searches can provide move rankings for deeper searches.
+D. It guarantees that every move is equally good.
+
+Correct Answer:: C
+
+==== Question 35
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The killer move heuristic means:
+
+A. Never expanding capture moves.
+B. Choosing moves only at random.
+C. Deleting the transposition table.
+D. Trying first moves that were found to be strong in previous search.
+
+Correct Answer:: D
+
+==== Question 36
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A transposition occurs when:
+
+A. A terminal state has utility zero.
+B. Different move sequences lead to the same game position.
+C. The evaluation function is linear.
+D. The search depth is exactly one.
+
+Correct Answer:: B
+
+==== Question 37
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A transposition table is used to:
+
+A. Cache values for previously reached game states so repeated positions do not require repeated search.
+B. Randomize the move order.
+C. Store only the opening move.
+D. Replace the terminal test.
+
+Correct Answer:: A
+
+==== Question 38
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why is plain minimax still impractical for games like chess and Go?
+
+A. It cannot represent players.
+B. It has no utility values.
+C. It cannot recurse.
+D. There are still too many states to explore in the available time.
+
+Correct Answer:: D
+
+==== Question 39
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Shannon's Type A strategy:
+
+A. Ignores all legal moves that look bad.
+B. Searches only one path forever.
+C. Considers all possible moves to a certain depth, then applies a heuristic evaluation function.
+D. Requires hidden information.
+
+Correct Answer:: C
+
+==== Question 40
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Shannon's Type B strategy:
+
+A. Searches every move to the same fixed depth.
+B. Ignores moves that look bad and follows promising lines deeply.
+C. Refuses to use heuristic evaluation.
+D. Is exactly the same as breadth-first search.
+
+Correct Answer:: B
+
+==== Question 41
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Heuristic alpha-beta tree search makes search practical by:
+
+A. Cutting off search early and applying an evaluation function to nonterminal states.
+B. Removing MIN from the game.
+C. Replacing all moves with random actions.
+D. Searching only terminal states.
+
+Correct Answer:: A
+
+==== Question 42
+
+Type:: Multiple Choice
+Points:: 1
+Question:: For terminal states, a good evaluation function should:
+
+A. Return a random value.
+B. Return the depth limit.
+C. Ignore the utility function.
+D. Equal the true utility.
+
+Correct Answer:: D
+
+==== Question 43
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A good heuristic evaluation function should be:
+
+A. Slow and unrelated to winning.
+B. Fast to compute and strongly correlated with actual chances of winning.
+C. Correct only for illegal states.
+D. Larger for losing states by definition.
+
+Correct Answer:: B
+
+==== Question 44
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A weighted linear evaluation function:
+
+A. Always returns the exact minimax value.
+B. Uses no state features.
+C. Combines numerical feature values using weights.
+D. Can be used only in tic-tac-toe.
+
+Correct Answer:: C
+
+==== Question 45
+
+Type:: Multiple Choice
+Points:: 1
+Question:: One limitation of simply adding feature values in an evaluation function is that it assumes:
+
+A. Each feature's contribution is independent of the values of other features.
+B. The game has no terminal states.
+C. MAX and MIN cooperate.
+D. Every legal move has equal value.
+
+Correct Answer:: A
+
+==== Question 46
+
+Type:: Multiple Choice
+Points:: 1
+Question:: When human expertise is unavailable for a game, the weights in an evaluation function may be estimated using:
+
+A. The alphabetic order of move names.
+B. The color of the game board.
+C. Machine learning techniques.
+D. The final exam schedule.
+
+Correct Answer:: C
+
+==== Question 47
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In heuristic alpha-beta search, `IS-CUTOFF(state, depth)` should return true:
+
+A. Only when MAX is losing.
+B. Only when beta is zero.
+C. Only for the initial state.
+D. For terminal states and for nonterminal states where the search should stop.
+
+Correct Answer:: D
+
+==== Question 48
+
+Type:: Multiple Choice
+Points:: 1
+Question:: With iterative deepening under a time limit, a game-playing program can:
+
+A. Ignore all previous search results.
+B. Return the move selected by the deepest completed search when time runs out.
+C. Guarantee perfect play in chess.
+D. Avoid using a transposition table.
+
+Correct Answer:: B
+
+==== Question 49
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Quiescence search is used because evaluation functions should preferably be applied to:
+
+A. Stable positions without pending tactical moves that would wildly change the evaluation.
+B. Only the root node.
+C. Positions where the opponent has no legal actions by definition.
+D. States chosen randomly.
+
+Correct Answer:: A
+
+==== Question 50
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Forward pruning saves computation time by:
+
+A. Evaluating every branch exactly like minimax.
+B. Proving that pruned branches cannot affect the result.
+C. Removing the terminal test from the algorithm.
+D. Pruning moves that appear poor, at the risk of discarding a move that is actually good.
+
+Correct Answer:: D
+
+== Answer Key
+
+[cols="1,1,1,1",options="header"]
+|===
+| Question | Answer | Question | Answer
+| 1 | B | 26 | C
+| 2 | A | 27 | D
+| 3 | C | 28 | B
+| 4 | D | 29 | A
+| 5 | A | 30 | D
+| 6 | C | 31 | C
+| 7 | B | 32 | B
+| 8 | D | 33 | A
+| 9 | A | 34 | C
+| 10 | C | 35 | D
+| 11 | D | 36 | B
+| 12 | B | 37 | A
+| 13 | A | 38 | D
+| 14 | D | 39 | C
+| 15 | C | 40 | B
+| 16 | B | 41 | A
+| 17 | A | 42 | D
+| 18 | D | 43 | B
+| 19 | B | 44 | C
+| 20 | C | 45 | A
+| 21 | A | 46 | C
+| 22 | D | 47 | D
+| 23 | C | 48 | B
+| 24 | B | 49 | A
+| 25 | A | 50 | D
+|===

@@ -1,0 +1,717 @@
+= COMP 469 Canvas Question Bank: AIMA Chapter 3 Multiple Choice
+:toc:
+:sectnums:
+
+== Suggested Canvas Setup
+
+Course:: COMP 469 - Artificial Intelligence/Neural Nets
+Week:: Week 2
+Reading:: AIMA Chapter 3 - Solving Problems by Searching
+Source File:: `Fall 2026/L02 - State-Space Search/Chapter 3 - Solving Problems by Searching.docx`
+Lab Alignment:: L02 - State-Space Search
+Recommended Use:: Canvas quiz, reading check, lab readiness quiz, search algorithm review, or midterm review
+Question Style:: Multiple choice
+Recommended Points:: 1 point each
+Recommended Time Limit:: 35-50 minutes for all 50 questions, or 15-25 minutes for a random draw of 20-25 questions
+Canvas Notes:: Enter each item as a Multiple Choice question. Use the listed Correct Answer letter as the correct option. Randomize question order and answer-choice order if using the full bank.
+
+== Learning Targets
+
+Students should be able to:
+
+* Explain what a problem-solving agent does.
+* Distinguish goal formulation, problem formulation, search, and execution.
+* Define the parts of a search problem: initial state, actions, transition model, goal test, and action cost.
+* Distinguish a state-space graph from a search tree.
+* Explain nodes, frontiers, reached states, repeated states, cycles, and redundant paths.
+* Evaluate search algorithms using completeness, cost optimality, time complexity, and space complexity.
+* Compare breadth-first search, uniform-cost search, depth-first search, depth-limited search, iterative deepening search, and bidirectional search.
+* Explain how heuristic functions guide informed search.
+* Compare greedy best-first search, A-star search, weighted A-star search, IDA-star, RBFS, and SMA-star.
+* Explain admissibility, consistency, dominance, relaxed problems, pattern databases, landmarks, and learned heuristics.
+
+== Canvas Question Bank
+
+=== Chapter 3 Multiple-Choice Questions
+
+==== Question 1
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Chapter 3, a problem-solving agent is mainly an agent that:
+
+A. Learns only from labeled data.
+B. Looks ahead to find a sequence of actions that can achieve a goal.
+C. Avoids using models of the world.
+D. Acts randomly whenever the correct action is unclear.
+
+Correct Answer:: B
+
+==== Question 2
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 3 focuses on search in environments that are:
+
+A. Episodic, single-agent, fully observable, deterministic, static, discrete, and known.
+B. Multiagent, partially observable, stochastic, dynamic, continuous, and unknown.
+C. Always adversarial and real-time.
+D. Always physical robot environments.
+
+Correct Answer:: A
+
+==== Question 3
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which list gives the four-phase problem-solving process described in Chapter 3?
+
+A. Perception, classification, clustering, deployment.
+B. Data cleaning, training, validation, testing.
+C. Goal formulation, problem formulation, search, execution.
+D. Sensing, reinforcement, reward, backpropagation.
+
+Correct Answer:: C
+
+==== Question 4
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the Romania example, adopting the goal of reaching Bucharest is an example of:
+
+A. Transition modeling.
+B. Frontier expansion.
+C. Heuristic dominance.
+D. Goal formulation.
+
+Correct Answer:: D
+
+==== Question 5
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In problem formulation, the agent primarily:
+
+A. Chooses a final course grade.
+B. Creates an abstract description of relevant states and actions.
+C. Runs every possible algorithm at once.
+D. Removes the goal from the problem.
+
+Correct Answer:: B
+
+==== Question 6
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In a fully observable, deterministic, known environment, a solution can often be treated as:
+
+A. A random policy with no goal.
+B. A set of unrelated percepts.
+C. A fixed sequence of actions.
+D. An unknowable hidden state.
+
+Correct Answer:: C
+
+==== Question 7
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An open-loop system executes its solution while:
+
+A. Continuously changing the goal state.
+B. Ignoring percepts during execution.
+C. Asking another agent for every action.
+D. Rebuilding the state space after each step.
+
+Correct Answer:: B
+
+==== Question 8
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In partially observable or nondeterministic environments, a solution may need to be:
+
+A. A single fixed action that never changes.
+B. A table with no states.
+C. A proof that no action is possible.
+D. A branching strategy that depends on future percepts.
+
+Correct Answer:: D
+
+==== Question 9
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The state space of a search problem is:
+
+A. The set of possible states the environment can be in.
+B. The list of students in the course.
+C. Only the final goal state.
+D. The set of all Python functions in the program.
+
+Correct Answer:: A
+
+==== Question 10
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In AIMA notation, `ACTIONS(s)` returns:
+
+A. The previous state before `s`.
+B. The cheapest complete solution from `s`.
+C. The finite set of actions applicable in state `s`.
+D. The memory used by the search algorithm.
+
+Correct Answer:: C
+
+==== Question 11
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In AIMA notation, `RESULT(s, a)` describes:
+
+A. The total number of goal states.
+B. The number of nodes in the frontier.
+C. The name of the chosen heuristic.
+D. The state that results from doing action `a` in state `s`.
+
+Correct Answer:: D
+
+==== Question 12
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A solution to a search problem is:
+
+A. Any state that has no successors.
+B. A path from the initial state to a goal state.
+C. A node with the highest path cost.
+D. A random action from the initial state.
+
+Correct Answer:: B
+
+==== Question 13
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An optimal solution is a solution that:
+
+A. Has the most actions.
+B. Avoids using the transition model.
+C. Has the lowest path cost among all solutions.
+D. Is found only by depth-first search.
+
+Correct Answer:: C
+
+==== Question 14
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why does Chapter 3 assume positive action costs?
+
+A. To avoid complications caused by zero or negative-cost paths.
+B. To make every search problem finite.
+C. To make every heuristic inadmissible.
+D. To prevent states from having successors.
+
+Correct Answer:: A
+
+==== Question 15
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In a state-space graph:
+
+A. Vertices are exams and edges are grades.
+B. Vertices are only goal tests.
+C. Edges are always heuristic values.
+D. Vertices are states and directed edges are actions.
+
+Correct Answer:: D
+
+==== Question 16
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Abstraction in problem formulation means:
+
+A. Adding every physical detail to the model.
+B. Removing irrelevant detail while preserving what matters for solving the problem.
+C. Refusing to use states.
+D. Choosing the longest possible path.
+
+Correct Answer:: B
+
+==== Question 17
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A problem abstraction is valid when:
+
+A. It always removes the goal.
+B. It makes every action impossible.
+C. Any abstract solution can be elaborated into a solution in the more detailed world.
+D. It guarantees a one-node search tree.
+
+Correct Answer:: C
+
+==== Question 18
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the two-cell vacuum world, why are there 8 possible states?
+
+A. There are 8 possible actions.
+B. The agent can be in either cell, and each of two cells can be clean or dirty.
+C. There are 8 possible goal tests.
+D. The action cost is always 8.
+
+Correct Answer:: B
+
+==== Question 19
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the 8-puzzle formulation, the simplest way to describe actions is usually to describe:
+
+A. The blank space moving Left, Right, Up, or Down.
+B. The board being shaken until it solves itself.
+C. The goal tile being deleted.
+D. Every physical motion of a player's hand.
+
+Correct Answer:: A
+
+==== Question 20
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which example from Chapter 3 illustrates how an infinite state space can arise?
+
+A. A two-cell vacuum world.
+B. A fixed map with 20 cities.
+C. A multiple-choice quiz with four answers.
+D. Knuth's problem starting from 4 with square root, floor, and factorial operations.
+
+Correct Answer:: D
+
+==== Question 21
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A touring problem differs from ordinary route finding because it:
+
+A. Has no states.
+B. Requires visiting a set of locations rather than just reaching one destination.
+C. Cannot be represented as a search problem.
+D. Always has unit action costs.
+
+Correct Answer:: B
+
+==== Question 22
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In airline travel planning, why might the state include more than the current airport?
+
+A. Because airports cannot be states.
+B. Because action costs must always be 1.
+C. Because previous flight segments, times, and ticket restrictions can affect future costs and actions.
+D. Because the goal test is not allowed.
+
+Correct Answer:: C
+
+==== Question 23
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A search algorithm takes a search problem as input and returns:
+
+A. A solution or an indication of failure.
+B. Only a training dataset.
+C. A probability distribution over all courses.
+D. A sorted list of variable names.
+
+Correct Answer:: A
+
+==== Question 24
+
+Type:: Multiple Choice
+Points:: 1
+Question:: What is the key difference between a state-space graph and a search tree?
+
+A. The search tree contains no nodes.
+B. The state-space graph can only represent goal states.
+C. The search tree is always smaller than the state-space graph.
+D. The state-space graph describes states and transitions; the search tree describes paths explored by the algorithm.
+
+Correct Answer:: D
+
+==== Question 25
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A node in a search tree typically stores:
+
+A. Only the final exam date.
+B. State, parent, action, and path cost.
+C. Only the heuristic function's source code.
+D. State, font size, color, and filename.
+
+Correct Answer:: B
+
+==== Question 26
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The frontier of a search tree is:
+
+A. The set of all states that do not exist.
+B. The path cost of the optimal solution.
+C. The set of generated nodes that have not yet been expanded.
+D. The set of actions already executed in the real world.
+
+Correct Answer:: C
+
+==== Question 27
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In best-first search, the next node expanded is selected by:
+
+A. Choosing a node with minimum value of an evaluation function `f(n)`.
+B. Always choosing the newest goal state.
+C. Ignoring the frontier.
+D. Choosing only nodes with no parent.
+
+Correct Answer:: A
+
+==== Question 28
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which queue type is used for breadth-first search?
+
+A. LIFO stack.
+B. Priority queue ordered by heuristic only.
+C. Random queue.
+D. FIFO queue.
+
+Correct Answer:: D
+
+==== Question 29
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which queue type is most directly associated with depth-first search?
+
+A. FIFO queue.
+B. LIFO stack.
+C. Alphabetical queue.
+D. Weighted average queue.
+
+Correct Answer:: B
+
+==== Question 30
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A repeated state caused by returning to a previous state along a path is called:
+
+A. A landmark.
+B. A relaxed problem.
+C. A cycle or loopy path.
+D. A performance measure.
+
+Correct Answer:: C
+
+==== Question 31
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A graph search algorithm differs from a tree-like search algorithm because graph search:
+
+A. Checks for redundant paths or reached states.
+B. Refuses to use nodes.
+C. Has no frontier.
+D. Cannot find optimal solutions.
+
+Correct Answer:: A
+
+==== Question 32
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which four criteria does Chapter 3 use to evaluate search algorithms?
+
+A. Accuracy, precision, recall, and F1 score.
+B. Syntax, style, comments, and indentation.
+C. Privacy, fairness, transparency, and consent.
+D. Completeness, cost optimality, time complexity, and space complexity.
+
+Correct Answer:: D
+
+==== Question 33
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A complete search algorithm is one that:
+
+A. Always uses the least memory.
+B. Is guaranteed to find a solution if one exists, and correctly report failure when no solution exists.
+C. Always uses a heuristic.
+D. Never expands a node.
+
+Correct Answer:: B
+
+==== Question 34
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Breadth-first search expands nodes in order of:
+
+A. Shallowest depth first.
+B. Largest heuristic value first.
+C. Highest path cost first.
+D. Random path length first.
+
+Correct Answer:: A
+
+==== Question 35
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Breadth-first search is cost-optimal when:
+
+A. Action costs are negative.
+B. The heuristic overestimates.
+C. All action costs are equal.
+D. The state space is unknown.
+
+Correct Answer:: C
+
+==== Question 36
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A major practical weakness of breadth-first search is that:
+
+A. It cannot find shallow solutions.
+B. It never explores the root.
+C. It requires a learned neural network.
+D. It stores all generated nodes in memory, leading to exponential space requirements.
+
+Correct Answer:: D
+
+==== Question 37
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Uniform-cost search expands:
+
+A. The node with the lowest path cost `g(n)`.
+B. The deepest node first.
+C. The node with the largest heuristic value.
+D. The oldest node regardless of cost.
+
+Correct Answer:: A
+
+==== Question 38
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why should uniform-cost search test for a goal when a node is selected for expansion rather than when it is first generated?
+
+A. Generated nodes never have states.
+B. A later-generated path to the same goal may have lower path cost.
+C. It makes the algorithm depth-first.
+D. It prevents action costs from being positive.
+
+Correct Answer:: B
+
+==== Question 39
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Depth-first search expands:
+
+A. The shallowest node in the frontier first.
+B. The lowest path-cost node first.
+C. The deepest node in the frontier first.
+D. The node closest to the goal by heuristic estimate.
+
+Correct Answer:: C
+
+==== Question 40
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Depth-first search is attractive in some settings mainly because it:
+
+A. Is always cost-optimal.
+B. Is always complete in infinite spaces.
+C. Requires no branching factor.
+D. Uses much less memory than breadth-first search.
+
+Correct Answer:: D
+
+==== Question 41
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Depth-limited search modifies depth-first search by:
+
+A. Imposing a maximum search depth.
+B. Expanding all shallow nodes with a FIFO queue.
+C. Using only heuristic estimates.
+D. Removing the goal test.
+
+Correct Answer:: A
+
+==== Question 42
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Iterative deepening search works by:
+
+A. Repeatedly lowering the action cost of every edge.
+B. Repeatedly running depth-limited search with increasing depth limits.
+C. Expanding only one node total.
+D. Replacing the state space with a neural network.
+
+Correct Answer:: B
+
+==== Question 43
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why is iterative deepening often useful?
+
+A. It guarantees that no node is ever regenerated.
+B. It only works when the goal is unreachable.
+C. It combines breadth-first search's completeness for shallow solutions with depth-first search's low memory use.
+D. It avoids using a goal test.
+
+Correct Answer:: C
+
+==== Question 44
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Bidirectional search attempts to improve efficiency by:
+
+A. Expanding only the leftmost child.
+B. Removing all action costs.
+C. Replacing every state with a random number.
+D. Searching forward from the initial state and backward from the goal until the frontiers meet.
+
+Correct Answer:: D
+
+==== Question 45
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An informed search algorithm differs from an uninformed one because it has access to:
+
+A. A heuristic function that estimates distance or cost to a goal.
+B. The final course grades.
+C. Only a LIFO stack.
+D. No information about the problem.
+
+Correct Answer:: A
+
+==== Question 46
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Greedy best-first search selects nodes using primarily:
+
+A. The path cost `g(n)` only.
+B. The heuristic value `h(n)`.
+C. The depth limit only.
+D. The number of repeated states only.
+
+Correct Answer:: B
+
+==== Question 47
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A-star search expands nodes according to:
+
+A. `f(n) = h(n) - g(n)`.
+B. `f(n) = depth(n)` only.
+C. `f(n) = g(n) + h(n)`.
+D. `f(n) = random()`.
+
+Correct Answer:: C
+
+==== Question 48
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An admissible heuristic is one that:
+
+A. Always returns a negative number.
+B. Always overestimates to speed up search.
+C. Ignores the goal state.
+D. Never overestimates the true cost to reach a goal.
+
+Correct Answer:: D
+
+==== Question 49
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A consistent heuristic satisfies a triangle-inequality-style condition, meaning roughly that:
+
+A. The estimated cost from a state is no more than the step cost plus the estimate from the successor.
+B. The estimated cost must always equal zero.
+C. The path cost must decrease after every action.
+D. The branching factor must be one.
+
+Correct Answer:: A
+
+==== Question 50
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the 8-puzzle, Manhattan distance usually dominates the misplaced-tiles heuristic because:
+
+A. It ignores tile locations completely.
+B. It is never smaller than misplaced tiles and still does not overestimate the true solution cost.
+C. It always equals the exact solution cost.
+D. It can only be used by uninformed search.
+
+Correct Answer:: B
+
+== Answer Key
+
+[cols="1,1,1,1",options="header"]
+|===
+| Question | Answer | Question | Answer
+| 1 | B | 26 | C
+| 2 | A | 27 | A
+| 3 | C | 28 | D
+| 4 | D | 29 | B
+| 5 | B | 30 | C
+| 6 | C | 31 | A
+| 7 | B | 32 | D
+| 8 | D | 33 | B
+| 9 | A | 34 | A
+| 10 | C | 35 | C
+| 11 | D | 36 | D
+| 12 | B | 37 | A
+| 13 | C | 38 | B
+| 14 | A | 39 | C
+| 15 | D | 40 | D
+| 16 | B | 41 | A
+| 17 | C | 42 | B
+| 18 | B | 43 | C
+| 19 | A | 44 | D
+| 20 | D | 45 | A
+| 21 | B | 46 | B
+| 22 | C | 47 | C
+| 23 | A | 48 | D
+| 24 | D | 49 | A
+| 25 | B | 50 | B
+|===
