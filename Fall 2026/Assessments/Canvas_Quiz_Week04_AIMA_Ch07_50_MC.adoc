@@ -1,0 +1,718 @@
+= COMP 469 Canvas Question Bank: AIMA Chapter 7 Multiple Choice
+:toc:
+:sectnums:
+
+== Suggested Canvas Setup
+
+Course:: COMP 469 - Artificial Intelligence/Neural Nets
+Week:: Week 4
+Reading:: AIMA Chapter 7 - Logical Agents
+Source File:: `Fall 2026/L04 - Knwledge Representation and Logic/Chapter 7 - Logical Agents.docx`
+Lab Alignment:: L04 - Knowledge Representation and Logic
+Recommended Use:: Canvas quiz, reading check, lab readiness quiz, logical agents review, or midterm review
+Question Style:: Multiple choice
+Recommended Points:: 1 point each
+Recommended Time Limit:: 35-50 minutes for all 50 questions, or 15-25 minutes for a random draw of 20-25 questions
+Canvas Notes:: Enter each item as a Multiple Choice question. Use the listed Correct Answer letter as the correct option. Randomize question order and answer-choice order if using the full bank.
+
+== Learning Targets
+
+Students should be able to:
+
+* Explain the role of a knowledge base in a knowledge-based agent.
+* Distinguish TELL, ASK, axioms, inference, and knowledge representation languages.
+* Explain how the Wumpus World illustrates reasoning under partial observability.
+* Define syntax, semantics, models, satisfaction, entailment, soundness, and completeness.
+* Interpret basic propositional logic connectives and truth conditions.
+* Explain truth-table model checking and its computational cost.
+* Distinguish model checking from theorem proving.
+* Explain validity, satisfiability, proof by refutation, and conjunctive normal form.
+* Describe resolution, definite clauses, Horn clauses, forward chaining, and backward chaining.
+* Compare DPLL and WalkSAT as SAT-solving methods.
+* Explain successor-state axioms, the frame problem, logical state estimation, hybrid agents, and SATPLAN.
+
+== Canvas Question Bank
+
+=== Chapter 7 Multiple-Choice Questions
+
+==== Question 1
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A knowledge-based agent primarily decides what to do by:
+
+A. Memorizing only complete concrete states.
+B. Reasoning over an internal representation of knowledge.
+C. Choosing actions uniformly at random.
+D. Using only sensor data from the current instant.
+
+Correct Answer:: B
+
+==== Question 2
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Chapter 7, a knowledge base is:
+
+A. A set of sentences expressed in a knowledge representation language.
+B. A queue of nodes waiting to be expanded.
+C. A table of neural-network weights.
+D. A list of legal moves in a game tree.
+
+Correct Answer:: A
+
+==== Question 3
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In a knowledge-based agent, TELL and ASK are used to:
+
+A. Start and stop a search timer.
+B. Train and test a classifier.
+C. Add sentences to the knowledge base and query what follows from it.
+D. Draw and erase the environment map.
+
+Correct Answer:: C
+
+==== Question 4
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A sentence that is taken as given rather than derived from other sentences is called:
+
+A. A frontier.
+B. A heuristic.
+C. A percept sequence.
+D. An axiom.
+
+Correct Answer:: D
+
+==== Question 5
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the generic KB-Agent program, the agent first:
+
+A. Tells the knowledge base what it perceived at the current time.
+B. Deletes all previous knowledge.
+C. Shoots an arrow.
+D. Converts the problem into a neural network.
+
+Correct Answer:: A
+
+==== Question 6
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A knowledge-level description of an agent focuses on:
+
+A. The exact memory address of each sentence.
+B. The programming language used for the implementation.
+C. What the agent knows and what its goals are.
+D. The font used to display formulas.
+
+Correct Answer:: C
+
+==== Question 7
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The declarative approach to building an agent means:
+
+A. Encoding every behavior directly as a procedure.
+B. TELLing the agent sentences that describe what it needs to know.
+C. Avoiding knowledge representation.
+D. Replacing inference with random search.
+
+Correct Answer:: B
+
+==== Question 8
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the Wumpus World, the agent's sensors include:
+
+A. Temperature, pressure, humidity, speed, and GPS.
+B. Score, depth, branching factor, alpha, and beta.
+C. Accuracy, recall, precision, loss, and gradient.
+D. Stench, breeze, glitter, bump, and scream.
+
+Correct Answer:: D
+
+==== Question 9
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the Wumpus World, a breeze indicates:
+
+A. A pit in a directly adjacent square.
+B. Gold in the current square.
+C. A wall directly ahead.
+D. The wumpus has been killed.
+
+Correct Answer:: A
+
+==== Question 10
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the Wumpus World, a stench indicates:
+
+A. The agent is carrying gold.
+B. The arrow has already been used.
+C. The wumpus is in a directly adjacent square.
+D. The cave has no pits.
+
+Correct Answer:: C
+
+==== Question 11
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The Wumpus World is partially observable because:
+
+A. It has no deterministic rules.
+B. It has no grid structure.
+C. The agent receives no percepts at all.
+D. Some relevant facts, such as hidden pits and the wumpus location, are not directly perceived.
+
+Correct Answer:: D
+
+==== Question 12
+
+Type:: Multiple Choice
+Points:: 1
+Question:: If the agent perceives no breeze in [1,1], it can infer that:
+
+A. The gold must be in [1,1].
+B. Neighboring squares [1,2] and [2,1] contain no pits.
+C. The wumpus is dead.
+D. Every square in the cave is safe.
+
+Correct Answer:: B
+
+==== Question 13
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In logic, syntax specifies:
+
+A. Which sentences are well formed.
+B. Which models are true in the real world.
+C. Which action has the lowest cost.
+D. Which neural-network layer is hidden.
+
+Correct Answer:: A
+
+==== Question 14
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In logic, semantics specifies:
+
+A. The spelling of proposition symbols.
+B. The size of the knowledge base in bytes.
+C. The best action in every state.
+D. How sentence truth is determined with respect to models.
+
+Correct Answer:: D
+
+==== Question 15
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A model in propositional logic is:
+
+A. A physical copy of the Wumpus cave.
+B. A function approximator trained from data.
+C. An assignment of true or false to each proposition symbol.
+D. A list of all possible actions.
+
+Correct Answer:: C
+
+==== Question 16
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The notation `alpha |= beta` means:
+
+A. alpha is a variable in beta.
+B. alpha entails beta.
+C. alpha is syntactically identical to beta.
+D. alpha is the negation of beta.
+
+Correct Answer:: B
+
+==== Question 17
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Entailment means that:
+
+A. In every model where alpha is true, beta is also true.
+B. beta is true in exactly one model.
+C. alpha and beta are both written in English.
+D. alpha is shorter than beta.
+
+Correct Answer:: A
+
+==== Question 18
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A sound inference algorithm:
+
+A. Derives every possible sentence, whether justified or not.
+B. Is guaranteed to halt in one step.
+C. Ignores the knowledge base.
+D. Derives only sentences that are actually entailed.
+
+Correct Answer:: D
+
+==== Question 19
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A complete inference algorithm:
+
+A. Never uses syntax.
+B. Can derive every sentence that is entailed.
+C. Uses no memory.
+D. Always produces a shorter knowledge base.
+
+Correct Answer:: B
+
+==== Question 20
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Grounding concerns:
+
+A. The agent's search depth.
+B. The branching factor of the state space.
+C. The connection between logical sentences and the real environment.
+D. The order in which clauses are printed.
+
+Correct Answer:: C
+
+==== Question 21
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In propositional logic, an atomic sentence:
+
+A. Consists of a single proposition symbol.
+B. Must contain every connective.
+C. Is always false.
+D. Is a complete game tree.
+
+Correct Answer:: A
+
+==== Question 22
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A literal is:
+
+A. Any sentence with two implications.
+B. Any model that satisfies the KB.
+C. Any arbitrary English sentence.
+D. An atomic sentence or the negation of an atomic sentence.
+
+Correct Answer:: D
+
+==== Question 23
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In propositional logic, `P => Q` is false only when:
+
+A. P is false and Q is true.
+B. P and Q are both false.
+C. P is true and Q is false.
+D. P and Q are both true.
+
+Correct Answer:: C
+
+==== Question 24
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In propositional logic, `P <=> Q` is true when:
+
+A. P is true and Q is false.
+B. P and Q have the same truth value.
+C. P is false and Q is true.
+D. P is always unknown.
+
+Correct Answer:: B
+
+==== Question 25
+
+Type:: Multiple Choice
+Points:: 1
+Question:: If a propositional vocabulary has `n` symbols, then truth-table model checking may examine:
+
+A. `2^n` models.
+B. `n` models exactly.
+C. `log n` models.
+D. No models.
+
+Correct Answer:: A
+
+==== Question 26
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The truth-table entailment algorithm is complete for propositional logic because:
+
+A. It ignores models where the KB is false.
+B. It uses a heuristic evaluation function.
+C. It checks all finitely many assignments to the proposition symbols.
+D. It only works for Horn clauses.
+
+Correct Answer:: C
+
+==== Question 27
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Theorem proving differs from model checking because theorem proving:
+
+A. Cannot use inference rules.
+B. Enumerates every possible model first.
+C. Requires every sentence to be a percept.
+D. Applies inference rules directly to sentences to construct a proof.
+
+Correct Answer:: D
+
+==== Question 28
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Two sentences are logically equivalent when:
+
+A. They use the same number of symbols.
+B. They are true in exactly the same models.
+C. They are both atomic.
+D. They have the same indentation.
+
+Correct Answer:: B
+
+==== Question 29
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A valid sentence is:
+
+A. True in all models.
+B. True in no models.
+C. True in exactly one model.
+D. False whenever the KB is true.
+
+Correct Answer:: A
+
+==== Question 30
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A satisfiable sentence is:
+
+A. A sentence with no proposition symbols.
+B. A sentence that must be false.
+C. A sentence written only as a Horn clause.
+D. True in at least one model.
+
+Correct Answer:: D
+
+==== Question 31
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Proof by refutation checks whether `alpha |= beta` by testing whether:
+
+A. `alpha` and `beta` use the same symbols.
+B. `beta` is shorter than `alpha`.
+C. `alpha and not beta` is unsatisfiable.
+D. `alpha` is unsatisfiable by itself.
+
+Correct Answer:: C
+
+==== Question 32
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Modus Ponens allows us to infer `beta` from:
+
+A. `alpha or beta` and `not beta`.
+B. `alpha => beta` and `alpha`.
+C. `not alpha` and `not beta`.
+D. `beta => alpha` only.
+
+Correct Answer:: B
+
+==== Question 33
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Monotonicity means that:
+
+A. Adding sentences to the KB cannot invalidate earlier entailments.
+B. Every sentence becomes false after one inference.
+C. The KB must shrink over time.
+D. Only atomic sentences can be inferred.
+
+Correct Answer:: A
+
+==== Question 34
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Resolution operates on:
+
+A. Complete neural-network models.
+B. Arbitrary Python functions.
+C. Clauses, resolving complementary literals.
+D. Images from the Wumpus cave.
+
+Correct Answer:: C
+
+==== Question 35
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Conjunctive normal form, or CNF, represents a sentence as:
+
+A. A disjunction of implications.
+B. A list of actions.
+C. A truth table only.
+D. A conjunction of clauses.
+
+Correct Answer:: D
+
+==== Question 36
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A definite clause has:
+
+A. No positive literals.
+B. Exactly one positive literal.
+C. Exactly two positive literals.
+D. Only biconditionals.
+
+Correct Answer:: B
+
+==== Question 37
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A Horn clause has:
+
+A. At most one positive literal.
+B. At least two positive literals.
+C. No negative literals.
+D. Only arithmetic symbols.
+
+Correct Answer:: A
+
+==== Question 38
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Forward chaining is best described as:
+
+A. Goal-directed reasoning from a query backward.
+B. Randomly flipping truth assignments.
+C. Searching for a route through safe squares.
+D. Data-driven reasoning from known facts toward new conclusions.
+
+Correct Answer:: D
+
+==== Question 39
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Backward chaining is best described as:
+
+A. Data-driven reasoning from all percepts at once.
+B. A local search method over complete truth assignments.
+C. Goal-directed reasoning that works backward from a query.
+D. A method for deleting old axioms.
+
+Correct Answer:: C
+
+==== Question 40
+
+Type:: Multiple Choice
+Points:: 1
+Question:: For definite-clause knowledge bases, forward and backward chaining can decide entailment in:
+
+A. Exponential time in every case.
+B. Time linear in the size of the knowledge base.
+C. Constant time regardless of input size.
+D. Time proportional to the number of game-tree leaves.
+
+Correct Answer:: B
+
+==== Question 41
+
+Type:: Multiple Choice
+Points:: 1
+Question:: DPLL is a satisfiability algorithm that:
+
+A. Uses recursive backtracking over partial models with useful pruning heuristics.
+B. Ignores clauses and uses only English rules.
+C. Can operate only on neural-network weights.
+D. Is incomplete even for finite propositional vocabularies.
+
+Correct Answer:: A
+
+==== Question 42
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A pure symbol in DPLL is a symbol that:
+
+A. Appears in every clause.
+B. Has already been assigned both true and false.
+C. Appears only in unit clauses.
+D. Always appears with the same sign in all relevant clauses.
+
+Correct Answer:: D
+
+==== Question 43
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The unit clause heuristic in DPLL:
+
+A. Randomly restarts the search.
+B. Assigns the remaining literal in a clause that would otherwise be forced false.
+C. Deletes every satisfied clause permanently from the original KB.
+D. Converts propositional logic into first-order logic.
+
+Correct Answer:: B
+
+==== Question 44
+
+Type:: Multiple Choice
+Points:: 1
+Question:: WalkSAT searches for satisfying assignments by:
+
+A. Enumerating all models in lexicographic order.
+B. Applying Modus Ponens to Horn clauses only.
+C. Flipping symbols in complete assignments, mixing random walk and min-conflicts steps.
+D. Building a game tree.
+
+Correct Answer:: C
+
+==== Question 45
+
+Type:: Multiple Choice
+Points:: 1
+Question:: When WalkSAT returns a model:
+
+A. The input sentence is satisfiable.
+B. The input sentence is proved unsatisfiable.
+C. The input sentence is invalid in every model.
+D. The query is necessarily entailed.
+
+Correct Answer:: A
+
+==== Question 46
+
+Type:: Multiple Choice
+Points:: 1
+Question:: When WalkSAT returns failure, that means:
+
+A. The sentence is definitely unsatisfiable.
+B. The sentence is definitely valid.
+C. The sentence may be unsatisfiable, or the algorithm may simply need more time.
+D. The sentence has no proposition symbols.
+
+Correct Answer:: C
+
+==== Question 47
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The frame problem concerns:
+
+A. Choosing the color of a visual frame around the board.
+B. Proving that every SAT problem is easy.
+C. Deciding whether a game is zero-sum.
+D. Representing what stays unchanged when actions occur.
+
+Correct Answer:: D
+
+==== Question 48
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A successor-state axiom generally defines:
+
+A. The exact number of models in a KB.
+B. The truth of a fluent at the next time step in terms of current fluents and actions.
+C. The order of symbols in a truth table.
+D. The probability that WalkSAT will restart.
+
+Correct Answer:: B
+
+==== Question 49
+
+Type:: Multiple Choice
+Points:: 1
+Question:: SATPLAN works by:
+
+A. Translating a planning problem into a propositional satisfiability problem and extracting actions from a satisfying model.
+B. Using only breadth-first search over explicit states.
+C. Ignoring the transition model.
+D. Replacing goals with random clauses.
+
+Correct Answer:: A
+
+==== Question 50
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 7 concludes that propositional logic does not scale well to unbounded environments mainly because:
+
+A. It has no syntax.
+B. It cannot represent any true or false statements.
+C. It is too expressive for small domains.
+D. It cannot concisely express general patterns over time, space, and objects.
+
+Correct Answer:: D
+
+== Answer Key
+
+[cols="1,1,1,1",options="header"]
+|===
+| Question | Answer | Question | Answer
+| 1 | B | 26 | C
+| 2 | A | 27 | D
+| 3 | C | 28 | B
+| 4 | D | 29 | A
+| 5 | A | 30 | D
+| 6 | C | 31 | C
+| 7 | B | 32 | B
+| 8 | D | 33 | A
+| 9 | A | 34 | C
+| 10 | C | 35 | D
+| 11 | D | 36 | B
+| 12 | B | 37 | A
+| 13 | A | 38 | D
+| 14 | D | 39 | C
+| 15 | C | 40 | B
+| 16 | B | 41 | A
+| 17 | A | 42 | D
+| 18 | D | 43 | B
+| 19 | B | 44 | C
+| 20 | C | 45 | A
+| 21 | A | 46 | C
+| 22 | D | 47 | D
+| 23 | C | 48 | B
+| 24 | B | 49 | A
+| 25 | A | 50 | D
+|===

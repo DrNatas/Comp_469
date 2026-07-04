@@ -1,0 +1,719 @@
+= COMP 469 Canvas Question Bank: AIMA Chapter 12 Multiple Choice
+:toc:
+:sectnums:
+
+== Suggested Canvas Setup
+
+Course:: COMP 469 - Artificial Intelligence/Neural Nets
+Week:: Week 6
+Reading:: AIMA Chapter 12 - Quantifying Uncertainty
+Source File:: `Fall 2026/L06 - Quantifying Uncertainty/Chapte 12 - Quantifying Uncertainty.docx`
+Lab Alignment:: L06 - Quantifying Uncertainty
+Recommended Use:: Canvas quiz, reading check, lab readiness quiz, probability review, or midterm review
+Question Style:: Multiple choice
+Recommended Points:: 1 point each
+Recommended Time Limit:: 35-50 minutes for all 50 questions, or 15-25 minutes for a random draw of 20-25 questions
+Canvas Notes:: Enter each item as a Multiple Choice question. Use the listed Correct Answer letter as the correct option. Randomize question order and answer-choice order if using the full bank.
+
+== Learning Targets
+
+Students should be able to:
+
+* Explain why agents need probabilistic reasoning in partially observable, nondeterministic, or complex environments.
+* Distinguish logical certainty from probabilistic degrees of belief.
+* Explain how probability theory addresses laziness, theoretical ignorance, and practical ignorance.
+* Explain how utility theory and probability theory combine in decision theory.
+* Apply the principle of maximum expected utility.
+* Define sample spaces, possible worlds, events, propositions, random variables, prior probabilities, posterior probabilities, and evidence.
+* Use conditional probability, the product rule, marginalization, normalization, and full joint distributions.
+* Explain the probability axioms and why inconsistent degrees of belief can lead to irrational decisions.
+* Explain independence, conditional independence, and why they reduce representation size.
+* Apply Bayes' rule in causal and diagnostic reasoning.
+* Explain Naive Bayes models and their use in text classification.
+* Explain how probability improves Wumpus World decisions when logic alone leaves multiple possibilities unresolved.
+
+== Canvas Question Bank
+
+=== Chapter 12 Multiple-Choice Questions
+
+==== Question 1
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 12 focuses on uncertainty by using:
+
+A. Only symbolic proof rules.
+B. Numeric degrees of belief.
+C. Only deterministic plans.
+D. Game-tree pruning.
+
+Correct Answer:: B
+
+==== Question 2
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Real-world agents often face uncertainty because of:
+
+A. Partial observability, nondeterminism, or adversaries.
+B. Perfect sensors and deterministic actions.
+C. Complete knowledge of all outcomes.
+D. The absence of any possible evidence.
+
+Correct Answer:: A
+
+==== Question 3
+
+Type:: Multiple Choice
+Points:: 1
+Question:: One drawback of using only belief states and contingency plans is that the agent may need to:
+
+A. Ignore all unlikely possibilities.
+B. Assign utilities to pixels.
+C. Consider every possible explanation, even extremely unlikely ones.
+D. Use only unconditional probabilities.
+
+Correct Answer:: C
+
+==== Question 4
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The airport taxi example shows that a rational plan may be best because it:
+
+A. Guarantees success with logical certainty.
+B. Ignores waiting time.
+C. Avoids probabilities entirely.
+D. Maximizes expected performance, balancing multiple possible outcomes.
+
+Correct Answer:: D
+
+==== Question 5
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the dental diagnosis example, the simple rule `Toothache => Cavity` fails because:
+
+A. Not every toothache is caused by a cavity.
+B. Toothaches are impossible to observe.
+C. Cavities always cause pain.
+D. Logic cannot represent any medical fact.
+
+Correct Answer:: A
+
+==== Question 6
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 12 names three reasons logic struggles in domains such as diagnosis:
+
+A. Speed, memory, and display size.
+B. Syntax, parsing, and formatting.
+C. Laziness, theoretical ignorance, and practical ignorance.
+D. Agents, actions, and actuators.
+
+Correct Answer:: C
+
+==== Question 7
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A probability statement such as `P(cavity | toothache) = 0.8` is made relative to:
+
+A. The exact hidden truth of the world only.
+B. A knowledge state or evidence condition.
+C. The number of actions in a plan.
+D. A game utility value.
+
+Correct Answer:: B
+
+==== Question 8
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A logical agent's epistemological commitment differs from a probabilistic agent's because the logical agent:
+
+A. Always uses expected utility.
+B. Assigns every sentence a real number between 0 and 1.
+C. Cannot store facts.
+D. Treats sentences as true, false, or unknown.
+
+Correct Answer:: D
+
+==== Question 9
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Utility theory is used to represent:
+
+A. Preferences over outcomes.
+B. The size of a full joint table.
+C. The syntax of random variables.
+D. The number of possible worlds.
+
+Correct Answer:: A
+
+==== Question 10
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Decision theory combines:
+
+A. Logic theory and search theory.
+B. Game theory and graph theory.
+C. Probability theory and utility theory.
+D. Syntax and semantics only.
+
+Correct Answer:: C
+
+==== Question 11
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The principle of maximum expected utility says that a rational agent should choose the action that:
+
+A. Has the highest prior probability.
+B. Has the fewest possible outcomes.
+C. Avoids utility calculations.
+D. Has the highest probability-weighted average utility.
+
+Correct Answer:: D
+
+==== Question 12
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A decision-theoretic agent's belief state differs from a purely logical belief state because it includes:
+
+A. Only impossible worlds.
+B. Probabilities for possible states.
+C. No history of percepts.
+D. No action descriptions.
+
+Correct Answer:: B
+
+==== Question 13
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In probability theory, the sample space is:
+
+A. The set of all possible worlds.
+B. The set of all utility values.
+C. The set of all legal actions.
+D. The table of posterior queries only.
+
+Correct Answer:: A
+
+==== Question 14
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Possible worlds in a sample space are:
+
+A. Always equally likely.
+B. Always continuous values.
+C. Optional and overlapping.
+D. Mutually exclusive and exhaustive.
+
+Correct Answer:: D
+
+==== Question 15
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A fully specified probability model assigns:
+
+A. A utility to each action.
+B. A theorem proof to each sentence.
+C. A probability to each possible world.
+D. A heuristic to each state.
+
+Correct Answer:: C
+
+==== Question 16
+
+Type:: Multiple Choice
+Points:: 1
+Question:: An event, in the probability sense used in Chapter 12, corresponds roughly to:
+
+A. A function symbol.
+B. A proposition: a set of possible worlds where it holds.
+C. A search frontier.
+D. A single action cost.
+
+Correct Answer:: B
+
+==== Question 17
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A prior probability is:
+
+A. An unconditional probability before considering new evidence.
+B. A probability after all evidence has been conditioned on.
+C. A utility value.
+D. A normalizing constant only.
+
+Correct Answer:: A
+
+==== Question 18
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A posterior probability is:
+
+A. Always equal to the prior.
+B. A probability over impossible worlds.
+C. A path cost in a search problem.
+D. A conditional probability given evidence.
+
+Correct Answer:: D
+
+==== Question 19
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The conditional probability `P(a | b)` is defined as:
+
+A. `P(a) + P(b)`.
+B. `P(a and b) / P(b)`, when `P(b) > 0`.
+C. `P(b) / P(a and b)`.
+D. `P(a)P(b)` in all cases.
+
+Correct Answer:: B
+
+==== Question 20
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The product rule states that:
+
+A. `P(a or b) = P(a) + P(b)`.
+B. `P(a | b) = P(b | a)`.
+C. `P(a and b) = P(a | b)P(b)`.
+D. `P(not a) = P(a)`.
+
+Correct Answer:: C
+
+==== Question 21
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A random variable maps:
+
+A. Possible worlds to values in its range.
+B. Utilities to actions only.
+C. Proofs to clauses.
+D. Agents to performance measures.
+
+Correct Answer:: A
+
+==== Question 22
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A Boolean random variable has the range:
+
+A. All real numbers.
+B. `{true, false}`.
+C. All possible actions.
+D. All possible utilities.
+
+Correct Answer:: B
+
+==== Question 23
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A probability distribution for a finite random variable gives:
+
+A. Only one arbitrary value.
+B. A proof tree for each value.
+C. A probability for each possible value of the variable.
+D. The action with maximum utility.
+
+Correct Answer:: C
+
+==== Question 24
+
+Type:: Multiple Choice
+Points:: 1
+Question:: For a continuous variable, `P(X = x)` is best understood as:
+
+A. A guaranteed nonzero probability for the exact point.
+B. A truth value.
+C. A utility function.
+D. A probability density, not usually the probability of an exact point.
+
+Correct Answer:: D
+
+==== Question 25
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The full joint probability distribution specifies:
+
+A. The probability of each complete assignment of values to all random variables.
+B. Only the prior probability of one variable.
+C. Only the conditional probabilities needed for Bayes' rule.
+D. The maximum expected utility action directly.
+
+Correct Answer:: A
+
+==== Question 26
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Marginalization, or summing out, is used to:
+
+A. Convert utilities into probabilities.
+B. Remove all evidence from a model.
+C. Compute a distribution over fewer variables by summing over other variables.
+D. Prove logical entailment.
+
+Correct Answer:: C
+
+==== Question 27
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The normalization constant alpha is used to:
+
+A. Make all utilities equal.
+B. Scale relative probabilities so they sum to 1.
+C. Remove all conditional evidence.
+D. Convert continuous variables to discrete ones.
+
+Correct Answer:: B
+
+==== Question 28
+
+Type:: Multiple Choice
+Points:: 1
+Question:: For `n` Boolean variables, an explicit full joint table has size:
+
+A. `O(n)`.
+B. `O(log n)`.
+C. `O(n^2)`.
+D. `O(2^n)`.
+
+Correct Answer:: D
+
+==== Question 29
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The inclusion-exclusion formula for two propositions is:
+
+A. `P(a or b) = P(a) + P(b) - P(a and b)`.
+B. `P(a or b) = P(a)P(b)`.
+C. `P(a or b) = P(a | b)`.
+D. `P(a or b) = 1 - P(a)`.
+
+Correct Answer:: A
+
+==== Question 30
+
+Type:: Multiple Choice
+Points:: 1
+Question:: De Finetti's betting argument is used to show that:
+
+A. Probabilities should always be 0 or 1.
+B. Utilities are unnecessary.
+C. Violating probability axioms can force irrational losses in decision making.
+D. Conditional probability is impossible.
+
+Correct Answer:: C
+
+==== Question 31
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Absolute independence between propositions `a` and `b` can be expressed as:
+
+A. `P(a | b) = P(b | a)` only.
+B. `P(a and b) = P(a)P(b)`.
+C. `P(a or b) = 1`.
+D. `P(a) = 0`.
+
+Correct Answer:: B
+
+==== Question 32
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Independence assertions are valuable because they can:
+
+A. Make every variable deterministic.
+B. Eliminate the need for evidence.
+C. Replace utility theory entirely.
+D. Factor a large joint distribution into smaller pieces.
+
+Correct Answer:: D
+
+==== Question 33
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Bayes' rule can be derived by:
+
+A. Equating the two forms of the product rule.
+B. Ignoring conditional probability.
+C. Assuming every variable is independent.
+D. Summing all utilities.
+
+Correct Answer:: A
+
+==== Question 34
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Bayes' rule is especially useful when we know:
+
+A. `P(cause | effect)` but need `P(effect | cause)`.
+B. Only a utility function.
+C. Causal probabilities such as `P(effect | cause)` but need diagnostic probabilities such as `P(cause | effect)`.
+D. No prior probabilities.
+
+Correct Answer:: C
+
+==== Question 35
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the meningitis example, a stiff neck strongly indicated by meningitis still gives a low posterior probability of meningitis mainly because:
+
+A. Stiff necks are impossible.
+B. Meningitis has a very low prior probability.
+C. Bayes' rule cannot be applied.
+D. Causal information is useless.
+
+Correct Answer:: B
+
+==== Question 36
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Causal knowledge such as `P(symptom | disease)` can be more robust than direct diagnostic knowledge because:
+
+A. It never uses evidence.
+B. It makes priors irrelevant.
+C. It avoids all uncertainty.
+D. The causal relationship may remain stable even when disease prevalence changes.
+
+Correct Answer:: D
+
+==== Question 37
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Conditional independence means that two variables are independent:
+
+A. Given the value of another variable.
+B. Only when all variables are unobserved.
+C. Only when both are false.
+D. Without any evidence.
+
+Correct Answer:: A
+
+==== Question 38
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the dentist example, Toothache and Catch are treated as conditionally independent given:
+
+A. Weather.
+B. The patient's age.
+C. Cavity.
+D. The utility function.
+
+Correct Answer:: C
+
+==== Question 39
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Conditional independence can make probabilistic systems scale because it:
+
+A. Makes all posterior probabilities exactly 0 or 1.
+B. Allows large distributions to be decomposed into smaller conditional distributions.
+C. Requires full enumeration of all worlds.
+D. Removes the need to normalize.
+
+Correct Answer:: B
+
+==== Question 40
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A Naive Bayes model assumes:
+
+A. All causes are impossible.
+B. Each effect causes every other effect.
+C. There is no prior distribution.
+D. Effect variables are conditionally independent given the cause variable.
+
+Correct Answer:: D
+
+==== Question 41
+
+Type:: Multiple Choice
+Points:: 1
+Question:: To classify with a Naive Bayes model, for each possible cause or category we generally:
+
+A. Multiply the prior by the conditional probabilities of the observed effects, then normalize.
+B. Ignore observed effects.
+C. Sum only unobserved variables forever.
+D. Use utility theory instead of probability.
+
+Correct Answer:: A
+
+==== Question 42
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Naive Bayes text classification, the category is treated as:
+
+A. An observed word.
+B. A utility value.
+C. The cause variable.
+D. A continuous probability density.
+
+Correct Answer:: C
+
+==== Question 43
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Naive Bayes text classification, word-presence variables are treated as:
+
+A. Prior probabilities only.
+B. Effect variables conditioned on the category.
+C. Utilities for actions.
+D. Hidden possible worlds with no values.
+
+Correct Answer:: B
+
+==== Question 44
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A common problem with Naive Bayes in text classification is that:
+
+A. It cannot classify documents.
+B. It requires no training data.
+C. It forbids word features.
+D. Its independence assumption is often false, making posterior probabilities overconfident.
+
+Correct Answer:: D
+
+==== Question 45
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Naive Bayes is commonly used for:
+
+A. Language determination, document retrieval, spam filtering, and classification.
+B. Only exact theorem proving.
+C. Only robot motion planning.
+D. Only computing utility functions.
+
+Correct Answer:: A
+
+==== Question 46
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the probabilistic Wumpus World example, uncertainty remains because:
+
+A. The agent has perfect knowledge of every pit.
+B. Breezes are irrelevant to pits.
+C. Sensors provide partial information about hidden pits.
+D. There are no random variables.
+
+Correct Answer:: C
+
+==== Question 47
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the Wumpus World revisit, a pit causes:
+
+A. A normalizing constant.
+B. Breezes in neighboring squares.
+C. A text classification category.
+D. Weather changes.
+
+Correct Answer:: B
+
+==== Question 48
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the Wumpus example, pure logical inference may be unable to:
+
+A. Represent any square.
+B. Detect observed breezes.
+C. State that a square is unknown.
+D. Rank uncertain squares by how likely they are to contain pits.
+
+Correct Answer:: D
+
+==== Question 49
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Conditional independence in the Wumpus calculation helps by:
+
+A. Eliminating distant "Other" variables from the summation.
+B. Making all pit probabilities zero.
+C. Removing all frontier variables.
+D. Proving every square safe.
+
+Correct Answer:: A
+
+==== Question 50
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 12's main lesson for AI agents is that probability theory:
+
+A. Replaces the need for action selection.
+B. Works only when outcomes are certain.
+C. Provides a foundation for reasoning and acting under uncertainty.
+D. Cannot combine with utility.
+
+Correct Answer:: C
+
+== Answer Key
+
+[cols="1,1,1,1",options="header"]
+|===
+| Question | Answer | Question | Answer
+| 1 | B | 26 | C
+| 2 | A | 27 | B
+| 3 | C | 28 | D
+| 4 | D | 29 | A
+| 5 | A | 30 | C
+| 6 | C | 31 | B
+| 7 | B | 32 | D
+| 8 | D | 33 | A
+| 9 | A | 34 | C
+| 10 | C | 35 | B
+| 11 | D | 36 | D
+| 12 | B | 37 | A
+| 13 | A | 38 | C
+| 14 | D | 39 | B
+| 15 | C | 40 | D
+| 16 | B | 41 | A
+| 17 | A | 42 | C
+| 18 | D | 43 | B
+| 19 | B | 44 | D
+| 20 | C | 45 | A
+| 21 | A | 46 | C
+| 22 | B | 47 | B
+| 23 | C | 48 | D
+| 24 | D | 49 | A
+| 25 | A | 50 | C
+|===

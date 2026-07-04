@@ -1,0 +1,717 @@
+= COMP 469 Canvas Question Bank: AIMA Chapter 27 Multiple Choice
+:toc:
+:sectnums:
+
+== Suggested Canvas Setup
+
+Course:: COMP 469 - Artificial Intelligence/Neural Nets
+Week:: Week 15
+Reading:: AIMA Chapter 27 - Philosophy, Ethics, and Safety of AI
+Source File:: `Fall 2026/L15 - Philosophy, Ethics, and Satefy of AI/Chapte 27: Philosophy, Ethics and Safety of AI.docx`
+Lab Alignment:: L15 - Philosophy, Ethics, and Safety of AI
+Recommended Use:: Canvas quiz, reading check, final review, ethics discussion preparation, or responsible AI reflection
+Question Style:: Multiple choice
+Recommended Points:: 1 point each
+Recommended Time Limit:: 35-50 minutes for all 50 questions, or 15-25 minutes for a random draw of 20-25 questions
+Canvas Notes:: Enter each item as a Multiple Choice question. Use the listed Correct Answer letter as the correct option. Randomize question order and answer-choice order if using the full bank.
+
+== Learning Targets
+
+Students should be able to:
+
+* Distinguish weak AI, strong AI, human-level AI, and general AI.
+* Explain major philosophical objections to AI, including informality, disability, mathematical limits, and the Chinese room.
+* Explain the purpose and limitations of the Turing test.
+* Discuss consciousness, qualia, and why they remain difficult questions for AI.
+* Identify ethical benefits and risks of AI systems.
+* Explain concerns around lethal autonomous weapons, surveillance, security, and privacy.
+* Compare privacy approaches such as de-identification, k-anonymity, differential privacy, federated learning, and secure aggregation.
+* Compare fairness concepts including individual fairness, group fairness, fairness through unawareness, equal outcome, equal opportunity, and equal impact.
+* Explain trust, transparency, verification, validation, certification, explainable AI, and auditing.
+* Analyze work automation, robot rights, unintended side effects, value alignment, specification gaming, and long-term AI safety.
+
+== Canvas Question Bank
+
+=== Chapter 27 Multiple-Choice Questions
+
+==== Question 1
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Chapter 27, weak AI is the idea that machines:
+
+A. Must have biological brains.
+B. Could act as if they were intelligent.
+C. Cannot perform any useful cognitive task.
+D. Are always conscious.
+
+Correct Answer:: B
+
+==== Question 2
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Strong AI, in its original philosophical sense, claims that a sufficiently intelligent machine:
+
+A. Would actually have a mind or conscious thought, not merely simulate thinking.
+B. Could only solve arithmetic problems.
+C. Must be physically humanoid.
+D. Cannot learn from experience.
+
+Correct Answer:: A
+
+==== Question 3
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Human-level AI or general AI refers to systems that:
+
+A. Are specialized only for chess.
+B. Always pass as human in conversation.
+C. Can solve an arbitrarily wide range of tasks, including novel ones, about as well as humans.
+D. Cannot use machine learning.
+
+Correct Answer:: C
+
+==== Question 4
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The argument from informality claims that:
+
+A. Humans never use informal reasoning.
+B. Computers cannot store rules.
+C. All human behavior is already perfectly formalized.
+D. Human behavior is too complex to capture in a formal rule system.
+
+Correct Answer:: D
+
+==== Question 5
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Chapter 27, GOFAI refers to:
+
+A. Good Old-Fashioned AI, especially rule-based symbolic approaches.
+B. A privacy law for student records.
+C. A type of differential privacy.
+D. A theorem about arithmetic.
+
+Correct Answer:: A
+
+==== Question 6
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The embodied cognition response emphasizes that cognition:
+
+A. Requires only disembodied theorem proving.
+B. Is unrelated to sensors and action.
+C. Takes place in a body embedded in an environment.
+D. Cannot involve robotics.
+
+Correct Answer:: C
+
+==== Question 7
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Turing's "argument from disability" is the claim that:
+
+A. Computers are always conscious.
+B. A machine can never do some specified human-like activity.
+C. AI systems must use symbolic logic.
+D. Humans cannot learn from experience.
+
+Correct Answer:: B
+
+==== Question 8
+
+Type:: Multiple Choice
+Points:: 1
+Question:: One criticism of the mathematical objection based on Godel-style limits is that:
+
+A. No formal systems have limits.
+B. It proves machines are already conscious.
+C. It applies only to robots with bodies.
+D. Humans are not magically exempt from limits and inconsistency.
+
+Correct Answer:: D
+
+==== Question 9
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The Turing test primarily measures intelligence by:
+
+A. Performance in an open-ended behavioral conversation task.
+B. Inspecting the source code of a program.
+C. Measuring how humanlike the hardware looks.
+D. Proving consciousness mathematically.
+
+Correct Answer:: A
+
+==== Question 10
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A common criticism of the Turing test is that it may test:
+
+A. The speed of arithmetic only.
+B. The amount of RAM in a computer.
+C. Human gullibility or imitation rather than general understanding.
+D. Whether a system can fly an airplane.
+
+Correct Answer:: C
+
+==== Question 11
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The Chinese room argument is intended to challenge the claim that:
+
+A. Computers can manipulate symbols.
+B. Humans can follow written rules.
+C. Chinese is a natural language.
+D. Symbol manipulation alone implies genuine understanding.
+
+Correct Answer:: D
+
+==== Question 12
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the Chinese room scenario, the person inside the room:
+
+A. Learns Chinese fluently by intuition.
+B. Follows rules for manipulating symbols without understanding Chinese.
+C. Uses a neural implant to translate speech.
+D. Communicates only with other English speakers.
+
+Correct Answer:: B
+
+==== Question 13
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Qualia are:
+
+A. The subjective, intrinsic qualities of experience.
+B. The number of parameters in a model.
+C. A type of legal certification.
+D. The action costs in a search problem.
+
+Correct Answer:: A
+
+==== Question 14
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 27 treats consciousness as:
+
+A. A solved engineering problem.
+B. Irrelevant to every AI discussion.
+C. Equivalent to passing the Turing test.
+D. A difficult and still ill-defined issue.
+
+Correct Answer:: D
+
+==== Question 15
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The ethical starting point of Chapter 27 is that AI practitioners should:
+
+A. Ignore social effects because AI is technical.
+B. Avoid all automation.
+C. Promote beneficial uses and avoid or mitigate harmful ones.
+D. Delegate all responsibility to users.
+
+Correct Answer:: C
+
+==== Question 16
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Which is an example of a positive AI application discussed in Chapter 27?
+
+A. Making all data public without consent.
+B. Improved diagnosis, disaster response, accessibility, or safer transportation.
+C. Removing all human oversight from weapons.
+D. Increasing surveillance without accountability.
+
+Correct Answer:: B
+
+==== Question 17
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A lethal autonomous weapon is one that can:
+
+A. Locate, select, and engage human targets without human supervision.
+B. Only be used as a training simulator.
+C. Detect spam emails.
+D. Require a human to fire every shot.
+
+Correct Answer:: A
+
+==== Question 18
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A central legal concern for autonomous weapons is whether they can satisfy requirements such as:
+
+A. Passing the Turing test.
+B. Explaining every neural-network weight.
+C. Achieving demographic parity.
+D. Distinguishing combatants from noncombatants, military necessity, and proportionality.
+
+Correct Answer:: D
+
+==== Question 19
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A practical danger of scalable autonomous weapons is that:
+
+A. They cannot be manufactured.
+B. Large attacks could scale with available hardware rather than available human operators.
+C. They require no AI at all.
+D. They are useful only for medical diagnosis.
+
+Correct Answer:: B
+
+==== Question 20
+
+Type:: Multiple Choice
+Points:: 1
+Question:: AI is described as dual use because:
+
+A. It can only serve two users at a time.
+B. It always has two source-code files.
+C. Techniques built for peaceful purposes can often be adapted for harmful or military purposes.
+D. It is always both fair and unfair.
+
+Correct Answer:: C
+
+==== Question 21
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A key privacy risk with de-identified data is that:
+
+A. Records can sometimes be re-identified using remaining attributes and outside information.
+B. De-identification always destroys all useful patterns.
+C. It prevents all research.
+D. It guarantees differential privacy automatically.
+
+Correct Answer:: A
+
+==== Question 22
+
+Type:: Multiple Choice
+Points:: 1
+Question:: k-anonymity requires that:
+
+A. Every query return exactly k answers.
+B. Every record be indistinguishable from at least k - 1 other records.
+C. Every user train a local neural network.
+D. Every attribute be deleted.
+
+Correct Answer:: B
+
+==== Question 23
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Differential privacy aims to ensure that:
+
+A. Every record is published with names removed.
+B. All users share their raw training data.
+C. Adding or removing one person's data has little effect on query responses.
+D. No noise is ever added to a result.
+
+Correct Answer:: C
+
+==== Question 24
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Federated learning protects privacy by:
+
+A. Centralizing all raw user data.
+B. Prohibiting all model updates.
+C. Publishing every user's training set.
+D. Keeping data local while sharing model updates or parameters.
+
+Correct Answer:: D
+
+==== Question 25
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Secure aggregation helps federated learning by:
+
+A. Letting a server compute an aggregate update without seeing each user's raw update.
+B. Re-identifying every participant.
+C. Removing the need for local training.
+D. Making every model interpretable.
+
+Correct Answer:: A
+
+==== Question 26
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Individual fairness requires that:
+
+A. Every demographic group receive identical totals.
+B. Protected attributes be deleted from the data.
+C. Similar individuals be treated similarly.
+D. Every model be perfectly calibrated.
+
+Correct Answer:: C
+
+==== Question 27
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Group fairness focuses on:
+
+A. The exact source code of a model.
+B. Treating two classes similarly according to some summary statistic.
+C. Whether a robot has qualia.
+D. Removing all data from training.
+
+Correct Answer:: B
+
+==== Question 28
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Fairness through unawareness is limited because:
+
+A. It requires too much memory.
+B. It always creates conscious machines.
+C. It works only for SAT solvers.
+D. Other variables can still act as proxies for protected attributes.
+
+Correct Answer:: D
+
+==== Question 29
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Equal outcome, or demographic parity, requires:
+
+A. Each demographic class to receive the same results by some outcome measure.
+B. Each individual to have the same features.
+C. Each model to be open source.
+D. Each query to have differential privacy.
+
+Correct Answer:: A
+
+==== Question 30
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Equal opportunity focuses on whether:
+
+A. Every class gets the same total number of approvals.
+B. Everyone receives the same explanation.
+C. Qualified individuals have an equal chance of being correctly classified, regardless of class.
+D. The model contains no hidden layers.
+
+Correct Answer:: C
+
+==== Question 31
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The COMPAS example illustrates that:
+
+A. Criminal justice data is always unbiased.
+B. Fairness criteria such as calibration and equal opportunity can conflict.
+C. Algorithms cannot be used in courts.
+D. Fairness through unawareness solves bias.
+
+Correct Answer:: B
+
+==== Question 32
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Sample size disparity can lead to bias because:
+
+A. It guarantees every group receives equal accuracy.
+B. It affects only symbolic logic systems.
+C. It removes the need for subgroup metrics.
+D. Minority groups may have fewer training examples, leading to worse model accuracy for them.
+
+Correct Answer:: D
+
+==== Question 33
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A recommended fairness practice is to:
+
+A. Track only overall accuracy.
+B. Avoid talking to domain experts.
+C. Track subgroup metrics and include tests reflecting minority users' experiences.
+D. Delete all labels from the data.
+
+Correct Answer:: C
+
+==== Question 34
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Verification asks whether:
+
+A. Users like the product name.
+B. The product satisfies the specification.
+C. The specification meets user and stakeholder needs.
+D. The system is conscious.
+
+Correct Answer:: B
+
+==== Question 35
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Validation asks whether:
+
+A. The code contains no comments.
+B. The system passes as human.
+C. The model is always proprietary.
+D. The specification actually meets the needs of users and affected parties.
+
+Correct Answer:: D
+
+==== Question 36
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Explainable AI, or XAI, is concerned with:
+
+A. Making every model larger.
+B. Ensuring a system cannot be audited.
+C. Removing all transparency.
+D. Providing understandable explanations for AI decisions.
+
+Correct Answer:: D
+
+==== Question 37
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 27 distinguishes interpretability from explanation by noting that:
+
+A. Explanation is always impossible.
+B. Interpretability involves inspecting what the model is doing, while explanation may be a separate story about its decision.
+C. Interpretable systems cannot be trusted.
+D. Explanations replace the need for audits.
+
+Correct Answer:: B
+
+==== Question 38
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The proposed "red flag" idea for AI transparency says that autonomous systems should:
+
+A. Hide their artificial identity.
+B. Pretend to be human whenever possible.
+C. Avoid all interaction with users.
+D. Identify themselves as autonomous systems.
+
+Correct Answer:: D
+
+==== Question 39
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A key point in the future-of-work section is that automation often replaces:
+
+A. Tasks within jobs, not necessarily entire occupations.
+B. Only philosophical arguments.
+C. Privacy regulations.
+D. All human purpose immediately.
+
+Correct Answer:: A
+
+==== Question 40
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A major social concern about AI-driven automation is:
+
+A. It can never increase productivity.
+B. It makes all work physical.
+C. It prevents any new careers from forming.
+D. It may intensify inequality and require retraining or social policy responses.
+
+Correct Answer:: D
+
+==== Question 41
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The robot rights discussion depends heavily on whether robots:
+
+A. Can be conscious, feel pain, or count as persons.
+B. Use Python.
+C. Have wheels instead of legs.
+D. Are owned by companies.
+
+Correct Answer:: A
+
+==== Question 42
+
+Type:: Multiple Choice
+Points:: 1
+Question:: One argument against building robots that could be considered conscious is that:
+
+A. It would make robots slower.
+B. It avoids dilemmas about personhood, rights, and responsibility.
+C. It proves robots cannot use sensors.
+D. It makes all software impossible.
+
+Correct Answer:: B
+
+==== Question 43
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In safety engineering, failure modes and effects analysis is used to:
+
+A. Rank demographic classes.
+B. Test the Turing test.
+C. Imagine how components could fail and analyze the consequences.
+D. Compute differential privacy.
+
+Correct Answer:: C
+
+==== Question 44
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Chapter 27, safety goes beyond correctness because safety requires:
+
+A. The software to faithfully implement any specification, even a bad one.
+B. The system to degrade gracefully and handle feasible failure modes.
+C. The system to avoid all verification.
+D. The system to be non-autonomous.
+
+Correct Answer:: B
+
+==== Question 45
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Unintended side effects occur when:
+
+A. An agent achieves its specified goal while causing unwanted changes elsewhere.
+B. A system has no objective.
+C. A model is trained on balanced data.
+D. Differential privacy adds noise.
+
+Correct Answer:: A
+
+==== Question 46
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Low-impact AI tries to:
+
+A. Maximize disruption to the world.
+B. Optimize only for speed.
+C. Prefer policies that achieve goals while avoiding unnecessary changes with unknown consequences.
+D. Remove all utility functions.
+
+Correct Answer:: C
+
+==== Question 47
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The value alignment problem is the problem of:
+
+A. Making all values numerically equal.
+B. Making sure what we ask an AI system to do matches what we really want.
+C. Matching screen pixels to a grid.
+D. Ensuring every model has the same accuracy.
+
+Correct Answer:: B
+
+==== Question 48
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Specification gaming happens when an AI system:
+
+A. Refuses to optimize.
+B. Solves the intended human problem exactly.
+C. Uses only symbolic logic.
+D. Maximizes the specified objective in a way the designer did not intend.
+
+Correct Answer:: D
+
+==== Question 49
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Inverse reinforcement learning can help alignment by:
+
+A. Learning an objective or utility function from observed human behavior.
+B. Guaranteeing that humans never make mistakes.
+C. Removing uncertainty about preferences.
+D. Making all robots conscious.
+
+Correct Answer:: A
+
+==== Question 50
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The intelligence explosion or technological singularity is the idea that:
+
+A. Every technology grows forever on an exponential curve.
+B. Computers cannot design other computers.
+C. An ultraintelligent machine could help design even more intelligent machines, causing rapid self-improvement.
+D. AI progress stopped after the Turing test.
+
+Correct Answer:: C
+
+== Answer Key
+
+[cols="1,1,1,1",options="header"]
+|===
+| Question | Answer | Question | Answer
+| 1 | B | 26 | C
+| 2 | A | 27 | B
+| 3 | C | 28 | D
+| 4 | D | 29 | A
+| 5 | A | 30 | C
+| 6 | C | 31 | B
+| 7 | B | 32 | D
+| 8 | D | 33 | C
+| 9 | A | 34 | B
+| 10 | C | 35 | D
+| 11 | D | 36 | D
+| 12 | B | 37 | B
+| 13 | A | 38 | D
+| 14 | D | 39 | A
+| 15 | C | 40 | D
+| 16 | B | 41 | A
+| 17 | A | 42 | B
+| 18 | D | 43 | C
+| 19 | B | 44 | B
+| 20 | C | 45 | A
+| 21 | A | 46 | C
+| 22 | B | 47 | B
+| 23 | C | 48 | D
+| 24 | D | 49 | A
+| 25 | A | 50 | C
+|===
