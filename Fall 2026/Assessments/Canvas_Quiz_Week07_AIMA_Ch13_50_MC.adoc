@@ -1,0 +1,690 @@
+= COMP 469 Canvas Question Bank: AIMA Chapter 13 Multiple Choice
+:toc:
+:sectnums:
+
+== Suggested Canvas Setup
+
+Course:: COMP 469 - Artificial Intelligence/Neural Nets
+Week:: Week 7
+Reading:: AIMA Chapter 13 - Probabilistic Reasoning
+Source File:: `Fall 2026/L07 - Bayesian Networks/Chapter 13.docx`
+Lab Alignment:: L07 - Bayesian Networks
+Recommended Use:: Canvas quiz, reading check, lab readiness quiz, Bayesian networks review, or midterm review
+Question Style:: Multiple choice
+Recommended Points:: 1 point each
+Recommended Time Limit:: 35-50 minutes for all 50 questions, or 15-25 minutes for a random draw of 20-25 questions
+Canvas Notes:: Enter each item as a Multiple Choice question. Use the listed Correct Answer letter as the correct option. Randomize question order and answer-choice order if using the full bank.
+
+== Learning Targets
+
+Students should be able to:
+
+* Explain why full joint distributions become difficult to specify directly as the number of variables grows.
+* Define Bayesian networks as directed acyclic graphs with local probability information.
+* Interpret nodes, directed links, parents, conditional probability tables, and prior probabilities.
+* Explain how Bayesian network topology represents conditional independence assumptions.
+* Use the burglary-alarm example to identify direct causes, evidence variables, and hidden variables.
+* Explain the product form semantics of Bayesian networks.
+* Describe the chain rule and the construction method for Bayesian networks.
+* Explain why causal node orderings often produce more compact and natural networks than diagnostic orderings.
+* Identify non-descendants, Markov blankets, and d-separation relationships.
+* Explain compact conditional distribution patterns such as deterministic nodes, context-specific independence, and noisy-OR.
+* Describe how Bayesian networks can represent continuous and hybrid domains.
+* Explain linear-Gaussian, probit, and expit/logit models at a conceptual level.
+* Analyze the car insurance case study in terms of hidden variables, evidence variables, and causal structure.
+* Compare exact inference by enumeration with variable elimination.
+* Explain factors, pointwise products, summing out variables, and the role of dynamic programming in inference.
+
+== Canvas Question Bank
+
+=== Chapter 13 Multiple-Choice Questions
+
+==== Question 1
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 13 introduces Bayesian networks mainly to:
+
+A. Replace probability theory with propositional logic.
+B. Represent uncertain domains compactly by making conditional independence relationships explicit.
+C. Guarantee that all real-world events can be predicted with certainty.
+D. Avoid using random variables in intelligent systems.
+
+Correct Answer:: B
+
+==== Question 2
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Why is a full joint probability distribution often impractical for large domains?
+
+A. It cannot answer probability queries.
+B. It requires probabilities for many possible worlds, which grows rapidly with the number of variables.
+C. It can represent only deterministic relationships.
+D. It forbids conditional probability.
+
+Correct Answer:: B
+
+==== Question 3
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In a Bayesian network, each node represents:
+
+A. A search operator.
+B. A utility value only.
+C. A theorem-proving rule.
+D. A random variable.
+
+Correct Answer:: D
+
+==== Question 4
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The graph structure of a Bayesian network must be:
+
+A. A complete undirected graph.
+B. A directed graph with no directed cycles.
+C. A tree with exactly two children per node.
+D. A list sorted only by probability values.
+
+Correct Answer:: B
+
+==== Question 5
+
+Type:: Multiple Choice
+Points:: 1
+Question:: If there is an arrow from node X to node Y in a Bayesian network, then X is called:
+
+A. A child of Y.
+B. A sibling of Y.
+C. A parent of Y.
+D. An evidence value of Y.
+
+Correct Answer:: C
+
+==== Question 6
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The topology of a Bayesian network primarily specifies:
+
+A. The processor speed needed to run inference.
+B. The conditional independence relationships assumed in the domain.
+C. The names of all possible actions.
+D. The final utility of every outcome.
+
+Correct Answer:: B
+
+==== Question 7
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A conditional probability table, or CPT, gives a node's probability distribution:
+
+A. Given only the query variable.
+B. Without reference to any other variables.
+C. By listing search paths through the graph.
+D. Given each possible combination of values for its parents.
+
+Correct Answer:: D
+
+==== Question 8
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In a CPT for a discrete variable, each row should sum to 1 because:
+
+A. Each row represents an exhaustive set of possible values for the variable under one parent assignment.
+B. Each row contains exactly one possible world.
+C. Every parent must have probability 1.
+D. Every Bayesian network is fully connected.
+
+Correct Answer:: A
+
+==== Question 9
+
+Type:: Multiple Choice
+Points:: 1
+Question:: For a Boolean node with k Boolean parents, a full CPT requires how many independently specifiable probabilities?
+
+A. k.
+B. 2k.
+C. 2^k.
+D. k^2.
+
+Correct Answer:: C
+
+==== Question 10
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A node with no parents has a CPT row representing:
+
+A. Its Markov blanket.
+B. A d-separation test.
+C. The probability of all leaf nodes.
+D. Its prior probability distribution.
+
+Correct Answer:: D
+
+==== Question 11
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the Toothache-Cavity-Catch example, Toothache and Catch are conditionally independent given:
+
+A. Weather.
+B. Cavity.
+C. The full joint table.
+D. A utility function.
+
+Correct Answer:: B
+
+==== Question 12
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the burglary-alarm example, Burglary and Earthquake directly affect:
+
+A. The probability that the alarm goes off.
+B. Whether John and Mary confer before calling.
+C. The probability that Weather is sunny.
+D. The prior probability of all other variables.
+
+Correct Answer:: A
+
+==== Question 13
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the burglary-alarm network, whether JohnCalls and MaryCalls occur depends directly on:
+
+A. Burglary only.
+B. Earthquake only.
+C. Alarm.
+D. Weather.
+
+Correct Answer:: C
+
+==== Question 14
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The absence of a direct link between JohnCalls and MaryCalls represents the assumption that:
+
+A. Neither person can ever call.
+B. Their calls are conditionally independent once the alarm state is known.
+C. The alarm is irrelevant.
+D. Burglary and Earthquake are the same event.
+
+Correct Answer:: B
+
+==== Question 15
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Local probability information in a Bayesian network is useful because:
+
+A. Each parameter has a meaning involving only a small set of variables.
+B. It forces every variable to depend on every earlier variable.
+C. It eliminates the need for evidence.
+D. It makes all variables deterministic.
+
+Correct Answer:: A
+
+==== Question 16
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The product-form semantics of a Bayesian network says that a joint probability entry can be computed by:
+
+A. Adding all prior probabilities.
+B. Multiplying the appropriate local conditional probabilities for each variable.
+C. Choosing the largest CPT entry.
+D. Counting only the evidence variables.
+
+Correct Answer:: B
+
+==== Question 17
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In Bayesian network semantics, the parameter for a node given its parents should equal:
+
+A. The shortest path length to the node.
+B. The conditional probability of the node value given those parent values.
+C. The probability of the node's children only.
+D. The utility of the node.
+
+Correct Answer:: B
+
+==== Question 18
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The chain rule used in constructing Bayesian networks is important because it:
+
+A. Proves that all variables are independent.
+B. Converts probabilities into costs.
+C. Requires every network to be a linear chain.
+D. Decomposes a joint distribution into a product of conditional probabilities.
+
+Correct Answer:: D
+
+==== Question 19
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the construction method described in Chapter 13, a good first step is to:
+
+A. Choose random arrows and then name variables later.
+B. Determine the variables needed to model the domain and put them in an order.
+C. Create a full joint table before considering independence.
+D. Remove all parent nodes.
+
+Correct Answer:: B
+
+==== Question 20
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A Bayesian network construction method guarantees acyclicity by:
+
+A. Connecting each node only to nodes that come earlier in the chosen ordering.
+B. Requiring all variables to have exactly one parent.
+C. Removing all evidence variables.
+D. Using only continuous variables.
+
+Correct Answer:: A
+
+==== Question 21
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Chapter 13 recommends ordering variables so that causes tend to precede effects because this usually:
+
+A. Makes the graph cyclic.
+B. Forces every variable to have all previous variables as parents.
+C. Makes the network more compact and the probabilities easier to assess.
+D. Prevents the use of CPTs.
+
+Correct Answer:: C
+
+==== Question 22
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A fully connected Bayesian network with each variable depending on all predecessors generally requires:
+
+A. No probability parameters.
+B. Only one number per variable.
+C. Fewer numbers than any sparse network.
+D. The same kind of information as the full joint distribution in tabular form.
+
+Correct Answer:: D
+
+==== Question 23
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A locally structured, or sparse, system is one in which:
+
+A. Every node is connected to every other node.
+B. No variable can have a parent.
+C. Each subcomponent interacts directly with only a bounded number of other components.
+D. The graph must contain cycles.
+
+Correct Answer:: C
+
+==== Question 24
+
+Type:: Multiple Choice
+Points:: 1
+Question:: For n Boolean variables where each node has at most k parents, a sparse Bayesian network needs on the order of:
+
+A. 2^n numbers for every node.
+B. n! numbers.
+C. k^n numbers.
+D. 2^k times n numbers.
+
+Correct Answer:: D
+
+==== Question 25
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A poor diagnostic node ordering in the burglary network can produce extra links because:
+
+A. Bayesian networks require alphabetic ordering.
+B. CPT rows are not allowed for diagnostic variables.
+C. Effects can become apparent parents of their causes to preserve the same joint distribution.
+D. Evidence variables must always be roots.
+
+Correct Answer:: C
+
+==== Question 26
+
+Type:: Multiple Choice
+Points:: 1
+Question:: The non-descendants property states that each variable is conditionally independent of:
+
+A. Its children, given its non-descendants.
+B. Its non-descendants, given its parents.
+C. Its parents, given its children.
+D. Every other variable, with no conditions.
+
+Correct Answer:: B
+
+==== Question 27
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A node's Markov blanket consists of:
+
+A. Only its children.
+B. Only nodes with no parents.
+C. Its parents, its children, and its children's parents.
+D. Every node in the network.
+
+Correct Answer:: C
+
+==== Question 28
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Given its Markov blanket, a variable is conditionally independent of:
+
+A. Only its parents.
+B. Only continuous nodes.
+C. No other variables.
+D. All other nodes in the network.
+
+Correct Answer:: D
+
+==== Question 29
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the burglary network, Burglary is independent of JohnCalls and MaryCalls given:
+
+A. JohnCalls only.
+B. Alarm and Earthquake.
+C. MaryCalls only.
+D. Weather and Cavity.
+
+Correct Answer:: B
+
+==== Question 30
+
+Type:: Multiple Choice
+Points:: 1
+Question:: D-separation is used to determine whether:
+
+A. A CPT row sums to 1.
+B. A variable is continuous or discrete.
+C. One set of nodes is conditionally independent of another set given a third set.
+D. A utility function is admissible.
+
+Correct Answer:: C
+
+==== Question 31
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the d-separation procedure described in Chapter 13, the moral graph is formed by:
+
+A. Removing all parent nodes.
+B. Replacing probabilities with utilities.
+C. Sorting variables by their prior probabilities.
+D. Adding links between unlinked pairs of nodes that share a common child.
+
+Correct Answer:: D
+
+==== Question 32
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the burglary network, Burglary and Earthquake are:
+
+A. Independent given the empty set, but not necessarily independent given Alarm.
+B. Always identical events.
+C. Conditionally independent only when JohnCalls is false.
+D. Dependent given the empty set and independent given Alarm.
+
+Correct Answer:: A
+
+==== Question 33
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A deterministic node is one whose value is:
+
+A. Chosen randomly regardless of its parents.
+B. Specified exactly by the values of its parents.
+C. Always a root node.
+D. Always continuous.
+
+Correct Answer:: B
+
+==== Question 34
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Context-specific independence occurs when:
+
+A. Every variable is independent of every parent.
+B. The graph contains no directed arrows.
+C. A variable is independent of some parents only under certain values of other parents.
+D. A variable has no possible values.
+
+Correct Answer:: C
+
+==== Question 35
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the car Damage example, if Accident is false, Damage is described as independent of:
+
+A. Time.
+B. Its own value.
+C. All possible evidence.
+D. Ruggedness.
+
+Correct Answer:: D
+
+==== Question 36
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A noisy-OR model generalizes logical OR by:
+
+A. Allowing each true cause to fail to produce the effect with some inhibition probability.
+B. Requiring every cause to produce the effect with certainty.
+C. Treating all parent variables as continuous only.
+D. Removing the need to list causes.
+
+Correct Answer:: A
+
+==== Question 37
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A leak node in a noisy-OR model is used to represent:
+
+A. The probability that a CPT row sums to more than 1.
+B. Miscellaneous or unlisted causes.
+C. A cycle in the graph.
+D. A deterministic child value.
+
+Correct Answer:: B
+
+==== Question 38
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Noisy logical relationships can be much more compact than full CPTs because they often require:
+
+A. O(2^n) parameters for every node.
+B. No parameters at all.
+C. O(k) parameters instead of O(2^k).
+D. One full joint distribution per parent.
+
+Correct Answer:: C
+
+==== Question 39
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Discretization handles a continuous variable by:
+
+A. Removing it from the network.
+B. Treating every value as a parent node.
+C. Turning it into a utility function.
+D. Dividing its range into a fixed set of intervals.
+
+Correct Answer:: D
+
+==== Question 40
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A Gaussian distribution is often useful for continuous variables because it can be specified by:
+
+A. A mean and a variance.
+B. A complete CPT over infinitely many values.
+C. A graph cycle and an action list.
+D. Only a Boolean truth value.
+
+Correct Answer:: A
+
+==== Question 41
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A hybrid Bayesian network contains:
+
+A. Only Boolean variables.
+B. Both discrete and continuous variables.
+C. Only deterministic nodes.
+D. No probability distributions.
+
+Correct Answer:: B
+
+==== Question 42
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the fruit-buying example, Cost is a continuous variable that depends on:
+
+A. Alarm and Burglary.
+B. Toothache and Cavity.
+C. Harvest and Subsidy.
+D. JohnCalls and MaryCalls.
+
+Correct Answer:: C
+
+==== Question 43
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A linear-Gaussian conditional distribution assumes that the child has a Gaussian distribution whose:
+
+A. Variance is always zero.
+B. Values must be Boolean.
+C. Parents must all be children of the query variable.
+D. Mean varies linearly with the parent value while the standard deviation is fixed.
+
+Correct Answer:: D
+
+==== Question 44
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the fruit-buying example, the Cost versus Harvest relationship has a negative slope because:
+
+A. Cost decreases as harvest size increases.
+B. Cost is independent of harvest size.
+C. Subsidy forces Cost to be Boolean.
+D. Harvest is the query variable.
+
+Correct Answer:: A
+
+==== Question 45
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Probit and expit/logit models are used in the chapter as examples of:
+
+A. Algorithms for topological sorting.
+B. Soft threshold models for a discrete variable with continuous parents.
+C. Ways to remove hidden variables.
+D. Proof methods for propositional logic.
+
+Correct Answer:: B
+
+==== Question 46
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the car insurance case study, hidden variables such as Theft and Accident are included because:
+
+A. They appear directly as application-form questions.
+B. They make the network fully connected.
+C. They help structure the network and must be inferred from available evidence.
+D. They replace the need for output variables.
+
+Correct Answer:: C
+
+==== Question 47
+
+Type:: Multiple Choice
+Points:: 1
+Question:: In the car insurance model, DrivingRecord provides evidence about:
+
+A. Weather and Catch.
+B. Probit and expit functions.
+C. The exact full joint distribution.
+D. RiskAversion and DrivingSkill.
+
+Correct Answer:: D
+
+==== Question 48
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Exact inference by enumeration answers a query by:
+
+A. Ignoring hidden variables.
+B. Sampling random worlds only.
+C. Computing sums of products of conditional probabilities from the network.
+D. Replacing every CPT with a utility table.
+
+Correct Answer:: C
+
+==== Question 49
+
+Type:: Multiple Choice
+Points:: 1
+Question:: A major weakness of enumeration in Bayesian networks is that:
+
+A. It cannot use CPT entries.
+B. It requires a cyclic graph.
+C. It cannot answer posterior probability queries.
+D. Its time complexity is exponential in the number of nonevidence Boolean variables.
+
+Correct Answer:: D
+
+==== Question 50
+
+Type:: Multiple Choice
+Points:: 1
+Question:: Variable elimination improves on enumeration by:
+
+A. Creating a full joint table before every query.
+B. Removing all conditional independence assumptions.
+C. Saving intermediate factors and summing out variables only where they matter.
+D. Requiring every node to have no parents.
+
+Correct Answer:: C
