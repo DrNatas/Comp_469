@@ -3,3 +3,4 @@
 
 # Local Python virtual environments.
 .venv/
+.env/
