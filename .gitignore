@@ -4,3 +4,7 @@
 # Local Python virtual environments.
 .venv/
 .env/
+.env
+
+# Jupyter notebook checkpoints.
+.ipynb_checkpoints/
