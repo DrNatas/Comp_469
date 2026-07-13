@@ -1,0 +1,362 @@
+# Chapter 7 Multiple-Choice Questions: Logical Agents
+
+Based only on Chapter 7, *Logical Agents*: knowledge-based agents, Wumpus World, logic, propositional logic, entailment, theorem proving, resolution, Horn clauses, forward/backward chaining, DPLL, WalkSAT, SATPLAN, and limitations of propositional logic.    
+
+---
+
+## Questions
+
+1. **What is the main goal of a knowledge-based agent?**
+   A. To act randomly in uncertain environments
+   B. To store knowledge, reason from it, and choose actions
+   C. To avoid using internal representations
+   D. To use only reflex rules
+
+2. **In Chapter 7, a knowledge base is defined as a set of:**
+   A. Actions
+   B. Sensors
+   C. Sentences
+   D. Rewards
+
+3. **A sentence that is assumed as given rather than derived is called:**
+   A. A model
+   B. An axiom
+   C. A percept
+   D. A query
+
+4. **The operation `TELL` is used to:**
+   A. Remove facts from memory
+   B. Add sentences to the knowledge base
+   C. Execute a physical action
+   D. Convert logic into Python code
+
+5. **The operation `ASK` is used to:**
+   A. Query what follows from the knowledge base
+   B. Delete inconsistent sentences
+   C. Sense the environment directly
+   D. Randomly select an action
+
+6. **In the generic KB-agent, what happens first after receiving a percept?**
+   A. The agent executes an action
+   B. The agent tells the KB what it perceived
+   C. The agent erases old knowledge
+   D. The agent converts the KB to CNF
+
+7. **A knowledge-based agent differs from a simple reflex agent because it can:**
+   A. Use inference over stored knowledge
+   B. Only respond to the current percept
+   C. Avoid representing the world
+   D. Function without sensors
+
+8. **The declarative approach to building agents means:**
+   A. Programming every behavior directly as code
+   B. Telling the agent facts and letting inference derive consequences
+   C. Avoiding logic entirely
+   D. Using only random search
+
+9. **The Wumpus World is useful in Chapter 7 because it shows:**
+   A. How agents can reason with partial information
+   B. How agents act with no knowledge
+   C. How minimax works
+   D. How neural networks train
+
+10. **In the Wumpus World, a breeze indicates:**
+    A. The gold is nearby
+    B. The Wumpus is nearby
+    C. A pit is in an adjacent square
+    D. The agent has won
+
+11. **In the Wumpus World, a stench indicates:**
+    A. The Wumpus is in a nearby square
+    B. A pit is directly under the agent
+    C. Gold is adjacent
+    D. The agent is safe
+
+12. **In the Wumpus World, glitter indicates:**
+    A. A pit is nearby
+    B. The gold is in the current square
+    C. The Wumpus is dead
+    D. The agent is at the start square
+
+13. **A cautious Wumpus agent should move only into squares it knows are:**
+    A. Breezy
+    B. Unsafe
+    C. OK
+    D. Unknown
+
+14. **If there is no breeze in a square, the agent can infer that:**
+    A. No adjacent square contains a pit
+    B. The Wumpus is dead
+    C. Gold must be nearby
+    D. The current square has a pit
+
+15. **If there is no stench in a square, the agent can infer that:**
+    A. No adjacent square contains the Wumpus
+    B. No adjacent square contains a pit
+    C. The gold is in the current square
+    D. The agent should shoot immediately
+
+16. **Syntax in a logic defines:**
+    A. Which sentences are well formed
+    B. Which worlds are possible
+    C. Which actions are legal
+    D. Which percepts are noisy
+
+17. **Semantics in a logic defines:**
+    A. The cost of inference
+    B. The truth of sentences in possible worlds or models
+    C. The order of actions
+    D. The size of the knowledge base
+
+18. **A model is:**
+    A. A possible world under which sentences have truth values
+    B. A physical robot body
+    C. A random action generator
+    D. A search frontier
+
+19. **A sentence α entails a sentence β when:**
+    A. β is true in every model where α is true
+    B. α and β use different symbols
+    C. β is false whenever α is true
+    D. α is shorter than β
+
+20. **Logical inference is the process of:**
+    A. Deriving new sentences from old ones
+    B. Moving through a grid world
+    C. Choosing random models
+    D. Measuring sensor accuracy
+
+21. **A sound inference algorithm:**
+    A. Derives only sentences that are entailed
+    B. Derives every sentence, true or false
+    C. Always runs in constant time
+    D. Never uses a knowledge base
+
+22. **A complete inference algorithm:**
+    A. Derives all entailed sentences
+    B. Never terminates
+    C. Uses only reflex rules
+    D. Avoids theorem proving
+
+23. **Propositional logic is built from:**
+    A. Objects, relations, and variables
+    B. Proposition symbols and logical connectives
+    C. Rewards and utilities
+    D. States and actions only
+
+24. **A proposition symbol represents:**
+    A. A statement that is either true or false
+    B. A probability distribution
+    C. A sensor reading only
+    D. A physical square in memory
+
+25. **Which connective represents conjunction?**
+    A. ¬
+    B. ∧
+    C. ∨
+    D. ⇒
+
+26. **Which connective represents disjunction?**
+    A. ∨
+    B. ∧
+    C. ¬
+    D. ⇔
+
+27. **Which connective represents negation?**
+    A. ⇒
+    B. ⇔
+    C. ¬
+    D. ∧
+
+28. **The implication sentence α ⇒ β is logically equivalent to:**
+    A. α ∧ β
+    B. ¬α ∨ β
+    C. α ∨ ¬β
+    D. ¬α ∧ β
+
+29. **The biconditional α ⇔ β means:**
+    A. α and β have the same truth value
+    B. α is always false
+    C. β is always false
+    D. α and β cannot both be true
+
+30. **A valid sentence is one that is:**
+    A. True in all models
+    B. False in all models
+    C. True in exactly one model
+    D. Written in English
+
+31. **A satisfiable sentence is one that is:**
+    A. True in at least one model
+    B. False in every model
+    C. Not well formed
+    D. Always entailed by contradiction
+
+32. **An unsatisfiable sentence is one that is:**
+    A. True in all models
+    B. False in all models
+    C. True in one model
+    D. Equivalent to a percept
+
+33. **Truth-table model checking determines entailment by:**
+    A. Enumerating possible models
+    B. Searching only safe squares
+    C. Using random walks only
+    D. Avoiding semantics
+
+34. **If a propositional vocabulary has n symbols, the number of possible models is:**
+    A. n
+    B. 2n
+    C. 2ⁿ
+    D. n²
+
+35. **A major limitation of truth-table entailment is that:**
+    A. It can require exponential time
+    B. It cannot represent true or false values
+    C. It never terminates on finite vocabularies
+    D. It works only for first-order logic
+
+36. **Theorem proving differs from model checking because theorem proving:**
+    A. Applies inference rules directly to sentences
+    B. Enumerates every possible model
+    C. Avoids knowledge bases
+    D. Requires no syntax
+
+37. **Logical equivalence means two sentences:**
+    A. Are true in exactly the same models
+    B. Use the same number of symbols
+    C. Have the same English wording
+    D. Are both always false
+
+38. **Conjunctive normal form, or CNF, is:**
+    A. A conjunction of clauses
+    B. A list of percepts
+    C. A graph of possible actions
+    D. A probability table
+
+39. **A clause is usually represented as:**
+    A. A disjunction of literals
+    B. A sequence of actions
+    C. A set of worlds
+    D. A reward function
+
+40. **Resolution proves entailment by showing that:**
+    A. KB ∧ ¬α is unsatisfiable
+    B. KB ∧ α is always false
+    C. α has no symbols
+    D. The Wumpus is always adjacent
+
+41. **In resolution, deriving the empty clause means:**
+    A. A contradiction has been found
+    B. No query was asked
+    C. The KB is empty
+    D. The agent has no percepts
+
+42. **Horn clauses are useful because entailment with them can be decided:**
+    A. In linear time in the size of the KB
+    B. Only by exhaustive game search
+    C. Only by random guessing
+    D. In infinite time
+
+43. **Forward chaining starts from:**
+    A. Known facts in the knowledge base
+    B. The query and works backward
+    C. Randomly selected models
+    D. Unsafe Wumpus squares
+
+44. **Forward chaining adds a conclusion when:**
+    A. All premises of an implication are known
+    B. At least one model is unknown
+    C. A proposition is negated
+    D. The agent moves forward
+
+45. **Backward chaining starts from:**
+    A. The query to be proved
+    B. All possible models
+    C. Random symbols
+    D. The Wumpus location
+
+46. **DPLL is an algorithm used for:**
+    A. Determining satisfiability in propositional logic
+    B. Drawing Wumpus maps
+    C. Learning neural network weights
+    D. Running minimax search
+
+47. **One improvement DPLL makes over naive truth-table search is that it uses:**
+    A. Early detection of clauses already true or false
+    B. Random dice rolls
+    C. Utility values
+    D. Minimax backups
+
+48. **WalkSAT is best described as:**
+    A. A local search algorithm for finding satisfying assignments
+    B. A complete proof procedure for all valid sentences
+    C. A Wumpus movement rule
+    D. A replacement for syntax
+
+49. **SATPLAN solves planning problems by:**
+    A. Finding a satisfying model that represents a valid plan
+    B. Avoiding propositional logic
+    C. Moving randomly until the goal is reached
+    D. Asking the Wumpus for the answer
+
+50. **A key limitation of propositional logic in Chapter 7 is that it:**
+    A. Does not scale well for large worlds with repeated structure over time and space
+    B. Cannot represent any true-or-false statements
+    C. Cannot be used for Wumpus World
+    D. Has no semantics
+
+---
+
+## Answer Key
+
+1. B
+2. C
+3. B
+4. B
+5. A
+6. B
+7. A
+8. B
+9. A
+10. C
+11. A
+12. B
+13. C
+14. A
+15. A
+16. A
+17. B
+18. A
+19. A
+20. A
+21. A
+22. A
+23. B
+24. A
+25. B
+26. A
+27. C
+28. B
+29. A
+30. A
+31. A
+32. B
+33. A
+34. C
+35. A
+36. A
+37. A
+38. A
+39. A
+40. A
+41. A
+42. A
+43. A
+44. A
+45. A
+46. A
+47. A
+48. A
+49. A
+50. A
