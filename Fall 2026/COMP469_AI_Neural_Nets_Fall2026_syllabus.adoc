@@ -181,10 +181,6 @@ The following references are recommended for students who want a structured text
 ** *Authors:* Stuart Russell and Peter Norvig
 ** *Edition:* 4th Edition
 ** *Publisher:* Pearson
-* *Applied ML Reference:* _Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow_
-** *Author:* Aurelien Geron
-** *Edition:* 3rd Edition
-** *Publisher:* O'Reilly Media
 
 ==== Major Assignments and Assessments for Introduction To Artificial Intelligence
 
