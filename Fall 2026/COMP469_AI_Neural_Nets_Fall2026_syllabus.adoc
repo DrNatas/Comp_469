@@ -203,7 +203,7 @@ The following references are recommended for students who want a structured text
 
 === Tentative Course Schedule or Course Outline
 
-**Note on Schedule:** This course follows a review-before-exam rhythm. Week 7 includes a dedicated review session for the midterm. Week 8 is used for the midterm itself. Week 15 serves as final project presentations and comprehensive final review.
+**Note on Schedule:** This course follows a review-before-exam rhythm. Week 8 is reserved for a dedicated midterm review class meeting followed by the midterm exam at the next class meeting. Week 15 serves as final project presentations and comprehensive final review.
 
 **Note on Readings:** The primary textbook is *Artificial Intelligence: A Modern Approach*, 4th Edition by Stuart Russell and Peter Norvig. We will cover selected chapters and sections. Full weekly reading assignments will be posted on CI Learn.
 
@@ -211,47 +211,47 @@ The following references are recommended for students who want a structured text
 |===
 | Week | Dates | Core Concept | Key Topics and Reading Focus | Lab/Assignment Focus | Calendar Notes
 
-| 1 | Aug 24-28 | AI Agents and Foundations | What is AI? Rational agents, PEAS framework, agent architectures. 
-**AIMA:** Ch. 1 (all) + Ch. 2 (all) | Lab: Vacuum/Gridworld agents. | Classes begin Aug 24.
+| 1 | Aug 24-28 | AI Foundations | What is AI? Definitions, history, rational-agent perspective, benefits, and risks. 
+**AIMA:** Ch. 1 (all) | Activity: AI definitions, examples, and course setup. | Classes begin Aug 24.
 
-| 2 | Aug 31-Sep 4 | State-Space Search | Problem formulation, uninformed search. 
-**AIMA:** Ch. 3 (3.1–3.5) | Lab: Implement BFS, DFS, UCS. | Normal week.
+| 2 | Aug 31-Sep 4 | Intelligent Agents | Agents and environments, rationality, PEAS framework, environment properties, agent architectures. 
+**AIMA:** Ch. 2 (all) | Lab: Vacuum/Gridworld agents. | Normal week.
 
-| 3 | Sep 7-11 | Informed & Adversarial Search | Heuristics, A*, minimax, alpha-beta. 
-**AIMA:** Ch. 3 (3.6) + Ch. 5 (5.1–5.3) | Lab: A* + minimax. | Labor Day (Sep 7).
+| 3 | Sep 7-11 | State-Space Search | Problem formulation, uninformed search. 
+**AIMA:** Ch. 3 (3.1–3.5) | Lab: Implement BFS, DFS, UCS. | Labor Day (Sep 7).
 
-| 4 | Sep 14-18 | Propositional Logic | Knowledge-based agents, propositional logic & inference. 
-**AIMA:** Ch. 7 (all) | Lab: Wumpus World. | Normal week.
+| 4 | Sep 14-18 | Informed & Adversarial Search | Heuristics, A*, minimax, alpha-beta. 
+**AIMA:** Ch. 3 (3.6) + Ch. 5 (5.1–5.3) | Lab: A* + minimax. | Normal week.
 
-| 5 | Sep 21-25 | First-Order Logic | FOL syntax, semantics, and usage. 
-**AIMA:** Ch. 8 (all) | Lab: Family knowledge base. | Normal week.
+| 5 | Sep 21-25 | Propositional Logic | Knowledge-based agents, propositional logic & inference. 
+**AIMA:** Ch. 7 (**7.1 Knowledge-Based Agents; 7.2 The Wumpus World; 7.3 Logic; 7.4 Propositional Logic; selected 7.5 Propositional Theorem Proving, especially 7.5.1, 7.5.3, 7.5.4**). Optional enrichment: 7.6-7.7. | Lab: Wumpus World. | Normal week.
 
-| 6 | Sep 28-Oct 2 | Quantifying Uncertainty | Probability, Bayes’ rule, naive Bayes. 
-**AIMA:** Ch. 12 (all) | Lab: Probability + Naive Bayes classifier. | Normal week.
+| 6 | Sep 28-Oct 2 | First-Order Logic | FOL syntax, semantics, and usage. 
+**AIMA:** Ch. 8 (8.1, 8.2, 8.3) | Lab: Family knowledge base. | Normal week.
 
-| 7 | Oct 5-9 | Bayesian Networks + Midterm Review | Bayesian networks + **Midterm Review** (student-driven). 
-**AIMA:** Ch. 13 (all) + review | Bayesian network lab + review activities. | Midterm review week.
+| 7 | Oct 5-9 | Quantifying Uncertainty | Probability, independence, Bayes' rule, and naive Bayes. 
+**AIMA:** Ch. 12 (**12.1 Acting under Uncertainty; 12.2 Basic Probability Notation; selected 12.3 Inference Using Full Joint Distributions; 12.4 Independence; 12.5 Bayes' Rule and Its Use; 12.6 Naive Bayes Models**). Optional enrichment: 12.7 The Wumpus World Revisited. | Lab: Probability + Naive Bayes classifier. | Normal week.
 
-| 8 | Oct 12-16 | Decision Trees & Midterm | Decision trees, entropy, model evaluation. 
-**AIMA:** Ch. 19 (19.1–19.3, 19.9) | **Midterm Exam** + Decision tree lab. Project proposal due. | Midterm week.
+| 8 | Oct 12-16 | Midterm Review & Midterm Exam | Comprehensive review of agents, search, games, logic, first-order logic, and uncertainty. 
+**AIMA:** Review Ch. 1-3, Ch. 5, Ch. 7, Ch. 8, and Ch. 12 selected readings. | Class meeting 1: **Midterm Review**. Next class meeting: **Midterm Exam**. Project proposal due. | Midterm review/exam week.
 
-| 9 | Oct 19-23 | Machine Learning Foundations | Supervised learning, perceptron, linear models. 
-**AIMA:** Ch. 19 (19.4–19.6) | Lab: Perceptron & logistic regression. | Normal week.
+| 9 | Oct 19-23 | Bayesian Networks | Bayesian networks, graphical models, conditional independence. 
+**AIMA:** Ch. 13 (**13.1 Representing Knowledge in an Uncertain Domain; 13.2 The Semantics of Bayesian Networks, especially 13.2.1 Conditional Independence and 13.2.2 Efficient Representation of Conditional Distributions; selected 13.3 Exact Inference in Bayesian Networks, especially 13.3.1 Inference by Enumeration and 13.3.2 Variable Elimination**). Optional enrichment: 13.4 Approximate Inference and 13.5 Causal Networks. | Lab: Bayesian networks. | Normal week.
 
-| 10 | Oct 26-30 | Neural Networks I | Feedforward networks, activations, XOR. 
-**AIMA:** Ch. 21 (21.1–21.4) | Lab: Simple MLP. | Normal week.
+| 10 | Oct 26-30 | Machine Learning Foundations | Decision trees, supervised learning, perceptron, linear/logistic models, and model evaluation. 
+**AIMA:** Ch. 19 (**19.1 Forms of Learning; 19.2 Supervised Learning; 19.3 Learning Decision Trees; 19.4 Model Selection and Optimization; 19.6 Linear Regression and Classification; selected 19.9 Developing Machine Learning Systems**). | Lab: Decision trees, perceptron, and logistic regression. | Normal week.
 
-| 11 | Nov 2-6 | Neural Networks II | Backpropagation, optimization, regularization. 
-**AIMA:** Ch. 21 (21.5–21.6) | Lab: Backpropagation + training. | Normal week.
+| 11 | Nov 2-6 | Neural Networks | Feedforward networks, activations, XOR, backpropagation, optimization basics. 
+**AIMA:** Ch. 21 (21.1–21.6 selected) | Lab: Simple MLP training. | Normal week.
 
-| 12 | Nov 9-13 | Neural Networks III: Computer Vision | Convolutional neural networks, image classification, basic computer vision concepts. 
-**AIMA:** Ch. 21 (21.3 Convolutional Networks, 21.8 Applications) + Ch. 25 (**25.1 Introduction, 25.4 Classifying Images**, and selected sections) | Lab: Image classification with a simple CNN (e.g. MNIST or Fashion-MNIST). | Veterans Day (Nov 11); campus closed. Adjust deadlines.
+| 12 | Nov 9-13 | Making Complex Decisions | Sequential decision problems, utilities over time, Markov decision processes, value iteration, and policy iteration. 
+**AIMA:** Ch. 17 (**17.1 Sequential Decision Problems; 17.2 Algorithms for MDPs, through 17.2.2 Policy iteration**). Optional enrichment: 17.4 Partially Observable MDPs. | Lab: Value iteration on Gridworld. | Veterans Day (Nov 11); campus closed. Adjust deadlines.
 
-| 13 | Nov 16-20 | Natural Language Processing | Language models and common NLP tasks. 
-**AIMA:** Ch. 23 (**23.1 + 23.5 + 23.6**) | Lab: Sentiment analysis / text classification. | Normal week.
+| 13 | Nov 16-20 | AI Applications: NLP and Computer Vision | Language models, text classification, image classification, and modern AI applications. 
+**AIMA:** Ch. 23 (**23.1 Language Models; 23.5 Complications of Real Natural Language; 23.6 Natural Language Tasks**) + Ch. 25 (**25.1 Introduction; 25.4 Classifying Images, especially 25.4.1-25.4.2**). | Lab: Text or image classification mini-lab. | Normal week.
 
-| 14 | Nov 23-27 | Reinforcement Learning | MDPs, Q-learning on Gridworld. 
-**AIMA:** Ch. 22 (22.1–22.4) | Lab: Q-learning. | Thanksgiving (Nov 26-27).
+| 14 | Nov 23-27 | Reinforcement Learning | From MDPs to learning from experience; passive RL, active RL, exploration, and Q-learning on Gridworld. 
+**AIMA:** Ch. 22 (**22.1 Learning from Rewards; 22.2 Passive Reinforcement Learning; 22.3 Active Reinforcement Learning; selected 22.4 Generalization in Reinforcement Learning**). | Lab: Q-learning. | Thanksgiving (Nov 26-27).
 
 | 15 | Nov 30-Dec 5 | Responsible AI, Synthesis & Final Review | Philosophy, ethics, and safety of AI + course synthesis + final review. 
 **AIMA:** Ch. 1.5 + **Ch. 27 (all)** | Final project presentations + Final Review Session. | Last day of instruction Dec 5.
@@ -274,7 +274,7 @@ All labs are *hands-on Jupyter Notebook* based and designed for the 3-hour weekl
 ** Experimentation, results, and analysis: 30%
 ** Clarity, documentation, and reflection: 20%
 
-===== Lab 1: Intelligent Agents (Week 1)
+===== Lab 1: Intelligent Agents (Week 2)
 
 *Objectives*:
 
