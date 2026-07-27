@@ -8,7 +8,8 @@ aima.cs.berkeley.edu
 github.com/aimacode
 
 
-Agents & Envrironments: https://www.youtube.com/watch?v=_b8o2DvMdis
+Agents & Envrironments: 
+yt-dlp --skip-download --write-subs --write-auto-subs --sub-langs 'en.*' --convert-subs srt https://www.youtube.com/watch?v=_b8o2DvMdis
 
 
 Fits with Chapter 6
