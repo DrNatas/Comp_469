@@ -13,7 +13,7 @@ Features:
 - 4x Supersampled anti-aliased maze rendering
 
 Install:
-    uv pip install --python "C:/Users/<user>/.venv/Scripts/python.exe" pygame
+    uv pip install --python "C:/Users/drnat/.venv/Scripts/python.exe" pygame
 
 Linux install:
     python3 -m venv .venv
