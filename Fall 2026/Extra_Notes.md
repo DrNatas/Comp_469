@@ -34,6 +34,8 @@ Chapter 2 & 3 Pacman planning agents and State Graph Search, Search tree
 https://www.youtube.com/watch?v=-Xx0QSFYfIQ&t=459s
 
 
+Chapter 3.5 - 3.6
+https://www.youtube.com/watch?v=Mlwrx7hbKPs&t=515s
 
 
 
