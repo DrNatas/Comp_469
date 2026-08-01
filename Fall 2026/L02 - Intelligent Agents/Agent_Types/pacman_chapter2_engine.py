@@ -23,6 +23,7 @@ import math
 import random
 import sys
 from collections import deque
+from time import perf_counter
 from dataclasses import dataclass
 from typing import Iterable, Type
 
@@ -31,8 +32,11 @@ import pygame
 TILE_SIZE = 30
 HUD_HEIGHT = 96
 FPS = 60
-PLAYER_STEP_MS = 135
-GHOST_STEP_MS = 180
+# Normal demonstration speed: larger values mean fewer moves per second.
+PLAYER_STEP_MS = 600
+GHOST_STEP_MS = 700
+
+# These values are used only by agents that support fast training mode.
 FAST_PLAYER_STEP_MS = 28
 FAST_GHOST_STEP_MS = 40
 GHOST_SENSOR_RANGE = 5
@@ -193,14 +197,30 @@ class WorldKnowledge:
         start: tuple[int, int],
         goal: tuple[int, int],
         blocked: set[tuple[int, int]] | None = None,
+        trace: bool = False,
     ) -> list[tuple[int, int]]:
         """Minimal planning service used by the goal-based demonstration.
 
         The Chapter 2 agent invokes planning. The internal search mechanics are
         support code; detailed search algorithms belong to Chapter 3.
+
+        When ``trace`` is true, print the breadth-first-search expansions so
+        students can see how a plan is constructed in the terminal.
         """
 
+        search_started = perf_counter()
+        if trace:
+            print("\n[PLANNER] Searching for a path...")
+            print(f"[PLANNER] Start={start}; goal={goal}")
+            print(f"[PLANNER] Blocked cells: {sorted(blocked or set())}")
+
         if start == goal:
+            if trace:
+                elapsed = perf_counter() - search_started
+                print(f"[PLANNER] Path found in {elapsed:.4f} seconds.")
+                print("[PLANNER] Total cost: 0")
+                print("[PLANNER] Number of nodes expanded: 0")
+                print("[PLANNER] Number of unique nodes expanded: 1")
             return []
 
         queue = deque([start])
@@ -209,12 +229,29 @@ class WorldKnowledge:
             tuple[tuple[int, int], tuple[int, int]] | None,
         ] = {start: None}
 
+        expansions = 0
         while queue:
             position = queue.popleft()
+            expansions += 1
+            if trace:
+                print(
+                    f"[PLANNER] Expand #{expansions}: {position}; "
+                    f"frontier={len(queue)}"
+                )
             for next_position, action in self.neighbors(position, blocked):
                 if next_position in parent:
+                    if trace:
+                        print(
+                            f"           {action_name(action)} -> "
+                            f"{next_position} (already discovered)"
+                        )
                     continue
                 parent[next_position] = (position, action)
+                if trace:
+                    print(
+                        f"           {action_name(action)} -> "
+                        f"{next_position} (add to frontier)"
+                    )
                 if next_position == goal:
                     actions: list[tuple[int, int]] = []
                     cursor = next_position
@@ -223,9 +260,40 @@ class WorldKnowledge:
                         actions.append(step_action)
                         cursor = previous
                     actions.reverse()
+                    if trace:
+                        elapsed = perf_counter() - search_started
+                        print(f"[PLANNER] Path found in {elapsed:.4f} seconds.")
+                        print(f"[PLANNER] Total cost: {len(actions)}")
+                        print(
+                            f"[PLANNER] Number of nodes expanded: {expansions}"
+                        )
+                        print(
+                            "[PLANNER] Number of unique nodes expanded: "
+                            f"{len(parent)}"
+                        )
+                        print(
+                            f"[PLANNER] Goal found after {expansions} "
+                            f"expansions: {len(actions)} actions"
+                        )
+                        print(
+                            "[PLANNER] Plan: "
+                            + " -> ".join(action_name(item) for item in actions)
+                        )
                     return actions
                 queue.append(next_position)
 
+        if trace:
+            elapsed = perf_counter() - search_started
+            print(f"[PLANNER] Path not found in {elapsed:.4f} seconds.")
+            print("[PLANNER] Total cost: 0")
+            print(f"[PLANNER] Number of nodes expanded: {expansions}")
+            print(
+                "[PLANNER] Number of unique nodes expanded: "
+                f"{len(parent)}"
+            )
+            print(
+                f"[PLANNER] No path found after {expansions} expansions."
+            )
         return []
 
     def maze_distance(
@@ -403,11 +471,18 @@ class Ghost(Entity):
 
 
 class Game:
-    def __init__(self, agent_class: Type[Chapter2Agent]):
+    def __init__(
+        self,
+        agent_class: Type[Chapter2Agent],
+        level: list[str] | None = None,
+    ):
         pygame.init()
 
-        self.rows = len(LEVEL)
-        self.cols = len(LEVEL[0])
+        # Use a caller-supplied level for demonstrations, or the shared level
+        # when an agent does not provide a custom one.
+        self.level = level if level is not None else LEVEL
+        self.rows = len(self.level)
+        self.cols = len(self.level[0])
         self.width = self.cols * TILE_SIZE
         self.height = self.rows * TILE_SIZE + HUD_HEIGHT
 
@@ -438,7 +513,7 @@ class Game:
         pellets: set[tuple[int, int]] = set()
         power: set[tuple[int, int]] = set()
 
-        for row_index, raw_row in enumerate(LEVEL):
+        for row_index, raw_row in enumerate(self.level):
             row: list[str] = []
             for col_index, cell in enumerate(raw_row):
                 row.append(cell if cell in {"#", "="} else " ")
@@ -927,5 +1002,10 @@ class Game:
             self.draw()
 
 
-def run_agent(agent_class: Type[Chapter2Agent]) -> None:
-    Game(agent_class).run()
+def run_agent(
+    agent_class: Type[Chapter2Agent],
+    level: list[str] | None = None,
+) -> None:
+    """Run an agent, optionally using a custom classroom level."""
+
+    Game(agent_class, level=level).run()

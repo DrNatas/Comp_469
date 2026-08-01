@@ -14,9 +14,15 @@ A simple reflex agent:
 
 Run from this directory:
     Windows PowerShell: py -m pip install pygame
-    Windows PowerShell: py 01_simple_reflex_agent_ch2.py
+    Windows PowerShell: py 01_simple_reflex_agent_ch2.py 1
     Linux: python3 -m venv .venv && .venv/bin/python -m pip install pygame
-    Linux: .venv/bin/python 01_simple_reflex_agent_ch2.py
+    Linux: .venv/bin/python 01_simple_reflex_agent_ch2.py 1
+
+Custom level demonstrations (run one level at a time):
+    Level 1: python 01_simple_reflex_agent_ch2.py 1
+    Level 2: python 01_simple_reflex_agent_ch2.py 2
+
+If no level number is supplied, Level 1 is used automatically.
 """
 
 from pacman_chapter2_engine import (
@@ -27,6 +33,34 @@ from pacman_chapter2_engine import (
     manhattan,
     run_agent,
 )
+
+
+# =============================================================================
+# CUSTOM CLASSROOM LEVELS
+# =============================================================================
+# The simple reflex agent sees only its current percept. These two levels make
+# that limitation visible: the agent can collect a nearby pellet, but it does
+# not understand that a longer route is needed to collect food elsewhere.
+#
+# Symbols: # wall, . pellet, o power pellet, P Pac-Man, 1-4 ghosts.
+CUSTOM_LEVELS = {
+    1: [
+        "#################",
+        "#P..............#",
+        "#.#############.#",
+        "#...o.......o...#",
+        "#################",
+    ],
+    2: [
+        "#################",
+        "#P..............#",
+        "#####.#########.#",
+        "#...#...#.......#",
+        "###.#####.#####.#",
+        "#...............#",
+        "#################",
+    ],
+}
 
 
 # =============================================================================
@@ -126,4 +160,17 @@ class SimpleReflexAgent(Chapter2Agent):
 
 
 if __name__ == "__main__":
-    run_agent(SimpleReflexAgent)
+    # Run level 1 by default. Choose level 2 from Terminal with:
+    #     python 01_simple_reflex_agent_ch2.py 2
+    import sys
+
+    try:
+        level_number = int(sys.argv[1])
+    except (IndexError, ValueError):
+        level_number = 1
+
+    if level_number not in CUSTOM_LEVELS:
+        raise SystemExit("Choose a custom level with 1 or 2.")
+
+    print(f"Starting Simple Reflex demonstration Level {level_number}...")
+    run_agent(SimpleReflexAgent, level=CUSTOM_LEVELS[level_number])

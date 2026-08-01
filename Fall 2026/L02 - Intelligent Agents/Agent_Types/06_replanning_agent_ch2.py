@@ -1,5 +1,5 @@
 """
-COMP 469 - Chapter 2: Goal-Based Agent
+COMP 469 - Chapter 2: Replanning Agent Demonstration
 
 This agent explicitly separates:
 1. goal formulation,
@@ -12,15 +12,20 @@ because it chooses actions to reach an explicit goal, and it is a planning
 agent because it creates and stores a sequence of future actions before
 executing them.
 
+This separate demonstration focuses on REPLANNING. Before every Pac-Man move,
+the agent prints the current plan check. When a new plan is needed, it prints
+every breadth-first-search expansion and the resulting path in the terminal.
+Only after that output is printed does the game execute the selected move.
+
 The helper ``world.shortest_path()`` is deliberately treated as a black-box
 planning service. Chapter 2 introduces why a goal-based agent plans; Chapter 3
 teaches the search algorithms in detail.
 
 Run from this directory:
     Windows PowerShell: py -m pip install pygame
-    Windows PowerShell: py 03_goal_based_agent_ch2.py
+    Windows PowerShell: py 06_replanning_agent_ch2.py
     Linux: python3 -m venv .venv && .venv/bin/python -m pip install pygame
-    Linux: .venv/bin/python 03_goal_based_agent_ch2.py
+    Linux: .venv/bin/python 06_replanning_agent_ch2.py
 """
 
 from __future__ import annotations
@@ -40,18 +45,19 @@ from pacman_chapter2_engine import (
 # =============================================================================
 # CHAPTER 2 AGENT PROGRAM STARTS HERE
 # =============================================================================
-class GoalBasedAgent(Chapter2Agent):
-    """A goal-based agent implemented as a planning agent.
+class ReplanningAgent(Chapter2Agent):
+    """A planning agent that visibly replans before moving.
 
     It formulates a goal, creates a multi-step plan, and then executes that
     plan one action at a time.
     """
 
-    AGENT_NAME = "GOAL-BASED AGENT"
+    AGENT_NAME = "REPLANNING AGENT"
     PROGRAM_LOCATION = "formulate_goal() -> make_plan() -> choose_action()"
     CHAPTER2_CONCEPT = "Current state + explicit goal -> predicted future actions"
     # Set to False if you want a quiet terminal while the game runs.
     SHOW_PLANNING_TRACE = True
+    SHOW_REPLAN_TRACE = True
 
     def __init__(self, world):
         super().__init__(world)
@@ -228,4 +234,4 @@ class GoalBasedAgent(Chapter2Agent):
 
 
 if __name__ == "__main__":
-    run_agent(GoalBasedAgent)
+    run_agent(ReplanningAgent)

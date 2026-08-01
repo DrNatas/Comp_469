@@ -22,7 +22,6 @@ The Chapter 2-aligned material is concentrated near the beginning:
 7:41–10:05: replanning Pac-Man and planning over future actions
 
 These portions align most directly with:
-
 Section 2.4.2 — Simple reflex agents
 Section 2.4.3 — Model-based reflex agents
 Section 2.4.4 — Goal-based agents
@@ -31,9 +30,11 @@ the Chapter 2 distinction between reacting to the current percept and considerin
 Another channel found for chapter 2
 https://www.youtube.com/watch?v=PU6VQbV49_g&list=PLadCJX05MZxw
 
-
-Ch 3 - 
+Chapter 2 & 3 Pacman planning agents and State Graph Search, Search tree
 https://www.youtube.com/watch?v=-Xx0QSFYfIQ&t=459s
+
+
+
 
 
 Fits with Chapter 6
