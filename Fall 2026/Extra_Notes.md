@@ -32,6 +32,9 @@ Another channel found for chapter 2
 https://www.youtube.com/watch?v=PU6VQbV49_g&list=PLadCJX05MZxw
 
 
+Ch 3 - 
+https://www.youtube.com/watch?v=-Xx0QSFYfIQ&t=459s
+
 
 Fits with Chapter 6
 Constrains Satisfaction Problems (CSPs) Part 1 of 2: https://www.youtube.com/watch?v=81z2ANjQcH4
