@@ -38,6 +38,9 @@ Chapter 3.5 - 3.6
 https://www.youtube.com/watch?v=Mlwrx7hbKPs&t=515s
 
 
+Chapter 4 - Search in Complex Environments
+https://www.youtube.com/watch?v=oDdDycxGdAk
+
 
 Fits with Chapter 6
 Constrains Satisfaction Problems (CSPs) Part 1 of 2: https://www.youtube.com/watch?v=81z2ANjQcH4
