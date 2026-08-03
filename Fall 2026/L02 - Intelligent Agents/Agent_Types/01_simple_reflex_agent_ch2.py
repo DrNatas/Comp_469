@@ -13,8 +13,8 @@ A simple reflex agent:
 - has no explicit goal, utility function, or learning process.
 
 Run from this directory:
-    Windows PowerShell: py -m pip install pygame
-    Windows PowerShell: py 01_simple_reflex_agent_ch2.py 1
+    Windows PowerShell: python -m pip install pygame
+    Windows PowerShell: python 01_simple_reflex_agent_ch2.py 1
     Linux: python3 -m venv .venv && .venv/bin/python -m pip install pygame
     Linux: .venv/bin/python 01_simple_reflex_agent_ch2.py 1
 
