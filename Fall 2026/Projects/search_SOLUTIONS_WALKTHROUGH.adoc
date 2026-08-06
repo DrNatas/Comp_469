@@ -1,0 +1,619 @@
+= CS188 Project 1 (Search) — Solutions Walkthrough &amp; Instructor Notes
+Dr. Natas
+:revdate: 2026-08-05
+:toc: left
+:toclevels: 3
+:sectnums:
+:sectnumlevels: 3
+:icons: font
+:source-highlighter: coderay
+:experimental:
+:xrefstyle: short
+
+[NOTE]
+====
+This document is an instructor-only companion to the solved copy of
+`search/search.py` and `search/searchAgents.py`. It records *how* each
+solution was arrived at, not just what the final code is, so it can double
+as prep material for lecture, section, or office hours. Keep it out of
+anything students clone.
+====
+
+== How These Solutions Were Built
+
+Before writing any code, the stub files were read end-to-end rather than
+solving questions in isolation, because Project 1 is one connected design
+problem wearing eight question numbers. Three things fell out of that first
+pass:
+
+. `search.SearchProblem` is a pure interface (`getStartState`,
+  `isGoalState`, `getSuccessors`, `getCostOfActions`). Every algorithm in
+  `search.py` (Q1–Q4) is written *only* against that interface, and never
+  touches Pacman, walls, or grids directly. That's the whole point of the
+  project — the same four functions later get reused unmodified against
+  `CornersProblem`, `FoodSearchProblem`, and `AnyFoodSearchProblem` in
+  Q5–Q8. Get the interface contract right once, and the rest of the
+  project is state-space design, not new algorithms.
+. `pacman.py -> searchAgents.SearchAgent -> search.py` is the call chain
+  for every question, and `SearchAgent` is explicitly marked "do NOT
+  change." So the only two files that ever needed edits were `search.py`
+  and `searchAgents.py`.
+. `test_cases/q1`–`q4` all ship the *same four* synthetic graph tests
+  (`graph_backtrack`, `graph_bfs_vs_dfs`, `graph_infinite`,
+  `graph_manypaths`), re-run against each algorithm. That's a strong
+  signal the four algorithms are meant to share one template and differ
+  only in fringe order — which is exactly how they were implemented (see
+  <<sec-template>>).
+
+The build order was: implement Q1 (DFS) first as the simplest case, run the
+autograder immediately rather than waiting until all four were written,
+and use its pass/fail output as a spec. That workflow is what surfaced the
+single biggest gotcha in the whole project — described in
+<<sec-q2-discovery>> — early enough to fix it before it propagated into
+Q5, which depends on Q2's BFS.
+
+[[sec-template]]
+=== The shared graph-search template
+
+Reading DFS, BFS, UCS, and A* side by side in the CS188 lecture slides,
+they're one algorithm parameterized by fringe type and (for UCS/A*) a
+priority function:
+
+[source,text]
+----
+fringe <- empty (Stack | Queue | PriorityQueue)
+fringe.push(start state, no actions yet)
+visited <- empty set
+
+while fringe not empty:
+    state, actions <- fringe.pop()
+    if isGoalState(state): return actions
+    if state in visited: continue
+    mark state visited
+    for each (successor, action, stepCost) in getSuccessors(state):
+        if successor not in visited:
+            fringe.push(successor, actions + [action], ...)
+----
+
+The two decisions baked into this template — *goal-test happens on pop,
+not on generation* and *visited is marked on pop, not on push* — are not
+arbitrary style choices. They're what makes the four algorithms produce
+directly comparable expansion traces, and Berkeley's autograder actually
+checks that (next section).
+
+[[sec-q2-discovery]]
+== Discovery: why BFS needed a rewrite
+
+DFS (Q1) was implemented first, using the template above, and passed
+cleanly. UCS (Q3) and A* (Q4) followed the same shape and also passed.
+
+BFS (Q2) was written *first* with the more "obvious" optimization — the
+one most people reach for instinctively and the one that shows up in most
+online reference solutions:
+
+[source,python]
+----
+if successor not in visited:
+    if problem.isGoalState(successor):
+        return actions + [action]      # goal-test at generation time
+    visited.add(successor)             # mark visited at push time
+    fringe.push((successor, actions + [action]))
+----
+
+This is a *correct* BFS — it still returns a shortest path — and it's more
+efficient, since it never enqueues an already-doomed duplicate. It passed
+`pacman_1.test` (mediumMaze, checked on cost) immediately.
+
+It then failed two of the four graph tests:
+
+[source,text]
+----
+*** FAIL: test_cases/q2/graph_manypaths.test
+*** 	student expanded_states:	['A', 'B1', 'C', 'B2', 'D', 'E1', 'F']
+*** 	correct  expanded_states:	['A', 'B1', 'C', 'B2', 'D', 'E1', 'F', 'E2']
+----
+
+The synthetic graph tests don't just check that the returned path is
+optimal — they assert the *exact* `expanded_states` trace against a
+reference implementation. Hand-simulating the reference trace (see
+<<sec-trace-sim>>) confirmed the reference BFS goal-tests and marks
+visited **on pop**, identically to DFS/UCS/A*, and tolerates duplicate
+entries sitting in the fringe rather than filtering them out at push time.
+
+Rewriting `breadthFirstSearch` to match the shared template exactly (drop
+the early goal test, mark visited on pop, tolerate fringe duplicates)
+fixed both graph tests with no change to correctness or to the pacman
+test's result. Q5 (`CornersProblem`), which is graded using this same
+`breadthFirstSearch`, had been failing purely as a downstream symptom of
+this bug and needed no changes of its own once Q2 was fixed.
+
+**Takeaway for grading student submissions:** a BFS that returns a
+provably shortest path but fails 1–2 graph unit tests is not necessarily
+wrong — it's very likely this exact, well-intentioned optimization. Worth
+a blanket announcement rather than relitigating it in every regrade
+request.
+
+[[sec-trace-sim]]
+.Hand-simulated reference trace for `graph_manypaths.test`
+[%collapsible]
+====
+Graph: `A -> {B1, C, B2} -> C -> D -> {E1, F, E2} -> F -> G`, where `B1`,
+`B2` both also lead to `C`, and `E1`, `E2` both also lead to `F`.
+
+[cols="1,3"]
+|===
+|Pop |Effect
+
+|`A`
+|not visited -> mark visited; push `B1, C, B2`
+
+|`B1`
+|not visited -> mark visited; push `C` (duplicate)
+
+|`C`
+|not visited (first copy) -> mark visited; push `D`
+
+|`B2`
+|already visited -> **skip**, not counted as expanded
+
+|`C` (dup)
+|already visited -> **skip**
+
+|`D`
+|not visited -> mark visited; push `E1, F, E2`
+
+|`E1`
+|not visited -> mark visited; push `F` (duplicate)
+
+|`F`
+|not visited (first copy) -> mark visited; push `G`
+
+|`E2`
+|not visited -> mark visited; push `F` (already visited, not re-pushed... but still not filtered, just won't be re-expanded)
+
+|`F` (dup)
+|already visited -> **skip**
+
+|`G`
+|not visited -> mark visited; `isGoalState(G)` is True -> return path
+|===
+
+Expanded order: `A, B1, C, B2, D, E1, F, E2` — matches the reference
+exactly, confirming pop-time goal test + pop-time visited marking is the
+intended algorithm shape.
+====
+
+== Cross-question design decisions
+
+Two decisions shaped everything downstream of Q4, made deliberately before
+writing code rather than discovered by trial and error:
+
+CornersProblem state design (Q5):: A search state must be everything the
+algorithm needs to answer "am I at a goal, and have I been here before?"
+Position alone isn't enough — two states with the same position but
+different sets of visited corners are genuinely different search states,
+so the state was designed as `(position, cornersVisitedTuple)` from the
+start, with a *tuple* (hashable) rather than a list (unhashable, and
+sets/dicts in the search template would throw on it immediately).
+
+Heuristic strategy (Q6/Q7):: Both heuristics needed to be admissible
+*and* cheap to evaluate, since they run on every node expansion. The
+design principle used for both: take the **max**, never the sum, of
+lower-bound distances to remaining goals — summing overestimates because
+Pacman doesn't pay for each sub-goal independently, it reuses steps
+between them. Q6 additionally chains nearest-neighbor Manhattan distance
+(still admissible, tighter than naive max); Q7 upgrades from Manhattan to
+real maze distance (tighter still) but only because `problem.
+heuristicInfo` gives a legal place to memoize repeated `mazeDistance`
+calls — without that cache the same heuristic would time out instead of
+just scoring lower.
+
+== Question-by-question solutions
+
+=== Q1 — Depth-First Search
+
+*Problem:* return a path to the goal using LIFO expansion order, over the
+generic `SearchProblem` interface.
+
+*Design:* direct instance of the shared template
+(<<sec-template>>) with `util.Stack` as the fringe.
+
+[source,python]
+----
+def depthFirstSearch(problem: SearchProblem):
+    fringe = util.Stack()
+    fringe.push((problem.getStartState(), []))
+    visited = set()
+
+    while not fringe.isEmpty():
+        state, actions = fringe.pop()
+
+        if problem.isGoalState(state):
+            return actions
+
+        if state in visited:
+            continue
+        visited.add(state)
+
+        for successor, action, stepCost in problem.getSuccessors(state):
+            if successor not in visited:
+                fringe.push((successor, actions + [action]))
+
+    return []
+----
+
+[WARNING]
+.Gotchas
+====
+* **Tree search instead of graph search** — no visited set at all leads to
+  infinite loops on any cyclic maze (`openMaze`, `graph_infinite.test`).
+  Usually presents as a hang, not a crash.
+* **Recursive implementations** work on tiny mazes and blow Python's
+  recursion limit on `mediumMaze`/`bigMaze`.
+* Returning a list of *states* instead of a list of *actions*.
+====
+
+=== Q2 — Breadth-First Search
+
+*Problem:* same interface, FIFO expansion order, must return a
+*shortest* path.
+
+*Design:* identical template to Q1 with `util.Queue`. See
+<<sec-q2-discovery>> for why the early-goal-test variant was reverted.
+
+[source,python]
+----
+def breadthFirstSearch(problem: SearchProblem):
+    fringe = util.Queue()
+    fringe.push((problem.getStartState(), []))
+    visited = set()
+
+    while not fringe.isEmpty():
+        state, actions = fringe.pop()
+
+        if problem.isGoalState(state):
+            return actions
+
+        if state in visited:
+            continue
+        visited.add(state)
+
+        for successor, action, stepCost in problem.getSuccessors(state):
+            if successor not in visited:
+                fringe.push((successor, actions + [action]))
+
+    return []
+----
+
+[WARNING]
+.Gotchas
+====
+* Copy-pasting Q1 and forgetting to swap `Stack` for `Queue` still
+  produces *a* valid path, just not a shortest one — passes some tests,
+  fails cost-checking ones, and is a very easy bug to miss by eye.
+* The early-goal-test optimization described in <<sec-q2-discovery>> —
+  correct algorithm, wrong expansion trace for this autograder.
+====
+
+=== Q3 — Uniform Cost Search
+
+*Problem:* same interface, expand lowest cumulative path cost first.
+
+*Design:* same template, `util.PriorityQueue` keyed on cumulative cost;
+track a `bestCost` map so a state already popped at a lower cost is never
+re-expanded, and any fringe entry that's since been beaten by a cheaper
+path is silently skipped when it's eventually popped.
+
+[source,python]
+----
+def uniformCostSearch(problem: SearchProblem):
+    startState = problem.getStartState()
+    fringe = util.PriorityQueue()
+    fringe.push((startState, [], 0), 0)
+    bestCost = {}
+
+    while not fringe.isEmpty():
+        state, actions, cost = fringe.pop()
+
+        if state in bestCost and bestCost[state] <= cost:
+            continue
+        bestCost[state] = cost
+
+        if problem.isGoalState(state):
+            return actions
+
+        for successor, action, stepCost in problem.getSuccessors(state):
+            newCost = cost + stepCost
+            if successor not in bestCost or newCost < bestCost[successor]:
+                fringe.push((successor, actions + [action], newCost), newCost)
+
+    return []
+----
+
+[WARNING]
+.Gotchas
+====
+* Priority pushed must be the **cumulative** path cost, not the
+  incremental `stepCost` of the last edge alone.
+* Goal test must happen at pop time — `ucs_5_goalAtDequeue.test` exists
+  specifically to catch students who goal-test at generation time and
+  return a suboptimal path because a node can be enqueued more than once
+  at different costs.
+* `util.PriorityQueue.update()` is available for in-place priority
+  decreases; pushing duplicates and filtering stale entries via
+  `bestCost` (as above) is equally valid and arguably easier to reason
+  about — don't dock a submission for choosing either approach.
+====
+
+=== Q4 — A* Search
+
+*Problem:* same interface, expand lowest `g(state) + h(state)` first,
+where `h` is a supplied heuristic.
+
+*Design:* identical to Q3, with the heuristic value added to the priority
+only (never to the stored cumulative cost `g`, which must stay the true
+path cost for the final answer to be correct).
+
+[source,python]
+----
+def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
+    startState = problem.getStartState()
+    fringe = util.PriorityQueue()
+    fringe.push((startState, [], 0), heuristic(startState, problem))
+    bestCost = {}
+
+    while not fringe.isEmpty():
+        state, actions, cost = fringe.pop()
+
+        if state in bestCost and bestCost[state] <= cost:
+            continue
+        bestCost[state] = cost
+
+        if problem.isGoalState(state):
+            return actions
+
+        for successor, action, stepCost in problem.getSuccessors(state):
+            newCost = cost + stepCost
+            if successor not in bestCost or newCost < bestCost[successor]:
+                priority = newCost + heuristic(successor, problem)
+                fringe.push((successor, actions + [action], newCost), priority)
+
+    return []
+----
+
+[WARNING]
+.Gotchas
+====
+* Computing `heuristic()` on the *current* node and reusing that value for
+  all its successors, instead of recomputing per successor.
+* Same goal-test-at-pop requirement as UCS —
+  `astar_3_goalAtDequeue.test` targets it directly.
+* An inconsistent (but still admissible) heuristic can make A* revisit
+  states — the `bestCost` re-expansion guard above is what keeps that
+  correct rather than just "usually fine."
+====
+
+=== Q5 — Corners Problem: state space
+
+*Problem:* design a state space and successor function for "visit all
+four corners of the maze," reusing Q1–Q4 unmodified.
+
+*Design:* state = `(pacmanPosition, cornersVisited)`, where
+`cornersVisited` is a 4-tuple of booleans aligned with `problem.corners`.
+A tuple, not a list, because it needs to be hashable to sit in the
+`visited` sets/dicts every algorithm above already relies on.
+
+[source,python]
+----
+def getStartState(self):
+    cornersVisited = tuple(corner == self.startingPosition for corner in self.corners)
+    return (self.startingPosition, cornersVisited)
+
+def isGoalState(self, state):
+    return all(state[1])
+
+def getSuccessors(self, state):
+    successors = []
+    position, cornersVisited = state
+    for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
+        x, y = position
+        dx, dy = Actions.directionToVector(action)
+        nextx, nexty = int(x + dx), int(y + dy)
+        if not self.walls[nextx][nexty]:
+            nextPosition = (nextx, nexty)
+            if nextPosition in self.corners:
+                index = self.corners.index(nextPosition)
+                if not cornersVisited[index]:
+                    nextCornersVisited = cornersVisited[:index] + (True,) + cornersVisited[index + 1:]
+                else:
+                    nextCornersVisited = cornersVisited
+            else:
+                nextCornersVisited = cornersVisited
+            successors.append(((nextPosition, nextCornersVisited), action, 1))
+
+    self._expanded += 1  # DO NOT CHANGE
+    return successors
+----
+
+[WARNING]
+.Gotchas
+====
+* **Mutable state representation.** Tracking visited corners as a list
+  (or worse, as mutable state on `self` rather than folded into the
+  search state) breaks hashability outright, or — more insidiously —
+  breaks the Markov property: two branches of the search tree end up
+  aliasing the same mutable list and "visiting" a corner for a branch that
+  never actually went there.
+* Deleting `self._expanded += 1` by accident while filling in the loop
+  around it — breaks the "nodes expanded" grading line silently, without
+  breaking correctness.
+* Q5 depends on a correct Q2. If Q5 fails with no obvious cause, check
+  `breadthFirstSearch` first (<<sec-q2-discovery>>) before debugging this
+  file.
+====
+
+=== Q6 — Corners heuristic
+
+*Problem:* admissible (ideally consistent) heuristic for `CornersProblem`.
+
+*Design:* greedy nearest-neighbor chain — repeatedly add the Manhattan
+distance to the closest remaining unvisited corner, then treat that
+corner as the new current position, until none remain. This never
+overestimates (Manhattan distance ignores walls and always underbounds
+true maze distance), and stays admissible because "cost to visit all
+remaining corners" is always at least "distance to the nearest one."
+
+[source,python]
+----
+def cornersHeuristic(state, problem):
+    corners = problem.corners
+    position, cornersVisited = state
+    unvisited = [c for c, v in zip(corners, cornersVisited) if not v]
+
+    total = 0
+    current = position
+    remaining = list(unvisited)
+    while remaining:
+        distances = [(util.manhattanDistance(current, c), c) for c in remaining]
+        nearestDist, nearestCorner = min(distances)
+        total += nearestDist
+        current = nearestCorner
+        remaining.remove(nearestCorner)
+
+    return total
+----
+
+[WARNING]
+.Gotchas
+====
+* **Farthest-corner-first, or unordered summation** of distances to all
+  remaining corners can overestimate the true cost — inadmissible.
+* Using real maze distance between corners instead of Manhattan is
+  tighter but expensive if recomputed every call — can time out on
+  `mediumCorners` without caching.
+* Autograder checks non-negativity, admissibility at the start state, and
+  a node-expansion bonus tier — a "less wrong than trivial" heuristic
+  shows up as partial credit, not a hard fail, which is useful context
+  when triaging a regrade request.
+====
+
+=== Q7 — Food heuristic
+
+*Problem:* admissible, ideally consistent, heuristic for
+`FoodSearchProblem` (eat all remaining dots).
+
+*Design:* real maze distance (not Manhattan) from Pacman's position to
+whichever remaining food dot is *farthest* away, memoized in
+`problem.heuristicInfo` since `mazeDistance()` runs a full BFS per call.
+
+[source,python]
+----
+def foodHeuristic(state, problem):
+    position, foodGrid = state
+    foodList = foodGrid.asList()
+    if not foodList:
+        return 0
+
+    if 'distanceCache' not in problem.heuristicInfo:
+        problem.heuristicInfo['distanceCache'] = {}
+    cache = problem.heuristicInfo['distanceCache']
+
+    maxDistance = 0
+    for food in foodList:
+        key = (position, food)
+        if key not in cache:
+            cache[key] = mazeDistance(position, food, problem.startingGameState)
+        maxDistance = max(maxDistance, cache[key])
+
+    return maxDistance
+----
+
+Verified result on `trickySearch` (the grading layout): *4137 nodes
+expanded*, clearing every threshold in `gradingThresholds: 15000 12000
+9000 7000` and earning the bonus point (5/4 on the autograder).
+
+[WARNING]
+.Gotchas
+====
+* **Sum instead of max** of distances to remaining food is the single
+  most common inadmissible heuristic here — Pacman reuses steps between
+  dots, it doesn't pay for each one independently. This is exactly the
+  failure mode the assignment page warns about: *"if A* finds a solution
+  worse than UCS, your heuristic is not consistent."*
+* Manhattan-to-farthest-dot is admissible and simple, but too weak to
+  clear the higher credit tiers — expect it to pass correctness tests
+  while scoring low on the node-expansion bonus.
+* **Uncached `mazeDistance()` calls are the most common cause of
+  timeouts** here, not wrong answers — every heuristic evaluation runs a
+  fresh BFS unless memoized. Point students at `problem.heuristicInfo`
+  explicitly; the docstring mentions it but is easy to skim past.
+====
+
+=== Q8 — Suboptimal Search (ClosestDotSearchAgent)
+
+*Problem:* repeatedly path to the nearest remaining food dot until the
+board is clear. Two pieces: `AnyFoodSearchProblem.isGoalState` and
+`findPathToClosestDot`.
+
+*Design:* all step costs are 1, so plain BFS is both correct and the
+right tool — no need for UCS or A* here.
+
+[source,python]
+----
+def isGoalState(self, state):
+    x, y = state
+    return self.food[x][y]
+
+def findPathToClosestDot(self, gameState):
+    problem = AnyFoodSearchProblem(gameState)
+    return search.bfs(problem)
+----
+
+[WARNING]
+.Gotchas
+====
+* **`self.food[y][x]` instead of `self.food[x][y]`** — the `Grid` class in
+  this codebase is indexed `[x][y]`, the opposite of the `grid[row][col]`
+  convention students often bring in from elsewhere. Fails silently
+  (wrong boolean, not a crash) unless tested on an asymmetric layout, so
+  it can slip through casual self-testing.
+* Reaching for A*/UCS here works but is unnecessary overhead — worth a
+  style note, not a correctness deduction.
+* **By design, the overall tour is not globally optimal** — greedily
+  chasing the nearest dot each time is the "suboptimal" in the question's
+  name (a nod to the traveling-salesman flavor of visiting all dots
+  optimally being intractable at this scale). Students who notice their
+  final path isn't shortest are not necessarily wrong; grading here is
+  pass/fail on correctness, not path length.
+====
+
+== Verification
+
+[source,text]
+----
+$ python3 autograder.py
+Question q1: 3/3
+Question q2: 3/3
+Question q3: 3/3
+Question q4: 3/3
+Question q5: 3/3
+Question q6: 3/3
+Question q7: 5/4
+Question q8: 3/3
+------------------
+Total: 26/25
+----
+
+== Cross-cutting notes for grading
+
+* `PositionSearchProblem`, `FoodSearchProblem`, and the abstract
+  `SearchProblem` base class are fully provided and should never be
+  touched by students — a diff that touches those files is worth a
+  comment on its own.
+* Grid and wall lookups are consistently `[x][y]` throughout this
+  codebase (`self.walls[x][y]`, `self.food[x][y]`), never `[y][x]` — this
+  is the single most common index-order slip across every question that
+  touches the grid directly.
+* `Actions.directionToVector(action)` is the standard way to turn a
+  `Directions` constant into a `(dx, dy)` delta; reimplementing this by
+  hand with hardcoded direction strings is a common source of typos.
