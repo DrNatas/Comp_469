@@ -1,6 +1,5 @@
 https://inst.eecs.berkeley.edu/~cs188/sp26/
 
-
 https://github.com/aimacode/aima-python
 
 aima.cs.berkeley.edu
@@ -45,3 +44,10 @@ https://www.youtube.com/watch?v=oDdDycxGdAk
 Fits with Chapter 6
 Constrains Satisfaction Problems (CSPs) Part 1 of 2: https://www.youtube.com/watch?v=81z2ANjQcH4
 Constrains Satisfaction Problems (CSPs) Part 2 of 2: https://www.youtube.com/watch?v=_DXf6oaknHw
+
+Chapter 14 AIMA 14.3, 14.5
+https://www.youtube.com/watch?v=4LW3H_Jinr4
+
+
+L09 - 
+https://www.youtube.com/watch?v=M98BM_yJPNw
