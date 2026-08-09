@@ -56,3 +56,10 @@ L10 - MDPs I
 
 
 L11 - MDPs II
+
+
+L12 - RL I
+https://www.youtube.com/watch?v=H70q_bRnm6Q
+
+L13 - RL II
+https://www.youtube.com/watch?v=XafrqwHfBKE

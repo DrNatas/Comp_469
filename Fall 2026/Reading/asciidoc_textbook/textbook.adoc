@@ -7,44 +7,12 @@
 :icons: font
 :experimental:
 
-_By Nikhil Sharma, Josh Hug, Jacky Liang, and Henry Zhu._
-
-_Additional Contributions by Regina Wang, Peyrin Kao, Matei Gardea, Danial Toktarbayev, Catherine Chu, Samantha Huang, Saathvik Selvan, Pranav Muralikrishnan, and Wesley Zheng._
-
-_Website Established By Wesley Zheng. Special Thanks to Ashley Chiu._
-
-This is the textbook for https://inst.eecs.berkeley.edu/~cs188[CS 188: Introduction to Artificial Intelligence] at https://eecs.berkeley.edu/[UC Berkeley]. It provides an introduction to the full range of topics studied in artificial intelligence, with emphasis on the “core competences” of intelligent systems - problem solving, reasoning, decision making, and learning - and on the logical and probabilistic foundations of these activities.
-
-
-== PDF Version
-These notes are available as a https://inst.eecs.berkeley.edu/~cs188/textbook/textbook_full.pdf[PDF].
-
-This PDF is automatically generated each time there is a correction made to the website. This means that it is _completely possible_ for a downloaded copy to be not up-to-date. If your desired mode of the textbook is in PDF form, we recommend you regularly redownload in cases there were recent corrections made.
-
-
-== Corrections
-As of the Summer 2025 semester, this textbook is still being actively maintained and updated.
-
-If you see any parts that needs to be corrected, please open a https://github.com/BerkeleyAI/textbook/issues[GitHub issue].
-
-
-== Source and Changelog
-The source for the lecture notes and a log of all changes is https://github.com/BerkeleyAI/textbook[available on GitHub].
-
-
 == License
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
 
 == 1. Search
-Author: Nikhil Sharma
-
-Edited by: Matei Gardea, Catherine Chu, and Wesley Zheng
-
-Credit: Some sections adapted from the textbook _Artificial Intelligence: A Modern Approach_.
-
-Last updated: October 2024
-
+Author: Juan Rios
 
 === 1.1 Agents
 In artificial intelligence, the central problem at hand is the creation of a rational *agent*, an entity that has goals or preferences and tries to perform a series of *actions* that yield the best/optimal expected outcome given these goals. Rational agents exist in an *environment*, which is specific to the given instantiation of the agent. Agents use sensors to interact with the environment and act on it using actuators. As a very simple example, the environment for a checkers agent is the virtual checkers board on which it plays against opponents, where piece moves are actions. Together, an environment and the agents that reside within it create a *world*.
@@ -395,7 +363,7 @@ image::page-022-img-01.jpeg[Figure 7: 8-Queens Solution]
 === 1.5 Summary
 We discussed _search problems_ and their components: a _state space_, a set of _actions_, a _transition function_, an _action cost_, a _start state_ and a _goal state_. The agent interacts with the environment through its sensors and its actuators. The agent function describes what the agent does in all circumstances. Rationality of the agent means that the agent seeks to maximize their expected utility. Finally, we define our task environments using PEAS descriptions.
 
-Regarding the search problems, they can be solved using a variety of search techniques, including but not limited to the five we study in CS 188:
+Regarding the search problems, they can be solved using a variety of search techniques, including but not limited to the five we study in COMP 469:
 
 * _Breadth-first Search_
 * _Depth-first Search_
@@ -3245,7 +3213,7 @@ Let’s now return to the problem of inferring conditional probability tables fo
 * Y - a random variable that’s either `spam` or `ham` depending on the label of the corresponding email.
 * f (j) i - this references the resolved value of the random variable F~i~ in the j^th^ item in the training set. In other words, each f (j) i is a 1 if word i appeared in j^th^ email under consideration and 0 otherwise. This is the first time we’re seeing this notation, but it’ll come in handy in the upcoming derivation.
 
-*Disclaimer*: Feel free to skip the following mathematical derivation. For CS 188, you’re only required to know the result of the derivation summarized in the paragraph at the end of this section.
+*Disclaimer*: Feel free to skip the following mathematical derivation. For COMP 469, you’re only required to know the result of the derivation summarized in the paragraph at the end of this section.
 
 Now within each conditional probability table P(F~i~|Y), note that we have two distinct Bernoulli distributions: P(F~i~|Y = ham) and P(F~i~|Y = spam). For simplicity, let’s specifically consider P(F~i~|Y = ham) and try to find the maximum likelihood estimate for a parameter θ = P(F~i~ = 1|Y = ham) i.e. the probability that the i^th^ word in our dictionary appears in a ham email. Since we have N~h~ ham emails in our training set, we have N~h~ observations of whether or not word i appeared in a ham email. Because our model assumes a Bernoulli distribution for the appearance of each word given its label, we can formulate our likelihood function as follows:
 
