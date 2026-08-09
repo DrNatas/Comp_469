@@ -52,14 +52,17 @@ https://www.youtube.com/watch?v=4LW3H_Jinr4
 L09 - 
 https://www.youtube.com/watch?v=M98BM_yJPNw
 
-L10 - MDPs I
+L10 - Probability 12.1 to 12.5
+https://www.youtube.com/watch?v=Q9TPylxjNoA
 
+L11 - Bayes Net 13.1 to 13.3
+https://www.youtube.com/watch?v=T4l6ltMMcec
 
-L11 - MDPs II
-
+MDPs II
 
 L12 - RL I
 https://www.youtube.com/watch?v=H70q_bRnm6Q
 
-L13 - RL II
+- RL II
 https://www.youtube.com/watch?v=XafrqwHfBKE
+
