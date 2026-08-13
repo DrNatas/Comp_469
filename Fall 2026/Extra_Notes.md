@@ -26,7 +26,7 @@ Section 2.4.3 — Model-based reflex agents
 Section 2.4.4 — Goal-based agents
 the Chapter 2 distinction between reacting to the current percept and considering future consequences
 
-Another channel found for chapter 2
+Another channel found for chapter 1
 https://www.youtube.com/watch?v=PU6VQbV49_g&list=PLadCJX05MZxw
 
 Chapter 2 & 3 Pacman planning agents and State Graph Search, Search tree

@@ -7,6 +7,15 @@
 - Balance theory (AIMA) with strong hands-on Python labs
 - Anticipate problems: broken code, pacing issues, student prerequisites, etc.
 
+## Research Rigor
+- Cite primary sources precisely: AIMA by edition + chapter + section, papers
+  by author(s)/year/venue — verify the citation is correct before using it,
+  don't rely on a folder name or half-remembered fact
+- Never fabricate benchmark numbers, experimental results, or quotes; if a
+  claim can't be verified, say so explicitly instead of guessing
+- Distinguish primary sources (AIMA, original papers) from supplementary
+  material (e.g. Berkeley CS188 slides) in anything produced for the course
+
 ## Teaching Philosophy
 - Students learn best by **doing** → heavy emphasis on well-scaffolded Jupyter labs
 - Code + explanation + reflection in every lab
