@@ -1,0 +1,16 @@
+agent,difficulty,seed,outcome,score,decisions,elapsed_seconds,pellets_left,ghosts_eaten,repeat_visits,immediate_backtracks,performance
+student,normal,1,caught,580,58,7.83,27,0,12,1,-433.6
+simple_reflex,normal,1,timeout,660,1500,202.5,23,0,1450,289,-218.0
+random,normal,1,caught,230,85,11.475,54,0,66,32,-851.0
+student,normal,2,caught,580,58,7.83,27,0,12,1,-433.6
+simple_reflex,normal,2,timeout,660,1500,202.5,23,0,1450,289,-218.0
+random,normal,2,caught,230,85,11.475,54,0,66,32,-851.0
+student,normal,3,caught,580,58,7.83,27,0,12,1,-433.6
+simple_reflex,normal,3,timeout,660,1500,202.5,23,0,1450,289,-218.0
+random,normal,3,caught,140,25,3.375,59,0,11,7,-879.0
+student,normal,4,caught,580,58,7.83,27,0,12,1,-433.6
+simple_reflex,normal,4,timeout,660,1500,202.5,23,0,1450,289,-218.0
+random,normal,4,caught,230,85,11.475,54,0,66,32,-851.0
+student,normal,5,caught,580,57,7.695,27,0,11,1,-433.4
+simple_reflex,normal,5,timeout,660,1500,202.5,23,0,1450,289,-218.0
+random,normal,5,caught,140,27,3.645,59,0,13,9,-883.4
