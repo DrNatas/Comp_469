@@ -15,12 +15,29 @@
 :description: Syllabus for COMP 469 Introduction To Artificial Intelligence at CSU Channel Islands - Fall 2026
 :keywords: Artificial Intelligence, Neural Networks, Machine Learning, Data Mining, CSUCI, Syllabus
 
+// =============================================================
+// SP 24-07 COMPLIANCE NOTES (source comments; do not render)
+//
+// Element D: The Student Learning Outcomes below must match the
+// SLOs in the APPROVED COURSE PROPOSAL / course outline of record,
+// not instructor-authored outcomes. Obtain the COR from the
+// Program Chair or Academic Programs and reconcile before
+// distribution. This is the highest-risk item in a dean review.
+//
+// Element C: Catalog description is reproduced verbatim from the
+// University Catalog. Do not edit it. Instructor elaboration
+// belongs in "Topics Covered This Semester" below it.
+//
+// Search this file for "CONFIRM" to find every field that must be
+// filled in before distribution.
+// =============================================================
+
 // Professional Header Branding
 [.text-center]
-image:https://www.csuci.edu/cpr/isg/isgimages/correctlogo.jpg[CSUCI Logo, 300, 100]
+image:https://csuci.sharepoint.com/:i:/r/sites/BrandAssets2026/Shared%20Documents/Approved%20Logos_Graphics/Approved%20Logo%20versions/Dolphin%20Spirit%20Mark/CSUCI_DSM-2C/CSUCI_DSM-2C.jpg?d=wfd64e8fc1e8f4fe9aa735e2015a4f8ba&csf=1&web=1&e=meEGLb[CSUCI Logo, 300, 100]
 
 [quote]
-_The syllabus and course schedule are subject to change without notice in the event of extenuating circumstances. Updates will be shared on CI Learn._
+_The syllabus and course schedule are subject to change in the event of extenuating circumstances. Any changes will be announced in class and posted as an announcement in CI Learn, and a revised syllabus will be posted to the course site._
 
 This syllabus is compliant with _Syllabus Policy SP 24-07_, a requirement for all courses on campus.
 
@@ -28,7 +45,7 @@ This syllabus is compliant with _Syllabus Policy SP 24-07_, a requirement for al
 
 * *Instructor*: Juan Rios
 * *Office Location*: Lindro Hall 2896
-* *Office Hours*: Monday - Friday by appointment 8:00-17:00
+* *Office Hours*: Monday - Friday, 8:00-17:00, by appointment
 * *Contact*: mailto:juan.rios381@csuci.edu[juan.rios381@csuci.edu]
 * *Office Phone*: 805-437-3627
 
@@ -36,24 +53,39 @@ This syllabus is compliant with _Syllabus Policy SP 24-07_, a requirement for al
 
 * *Course*: COMP 469 - Introduction To Artificial Intelligence
 * *Units*: 3
+* *Contact Hours*: Two hours lecture and three hours lab per week
 * *Term*: Fall 2026
-* *Class Format*: Three hours lecture in the lab per week
-* *Class Meeting*: In person; day, time, and assigned lab room to be confirmed in CI Learn
-* *Final Exam*: Tuesday, December 8, 2026, 7:00 PM–9:00 PM, Gateway Hall 3540.
+* *Modality*: In person, synchronous
+* *Lecture Meeting*: *[CONFIRM: days and times]*, *[CONFIRM: building and room]*
+* *Lab Meeting*: *[CONFIRM: day and time]*, *[CONFIRM: lab room]*
+* *Final Exam*: Tuesday, December 8, 2026, 7:00 PM-9:00 PM, Gateway Hall 3540, in person.
 
 === Course Format
 
-This is a synchronous in-person class. This means we will meet on campus for class sessions in a computer lab during the times listed in CI Learn.
+This is a synchronous in-person class. We meet on campus for lecture and for a weekly lab session in a computer lab at the times listed above and in CI Learn.
 The course combines lecture, guided demonstrations, hands-on programming labs, discussion, and project work.
-In addition to attending class sessions, you need to log in to the course 2-3 times a week to complete coursework and make sure you are up to date on what is due.
+In addition to attending class sessions, you need to log in to CI Learn 2-3 times a week to complete coursework and make sure you are up to date on what is due.
 
 === Course Description
 
-_Prerequisites: COMP 350 and COMP 362_
+The following description is reproduced from the University Catalog.
 
-An exploration of the use of computers to perform computations normally associated with intelligence.
-Topics include rational agents, state-space search, knowledge representation, logical inference, probability and uncertainty, data mining, decision trees, machine learning, pattern formation and recognition, neural networks, backpropagation, and computational models for intelligent behavior.
-Additional topics may include natural language processing, computer vision/imaging, reinforcement learning, responsible AI, and the limits of modern AI systems.
+_Units: 3. Two hours lecture and three hours lab per week._
+
+_Prerequisite(s): COMP 350 and COMP 362_
+
+_A hands-on exploration of the use of computers to perform computations normally associated with intelligence, pattern formation and recognition using a variety of symbolic and sub-symbolic methods. Knowledge acquisition, representation, and maintenance will be covered._
+
+_Graded: Letter Grade_
+
+* *Prerequisites*: COMP 350 and COMP 362
+* *Co-requisites*: None
+* *General Education*: This course does not satisfy a General Education area. *[CONFIRM with Program Chair; if the course carries a GE designation, the corresponding GE Student Learning Outcomes must be added to this syllabus per SP 24-07 §I.E.]*
+
+==== Topics Covered This Semester
+
+Within the catalog description above, this section of the course will address rational agents, state-space search, knowledge representation, logical inference, probability and uncertainty, data mining, decision trees, machine learning, pattern formation and recognition, neural networks, backpropagation, and computational models for intelligent behavior.
+Additional topics include natural language processing, computer vision/imaging, reinforcement learning, responsible AI, and the limits of modern AI systems.
 
 === Course Requirements
 
@@ -64,6 +96,17 @@ Additional topics may include natural language processing, computer vision/imagi
 * A willingness to read code, debug code, work with datasets, and explain model behavior in writing
 
 A GPU is not required for this course. Labs and projects will be designed to run on ordinary student-accessible hardware or campus lab systems.
+
+=== Course-Specific Requirements Outside Scheduled Class Time
+
+This section is provided in accordance with SP 24-07 §I.H.
+
+* *Financial commitments*: There are no course fees. All software used in this course is free and open source. The reference textbook listed below is recommended, not required; required readings are provided through CI Learn at no cost.
+* *Off-campus travel*: None is required.
+* *Attendance outside scheduled course time*: Two activities fall outside the regular class meeting pattern.
+** The final examination is scheduled for Tuesday, December 8, 2026, 7:00-9:00 PM in Gateway Hall 3540, per the University Final Exam Schedule.
+** Final project presentations occur during Week 15. If the number of projects requires time beyond the scheduled sessions, an additional session will be arranged with at least two weeks' notice.
+* *Equipment*: No purchase of specialized equipment is required. Campus lab systems are sufficient for all labs and projects.
 
 === Student Learning Outcomes
 
@@ -81,6 +124,11 @@ On completion of the course, students should be able to:
 * Analyze ethical, social, privacy, security, and fairness issues associated with AI systems.
 * Communicate AI design decisions, experimental results, and limitations clearly in oral and written forms.
 
+// COMPLIANCE: verify the list above against the approved course
+// proposal (course outline of record) before distributing.
+
+== Course Policies
+
 === AI Use Policy
 
 This is an artificial intelligence course, so students will discuss, evaluate, and sometimes use AI tools as part of the learning process.
@@ -94,23 +142,48 @@ You are welcome to consult AI agents to ask questions about the course material,
 
 You must understand your submitted work well enough to explain it without any assistance from an AI agent.
 The instructor may ask students to explain code, results, or written responses as part of assessment.
+Undisclosed use of AI tools where disclosure is required, or use of AI tools where they are prohibited, is treated as academic dishonesty under the Policy on Academic Integrity described below.
 
-=== Late Work Statement
+=== Late Work Policy
 
 If you think there may be a problem that will interfere with submitting an assignment on time, it is expected you will communicate your concern with me well in advance (several days before) the due date.
-Late assignments will only be accepted with prior permission from the professor or at the professor's discretion.
-If you are absent from class, it is your responsibility to check on Canvas/CI Learn for announcements and assignments given while you were absent.
+Late assignments will only be accepted with prior permission from the instructor or at the instructor's discretion.
+If you are absent from class, it is your responsibility to check CI Learn for announcements and assignments given while you were absent.
 
 === Course Communication Policy
 
-Please contact me via email (your MyCI account) or through Canvas if you have any questions about the material, the course, assignments, etc.
+Please contact me via your MyCI email account or through CI Learn if you have any questions about the material, the course, assignments, and so on.
 Attachments and formatting work much better through email.
+Your CSUCI email account is the official channel for course communication. You are responsible for messages sent to that address and to the CI Learn announcements feed. I will normally respond to email within one business day.
 
-== Course Policies
+=== Recording and Taping Policy
+
+Class sessions may not be audio recorded, video recorded, photographed, streamed, or otherwise captured without my prior written permission.
+Students approved for recording as a reasonable accommodation through Disability Accommodations and Support Services (DASS) are exempt from this restriction.
+Recordings authorized for accommodation purposes are for the individual student's personal academic use only and may not be shared, posted, or redistributed.
+If I record a session, I will announce it in advance and post the recording to CI Learn for enrolled students only.
+
+=== Devices in Class
+
+This course meets in a computer lab and laptops are expected for lecture, labs, and in-class activities.
+Use devices for course-related work during class.
+Phones should be silenced. If you need to take a call, step outside.
+Device use unrelated to the course that disrupts others is addressed under the Civil Discourse statement below.
+
+=== Extra Credit Policy
+
+Extra credit is not offered on an individual basis.
+If any extra credit opportunity is made available, it will be announced to the entire class through CI Learn and will be worth no more than 2% of the final grade.
+
+=== Enrollment, Attendance in Week One, and Drops
+
+Students who do not attend the first class meeting and who have not contacted me in advance may be dropped to make space for students on the waitlist.
+Being dropped is not automatic, and it remains your responsibility to verify your enrollment status in myCI.
+Withdrawal after the published deadlines requires a serious and compelling reason documented through the Registrar's Office.
 
 === Build Rapport
 
-If you find that you have any trouble keeping up with assignments or other aspects of the course, make sure you let your instructor know as early as possible.
+If you find that you have any trouble keeping up with assignments or other aspects of the course, make sure you let me know as early as possible.
 As you will find, building rapport and effective relationships are key to becoming an effective professional.
 Make sure that you are proactive in informing your instructors when difficulties arise during the semester so that they can help you find a solution.
 
@@ -126,6 +199,9 @@ Students are responsible for understanding all code, results, and written analys
 
 === Grading Policy
 
+Grades in this course are assigned in accordance with the CSUCI Policy on Grades (SP 12-007).
+This course is graded on a letter-grade basis. Credit/No Credit grading is not available for this course.
+
 .Letter Grade Assignment
 [cols="1,1,2",options="header"]
 |===
@@ -135,27 +211,53 @@ Students are responsible for understanding all code, results, and written analys
 | B+  | 87-89%  | Very Good Work
 | B   | 83-86%  | Good Work
 | B-  | 80-82%  | Mostly Good Work
-| C+  | 75-79%  | Above Average Work
-| C   | 74-71%  | Average Work
-| C-  | 70-67%  | Mostly Average Work
-| D+  | 66-64%  | Below Average Work
-| D   | 63-60%  | Poor Work
-| F   | 59-0%   | Failing Work
+| C+  | 77-79%  | Above Average Work
+| C   | 73-76%  | Average Work
+| C-  | 70-72%  | Mostly Average Work
+| D+  | 67-69%  | Below Average Work
+| D   | 63-66%  | Poor Work
+| D-  | 60-62%  | Minimally Passing Work
+| F   | 0-59%   | Failing Work
 |===
+
+*Rounding*: Final percentages are rounded to the nearest whole number. A 92.5% becomes 93%; a 92.4% remains 92%. No other rounding or curving is applied.
+
+*Grade posting*: Running grades are maintained in the CI Learn gradebook. If you believe a grade is in error, contact me within one week of the grade being posted.
+
+*Incomplete (I) grades*: An Incomplete may be assigned only when a student has completed the substantial majority of coursework at a passing level and is unable to finish the remainder for a serious and compelling reason beyond their control, consistent with SP 12-007. An Incomplete requires a written agreement specifying the work to be completed and the deadline. Incompletes are not a remedy for falling behind.
+
+*Withdrawals*: Withdrawal deadlines and requirements are set by the Registrar's Office. Ceasing to attend does not constitute a withdrawal and will result in a grade of F.
 
 === Policy on Academic Integrity
 
 By enrolling at CSU Channel Islands, students are responsible for upholding the University's policies and the Student Conduct Code.
 Academic integrity and scholarship are values of the institution that ensure respect for the academic reputation of the University, students, faculty, and staff.
 Cheating, plagiarism, unauthorized collaboration with another student, knowingly furnishing false information to the University, buying, selling or stealing any material for an examination, or substituting for another person may be considered violations of the link:http://www.csuci.edu/campuslife/student-conduct/academic-dishonesty.htm[Student Conduct Code].
-If a student is found responsible for committing an act of academic dishonesty in this course, the student may receive academic penalties including a failing grade on an assignment or in the course, and a disciplinary referral will be made and submitted to the Dean of Students office.
+
+*Application to course grades*: In this course, I will adhere to the general guidelines set forth in the Policy on Academic Integrity (SP 19-001).
+I do not impose specialized or automatic grade consequences beyond those the policy provides.
+Grade penalties will be determined case by case and may include a reduced or failing grade on the assignment or in the course.
+A disciplinary referral will be submitted to the Dean of Students office in every substantiated case.
 Please ask about my expectations regarding academic dishonesty in this course if they are unclear.
 
 === Attendance Policy
 
-Students are expected to attend each class session.
-If you cannot attend a session, contact the course instructor prior to the meeting time to explain your circumstances.
-Missing class will impact your final grade.
+This policy is provided in accordance with the CSUCI Policy on Class Attendance (SP 01-056).
+
+Students are expected to attend each class and lab session.
+Attendance and in-class activities account for 5% of the final grade, as shown in the assessment breakdown below.
+Because labs are hands-on and completed in the lab, absence from lab directly affects your ability to complete lab deliverables.
+
+If you cannot attend a session, contact me prior to the meeting time to explain your circumstances.
+
+*Excused absences*: Consistent with SP 01-056, absences for the following reasons will be excused and you will be given a reasonable opportunity to make up missed work without penalty, provided you notify me in advance where advance notice is possible.
+
+* Participation in official University-sanctioned activities, including athletics and academic competitions
+* Religious observance
+* Documented illness, injury, or medical necessity
+* Military service obligations
+* Death or serious illness in the immediate family
+* Other serious and compelling circumstances, at the instructor's discretion
 
 For absences with extenuating circumstances related to a medical condition or disability for which you may require reasonable accommodation, please refer to the Disability Statement.
 
@@ -170,12 +272,15 @@ For absences with extenuating circumstances related to a medical condition or di
 * Final Project
 ** Students will complete a small AI application or analysis project that demonstrates course concepts. The final project will include a proposal or checkpoint, working implementation, evaluation, written summary, and presentation.
 * Exams
-** A midterm and final exam are given. Exams may include conceptual questions, algorithm tracing, short written responses, code reading, and practical analysis. The computers in the lab must be used, save for accommodations provided by DASS.
+** A midterm and a final exam are given. Exams may include conceptual questions, algorithm tracing, short written responses, code reading, and practical analysis.
+** The midterm is administered in person in the assigned lab and is completed on the lab computers.
+** The final exam is administered in person in Gateway Hall 3540 at the time set by the University Final Exam Schedule. Because Gateway Hall 3540 is not a computer lab, the final exam is written rather than computer-based. Any change to this arrangement will be announced at least two weeks in advance.
+** Students with approved DASS accommodations will be provided the accommodations on file for both exams.
 
 ==== Major Readings and Required Materials
 
 Required readings will be provided through CI Learn and may include instructor notes, notebooks, textbook excerpts, and open educational resources.
-The following references are recommended for students who want a structured textbook treatment of the material:
+The following reference is recommended, not required, for students who want a structured textbook treatment of the material:
 
 * *Reference Textbook:* _Artificial Intelligence: A Modern Approach_
 ** *Authors:* Stuart Russell and Peter Norvig
@@ -199,65 +304,75 @@ The following references are recommended for students who want a structured text
 
 === Tentative Course Schedule or Course Outline
 
-**Note on Schedule:** This course follows a review-before-exam rhythm. Week 8 is reserved for a dedicated midterm review class meeting followed by the midterm exam at the next class meeting. Week 15 serves as final project presentations and comprehensive final review.
+*Note on Schedule:* This course follows a review-before-exam rhythm. Week 8 is reserved for a dedicated midterm review class meeting followed by the midterm exam at the next class meeting. Week 15 serves as final project presentations and comprehensive final review.
 
-**Note on Readings:** The primary textbook is *Artificial Intelligence: A Modern Approach*, 4th Edition by Stuart Russell and Peter Norvig. We will cover selected chapters and sections. Full weekly reading assignments will be posted on CI Learn.
+*Note on Readings:* The primary reference is *Artificial Intelligence: A Modern Approach*, 4th Edition by Stuart Russell and Peter Norvig. We will cover selected chapters and sections. Full weekly reading assignments will be posted on CI Learn.
+
+.Major Assessment Dates
+[cols="2,2,2",options="header"]
+|===
+| Assessment | Date | Weight
+| Project proposal due | *[CONFIRM DATE]*, Week 8 (Oct 12-16) | Part of project grade
+| Midterm exam | *[CONFIRM DATE]*, Week 8 (Oct 12-16) | 15%
+| Final project presentations | *[CONFIRM DATE]*, Week 15 (Nov 30-Dec 5) | 20% with written deliverables
+| Final exam | Tuesday, December 8, 2026, 7:00-9:00 PM, Gateway Hall 3540 | 15%
+|===
 
 [cols="1,1,2,3,3,3",options="header"]
 |===
 | Week | Dates | Core Concept | Key Topics and Reading Focus | Lab/Assignment Focus | Calendar Notes
 
 | 1 | Aug 24-28 | AI Foundations | What is AI? Definitions, history, rational-agent perspective, benefits, and risks. 
-**AIMA:** Ch. 1 (all) | Activity: AI definitions, examples, and course setup. | Classes begin Aug 24.
+*AIMA:* Ch. 1 (all) | Activity: AI definitions, examples, and course setup. | Classes begin Aug 24.
 
 | 2 | Aug 31-Sep 4 | Intelligent Agents | Agents and environments, rationality, PEAS framework, environment properties, agent architectures. 
-**AIMA:** Ch. 2 (all) | Lab: Vacuum/Gridworld agents. | Normal week.
+*AIMA:* Ch. 2 (all) | Lab 1: Vacuum/Gridworld agents. | Normal week.
 
 | 3 | Sep 7-11 | State-Space Search | Problem formulation, uninformed search. 
-**AIMA:** Ch. 3 (3.1–3.5) | Lab: Implement BFS, DFS, UCS. | Labor Day (Sep 7).
+*AIMA:* Ch. 3 (3.1-3.5) | Lab: Implement BFS, DFS, UCS. | Labor Day (Sep 7); campus closed.
 
 | 4 | Sep 14-18 | Informed & Adversarial Search | Heuristics, A*, minimax, alpha-beta. 
-**AIMA:** Ch. 3 (3.6) + Ch. 5 (5.1–5.3) | Lab: A* + minimax. | Normal week.
+*AIMA:* Ch. 3 (3.6) + Ch. 5 (5.1-5.3) | Lab: A* + minimax. | Normal week.
 
 | 5 | Sep 21-25 | Propositional Logic | Knowledge-based agents, propositional logic & inference. 
-**AIMA:** Ch. 7 (**7.1 Knowledge-Based Agents; 7.2 The Wumpus World; 7.3 Logic; 7.4 Propositional Logic; selected 7.5 Propositional Theorem Proving, especially 7.5.1, 7.5.3, 7.5.4**). Optional enrichment: 7.6-7.7. | Lab: Wumpus World. | Normal week.
+*AIMA:* Ch. 7 (*7.1 Knowledge-Based Agents; 7.2 The Wumpus World; 7.3 Logic; 7.4 Propositional Logic; selected 7.5 Propositional Theorem Proving, especially 7.5.1, 7.5.3, 7.5.4*). Optional enrichment: 7.6-7.7. | Lab: Wumpus World. | Normal week.
 
 | 6 | Sep 28-Oct 2 | First-Order Logic | FOL syntax, semantics, and usage. 
-**AIMA:** Ch. 8 (8.1, 8.2, 8.3) | Lab: Family knowledge base. | Normal week.
+*AIMA:* Ch. 8 (8.1, 8.2, 8.3) | Lab: Family knowledge base. | Normal week.
 
 | 7 | Oct 5-9 | Quantifying Uncertainty | Probability, independence, Bayes' rule, and naive Bayes. 
-**AIMA:** Ch. 12 (**12.1 Acting under Uncertainty; 12.2 Basic Probability Notation; selected 12.3 Inference Using Full Joint Distributions; 12.4 Independence; 12.5 Bayes' Rule and Its Use; 12.6 Naive Bayes Models**). Optional enrichment: 12.7 The Wumpus World Revisited. | Lab: Probability + Naive Bayes classifier. | Normal week.
+*AIMA:* Ch. 12 (*12.1 Acting under Uncertainty; 12.2 Basic Probability Notation; selected 12.3 Inference Using Full Joint Distributions; 12.4 Independence; 12.5 Bayes' Rule and Its Use; 12.6 Naive Bayes Models*). Optional enrichment: 12.7 The Wumpus World Revisited. | Lab: Probability + Naive Bayes classifier. | Normal week.
 
 | 8 | Oct 12-16 | Midterm Review & Midterm Exam | Comprehensive review of agents, search, games, logic, first-order logic, and uncertainty. 
-**AIMA:** Review Ch. 1-3, Ch. 5, Ch. 7, Ch. 8, and Ch. 12 selected readings. | Class meeting 1: **Midterm Review**. Next class meeting: **Midterm Exam**. Project proposal due. | Midterm review/exam week.
+*AIMA:* Review Ch. 1-3, Ch. 5, Ch. 7, Ch. 8, and Ch. 12 selected readings. | *Midterm Review*: *[CONFIRM DATE]*. *Midterm Exam*: *[CONFIRM DATE]*. Project proposal due *[CONFIRM DATE]*. | Midterm review/exam week.
 
 | 9 | Oct 19-23 | Bayesian Networks | Bayesian networks, graphical models, conditional independence. 
-**AIMA:** Ch. 13 (**13.1 Representing Knowledge in an Uncertain Domain; 13.2 The Semantics of Bayesian Networks, especially 13.2.1 Conditional Independence and 13.2.2 Efficient Representation of Conditional Distributions; selected 13.3 Exact Inference in Bayesian Networks, especially 13.3.1 Inference by Enumeration and 13.3.2 Variable Elimination**). Optional enrichment: 13.4 Approximate Inference and 13.5 Causal Networks. | Lab: Bayesian networks. | Normal week.
+*AIMA:* Ch. 13 (*13.1 Representing Knowledge in an Uncertain Domain; 13.2 The Semantics of Bayesian Networks, especially 13.2.1 Conditional Independence and 13.2.2 Efficient Representation of Conditional Distributions; selected 13.3 Exact Inference in Bayesian Networks, especially 13.3.1 Inference by Enumeration and 13.3.2 Variable Elimination*). Optional enrichment: 13.4 Approximate Inference and 13.5 Causal Networks. | Lab: Bayesian networks. | Normal week.
 
 | 10 | Oct 26-30 | Machine Learning Foundations | Decision trees, supervised learning, perceptron, linear/logistic models, and model evaluation. 
-**AIMA:** Ch. 19 (**19.1 Forms of Learning; 19.2 Supervised Learning; 19.3 Learning Decision Trees; 19.4 Model Selection and Optimization; 19.6 Linear Regression and Classification; selected 19.9 Developing Machine Learning Systems**). | Lab: Decision trees, perceptron, and logistic regression. | Normal week.
+*AIMA:* Ch. 19 (*19.1 Forms of Learning; 19.2 Supervised Learning; 19.3 Learning Decision Trees; 19.4 Model Selection and Optimization; 19.6 Linear Regression and Classification; selected 19.9 Developing Machine Learning Systems*). | Lab: Decision trees, perceptron, and logistic regression. | Normal week.
 
 | 11 | Nov 2-6 | Neural Networks | Feedforward networks, activations, XOR, backpropagation, optimization basics. 
-**AIMA:** Ch. 21 (21.1–21.6 selected) | Lab: Simple MLP training. | Normal week.
+*AIMA:* Ch. 21 (21.1-21.6 selected) | Lab: Simple MLP training. | Normal week.
 
 | 12 | Nov 9-13 | Making Complex Decisions | Sequential decision problems, utilities over time, Markov decision processes, value iteration, and policy iteration. 
-**AIMA:** Ch. 17 (**17.1 Sequential Decision Problems; 17.2 Algorithms for MDPs, through 17.2.2 Policy iteration**). Optional enrichment: 17.4 Partially Observable MDPs. | Lab: Value iteration on Gridworld. | Veterans Day (Nov 11); campus closed. Adjust deadlines.
+*AIMA:* Ch. 17 (*17.1 Sequential Decision Problems; 17.2 Algorithms for MDPs, through 17.2.2 Policy iteration*). Optional enrichment: 17.4 Partially Observable MDPs. | Lab: Value iteration on Gridworld. | Veterans Day (Nov 11); campus closed. Adjust deadlines.
 
 | 13 | Nov 16-20 | AI Applications: NLP and Computer Vision | Language models, text classification, image classification, and modern AI applications. 
-**AIMA:** Ch. 23 (**23.1 Language Models; 23.5 Complications of Real Natural Language; 23.6 Natural Language Tasks**) + Ch. 25 (**25.1 Introduction; 25.4 Classifying Images, especially 25.4.1-25.4.2**). | Lab: Text or image classification mini-lab. | Normal week.
+*AIMA:* Ch. 23 (*23.1 Language Models; 23.5 Complications of Real Natural Language; 23.6 Natural Language Tasks*) + Ch. 25 (*25.1 Introduction; 25.4 Classifying Images, especially 25.4.1-25.4.2*). | Lab: Text or image classification mini-lab. | Normal week.
 
 | 14 | Nov 23-27 | Reinforcement Learning | From MDPs to learning from experience; passive RL, active RL, exploration, and Q-learning on Gridworld. 
-**AIMA:** Ch. 22 (**22.1 Learning from Rewards; 22.2 Passive Reinforcement Learning; 22.3 Active Reinforcement Learning; selected 22.4 Generalization in Reinforcement Learning**). | Lab: Q-learning. | Thanksgiving (Nov 26-27).
+*AIMA:* Ch. 22 (*22.1 Learning from Rewards; 22.2 Passive Reinforcement Learning; 22.3 Active Reinforcement Learning; selected 22.4 Generalization in Reinforcement Learning*). | Lab: Q-learning. | Thanksgiving holiday (Nov 26-27); campus closed.
 
 | 15 | Nov 30-Dec 5 | Responsible AI, Synthesis & Final Review | Philosophy, ethics, and safety of AI + course synthesis + final review. 
-**AIMA:** Ch. 1.5 + **Ch. 27 (all)** | Final project presentations + Final Review Session. | Last day of instruction Dec 5.
+*AIMA:* Ch. 1.5 + *Ch. 27 (all)* | Final project presentations + Final Review Session. | Last day of instruction Dec 5.
 
-| 16 | Dec 7-12 | Final Examination Period | Final Exam. | **Final Exam:** Tuesday, December 8, 2026, 7:00–9:00 PM. | Final exam week.
+| 16 | Dec 7-12 | Final Examination Period | Final Exam. | *Final Exam:* Tuesday, December 8, 2026, 7:00-9:00 PM, Gateway Hall 3540. | Final exam week.
 |===
 
 ==== Lab Overview and Policies
 
-All labs are *hands-on Jupyter Notebook* based and designed for the 3-hour weekly lab sessions.
+All labs are *hands-on Jupyter Notebook* based and designed for the weekly three-hour lab session.
 
 * *Format*: Students receive a starter `.ipynb` notebook.
 * *Deliverables*: Completed notebook with:
@@ -297,7 +412,7 @@ All labs are *hands-on Jupyter Notebook* based and designed for the 3-hour weekl
 
 === Student Support Services
 
-CSUCI’s Syllabus Policies and Assistance Website (go.csuci.edu/syllabuspolicies) provides important details about academic policies, campus expectations, and student support services that are all highly applicable to your success as a student both in and outside of the classroom.
+CSUCI's link:http://go.csuci.edu/syllabuspolicies[Syllabus Policies and Assistance Website] (go.csuci.edu/syllabuspolicies) provides important details about academic policies, campus expectations, and student support services that are all highly applicable to your success as a student both in and outside of the classroom.
 Ensure that you review this site on a regular basis to stay informed about the policies and resources that support your success, as campus resources or policies may change semester to semester.
 
 ==== Disability Statement
@@ -305,7 +420,7 @@ Ensure that you review this site on a regular basis to stay informed about the p
 If you are a student with a disability requesting reasonable accommodations in this course, please contact the student disability accommodations office.
 All requests for reasonable accommodations require registration with the accommodations office in advance of needed services.
 Faculty, students, and the accommodations office will work together regarding academic accommodations.
-Students are encouraged to discuss approved accommodations with your faculty
+Students are encouraged to discuss approved accommodations with your faculty.
 
 Please visit Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall or call 805-437-3331.
 All requests for reasonable accommodations require registration with DASS in advance of need.
@@ -319,7 +434,7 @@ Please use the link to the link:https://www.csuci.edu/basicneeds/[Basic Needs Pr
 
 === Campus Tutoring Services - Learning Resource Center (LRC)
 
-CSUCI has many free services to help you achieve your academic goals!
+CSUCI has many free services to help you achieve your academic goals.
 You are encouraged to make early and regular use of the tutoring centers located in Broome Library, which offer free in-person and online tutoring support and academic success workshops.
 Many courses also have Embedded Peer Educators who lead regular study groups and exam review sessions.
 Working with a tutor is a great way to develop your learning habits, get clarification on an assignment, study for an exam, or get feedback on a paper or project.
@@ -335,8 +450,8 @@ Placing students at the center of the educational experience, California State U
 
 All students, staff and faculty on our campus are expected to join in making our campus a safe space for communication and civil discourse.
 If you are experiencing discomfort related to the language you are hearing or seeing on campus (in or out of classes), please talk with a trusted faculty or staff member.
-Similarly, please consider whether the language that you are using (in person or on Canvas) respects the rights of others to “engage in informed discourse and express a diversity of opinions freely and in a civil manner”
-(language from link:[https://senate.csuci.edu/resolutions/2016-2017/sr-16-01-resolution-on-commitment-to-equity-inclusion-civil-discourse-at-ci.pdf], Commitment to Equity, Inclusion, and Civil Discourse within our Diverse Campus Community).
+Similarly, please consider whether the language that you are using (in person or on CI Learn) respects the rights of others to "engage in informed discourse and express a diversity of opinions freely and in a civil manner"
+(language from link:https://senate.csuci.edu/resolutions/2016-2017/sr-16-01-resolution-on-commitment-to-equity-inclusion-civil-discourse-at-ci.pdf[SR 16-01, Commitment to Equity, Inclusion, and Civil Discourse within our Diverse Campus Community]).
 
 In addition, students whose conduct adversely affects the learning environment in this classroom may be subject to disciplinary action.
 Students that disrupt this course may receive a verbal and written warning from the instructor, they may be excused from the class for the day, they may be excused from the class for up to one class period, and/or they may be referred to the Dean of Students office for further review and possible disciplinary action.
@@ -355,15 +470,15 @@ Crisis phone support is available 24/7 by calling 855-854-1747 and by calling or
 
 === Names and Pronouns Statement
 
-I will gladly honor your request to address you by a name or pronoun that is not on the roster or on Canvas/CI Learn.
+I will gladly honor your request to address you by a name or pronoun that is not on the roster or in CI Learn.
 Please advise me early in the semester so that I may make appropriate changes to my records.
 You may also update this information in the myCI Student Center.
 For more information, visit the link:https://www.csuci.edu/registrar/personal-info-update.htm[Preferred Names and Pronouns webpage].
 
 === Title IX and Inclusion
 
-Title IX & Inclusion manages the University’s equal opportunity compliance, including the areas of affirmative action and Title IX.
-Title IX & Inclusion also oversees the campus’ response to the University’s nondiscrimination policies.
+Title IX & Inclusion manages the University's equal opportunity compliance, including the areas of affirmative action and Title IX.
+Title IX & Inclusion also oversees the campus' response to the University's nondiscrimination policies.
 
 CSU Channel Islands prohibits discrimination and harassment of any kind on the basis of a protected status (i.e., age, disability, gender, genetic information, gender identity, gender expression, marital status, medical condition, nationality, race or ethnicity, religion or religious creed, sexual orientation, and Veteran or Military Status).
 This prohibition on harassment includes sexual harassment, as well as sexual misconduct, dating and domestic violence, and stalking.
