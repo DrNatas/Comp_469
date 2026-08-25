@@ -79,8 +79,6 @@ _A hands-on exploration of the use of computers to perform computations normally
 _Graded: Letter Grade_
 
 * *Prerequisites*: COMP 350 and COMP 362
-* *Co-requisites*: None
-* *General Education*: This course does not satisfy a General Education area. *[CONFIRM with Program Chair; if the course carries a GE designation, the corresponding GE Student Learning Outcomes must be added to this syllabus per SP 24-07 §I.E.]*
 
 ==== Topics Covered This Semester
 
@@ -101,11 +99,10 @@ A GPU is not required for this course. Labs and projects will be designed to run
 
 This section is provided in accordance with SP 24-07 §I.H.
 
-* *Financial commitments*: There are no course fees. All software used in this course is free and open source. The reference textbook listed below is recommended, not required; required readings are provided through CI Learn at no cost.
+* *Financial commitments*: As of the date this syllabus was published, there are no course fees beyond standard CSUCI tuition and fees, and all software used in this course is free and open source. The reference textbook listed below is recommended, not required; required readings are provided through CI Learn at no additional cost. Any change to these arrangements will be announced in accordance with the syllabus change policy stated above.
 * *Off-campus travel*: None is required.
-* *Attendance outside scheduled course time*: Two activities fall outside the regular class meeting pattern.
+* *Attendance outside scheduled course time*: One activity falls outside the regular class meeting pattern.
 ** The final examination is scheduled for Tuesday, December 8, 2026, 7:00-9:00 PM in Gateway Hall 3540, per the University Final Exam Schedule.
-** Final project presentations occur during Week 15. If the number of projects requires time beyond the scheduled sessions, an additional session will be arranged with at least two weeks' notice.
 * *Equipment*: No purchase of specialized equipment is required. Campus lab systems are sufficient for all labs and projects.
 
 === Student Learning Outcomes
@@ -269,8 +266,6 @@ For absences with extenuating circumstances related to a medical condition or di
 ** Labs are completed asynchronously online unless otherwise stated. Labs may include Python notebooks, short programming tasks, model analysis, and written reflections.
 * Projects
 ** Several coding and analysis projects will be given throughout the semester. Projects will emphasize implementation, experimentation, model evaluation, and clear explanation of results.
-* Final Project
-** Students will complete a small AI application or analysis project that demonstrates course concepts. The final project will include a proposal or checkpoint, working implementation, evaluation, written summary, and presentation.
 * Exams
 ** A midterm and a final exam are given. Exams may include conceptual questions, algorithm tracing, short written responses, code reading, and practical analysis.
 ** The midterm is administered in person in the assigned lab and is completed on the lab computers.
@@ -279,8 +274,8 @@ For absences with extenuating circumstances related to a medical condition or di
 
 ==== Major Readings and Required Materials
 
-Required readings will be provided through CI Learn and may include instructor notes, notebooks, textbook excerpts, and open educational resources.
-The following reference is recommended, not required, for students who want a structured textbook treatment of the material:
+As of the date this syllabus was published, required readings are provided through CI Learn and may include instructor notes, notebooks, textbook excerpts, and open educational resources.
+The following reference is recommended, not required, for students who want a structured textbook treatment of the material. Any change to required readings or materials will be announced in accordance with the syllabus change policy stated above:
 
 * *Reference Textbook:* _Artificial Intelligence: A Modern Approach_
 ** *Authors:* Stuart Russell and Peter Norvig
@@ -294,17 +289,16 @@ The following reference is recommended, not required, for students who want a st
 |===
 | Percentage | Assignment
 | 5   | Attendance and in-class activities
-| 25  | Labs
-| 20  | Programming and analysis projects
-| 15  | Midterm exam
-| 20  | Final project and presentation
-| 15  | Final exam
+| 20  | Labs
+| 15  | Programming and analysis projects
+| 30  | Midterm exam
+| 30  | Final exam
 | 100 | Total
 |===
 
 === Tentative Course Schedule or Course Outline
 
-*Note on Schedule:* This course follows a review-before-exam rhythm. Week 8 is reserved for a dedicated midterm review class meeting followed by the midterm exam at the next class meeting. Week 15 serves as final project presentations and comprehensive final review.
+*Note on Schedule:* This course follows a review-before-exam rhythm. The midterm review is held at the end of the Week 7 class meeting, and the midterm exam is given at the next class meeting in Week 8. Week 15 serves as a comprehensive final review.
 
 *Note on Readings:* The primary reference is *Artificial Intelligence: A Modern Approach*, 4th Edition by Stuart Russell and Peter Norvig. We will cover selected chapters and sections. Full weekly reading assignments will be posted on CI Learn.
 
@@ -312,10 +306,8 @@ The following reference is recommended, not required, for students who want a st
 [cols="2,2,2",options="header"]
 |===
 | Assessment | Date | Weight
-| Project proposal due | *[CONFIRM DATE]*, Week 8 (Oct 12-16) | Part of project grade
-| Midterm exam | *[CONFIRM DATE]*, Week 8 (Oct 12-16) | 15%
-| Final project presentations | *[CONFIRM DATE]*, Week 15 (Nov 30-Dec 5) | 20% with written deliverables
-| Final exam | Tuesday, December 8, 2026, 7:00-9:00 PM, Gateway Hall 3540 | 15%
+| Midterm exam | Tuesday, October 13, 2026 | 30%
+| Final exam | Tuesday, December 8, 2026, 7:00-9:00 PM, Gateway Hall 3540 | 30%
 |===
 
 [cols="1,1,2,3,3,3",options="header"]
@@ -326,7 +318,7 @@ The following reference is recommended, not required, for students who want a st
 *AIMA:* Ch. 1 (all) | Activity: AI definitions, examples, and course setup. | Classes begin Aug 24.
 
 | 2 | Aug 31-Sep 4 | Intelligent Agents | Agents and environments, rationality, PEAS framework, environment properties, agent architectures. 
-*AIMA:* Ch. 2 (all) | Lab 1: Vacuum/Gridworld agents. | Normal week.
+*AIMA:* Ch. 2 (all) | Lab: Vacuum/Gridworld agents. | Normal week.
 
 | 3 | Sep 7-11 | State-Space Search | Problem formulation, uninformed search. 
 *AIMA:* Ch. 3 (3.1-3.5) | Lab: Implement BFS, DFS, UCS. | Labor Day (Sep 7); campus closed.
@@ -335,79 +327,44 @@ The following reference is recommended, not required, for students who want a st
 *AIMA:* Ch. 3 (3.6) + Ch. 5 (5.1-5.3) | Lab: A* + minimax. | Normal week.
 
 | 5 | Sep 21-25 | Propositional Logic | Knowledge-based agents, propositional logic & inference. 
-*AIMA:* Ch. 7 (*7.1 Knowledge-Based Agents; 7.2 The Wumpus World; 7.3 Logic; 7.4 Propositional Logic; selected 7.5 Propositional Theorem Proving, especially 7.5.1, 7.5.3, 7.5.4*). Optional enrichment: 7.6-7.7. | Lab: Wumpus World. | Normal week.
+*AIMA:* Ch. 7 (7.1 Knowledge-Based Agents; 7.2 The Wumpus World; 7.3 Logic; 7.4 Propositional Logic; selected 7.5 Propositional Theorem Proving, especially 7.5.1, 7.5.3, 7.5.4). Optional enrichment: 7.6-7.7. | Lab: Wumpus World. | Normal week.
 
 | 6 | Sep 28-Oct 2 | First-Order Logic | FOL syntax, semantics, and usage. 
 *AIMA:* Ch. 8 (8.1, 8.2, 8.3) | Lab: Family knowledge base. | Normal week.
 
 | 7 | Oct 5-9 | Quantifying Uncertainty | Probability, independence, Bayes' rule, and naive Bayes. 
-*AIMA:* Ch. 12 (*12.1 Acting under Uncertainty; 12.2 Basic Probability Notation; selected 12.3 Inference Using Full Joint Distributions; 12.4 Independence; 12.5 Bayes' Rule and Its Use; 12.6 Naive Bayes Models*). Optional enrichment: 12.7 The Wumpus World Revisited. | Lab: Probability + Naive Bayes classifier. | Normal week.
+*AIMA:* Ch. 12 (12.1 Acting under Uncertainty; 12.2 Basic Probability Notation; selected 12.3 Inference Using Full Joint Distributions; 12.4 Independence; 12.5 Bayes' Rule and Its Use; 12.6 Naive Bayes Models). Optional enrichment: 12.7 The Wumpus World Revisited. | Lab: Probability + Naive Bayes classifier. | *Midterm Review*: Tuesday, October 6, 2026, held at the end of class.
 
-| 8 | Oct 12-16 | Midterm Review & Midterm Exam | Comprehensive review of agents, search, games, logic, first-order logic, and uncertainty. 
-*AIMA:* Review Ch. 1-3, Ch. 5, Ch. 7, Ch. 8, and Ch. 12 selected readings. | *Midterm Review*: *[CONFIRM DATE]*. *Midterm Exam*: *[CONFIRM DATE]*. Project proposal due *[CONFIRM DATE]*. | Midterm review/exam week.
+| 8 | Oct 12-16 | Midterm Exam | Comprehensive review of agents, search, games, logic, first-order logic, and uncertainty.
+*AIMA:* Review Ch. 1-3, Ch. 5, Ch. 7, Ch. 8, and Ch. 12 selected readings. | *Midterm Exam*: Tuesday, October 13, 2026. | Midterm exam week.
 
 | 9 | Oct 19-23 | Bayesian Networks | Bayesian networks, graphical models, conditional independence. 
-*AIMA:* Ch. 13 (*13.1 Representing Knowledge in an Uncertain Domain; 13.2 The Semantics of Bayesian Networks, especially 13.2.1 Conditional Independence and 13.2.2 Efficient Representation of Conditional Distributions; selected 13.3 Exact Inference in Bayesian Networks, especially 13.3.1 Inference by Enumeration and 13.3.2 Variable Elimination*). Optional enrichment: 13.4 Approximate Inference and 13.5 Causal Networks. | Lab: Bayesian networks. | Normal week.
+*AIMA:* Ch. 13 (13.1 Representing Knowledge in an Uncertain Domain; 13.2 The Semantics of Bayesian Networks, especially 13.2.1 Conditional Independence and 13.2.2 Efficient Representation of Conditional Distributions; selected 13.3 Exact Inference in Bayesian Networks, especially 13.3.1 Inference by Enumeration and 13.3.2 Variable Elimination). Optional enrichment: 13.4 Approximate Inference and 13.5 Causal Networks. | Lab: Bayesian networks. | Normal week.
 
 | 10 | Oct 26-30 | Machine Learning Foundations | Decision trees, supervised learning, perceptron, linear/logistic models, and model evaluation. 
-*AIMA:* Ch. 19 (*19.1 Forms of Learning; 19.2 Supervised Learning; 19.3 Learning Decision Trees; 19.4 Model Selection and Optimization; 19.6 Linear Regression and Classification; selected 19.9 Developing Machine Learning Systems*). | Lab: Decision trees, perceptron, and logistic regression. | Normal week.
+*AIMA:* Ch. 19 (19.1 Forms of Learning; 19.2 Supervised Learning; 19.3 Learning Decision Trees; 19.4 Model Selection and Optimization; 19.6 Linear Regression and Classification; selected 19.9 Developing Machine Learning Systems). | Lab: Decision trees, perceptron, and logistic regression. | Normal week.
 
 | 11 | Nov 2-6 | Neural Networks | Feedforward networks, activations, XOR, backpropagation, optimization basics. 
 *AIMA:* Ch. 21 (21.1-21.6 selected) | Lab: Simple MLP training. | Normal week.
 
 | 12 | Nov 9-13 | Making Complex Decisions | Sequential decision problems, utilities over time, Markov decision processes, value iteration, and policy iteration. 
-*AIMA:* Ch. 17 (*17.1 Sequential Decision Problems; 17.2 Algorithms for MDPs, through 17.2.2 Policy iteration*). Optional enrichment: 17.4 Partially Observable MDPs. | Lab: Value iteration on Gridworld. | Veterans Day (Nov 11); campus closed. Adjust deadlines.
+*AIMA:* Ch. 17 (17.1 Sequential Decision Problems; 17.2 Algorithms for MDPs, through 17.2.2 Policy iteration). Optional enrichment: 17.4 Partially Observable MDPs. | Lab: Value iteration on Gridworld. | Veterans Day (Nov 11); campus closed. Adjust deadlines.
 
 | 13 | Nov 16-20 | AI Applications: NLP and Computer Vision | Language models, text classification, image classification, and modern AI applications. 
-*AIMA:* Ch. 23 (*23.1 Language Models; 23.5 Complications of Real Natural Language; 23.6 Natural Language Tasks*) + Ch. 25 (*25.1 Introduction; 25.4 Classifying Images, especially 25.4.1-25.4.2*). | Lab: Text or image classification mini-lab. | Normal week.
+*AIMA:* Ch. 23 (23.1 Language Models; 23.5 Complications of Real Natural Language; 23.6 Natural Language Tasks) + Ch. 25 (25.1 Introduction; 25.4 Classifying Images, especially 25.4.1-25.4.2). | Lab: Text or image classification mini-lab. | Normal week.
 
 | 14 | Nov 23-27 | Reinforcement Learning | From MDPs to learning from experience; passive RL, active RL, exploration, and Q-learning on Gridworld. 
-*AIMA:* Ch. 22 (*22.1 Learning from Rewards; 22.2 Passive Reinforcement Learning; 22.3 Active Reinforcement Learning; selected 22.4 Generalization in Reinforcement Learning*). | Lab: Q-learning. | Thanksgiving holiday (Nov 26-27); campus closed.
+*AIMA:* Ch. 22 (22.1 Learning from Rewards; 22.2 Passive Reinforcement Learning; 22.3 Active Reinforcement Learning; selected 22.4 Generalization in Reinforcement Learning). | Lab: Q-learning. | Thanksgiving holiday (Nov 26-27); campus closed.
 
 | 15 | Nov 30-Dec 5 | Responsible AI, Synthesis & Final Review | Philosophy, ethics, and safety of AI + course synthesis + final review. 
-*AIMA:* Ch. 1.5 + *Ch. 27 (all)* | Final project presentations + Final Review Session. | Last day of instruction Dec 5.
+*AIMA:* Ch. 1.5 + *Ch. 27 (all)* | Final Review Session. | Last day of instruction Dec 5.
 
 | 16 | Dec 7-12 | Final Examination Period | Final Exam. | *Final Exam:* Tuesday, December 8, 2026, 7:00-9:00 PM, Gateway Hall 3540. | Final exam week.
 |===
 
-==== Lab Overview and Policies
-
-All labs are *hands-on Jupyter Notebook* based and designed to be completed asynchronously online, with a weekly time commitment of about three hours.
-
-* *Format*: Students receive a starter `.ipynb` notebook.
-* *Deliverables*: Completed notebook with:
-** Code implementations
-** Experimental results and visualizations
-** Markdown analysis and reflections
-* *Submission*: Upload to CI Learn, or GitHub Classroom if set up, by the following lab day.
-* *Grading Rubric* (25% of final grade total):
-** Code correctness and completeness: 50%
-** Experimentation, results, and analysis: 30%
-** Clarity, documentation, and reflection: 20%
-
-===== Lab 1: Intelligent Agents (Week 2)
-
-*Objectives*:
-
-* Understand the PEAS framework.
-* Implement different types of agents.
-* Compare agent performance in different environments.
-
-*Starter Code*: Use or adapt from `aima-python/agents.ipynb`.
-
-*Tasks*:
-
-. Implement a simple Vacuum World environment.
-. Create `ReflexVacuumAgent`, `ModelBasedVacuumAgent`, and `GoalBasedAgent`.
-. Run simulations with different environment configurations.
-. Analyze which agent performs best and why.
-
-*Deliverable*: Notebook with agent code, simulation results, and 1-page reflection.
-
 ==== Additional Lab Resources
 
 * https://github.com/aimacode/aima-python
-* Berkeley CS188 Pacman Projects
 * Geron _Hands-On Machine Learning_ GitHub notebooks
 
 === Student Support Services
