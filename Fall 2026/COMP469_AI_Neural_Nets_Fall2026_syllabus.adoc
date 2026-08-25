@@ -55,14 +55,14 @@ This syllabus is compliant with _Syllabus Policy SP 24-07_, a requirement for al
 * *Units*: 3
 * *Contact Hours*: Two hours lecture and three hours lab per week
 * *Term*: Fall 2026
-* *Modality*: In person, synchronous
-* *Lecture Meeting*: *[CONFIRM: days and times]*, *[CONFIRM: building and room]*
-* *Lab Meeting*: *[CONFIRM: day and time]*, *[CONFIRM: lab room]*
+* *Modality*: In-person lecture (synchronous), online lab (asynchronous)
+* *Lecture Meeting*: Tu 6:00PM - 8:00PM , Gateway Hall 3540
+* *Lab Meeting*: Online
 * *Final Exam*: Tuesday, December 8, 2026, 7:00 PM-9:00 PM, Gateway Hall 3540, in person.
 
 === Course Format
 
-This is a synchronous in-person class. We meet on campus for lecture and for a weekly lab session in a computer lab at the times listed above and in CI Learn.
+This is a hybrid class. Lecture meets synchronously in person on campus at the time listed above. The weekly lab is conducted asynchronously online; you complete lab work on your own schedule through CI Learn, subject to weekly deadlines.
 The course combines lecture, guided demonstrations, hands-on programming labs, discussion, and project work.
 In addition to attending class sessions, you need to log in to CI Learn 2-3 times a week to complete coursework and make sure you are up to date on what is due.
 
@@ -165,7 +165,7 @@ If I record a session, I will announce it in advance and post the recording to C
 
 === Devices in Class
 
-This course meets in a computer lab and laptops are expected for lecture, labs, and in-class activities.
+Laptops are expected for lecture and in-class activities; labs are completed online on your own device.
 Use devices for course-related work during class.
 Phones should be silenced. If you need to take a call, step outside.
 Device use unrelated to the course that disrupts others is addressed under the Civil Discourse statement below.
@@ -244,9 +244,9 @@ Please ask about my expectations regarding academic dishonesty in this course if
 
 This policy is provided in accordance with the CSUCI Policy on Class Attendance (SP 01-056).
 
-Students are expected to attend each class and lab session.
+Students are expected to attend each lecture session; labs are completed asynchronously online by the posted deadlines.
 Attendance and in-class activities account for 5% of the final grade, as shown in the assessment breakdown below.
-Because labs are hands-on and completed in the lab, absence from lab directly affects your ability to complete lab deliverables.
+Because labs are hands-on, falling behind on lab deadlines directly affects your ability to complete lab deliverables.
 
 If you cannot attend a session, contact me prior to the meeting time to explain your circumstances.
 
@@ -266,7 +266,7 @@ For absences with extenuating circumstances related to a medical condition or di
 * Activities
 ** Short in-class activities will reinforce core concepts such as search traces, probability calculations, model evaluation, and neural network training behavior.
 * Labs
-** Labs are completed in person in the lab unless otherwise stated. Labs may include Python notebooks, short programming tasks, model analysis, and written reflections.
+** Labs are completed asynchronously online unless otherwise stated. Labs may include Python notebooks, short programming tasks, model analysis, and written reflections.
 * Projects
 ** Several coding and analysis projects will be given throughout the semester. Projects will emphasize implementation, experimentation, model evaluation, and clear explanation of results.
 * Final Project
@@ -372,7 +372,7 @@ The following reference is recommended, not required, for students who want a st
 
 ==== Lab Overview and Policies
 
-All labs are *hands-on Jupyter Notebook* based and designed for the weekly three-hour lab session.
+All labs are *hands-on Jupyter Notebook* based and designed to be completed asynchronously online, with a weekly time commitment of about three hours.
 
 * *Format*: Students receive a starter `.ipynb` notebook.
 * *Deliverables*: Completed notebook with:
