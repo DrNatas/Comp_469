@@ -34,7 +34,7 @@
 
 // Professional Header Branding
 [.text-center]
-image:https://csuci.sharepoint.com/:i:/r/sites/BrandAssets2026/Shared%20Documents/Approved%20Logos_Graphics/Approved%20Logo%20versions/Dolphin%20Spirit%20Mark/CSUCI_DSM-2C/CSUCI_DSM-2C.jpg?d=wfd64e8fc1e8f4fe9aa735e2015a4f8ba&csf=1&web=1&e=meEGLb[CSUCI Logo, 300, 100]
+image::Images/CSUCI_DSM-2C.jpg[CSUCI Logo, 300, 100]
 
 [quote]
 _The syllabus and course schedule are subject to change in the event of extenuating circumstances. Any changes will be announced in class and posted as an announcement in CI Learn, and a revised syllabus will be posted to the course site._
