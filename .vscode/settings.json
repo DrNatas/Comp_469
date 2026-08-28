@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "/home/jrios/.vscode/extensions/ms-security.ms-sentinel-2.3.3/python"
+        "/home/jrios/.vscode/extensions/ms-security.ms-sentinel-2.3.3/python",
+        "/home/jrios/.vscode/extensions/ms-security.ms-sentinel-2.3.4/python"
     ]
 }
