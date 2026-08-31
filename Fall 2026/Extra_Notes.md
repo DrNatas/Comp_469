@@ -1,4 +1,6 @@
 https://inst.eecs.berkeley.edu/~cs188/sp26/
+https://web.archive.org/web/20260627063343/https://inst.eecs.berkeley.edu/~cs188/su26/
+
 
 https://github.com/aimacode/aima-python
 

@@ -1,3 +1,0 @@
-# Only needed for the game window (tools/play.py).
-# The tests and tools/run_trials.py run without it.
-pygame-ce>=2.5,<3

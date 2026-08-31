@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en-US" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Project 3: Reinforcement Learning | CS 188 Summer 2026</title>
+<meta name="description" content="Clean standalone copy of the UC Berkeley CS 188 Summer 2026 Project 3 reinforcement learning assignment.">
+<style>
+:root{
+  --bg:#f5f7fb;--surface:#ffffff;--surface-2:#f0f4fa;--text:#182235;--muted:#667085;
+  --border:#d9e2ef;--accent:#003b71;--accent-2:#FDB515;--accent-soft:#eaf2fb;
+  --code:#0d1420;--code-text:#e8eef8;--shadow:0 14px 38px rgba(22,42,70,.09);
+  --radius:18px;--sidebar:292px;--content:900px;--good:#1f8a5b;--bad:#bb3e4a;
+}
+html[data-theme="dark"]{
+  --bg:#0d1420;--surface:#111b2a;--surface-2:#172334;--text:#edf3fb;--muted:#9eacc0;
+  --border:#293a50;--accent:#6eb6ff;--accent-2:#f6c343;--accent-soft:#142a42;
+  --code:#080d14;--code-text:#e6edf6;--shadow:0 18px 44px rgba(0,0,0,.28);--good:#58c98f;--bad:#ef7883;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.68;font-size:16px}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}code,pre{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+.topbar{position:sticky;top:0;z-index:30;height:62px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 22px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;color:var(--text)}.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#0a6cc1);position:relative;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}.brand-mark:after{content:"188";position:absolute;inset:0;display:grid;place-items:center;color:white;font-size:11px;letter-spacing:.03em}.top-actions{display:flex;gap:8px}.icon-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);height:38px;padding:0 13px;border-radius:10px;font-weight:700;cursor:pointer}.icon-btn:hover{background:var(--surface-2)}
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,var(--content));justify-content:center;gap:38px;padding:34px 28px 80px}.sidebar{position:sticky;top:94px;align-self:start;max-height:calc(100vh - 120px);overflow:auto;padding:8px 8px 18px}.sidebar-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);margin:0 0 12px 10px}.toc-link{display:block;color:var(--muted);padding:8px 10px;border-radius:10px;font-size:14px;line-height:1.35;margin:2px 0}.toc-link:hover,.toc-link.active{background:var(--accent-soft);color:var(--accent);text-decoration:none}.toc-sub{padding-left:24px;font-size:13px}
+.main{min-width:0}.hero-card{display:grid;grid-template-columns:minmax(320px,1.02fr) minmax(330px,.98fr);background:var(--surface);border:1px solid var(--border);border-radius:26px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:28px}.hero-art{display:flex;align-items:center;justify-content:center;min-height:360px;background:radial-gradient(circle at 30% 20%,#12345c 0,#071321 44%,#050a11 100%);padding:34px}.hero-copy{padding:46px 42px;display:flex;flex-direction:column;justify-content:center}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:800;color:var(--accent)}.hero-copy h1{font-size:clamp(2.15rem,5vw,3.55rem);line-height:1.02;letter-spacing:-.045em;margin:12px 0 16px}.hero-lede{color:var(--muted);margin:0 0 22px;max-width:48ch}.due-chip{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:22px}.due-chip span{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--accent-2);color:#172035;border-radius:999px;padding:5px 9px}.due-chip strong{font-size:14px}.topic-row{display:flex;gap:7px;flex-wrap:wrap}.topic-row span{font-size:11px;font-weight:750;padding:5px 9px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);color:var(--muted)}
+.rl-visual{width:min(100%,480px)}.gridworld{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:12px;border:1px solid rgba(117,184,255,.35);border-radius:18px;background:rgba(4,10,18,.72);box-shadow:0 20px 50px rgba(0,0,0,.25)}.cell{aspect-ratio:1.18;display:grid;place-items:center;border-radius:9px;border:1px solid rgba(104,171,238,.26);background:rgba(17,43,70,.75);color:#8fbde9;font:800 17px/1 ui-monospace,monospace}.cell.route{color:#ffd96a;background:rgba(44,67,84,.88)}.cell.reward{font-size:15px}.cell.plus{color:#7ee5ac;background:rgba(25,89,60,.62)}.cell.big{color:#ffe17e;background:rgba(113,88,26,.62)}.cell.danger{color:#ff8a94;background:rgba(103,31,40,.7)}.cell.wall{background:repeating-linear-gradient(135deg,#1c2a38 0 7px,#26394d 7px 14px)}.cell.agent span{width:27px;height:27px;border-radius:50%;background:#f8d73a;box-shadow:0 0 0 5px rgba(248,215,58,.11);position:relative}.cell.agent span:after{content:"";position:absolute;right:-1px;top:7px;border-left:12px solid #10233a;border-top:7px solid transparent;border-bottom:7px solid transparent}.learning-loop{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;color:#92b6d8;margin-top:15px;font:700 11px/1.2 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.04em}.learning-loop span{border:1px solid rgba(104,171,238,.3);border-radius:999px;padding:6px 8px;background:rgba(10,27,44,.75)}.learning-loop b{color:#f1c84a}
+.article{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:46px 54px;box-shadow:var(--shadow)}.article>h2:first-child{margin-top:0}.article h2,.article h3{scroll-margin-top:90px;letter-spacing:-.025em}.article h2{font-size:1.72rem;margin:2.7rem 0 1rem;border-top:1px solid var(--border);padding-top:2.2rem}.article h3{font-size:1.24rem;margin:2rem 0 .7rem}.article p{margin:1rem 0}.article ul,.article ol{padding-left:1.45rem}.article li{margin:.5rem 0}.article strong{font-weight:780}.article hr{border:0;border-top:1px solid var(--border);margin:2.5rem 0}.article img.content-image{display:block;max-width:100%;height:auto;margin:1.8rem auto;border-radius:14px;border:1px solid var(--border);background:#fff;box-shadow:0 8px 24px rgba(10,30,55,.08)}
+.article code:not(pre code){background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:.12em .38em;font-size:.91em;color:var(--text)}.article .highlight{margin:1.1rem 0;position:relative}.article pre{position:relative;overflow:auto;background:var(--code);color:var(--code-text);border-radius:13px;padding:17px 50px 17px 18px;border:1px solid color-mix(in srgb,var(--border) 70%,transparent);font-size:13.5px;line-height:1.6;margin:0}.article pre code{background:transparent;border:0;color:inherit;padding:0;white-space:pre}.copy-btn{position:absolute;right:9px;top:9px;border:1px solid #33445b;background:#172235;color:#dce7f5;border-radius:8px;font-size:11px;font-weight:800;padding:6px 8px;cursor:pointer;z-index:2}.copy-btn:hover{background:#20314a}.nt{color:#86c5ff}.nv{color:#f0c869}.o{color:#c9d7e8}
+.math-block{overflow:auto;margin:1.25rem 0;padding:18px 20px;text-align:center;border:1px solid var(--border);border-radius:13px;background:linear-gradient(180deg,var(--surface-2),color-mix(in srgb,var(--surface-2) 45%,var(--surface)));font-family:"Times New Roman",Cambria,serif;font-size:1.22rem;letter-spacing:.01em;white-space:nowrap}.ec-badge{display:inline-block;margin-left:8px;vertical-align:.15em;background:var(--accent-2);color:#172035;font-size:10px;line-height:1;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:6px 8px;font-family:Inter,ui-sans-serif,sans-serif}
+.callout{border:1px solid var(--border);border-left:4px solid var(--accent);background:var(--accent-soft);padding:15px 17px;border-radius:0 12px 12px 0}.callout.grading{border-left-color:#7a4fc7;background:color-mix(in srgb,#8f67cf 10%,var(--surface))}.callout.important{border-left-color:#c44d4d;background:color-mix(in srgb,#d96767 10%,var(--surface))}.callout.note,.callout.hint{border-left-color:#2f8a62;background:color-mix(in srgb,#43a878 10%,var(--surface))}.callout.extra-credit{border-left-color:#d29a00;background:color-mix(in srgb,#f0bf31 12%,var(--surface))}
+.table-scroll{overflow:auto;margin:1.35rem 0;border:1px solid var(--border);border-radius:14px}.table-scroll table{width:100%;border-collapse:collapse;min-width:620px}.table-scroll td,.table-scroll th{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}.table-scroll tr:last-child td{border-bottom:0}.table-scroll tr:nth-child(even){background:color-mix(in srgb,var(--surface-2) 55%,transparent)}
+.mobile-toc{display:none;margin-bottom:18px}.mobile-toc details{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px}.mobile-toc summary{font-weight:800;cursor:pointer}.mobile-toc .toc-link{margin-top:4px}.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}
+@media(max-width:1050px){.layout{grid-template-columns:1fr;max-width:980px;margin:auto}.sidebar{display:none}.mobile-toc{display:block}.hero-card{grid-template-columns:1fr}.hero-art{min-height:300px}.hero-copy{padding:32px}.article{padding:38px}}
+@media(max-width:640px){.topbar{padding:0 14px}.brand span:last-child{display:none}.layout{padding:18px 12px 56px}.hero-card{border-radius:18px}.hero-art{padding:20px}.hero-copy{padding:26px 22px}.article{padding:28px 20px;border-radius:18px}.article h2{font-size:1.45rem}.article pre{font-size:12.5px}.due-chip strong{width:100%}.math-block{font-size:1rem;text-align:left}.cell{font-size:14px}}
+@media print{.topbar,.sidebar,.mobile-toc,.copy-btn{display:none!important}.layout{display:block;padding:0}.main{max-width:none}.hero-card,.article{box-shadow:none;border:0}.hero-card{grid-template-columns:1fr 1fr}.article{padding:0}.article h2{break-after:avoid}.article pre,.table-scroll,.math-block{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>CS 188 · Summer 2026</span></div>
+  <div class="top-actions"><button class="icon-btn" id="theme-toggle" type="button">Dark mode</button></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Project sections">
+    <div class="sidebar-title">Project 3</div>
+    <a class="toc-link " href="#introduction">Introduction</a>
+<a class="toc-link " href="#mdps">MDPs</a>
+<a class="toc-link " href="#question-1-5-points-value-iteration">Question 1 (5 points): Value Iteration</a>
+<a class="toc-link " href="#question-2-1-point-bridge-crossing-analysis">Question 2 (1 point): Bridge Crossing Analysis</a>
+<a class="toc-link " href="#question-3-6-points-policies">Question 3 (6 points): Policies</a>
+<a class="toc-link " href="#question-4-1-points-prioritized-sweeping-value-iterationextra-credit">Question 4 (1 point): Prioritized Sweeping Value Iteration Extra Credit</a>
+<a class="toc-link " href="#question-5-5-points-q-learning">Question 5 (5 points): Q-Learning</a>
+<a class="toc-link " href="#question-6-2-points-epsilon-greedy">Question 6 (2 points): Epsilon Greedy</a>
+<a class="toc-link " href="#question-7-1-point-bridge-crossing-revisited">Question 7 (1 point): Bridge Crossing Revisited</a>
+<a class="toc-link " href="#question-8-1-point-q-learning-and-pacman">Question 8 (1 point): Q-Learning and Pacman</a>
+<a class="toc-link " href="#question-9-4-points-approximate-q-learning">Question 9 (4 points): Approximate Q-Learning</a>
+<a class="toc-link " href="#submission">Submission</a>
+  </aside>
+  <main class="main" id="main-content">
+    <section class="hero-card">
+  <div class="hero-art">
+<div class="rl-visual" aria-label="Stylized reinforcement learning gridworld">
+  <div class="gridworld">
+    <div class="cell route">↑</div><div class="cell">·</div><div class="cell reward plus">+1</div><div class="cell reward big">+10</div>
+    <div class="cell agent"><span></span></div><div class="cell route">→</div><div class="cell route">→</div><div class="cell route">↑</div>
+    <div class="cell">·</div><div class="cell wall"></div><div class="cell">·</div><div class="cell route">↑</div>
+    <div class="cell danger">−10</div><div class="cell danger">−10</div><div class="cell danger">−10</div><div class="cell danger">−10</div>
+  </div>
+  <div class="learning-loop"><span>state</span><b>→</b><span>action</span><b>→</b><span>reward</span><b>→</b><span>update</span></div>
+</div></div>
+  <div class="hero-copy">
+    <span class="eyebrow">UC Berkeley · CS 188 · Summer 2026</span>
+    <h1>Project 3: Reinforcement Learning</h1>
+    <p class="hero-lede">Value iteration, Markov decision processes, Q-learning, exploration, and approximate reinforcement learning.</p>
+    <div class="due-chip"><span>Due</span><strong>Friday, July 17, 11:59 PM PT </strong></div>
+    <div class="topic-row"><span>MDPs</span><span>Value Iteration</span><span>Q-Learning</span></div>
+  </div>
+</section>
+    <div class="mobile-toc"><details><summary>Project sections</summary><a class="toc-link " href="#introduction">Introduction</a>
+<a class="toc-link " href="#mdps">MDPs</a>
+<a class="toc-link " href="#question-1-5-points-value-iteration">Question 1 (5 points): Value Iteration</a>
+<a class="toc-link " href="#question-2-1-point-bridge-crossing-analysis">Question 2 (1 point): Bridge Crossing Analysis</a>
+<a class="toc-link " href="#question-3-6-points-policies">Question 3 (6 points): Policies</a>
+<a class="toc-link " href="#question-4-1-points-prioritized-sweeping-value-iterationextra-credit">Question 4 (1 point): Prioritized Sweeping Value Iteration Extra Credit</a>
+<a class="toc-link " href="#question-5-5-points-q-learning">Question 5 (5 points): Q-Learning</a>
+<a class="toc-link " href="#question-6-2-points-epsilon-greedy">Question 6 (2 points): Epsilon Greedy</a>
+<a class="toc-link " href="#question-7-1-point-bridge-crossing-revisited">Question 7 (1 point): Bridge Crossing Revisited</a>
+<a class="toc-link " href="#question-8-1-point-q-learning-and-pacman">Question 8 (1 point): Q-Learning and Pacman</a>
+<a class="toc-link " href="#question-9-4-points-approximate-q-learning">Question 9 (4 points): Approximate Q-Learning</a>
+<a class="toc-link " href="#submission">Submission</a></details></div>
+    <article class="article">
+
+
+
+
+<h2 id="introduction">
+ Introduction
+  
+  
+</h2>
+<p>In this project, you will implement value iteration and Q-learning. You will test your agents first on Gridworld (from class), then apply them to a simulated robot controller (Crawler) and Pacman.</p>
+<p>As in previous projects, this project includes an autograder for you to grade your solutions on your machine. This can be run on all questions with the command:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="1"><code class="">python autograder.py
+</code></pre></div></div>
+<p>It can be run for one particular question, such as q2, by:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="2"><code class="">python autograder.py <span class="nt">-q</span> q2
+</code></pre></div></div>
+<p>It can be run for one particular test by commands of the form:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="3"><code class="">python autograder.py <span class="nt">-t</span> test_cases/q2/1-bridge-grid
+</code></pre></div></div>
+<p>The code for this project contains the following files, available as a <a href="https://web.archive.org/web/20260627063341/https://inst.eecs.berkeley.edu/~cs188/su26/assets/projects/reinforcement.zip">zip archive</a>.</p>
+<div class="table-scroll"><table>
+<tbody>
+<tr>
+<td colspan="2"><b>Files you'll edit:</b></td>
+</tr>
+<tr>
+<td><code class="">valueIterationAgents.py</code></td>
+<td>A value iteration agent for solving known MDPs.</td>
+</tr>
+<tr>
+<td><code class="">qlearningAgents.py</code></td>
+<td>Q-learning agents for Gridworld, Crawler and Pacman.</td>
+</tr>
+<tr>
+<td><code class="">analysis.py</code></td>
+<td>A file to put your answers to questions given in the project.</td>
+</tr>
+<tr>
+<td colspan="2"><b>Files you might want to look at:</b></td>
+</tr>
+<tr>
+<td><code class="">mdp.py</code></td>
+<td>Defines methods on general MDPs.</td>
+</tr>
+<tr>
+<td><code class="">learningAgents.py</code></td>
+<td>Defines the base classes <code class="">ValueEstimationAgent</code> and <code class="">QLearningAgent</code>, which your agents will extend.</td>
+</tr>
+<tr>
+<td><code class="">util.py</code></td>
+<td>Utilities, including <code class="">util.Counter</code>, which is particularly useful for Q-learners.</td>
+</tr>
+<tr>
+<td><code class="">gridworld.py</code></td>
+<td>The Gridworld implementation.</td>
+</tr>
+<tr>
+<td><code class="">featureExtractors.py</code></td>
+<td>Classes for extracting features on (state, action) pairs. Used for the approximate Q-learning agent (in <code class="">qlearningAgents.py</code>).</td>
+</tr>
+<tr>
+<td colspan="2"><b>Supporting files you can ignore:</b></td>
+</tr>
+<tr>
+<td><code class="">environment.py</code></td>
+<td>Abstract class for general reinforcement learning environments. Used by <code class="">gridworld.py</code>.</td>
+</tr>
+<tr>
+<td><code class="">graphicsGridworldDisplay.py</code></td>
+<td>Gridworld graphical display.</td>
+</tr>
+<tr>
+<td><code class="">graphicsUtils.py</code></td>
+<td>Graphics utilities.</td>
+</tr>
+<tr>
+<td><code class="">textGridworldDisplay.py</code></td>
+<td>Plug-in for the Gridworld text interface.</td>
+</tr>
+<tr>
+<td><code class="">crawler.py</code></td>
+<td>The crawler code and test harness. You will run this but not edit it.</td>
+</tr>
+<tr>
+<td><code class="">graphicsCrawlerDisplay.py</code></td>
+<td>GUI for the crawler robot.</td>
+</tr>
+<tr>
+<td><code class="">autograder.py</code></td>
+<td>Project autograder</td>
+</tr>
+<tr>
+<td><code class="">testParser.py</code></td>
+<td>Parses autograder test and solution files</td>
+</tr>
+<tr>
+<td><code class="">testClasses.py</code></td>
+<td>General autograding test classes</td>
+</tr>
+<tr>
+<td><code class="">test_cases/</code></td>
+<td>Directory containing the test cases for each question</td>
+</tr>
+<tr>
+<td><code class="">reinforcementTestClasses.py</code></td>
+<td>Project 3 specific autograding test classes</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Files to Edit and Submit</strong>: You will fill in portions of <code class="language-plaintext">valueIterationAgents.py</code>, <code class="language-plaintext">qlearningAgents.py</code>, and <code class="language-plaintext">analysis.py</code> during the assignment. Once you have completed the assignment, you will submit these files to Gradescope (for instance, you can upload all <code class="language-plaintext">.py</code> files in the folder). Please do not change the other files in this distribution.</p>
+<p><strong>Evaluation</strong>: Your code will be autograded for technical correctness. Please do not change the names of any provided functions or classes within the code, or you will wreak havoc on the autograder. However, the correctness of your implementation – not the autograder’s judgements – will be the final judge of your score. If necessary, we will review and grade assignments individually to ensure that you receive due credit for your work.</p>
+<p><strong>Academic Dishonesty</strong>: We will be checking your code against other submissions in the class for logical redundancy. If you copy someone else’s code and submit it with minor changes, we will know. These cheat detectors are quite hard to fool, so please don’t try. We trust you all to submit your own work only; please don’t let us down. If you do, we will pursue the strongest consequences available to us.</p>
+<p><strong>Getting Help</strong>: You are not alone! If you find yourself stuck on something, contact the course staff for help. Office hours, section, and the discussion forum are there for your support; please use them. If you can’t make our office hours, let us know and we will schedule more. We want these projects to be rewarding and instructional, not frustrating and demoralizing. But, we don’t know when or how to help unless you ask.</p>
+<p><strong>Discussion</strong>: Please be careful not to post spoilers.</p>
+<p><strong>Topics needed for this project</strong>:</p>
+<ul>
+<li>MDPs I: <a href="https://web.archive.org/web/20260627063341/https://www.youtube.com/watch?v=4LW3H_Jinr4">Video 8</a>, <a href="https://web.archive.org/web/20260627063341/https://inst.eecs.berkeley.edu/~cs188/textbook/mdp/markov-decision-processes.html">Note 4.1-4.2</a></li>
+<li>MDPs II: <a href="https://web.archive.org/web/20260627063341/https://www.youtube.com/watch?v=ZToWj64rxvQ">Video 9</a>, <a href="https://web.archive.org/web/20260627063341/https://inst.eecs.berkeley.edu/~cs188/textbook/mdp/value-iteration.html">Note 4.3-4.5</a></li>
+<li>RL I: <a href="https://web.archive.org/web/20260627063341/https://www.youtube.com/watch?v=TiXS7vROBEg">Video 10</a>, <a href="https://web.archive.org/web/20260627063341/https://inst.eecs.berkeley.edu/~cs188/textbook/rl/rl.html">Note 5.1-5.3</a></li>
+<li>RL II: <a href="https://web.archive.org/web/20260627063341/https://www.youtube.com/watch?v=XafrqwHfBKE">Video 11</a>, <a href="https://web.archive.org/web/20260627063341/https://inst.eecs.berkeley.edu/~cs188/textbook/rl/eae.html">Note 5.4-5.5</a></li>
+</ul><hr/>
+<h2 id="mdps">
+ MDPs
+  
+  
+</h2>
+<p>To get started, run Gridworld in manual control mode, which uses the arrow keys:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="4"><code class="">python gridworld.py <span class="nt">-m</span>
+</code></pre></div></div>
+<p>You will see the two-exit layout from class. The blue dot is the agent. Note that when you press up, the agent only actually moves north 80% of the time. Such is the life of a Gridworld agent!</p>
+<p>You can control many aspects of the simulation. A full list of options is available by running:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="5"><code class="">python gridworld.py <span class="nt">-h</span>
+</code></pre></div></div>
+<p>The default agent moves randomly</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="6"><code class="">python gridworld.py <span class="nt">-g</span> MazeGrid
+</code></pre></div></div>
+<p>You should see the random agent bounce around the grid until it happens upon an exit. Not the finest hour for an AI agent.</p>
+<p class="callout note">Note: The Gridworld MDP is such that you first must enter a pre-terminal state (the double boxes shown in the GUI) and then take the special ‘exit’ action before the episode actually ends (in the true terminal state called <code class="language-plaintext">TERMINAL_STATE</code>, which is not shown in the GUI). If you run an episode manually, your total return may be less than you expected, due to the discount rate (<code class="language-plaintext">-d</code> to change; 0.9 by default).</p>
+<p>Look at the console output that accompanies the graphical output (or use <code class="language-plaintext">-t</code> for all text). You will be told about each transition the agent experiences (to turn this off, use <code class="language-plaintext">-q</code>).</p>
+<p>As in Pacman, positions are represented by <code class="language-plaintext">(x, y)</code> Cartesian coordinates and any arrays are indexed by <code class="language-plaintext">[x][y]</code>, with <code class="language-plaintext">'north'</code> being the direction of increasing <code class="language-plaintext">y</code>, etc. By default, most transitions will receive a reward of zero, though you can change this with the living reward option (<code class="language-plaintext">-r</code>).</p><hr/>
+<h2 id="question-1-5-points-value-iteration">
+ Question 1 (5 points): Value Iteration
+  
+  
+</h2>
+<p>Recall the value iteration state update equation:</p><div class="math-block" role="math">Vₖ₊₁(s) ← maxₐ  Σₛ′  T(s,a,s′) [ R(s,a,s′) + γVₖ(s′) ]</div><p>Write a value iteration agent in <code class="language-plaintext">ValueIterationAgent</code>, which has been partially specified for you in <code class="language-plaintext">valueIterationAgents.py</code>. Your value iteration agent is an offline planner, not a reinforcement learning agent, and so the relevant training option is the number of iterations of value iteration it should run (option <code class="language-plaintext">-i</code>) in its initial planning phase. <code class="language-plaintext">ValueIterationAgent</code> takes an MDP on construction and runs value iteration for the specified number of iterations before the constructor returns.</p>
+<p>Value iteration computes k-step estimates of the optimal values, Vₖ. In addition to <code class="language-plaintext">runValueIteration</code>, implement the following methods for <code class="language-plaintext">ValueIterationAgent</code> using Vₖ:</p>
+<ul>
+<li><code class="language-plaintext">computeActionFromValues(state)</code> computes the best action according to the value function given by self.values.</li>
+<li><code class="language-plaintext">computeQValueFromValues(state, action)</code> returns the Q-value of the (state, action) pair given by the value function given by <code class="language-plaintext">self.values</code>.</li>
+</ul>
+<p>These quantities are all displayed in the GUI: values are numbers in squares, Q-values are numbers in square quarters, and policies are arrows out from each square.</p>
+<p class="callout important">Important: Use the “batch” version of value iteration where each vector Vₖ is computed from a fixed vector Vₖ₋₁ (like in lecture), not the “online” version where one single weight vector is updated in place. This means that when a state’s value is updated in iteration k based on the values of its successor states, the successor state values used in the value update computation should be those from iteration k−1 (even if some of the successor states had already been updated in iteration 
+k). The difference is discussed in <a href="https://web.archive.org/web/20260627063341/https://web.archive.org/web/20230417150626/https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf">Sutton &amp; Barto</a> in Chapter 4.1 on page 91.</p>
+<p class="callout note"><em>Note</em>: A policy synthesized from values of depth k (which reflect the next k rewards) will actually reflect the next k+1 rewards (i.e. you return πₖ₊₁). Similarly, the Q-values will also reflect one more reward than the values (i.e. you return Qₖ₊₁).</p>
+<p>You should return the synthesized policy πₖ₊₁.</p>
+<p class="callout hint"><em>Hint</em>: You may optionally use the <code class="language-plaintext">util.Counter</code> class in <code class="language-plaintext">util.py</code>, which is a dictionary with a default value of zero. However, be careful with <code class="language-plaintext">argMax</code>: the actual argmax you want may be a key not in the counter!</p>
+<p class="callout note"><em>Note</em>: Make sure to handle the case when a state has no available actions in an MDP (think about what this means for future rewards).</p>
+<p>To test your implementation, run the autograder:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="7"><code class="">python autograder.py <span class="nt">-q</span> q1
+</code></pre></div></div>
+<p>The following command loads your <code class="language-plaintext">ValueIterationAgent</code>, which will compute a policy and execute it 10 times. Press a key to cycle through values, Q-values, and the simulation. You should find that the value of the start state (<code class="language-plaintext">V(start)</code>, which you can read off of the GUI) and the empirical resulting average reward (printed after the 10 rounds of execution finish) are quite close.</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="8"><code class="">python gridworld.py <span class="nt">-a</span> value <span class="nt">-i</span> 100 <span class="nt">-k</span> 10
+</code></pre></div></div>
+<p class="callout hint"><em>Hint</em>: On the default <code class="language-plaintext">BookGrid</code>, running value iteration for 5 iterations should give you this output:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="9"><code class="">python gridworld.py <span class="nt">-a</span> value <span class="nt">-i</span> 5
+</code></pre></div></div>
+<p><img alt="Value iteration diagram" class="content-image" loading="lazy" src="https://web.archive.org/web/20260627063341im_/https://inst.eecs.berkeley.edu/~cs188/su26/assets/projects/value_iter_diagram.png"/></p>
+<p class="callout grading"><em>Grading</em>: Your value iteration agent will be graded on a new grid. We will check your values, Q-values, and policies after fixed numbers of iterations and at convergence (e.g. after 100 iterations).</p><hr/>
+<h2 id="question-2-1-point-bridge-crossing-analysis">
+ Question 2 (1 point): Bridge Crossing Analysis
+  
+  
+</h2>
+<p><code class="language-plaintext">BridgeGrid</code> is a grid world map with the a low-reward terminal state and a high-reward terminal state separated by a narrow “bridge”, on either side of which is a chasm of high negative reward. The agent starts near the low-reward state. With the default discount of 0.9 and the default noise of 0.2, the optimal policy does not cross the bridge. Change only ONE of the discount and noise parameters so that the optimal policy causes the agent to attempt to cross the bridge. Put your answer in <code class="language-plaintext">question2()</code> of <code class="language-plaintext">analysis.py</code>. (Noise refers to how often an agent ends up in an unintended successor state when they perform an action.) The default corresponds to:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="10"><code class="">python gridworld.py <span class="nt">-a</span> value <span class="nt">-i</span> 100 <span class="nt">-g</span> BridgeGrid <span class="nt">--discount</span> 0.9 <span class="nt">--noise</span> 0.2
+</code></pre></div></div>
+<p><img alt="Bridge crossing diagram" class="content-image" loading="lazy" src="https://web.archive.org/web/20260627063341im_/https://inst.eecs.berkeley.edu/~cs188/su26/assets/projects/Bridge_Crossing_Diagram.png"/></p>
+<p class="callout grading">Grading: We will check that you only changed one of the given parameters, and that with this change, a correct value iteration agent should cross the bridge. To check your answer, run the autograder:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="11"><code class="">python autograder.py <span class="nt">-q</span> q2
+</code></pre></div></div><hr/>
+<h2 id="question-3-6-points-policies">
+ Question 3 (6 points): Policies
+  
+  
+</h2>
+<p>Consider the <code class="language-plaintext">DiscountGrid</code> layout, shown below. This grid has two terminal states with positive payoff (in the middle row), a close exit with payoff +1 and a distant exit with payoff +10. The bottom row of the grid consists of terminal states with negative payoff (shown in red); each state in this “cliff” region has payoff -10. The starting state is the yellow square. We distinguish between two types of paths: (1) paths that “risk the cliff” and travel near the bottom row of the grid; these paths are shorter but risk earning a large negative payoff, and are represented by the red arrow in the figure below. (2) paths that “avoid the cliff” and travel along the top edge of the grid. These paths are longer but are less likely to incur huge negative payoffs. These paths are represented by the green arrow in the figure below.</p>
+<p><img alt="Paths in gridworld" class="content-image" loading="lazy" src="https://web.archive.org/web/20260627063341im_/https://inst.eecs.berkeley.edu/~cs188/su26/assets/projects/value_2_paths.png"/></p>
+<p>In this question, you will choose settings of the discount, noise, and living reward parameters for this MDP to produce optimal policies of several different types. <strong>Your setting of the parameter values for each part should have the property that, if your agent followed its optimal policy without being subject to any noise, it would exhibit the given behavior.</strong> If a particular behavior is not achieved for any setting of the parameters, assert that the policy is impossible by returning the string <code class="language-plaintext">'NOT POSSIBLE'</code>.</p>
+<p>Here are the optimal policy types you should attempt to produce:</p>
+<ol>
+<li>Prefer the close exit (+1), risking the cliff (-10)</li>
+<li>Prefer the close exit (+1), but avoiding the cliff (-10)</li>
+<li>Prefer the distant exit (+10), risking the cliff (-10)</li>
+<li>Prefer the distant exit (+10), avoiding the cliff (-10)</li>
+<li>Avoid both exits and the cliff (so an episode should never terminate)</li>
+</ol>
+<p>To see what behavior a set of numbers ends up in, run the following command to see a GUI:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="12"><code class="">python gridworld.py <span class="nt">-g</span> DiscountGrid <span class="nt">-a</span> value <span class="nt">--discount</span> <span class="o">[</span>YOUR_DISCOUNT] <span class="nt">--noise</span> <span class="o">[</span>YOUR_NOISE] <span class="nt">--livingReward</span> <span class="o">[</span>YOUR_LIVING_REWARD]
+</code></pre></div></div>
+<p>To check your answers, run the autograder:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="13"><code class="">python autograder.py <span class="nt">-q</span> q3
+</code></pre></div></div>
+<p><code class="language-plaintext">question2a()</code> through <code class="language-plaintext">question2e()</code> should each return a 3-item tuple of <code class="language-plaintext">(discount, noise, living reward)</code> in <code class="language-plaintext">analysis.py</code>.</p>
+<p class="callout note"><em>Note</em>: You can check your policies in the GUI. For example, using a correct answer to 3(a), the arrow in (0,1) should point east, the arrow in (1,1) should also point east, and the arrow in (2,1) should point north.</p>
+<p class="callout note"><em>Note</em>: On some machines you may not see an arrow. In this case, press a button on the keyboard to switch to qValue display, and mentally calculate the policy by taking the arg max of the available qValues for each state.</p>
+<p class="callout grading"><em>Grading</em>: We will check that the desired policy is returned in each case.</p><hr/>
+<h2 id="question-4-1-points-prioritized-sweeping-value-iterationextra-credit">Question 4 (1 point): Prioritized Sweeping Value Iteration <span class="ec-badge">Extra Credit</span></h2>
+<p class="callout extra-credit"><em>This question is extra credit. We plan to prioritize students who have questions regarding required portions of this project in Office Hours.</em></p>
+<p>You will now implement <code class="language-plaintext">PrioritizedSweepingValueIterationAgent</code>, which has been partially specified for you in <code class="language-plaintext">valueIterationAgents.py</code>.</p>
+<p>Prioritized sweeping attempts to focus updates of state values in ways that are likely to change the policy.</p>
+<p>For this project, you will implement a simplified version of the standard prioritized sweeping algorithm, which is described in this <a href="https://web.archive.org/web/20260627063341/https://proceedings.neurips.cc/paper_files/paper/1992/file/55743cc0393b1cb4b8b37d09ae48d097-Paper.pdf">paper</a>. We’ve adapted this algorithm for our setting. First, we define the predecessors of a state <code class="language-plaintext">s</code> as all states that have a nonzero probability of reaching <code class="language-plaintext">s</code> by taking some action <code class="language-plaintext">a</code>. Also, <code class="language-plaintext">theta</code>, which is passed in as a parameter, will represent our tolerance for error when deciding whether to update the value of a state. Here’s the algorithm you should follow in your implementation.</p>
+<ul>
+<li>Compute predecessors of all states.</li>
+<li>Initialize an empty priority queue.</li>
+<li>For each non-terminal state <code class="language-plaintext">s</code>, do: (note: to make the autograder work for this question, you must iterate over states in the order returned by <code class="language-plaintext">self.mdp.getStates()</code>)
+    <ul>
+<li>Find the absolute value of the difference between the current value of <code class="language-plaintext">s</code> in <code class="language-plaintext">self.values</code> and the highest Q-value across all possible actions from <code class="language-plaintext">s</code> (this represents what the value should be); call this number <code class="language-plaintext">diff</code>. Do NOT update <code class="language-plaintext">self.values[s]</code> in this step.</li>
+<li>Push <code class="language-plaintext">s</code> into the priority queue with priority <code class="language-plaintext">-diff</code> (note that this is negative). We use a negative because the priority queue is a min heap, but we want to prioritize updating states that have a higher error.</li>
+</ul>
+</li>
+<li>For <code class="language-plaintext">iteration</code> in <code class="language-plaintext">0, 1, 2, ..., self.iterations - 1</code>, do:
+    <ul>
+<li>If the priority queue is empty, then terminate.</li>
+<li>Pop a state <code class="language-plaintext">s</code> off the priority queue.</li>
+<li>Update the value of <code class="language-plaintext">s</code> (if it is not a terminal state) in <code class="language-plaintext">self.values</code>.</li>
+<li>For each predecessor <code class="language-plaintext">p</code> of <code class="language-plaintext">s</code>, do:
+        <ul>
+<li>Find the absolute value of the difference between the current value of <code class="language-plaintext">p</code> in <code class="language-plaintext">self.values</code> and the highest Q-value across all possible actions from <code class="language-plaintext">p</code> (this represents what the value should be); call this number <code class="language-plaintext">diff</code>. Do NOT update <code class="language-plaintext">self.values[p]</code> in this step.</li>
+<li>If <code class="language-plaintext">diff &gt; theta</code>, push <code class="language-plaintext">p</code> into the priority queue with priority <code class="language-plaintext">-diff</code> (note that this is negative), as long as it does not already exist in the priority queue with equal or lower priority. As before, we use a negative because the priority queue is a min heap, but we want to prioritize updating states that have a higher error.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>A couple of important notes on implementation:</p>
+<ul>
+<li>When you compute predecessors of a state, make sure to store them in a set, not a list, to avoid duplicates.</li>
+<li>Please use <code class="language-plaintext">util.PriorityQueue</code> in your implementation. The <code class="language-plaintext">update</code> method in this class will likely be useful; look at its documentation.</li>
+</ul>
+<p>To test your implementation, run the autograder. It should take about 1 second to run. If it takes much longer, you may run into issues later in the project, so make your implementation more efficient now.</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="14"><code class="">python autograder.py <span class="nt">-q</span> q4
+</code></pre></div></div>
+<p>You can run the <code class="language-plaintext">PrioritizedSweepingValueIterationAgen</code> in the Gridworld using the following command.</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="15"><code class="">python gridworld.py <span class="nt">-a</span> priosweepvalue <span class="nt">-i</span> 1000
+</code></pre></div></div>
+<p class="callout grading">Grading: Your prioritized sweeping value iteration agent will be graded on a new grid. We will check your values, Q-values, and policies after fixed numbers of iterations and at convergence (e.g., after 1000 iterations).</p><hr/>
+<h2 id="question-5-5-points-q-learning">
+ Question 5 (5 points): Q-Learning
+  
+  
+</h2>
+<p class="callout note">Note that your value iteration agent does not actually learn from experience. Rather, it ponders its MDP model to arrive at a complete policy before ever interacting with a real environment. When it does interact with the environment, it simply follows the precomputed policy (e.g. it becomes a reflex agent). This distinction may be subtle in a simulated environment like a Gridword, but it’s very important in the real world, where the real MDP is not available.</p>
+<p>You will now write a Q-learning agent, which does very little on construction, but instead learns by trial and error from interactions with the environment through its <code class="language-plaintext">update(state, action, nextState, reward)</code> method. A stub of a Q-learner is specified in <code class="language-plaintext">QLearningAgent</code> in <code class="language-plaintext">qlearningAgents.py</code>, and you can select it with the option <code class="language-plaintext">'-a q'</code>. For this question, you must implement the <code class="language-plaintext">update</code>, <code class="language-plaintext">computeValueFromQValues</code>, <code class="language-plaintext">getQValue</code>, and <code class="language-plaintext">computeActionFromQValues</code> methods.</p>
+<p class="callout note"><em>Note</em>: For <code class="language-plaintext">computeActionFromQValues</code>, you should break ties randomly for better behavior. The <code class="language-plaintext">random.choice()</code> function will help. In a particular state, actions that your agent hasn’t seen before still have a Q-value, specifically a Q-value of zero, and if all of the actions that your agent has seen before have a negative Q-value, an unseen action may be optimal.</p>
+<p class="callout important"><em>Important</em>: Make sure that in your <code class="language-plaintext">computeValueFromQValues</code> and <code class="language-plaintext">computeActionFromQValues</code> functions, you only access Q values by calling <code class="language-plaintext">getQValue</code>. This abstraction will be useful for question 10 when you override <code class="language-plaintext">getQValue</code> to use features of state-action pairs rather than state-action pairs directly.</p>
+<p>With the Q-learning update in place, you can watch your Q-learner learn under manual control, using the keyboard:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="16"><code class="">python gridworld.py <span class="nt">-a</span> q <span class="nt">-k</span> 5 <span class="nt">-m</span>
+</code></pre></div></div>
+<p>Recall that <code class="language-plaintext">-k</code> will control the number of episodes your agent gets to learn. Watch how the agent learns about the state it was just in, not the one it moves to, and “leaves learning in its wake.” Hint: to help with debugging, you can turn off noise by using the <code class="language-plaintext">--noise 0.0</code> parameter (though this obviously makes Q-learning less interesting). If you manually steer Pacman north and then east along the optimal path for four episodes, you should see the following Q-values:</p>
+<p><img alt="Q-value diagram" class="content-image" loading="lazy" src="https://web.archive.org/web/20260627063341im_/https://inst.eecs.berkeley.edu/~cs188/su26/assets/projects/q_learning.png"/></p>
+<p class="callout grading"><em>Grading</em>: We will run your Q-learning agent and check that it learns the same Q-values and policy as our reference implementation when each is presented with the same set of examples. To grade your implementation, run the autograder:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="17"><code class="">python autograder.py <span class="nt">-q</span> q5
+</code></pre></div></div><hr/>
+<h2 id="question-6-2-points-epsilon-greedy">
+ Question 6 (2 points): Epsilon Greedy
+  
+  
+</h2>
+<p>Complete your Q-learning agent by implementing epsilon-greedy action selection in <code class="language-plaintext">getAction</code>, meaning it chooses random actions an epsilon fraction of the time, and follows its current best Q-values otherwise. Note that choosing a random action may result in choosing the best action - that is, you should not choose a random sub-optimal action, but rather any random legal action.</p>
+<p>You can choose an element from a list uniformly at random by calling the <code class="language-plaintext">random.choice</code> function. You can simulate a binary variable with probability <code class="language-plaintext">p</code> of success by using <code class="language-plaintext">util.flipCoin(p)</code>, which returns <code class="language-plaintext">True</code> with probability <code class="language-plaintext">p</code> and <code class="language-plaintext">False</code> with probability <code class="language-plaintext">1-p</code>.</p>
+<p>After implementing the <code class="language-plaintext">getAction</code> method, observe the following behavior of the agent in <code class="language-plaintext">GridWorld</code> (with epsilon = 0.3).</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="18"><code class="">python gridworld.py <span class="nt">-a</span> q <span class="nt">-k</span> 100
+</code></pre></div></div>
+<p>Your final Q-values should resemble those of your value iteration agent, especially along well-traveled paths. However, your average returns will be lower than the Q-values predict because of the random actions and the initial learning phase.</p>
+<p>You can also observe the following simulations for different epsilon values. Does that behavior of the agent match what you expect?</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="19"><code class="">python gridworld.py <span class="nt">-a</span> q <span class="nt">-k</span> 100 <span class="nt">--noise</span> 0.0 <span class="nt">-e</span> 0.1
+</code></pre></div></div>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="20"><code class="">python gridworld.py <span class="nt">-a</span> q <span class="nt">-k</span> 100 <span class="nt">--noise</span> 0.0 <span class="nt">-e</span> 0.9
+</code></pre></div></div>
+<p>To test your implementation, run the autograder:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="21"><code class="">python autograder.py <span class="nt">-q</span> q6
+</code></pre></div></div>
+<p>With no additional code, you should now be able to run a Q-learning crawler robot:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="22"><code class="">python crawler.py
+</code></pre></div></div>
+<p>If this doesn’t work, you’ve probably written some code too specific to the <code class="language-plaintext">GridWorld</code> problem and you should make it more general to all MDPs.</p>
+<p>This will invoke the crawling robot from class using your Q-learner. Play around with the various learning parameters to see how they affect the agent’s policies and actions. Note that the step delay is a parameter of the simulation, whereas the learning rate and epsilon are parameters of your learning algorithm, and the discount factor is a property of the environment.</p><hr/>
+<h2 id="question-7-1-point-bridge-crossing-revisited">
+ Question 7 (1 point): Bridge Crossing Revisited
+  
+  
+</h2>
+<p>First, train a completely random Q-learner with the default learning rate on the noiseless BridgeGrid for 50 episodes and observe whether it finds the optimal policy.</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="23"><code class="">python gridworld.py <span class="nt">-a</span> q <span class="nt">-k</span> 50 <span class="nt">-n</span> 0 <span class="nt">-g</span> BridgeGrid <span class="nt">-e</span> 1
+</code></pre></div></div>
+<p>Now try the same experiment with an epsilon of 0. Is there an epsilon and a learning rate for which it is highly likely (greater than 99%) that the optimal policy will be learned after 50 iterations? <code class="language-plaintext">question8()</code> in <code class="language-plaintext">analysis.py</code> should return EITHER a 2-item tuple of <code class="language-plaintext">(epsilon, learning rate)</code> OR the string <code class="language-plaintext">'NOT POSSIBLE'</code> if there is none. Epsilon is controlled by <code class="language-plaintext">-e</code>, learning rate by <code class="language-plaintext">-l</code>.</p>
+<p class="callout note">Note: Your response should be not depend on the exact tie-breaking mechanism used to choose actions. This means your answer should be correct even if for instance we rotated the entire bridge grid world 90 degrees.</p>
+<p>To grade your answer, run the autograder:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="24"><code class="">python autograder.py <span class="nt">-q</span> q7
+</code></pre></div></div><hr/>
+<h2 id="question-8-1-point-q-learning-and-pacman">
+ Question 8 (1 point): Q-Learning and Pacman
+  
+  
+</h2>
+<p>Time to play some Pacman! Pacman will play games in two phases. In the first phase, <em>training</em>, Pacman will begin to learn about the values of positions and actions. Because it takes a very long time to learn accurate Q-values even for tiny grids, Pacman’s training games run in quiet mode by default, with no GUI (or console) display. Once Pacman’s training is complete, he will enter <em>testing</em> mode. When testing, Pacman’s <code class="language-plaintext">self.epsilon</code> and <code class="language-plaintext">self.alpha</code> will be set to 0.0, effectively stopping Q-learning and disabling exploration, in order to allow Pacman to exploit his learned policy. Test games are shown in the GUI by default. Without any code changes you should be able to run Q-learning Pacman for very tiny grids as follows:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="25"><code class="">python pacman.py <span class="nt">-p</span> PacmanQAgent <span class="nt">-x</span> 2000 <span class="nt">-n</span> 2010 <span class="nt">-l</span> smallGrid
+</code></pre></div></div>
+<p class="callout note">Note that <code class="language-plaintext">PacmanQAgent</code> is already defined for you in terms of the <code class="language-plaintext">QLearningAgent</code> you’ve already written. <code class="language-plaintext">PacmanQAgent</code> is only different in that it has default learning parameters that are more effective for the Pacman problem (<code class="language-plaintext">epsilon=0.05, alpha=0.2, gamma=0.8</code>). You will receive full credit for this question if the command above works without exceptions and your agent wins at least 80% of the time. The autograder will run 100 test games after the 2000 training games.</p>
+<p class="callout hint"><em>Hint</em>: If your <code class="language-plaintext">QLearningAgent</code> works for <code class="language-plaintext">gridworld.py</code> and <code class="language-plaintext">crawler.py</code> but does not seem to be learning a good policy for Pacman on <code class="language-plaintext">smallGrid</code>, it may be because your <code class="language-plaintext">getAction</code> and/or <code class="language-plaintext">computeActionFromQValues</code> methods do not in some cases properly consider unseen actions. In particular, because unseen actions have by definition a Q-value of zero, if all of the actions that have been seen have negative Q-values, an unseen action may be optimal. Beware of the <code class="language-plaintext">argMax</code> function from <code class="language-plaintext">util.Counter</code>!</p>
+<p>To grade your answer, run:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="26"><code class="">python autograder.py <span class="nt">-q</span> q8
+</code></pre></div></div>
+<p class="callout note"><em>Note</em>: If you want to experiment with learning parameters, you can use the option <code class="language-plaintext">-a</code>, for example <code class="language-plaintext">-a epsilon=0.1,alpha=0.3,gamma=0.7</code>. These values will then be accessible as <code class="language-plaintext">self.epsilon</code>, <code class="language-plaintext">self.gamma</code> and <code class="language-plaintext">self.alpha</code> inside the agent.</p>
+<p class="callout note"><em>Note</em>: While a total of 2010 games will be played, the first 2000 games will not be displayed because of the option <code class="language-plaintext">-x 2000</code>, which designates the first 2000 games for training (no output). Thus, you will only see Pacman play the last 10 of these games. The number of training games is also passed to your agent as the option <code class="language-plaintext">numTraining</code>.</p>
+<p class="callout note"><em>Note</em>: If you want to watch 10 training games to see what’s going on, use the command:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="27"><code class="">python pacman.py <span class="nt">-p</span> PacmanQAgent <span class="nt">-n</span> 10 <span class="nt">-l</span> smallGrid <span class="nt">-a</span> <span class="nv">numTraining</span><span class="o">=</span>10
+</code></pre></div></div>
+<p>During training, you will see output every 100 games with statistics about how Pacman is faring. Epsilon is positive during training, so Pacman will play poorly even after having learned a good policy: this is because he occasionally makes a random exploratory move into a ghost. As a benchmark, it should take between 1000 and 1400 games before Pacman’s rewards for a 100 episode segment becomes positive, reflecting that he’s started winning more than losing. By the end of training, it should remain positive and be fairly high (between 100 and 350).</p>
+<p>Make sure you understand what is happening here: the MDP state is the exact board configuration facing Pacman, with the now complex transitions describing an entire ply of change to that state. The intermediate game configurations in which Pacman has moved but the ghosts have not replied are not MDP states, but are bundled in to the transitions.</p>
+<p>Once Pacman is done training, he should win very reliably in test games (at least 90% of the time), since now he is exploiting his learned policy.</p>
+<p>However, you will find that training the same agent on the seemingly simple <code class="language-plaintext">mediumGrid</code> does not work well. In our implementation, Pacman’s average training rewards remain negative throughout training. At test time, he plays badly, probably losing all of his test games. Training will also take a long time, despite its ineffectiveness.</p>
+<p>Pacman fails to win on larger layouts because each board configuration is a separate state with separate Q-values. He has no way to generalize that running into a ghost is bad for all positions. Obviously, this approach will not scale.</p><hr/>
+<h2 id="question-9-4-points-approximate-q-learning">
+ Question 9 (4 points): Approximate Q-Learning
+  
+  
+</h2>
+<p>Implement an approximate Q-learning agent that learns weights for features of states, where many states might share the same features. Write your implementation in <code class="language-plaintext">ApproximateQAgent</code> class in <code class="language-plaintext">qlearningAgents.py</code>, which is a subclass of <code class="language-plaintext">PacmanQAgent</code>.</p>
+<p class="callout note"><em>Note</em>: Approximate Q-learning assumes the existence of a feature function f(s,a) over state and action pairs, which yields a vector [f₁(s,a), …, fᵢ(s,a), …, fₙ(s,a)] of feature values. We provide feature functions for you in <code class="language-plaintext">featureExtractors.py</code>. Feature vectors are <code class="language-plaintext">util.Counter</code> (like a dictionary) objects containing the non-zero pairs of features and values; all omitted features have value zero. So, instead of an vector where the index in the vector defines which feature is which, we have the keys in the dictionary define the idenity of the feature.</p>
+<p>The approximate Q-function takes the following form:</p><div class="math-block" role="math">Q(s,a) = Σᵢ₌₁ⁿ fᵢ(s,a) wᵢ</div><p>where each weight wᵢ is associated with a particular feature f_i(s,a). In your code, you should implement the weight vector as a dictionary mapping features (which the feature extractors will return) to weight values. You will update your weight vectors similarly to how you updated Q-values:</p><div class="math-block" role="math">wᵢ ← wᵢ + α · difference · fᵢ(s,a)</div><div class="math-block" role="math">difference = ( r + γ maxₐ′ Q(s′,a′) ) − Q(s,a)</div><p class="callout note">Note that the difference term is the same as in normal Q-learning, and r is the experienced reward.</p>
+<p>By default, <code class="language-plaintext">ApproximateQAgent</code> uses the <code class="language-plaintext">IdentityExtractor</code>, which assigns a single feature to every <code class="language-plaintext">(state,action)</code> pair. With this feature extractor, your approximate Q-learning agent should work identically to <code class="language-plaintext">PacmanQAgent</code>. You can test this with the following command:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="28"><code class="">python pacman.py <span class="nt">-p</span> ApproximateQAgent <span class="nt">-x</span> 2000 <span class="nt">-n</span> 2010 <span class="nt">-l</span> smallGrid
+</code></pre></div></div>
+<p class="callout important"><em>Important</em>: <code class="language-plaintext">ApproximateQAgent</code> is a subclass of <code class="language-plaintext">QLearningAgent</code>, and it therefore shares several methods like <code class="language-plaintext">getAction</code>. Make sure that your methods in <code class="language-plaintext">QLearningAgent</code> call <code class="language-plaintext">getQValue</code> instead of accessing Q-values directly, so that when you override <code class="language-plaintext">getQValue</code> in your approximate agent, the new approximate q-values are used to compute actions.</p>
+<p>Once you’re confident that your approximate learner works correctly with the identity features, run your approximate Q-learning agent with our custom feature extractor, which can learn to win with ease:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="29"><code class="">python pacman.py <span class="nt">-p</span> ApproximateQAgent <span class="nt">-a</span> <span class="nv">extractor</span><span class="o">=</span>SimpleExtractor <span class="nt">-x</span> 50 <span class="nt">-n</span> 60 <span class="nt">-l</span> mediumGrid
+</code></pre></div></div>
+<p>Even much larger layouts should be no problem for your <code class="language-plaintext">ApproximateQAgent</code> (<em>warning</em>: this may take a few minutes to train):</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="30"><code class="">python pacman.py <span class="nt">-p</span> ApproximateQAgent <span class="nt">-a</span> <span class="nv">extractor</span><span class="o">=</span>SimpleExtractor <span class="nt">-x</span> 50 <span class="nt">-n</span> 60 <span class="nt">-l</span> mediumClassic
+</code></pre></div></div>
+<p>If you have no errors, your approximate Q-learning agent should win almost every time with these simple features, even with only 50 training games.</p>
+<p class="callout grading"><em>Grading</em>: We will run your approximate Q-learning agent and check that it learns the same Q-values and feature weights as our reference implementation when each is presented with the same set of examples. To grade your implementation, run the autograder:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="31"><code class="">python autograder.py <span class="nt">-q</span> q9
+</code></pre></div></div>
+<p>Congratulations! You have a learning Pacman agent!</p><hr/>
+<h2 id="submission">
+ Submission
+  
+  
+</h2>
+<p>In order to submit your project upload the Python files you edited. For instance, use Gradescope’s upload on all <code class="language-plaintext">.py</code> files in the project folder.</p>
+</article>
+    <div class="footer-note">CS 188 · Project 3 · Reinforcement Learning · standalone archived copy</div>
+  </main>
+</div>
+<script>
+(function(){
+  const root=document.documentElement;
+  const saved=localStorage.getItem('cs188-theme');
+  if(saved){root.dataset.theme=saved}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){root.dataset.theme='dark'}
+  const btn=document.getElementById('theme-toggle');
+  function label(){btn.textContent=root.dataset.theme==='dark'?'Light mode':'Dark mode'}
+  label();
+  btn.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('cs188-theme',root.dataset.theme);label()});
+
+  document.querySelectorAll('pre').forEach(pre=>{
+    const wrap=pre.parentElement;
+    if(!wrap || wrap.querySelector(':scope > .copy-btn')) return;
+    const b=document.createElement('button'); b.className='copy-btn'; b.type='button'; b.textContent='Copy';
+    b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pre.innerText);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1100)}catch(e){b.textContent='Select';}});
+    wrap.style.position='relative'; wrap.appendChild(b);
+  });
+
+  const links=[...document.querySelectorAll('.toc-link')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('active'));const a=map.get(e.target.id);if(a)a.classList.add('active')}})},{rootMargin:'-18% 0px -72% 0px'});
+  document.querySelectorAll('h2[id],h3[id]').forEach(h=>obs.observe(h));
+})();
+</script>
+</body>
+</html>

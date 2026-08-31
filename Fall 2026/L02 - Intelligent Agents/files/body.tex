@@ -1,0 +1,595 @@
+\worksheetheader{COMP 469}{Fall 2026}{\ifsolutions Discussion 2 Solutions\else Regular Discussion 2\fi}
+
+\begin{center}
+{\large\textbf{Intelligent Agents} \quad (AIMA 4th ed., Chapter 2)}
+\end{center}
+
+\vspace{0.5em}
+
+\instrnote{Budget 50--60 minutes. Suggested pacing: Q1 (8 min), Q2 (15 min),
+Q3 (15 min), Q4 (8 min), Q5 (12 min). Q2(c) and Q3(b) are the two parts worth reserving
+whiteboard time for; both reward argument over recall. Common misconceptions to watch for are
+flagged in the individual solutions below.}
+
+% =====================================================================
+\qhead{Q1. The Vacuum World, Formalized}
+
+Consider the vacuum world of Figure 2.2, generalized to a $1 \times n$ row of squares
+($n \geq 2$). Each square is either \textit{Clean} or \textit{Dirty}. The agent occupies
+exactly one square at a time. Its sensors report the label of its current square and whether
+that square contains dirt. Its actions are $\{\textit{Left}, \textit{Right}, \textit{Suck},
+\textit{NoOp}\}$. Sucking cleans the current square, clean squares stay clean, and a move
+that would leave the row leaves the agent where it is.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \draw[thick] (0,0) rectangle (2,2);
+  \draw[thick] (2,0) rectangle (4,2);
+  \node at (0.3,1.7) {\textbf{A}};
+  \node at (2.3,1.7) {\textbf{B}};
+  % dirt in B
+  \foreach \p in {(2.6,0.5),(3.0,0.7),(3.4,0.4),(3.1,0.3),(2.9,0.55)}
+    {\fill[gray] \p circle (0.06);}
+  % agent in A
+  \draw[thick,fill=gray!25] (0.7,0.4) rectangle (1.5,1.1);
+  \draw[thick] (1.1,1.1) -- (1.1,1.45);
+  \draw[thick,fill=gray!40] (1.1,1.55) circle (0.12);
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+\item State precisely the difference between an \textbf{agent function} and an
+\textbf{agent program}. Which of the two can depend on the entire percept history, and what
+must the other one do to obtain the same behavior?
+\ansspace{4.0cm}
+\begin{sol}
+The \textbf{agent function} is an abstract mathematical mapping from every possible
+\emph{percept sequence} to an action. It is an external characterization of behavior; it does
+not say how the behavior is produced.
+
+The \textbf{agent program} is a concrete implementation running on an architecture
+($\textit{agent} = \textit{architecture} + \textit{program}$). It takes only the
+\emph{current percept} as input, because that is all the sensors deliver at that instant.
+
+Only the agent function may depend on the whole history. If the desired behavior depends on
+the history, the program has to store what it needs in \textbf{internal state} across calls.
+That requirement is exactly what separates a simple reflex agent from a model-based one, and
+it is the crux of Q2(c).
+\end{sol}
+
+\item How many distinct \textbf{environment states} are there? Justify your count.
+\ansspace{2.5cm}
+\begin{sol}
+$n \cdot 2^{n}$. The state is (agent location, dirt configuration): $n$ choices of square for
+the agent, and each of the $n$ squares independently Clean or Dirty, giving $2^{n}$ dirt
+configurations. For the two-square world of Figure 2.2 this is $2 \cdot 2^{2} = 8$ states.
+
+Common error: answering $2^{n}$ (forgetting the agent's own position is part of the state) or
+$n + 2^n$ (adding instead of multiplying independent factors).
+\end{sol}
+
+\item How many distinct percepts can the agent receive? How many distinct percept sequences of
+length at most $T$ are there? Give a closed form.
+\ansspace{3.0cm}
+\begin{sol}
+A percept is (location, dirt status of that square), so there are $|P| = 2n$ distinct percepts.
+
+The number of percept sequences of length exactly $t$ is $(2n)^{t}$, so the number of sequences
+of length at most $T$ is
+\[
+\sum_{t=1}^{T} (2n)^{t} \;=\; \frac{(2n)^{T+1} - 2n}{2n - 1}.
+\]
+This is precisely the number of rows a \textsc{Table-Driven-Agent} would need
+(AIMA \S 2.4.1). For $n = 2$ and a modest lifetime of $T = 20$ that is already about
+$1.5 \times 10^{12}$ rows.
+\end{sol}
+
+\item How many distinct agent functions are there over percept sequences of length at most $T$?
+Evaluate your expression for $n = 2$, $T = 2$, and say in one sentence what the number implies
+about building agents by table lookup.
+\ansspace{3.0cm}
+\begin{sol}
+Each of the $N = \sum_{t=1}^{T}(2n)^{t}$ sequences may be mapped independently to any of the
+$|A| = 4$ actions, so there are $|A|^{N} = 4^{N}$ agent functions.
+
+For $n = 2$, $T = 2$: $N = 4^{1} + 4^{2} = 20$, so $4^{20} \approx 1.1 \times 10^{12}$ agent
+functions --- for a two-square world with a two-step lifetime.
+
+Implication: the space of behaviors is astronomically larger than the space of \emph{sensible}
+behaviors, and tabulating it is hopeless. Even a correct table is (a) unstorable, (b)
+unwritable by a designer, and (c) unlearnable from experience. The design problem is to
+produce rational behavior from a small program, not from a vast table.
+\end{sol}
+\end{enumerate}
+
+\newpage
+% =====================================================================
+\qhead{Q2. Rationality Is Relative}
+
+Work in the two-square world (squares A and B). Consider the agent whose agent function is:
+\textit{if the current square is dirty then Suck; otherwise move to the other square.}
+Assume the geography is known a priori, but the initial dirt distribution and initial location
+are not; sensors are accurate; clean squares stay clean.
+
+\begin{enumerate}
+\item Under performance measure $M_1$ --- one point for each clean square at each time step over
+a lifetime of 1000 steps --- is this agent rational? Justify against the four things rationality
+depends on.
+\ansspace{4.0cm}
+\begin{sol}
+Yes. Rationality depends on (1) the performance measure, (2) the agent's prior knowledge of the
+environment, (3) the available actions, and (4) the percept sequence to date. Under $M_1$:
+
+\begin{itemize}[leftmargin=1.5em]
+\item Dirt is only removable by \textit{Suck}, and the agent sucks whenever it perceives dirt,
+so it never delays a cleaning it could have performed.
+\item The only way to score higher would be to clean a square before ever perceiving it, which
+requires knowledge the agent does not and cannot have (it does not know the initial dirt
+distribution).
+\item Movement is free under $M_1$, so the post-cleanup oscillation costs nothing.
+\end{itemize}
+Its expected score is therefore at least as high as any other agent's, which is the definition
+we need. Note what this argument is \emph{not}: it is not a claim that the agent is well
+designed in general, only that it is rational \emph{relative to $M_1$ and these assumptions}.
+\end{sol}
+
+\item Now use $M_2$: identical to $M_1$, but with a penalty of one point for each movement
+action. Is the same agent still rational? Quantify the loss.
+\ansspace{3.5cm}
+\begin{sol}
+No. Let $t_0$ be the step at which the last dirty square is cleaned. From $t_0$ onward there is
+nothing left to gain, but the agent still alternates \textit{Left}/\textit{Right} forever,
+paying 1 point per step. Against an agent that does \textit{NoOp} after $t_0$, it loses
+approximately $1000 - t_0$ points --- on a clean-ish start, nearly the full 1000.
+
+The agent function did not change; the yardstick did. This is the point of the question:
+rationality is a property of the \emph{agent--environment--measure triple}, not of the agent
+alone.
+\end{sol}
+
+\item Show that \emph{no} simple reflex agent is rational under $M_2$, and name the smallest
+capability that has to be added.
+\ansspace{4.5cm}
+\begin{sol}
+A simple reflex agent maps the \emph{current percept} to an action. In this world the percept
+$[A, \textit{Clean}]$ is identical whether or not B has already been cleaned, so the agent must
+commit to a single response to it. Enumerate the options:
+
+\begin{itemize}[leftmargin=1.5em]
+\item If it \emph{moves} on \textit{Clean}, then once both squares are clean it moves forever,
+paying the $M_2$ penalty forever --- irrational.
+\item If it does \textit{NoOp} on \textit{Clean}, then a start in a clean A with dirt in B
+means it never crosses to B, and B is never cleaned --- also irrational.
+\item Randomizing between these two only mixes the two failures; the movement penalty is still
+paid indefinitely with positive probability per step.
+\end{itemize}
+So no mapping from the current percept alone is rational under $M_2$.
+
+The missing capability is \textbf{internal state}: memory that both squares have been observed
+clean. That upgrades the design to a \textbf{model-based reflex agent}, which needs a transition
+model (``sucking cleans the current square; clean squares stay clean; \textit{Left}/\textit{Right}
+change my location'') and a sensor model. With that state, the rational policy is: clean what
+you see, sweep once to the other square, then \textit{NoOp} forever.
+\end{sol}
+
+\item Suppose clean squares can spontaneously become dirty again. Which environment properties
+change, and why is ``\textit{NoOp} forever'' no longer rational?
+\ansspace{3.5cm}
+\begin{sol}
+The environment becomes \textbf{nondeterministic} (the next state is no longer fixed by the
+current state and action) and \textbf{dynamic} (it changes while the agent deliberates or
+idles). It remains partially observable to an agent with only a local dirt sensor: a square the
+agent is not standing on may have become dirty without the agent knowing.
+
+``\textit{NoOp} forever'' is now irrational because dirt accumulates unboundedly, costing a
+point per dirty square per step, while patrolling costs only the movement penalty. The rational
+policy has to trade the movement penalty against the expected rate of dirt appearance --- an
+expected-utility calculation rather than a goal test, which is why this version of the problem
+belongs to Chapters 16--17 rather than Chapter 2.
+\end{sol}
+
+\item Remove the location sensor: percepts are now only $[\textit{Dirty}]$ or
+$[\textit{Clean}]$. Argue that no deterministic simple reflex agent cleans both squares from
+every start state, and show that a randomized one does. If the agent flips a fair coin between
+\textit{Left} and \textit{Right} on $[\textit{Clean}]$, what is the expected number of actions
+to reach the other square?
+\ansspace{4.0cm}
+\begin{sol}
+On $[\textit{Dirty}]$ the only sensible action is \textit{Suck}. The failure is in the response
+to $[\textit{Clean}]$, which a deterministic agent must fix once and for all:
+
+\begin{itemize}[leftmargin=1.5em]
+\item Always \textit{Left}: if the agent starts in a clean A with dirt in B, \textit{Left}
+bumps the wall and it stays in A forever. B is never cleaned.
+\item Always \textit{Right}: symmetric failure starting from a clean B with dirt in A.
+\item Always \textit{NoOp}: fails in both of the above.
+\end{itemize}
+So each deterministic choice has a start state on which it loops or stalls forever --- the
+classic infinite loop of a simple reflex agent in a partially observable environment.
+
+With a fair coin, each action independently moves the agent to the other square with
+probability $1/2$ (the other outcome bumps the wall). The number of actions until the first
+success is geometric with $p = 1/2$, so
+\[
+\mathbb{E}[\text{actions}] = \frac{1}{p} = 2.
+\]
+The agent therefore reaches the dirty square in two moves on average and cleans it, in finite
+expected time from every start state. A randomized simple reflex agent strictly outperforms
+every deterministic one here --- a useful trick under partial observability, though in
+single-agent environments randomization is usually a symptom that a model-based design would
+do better.
+\end{sol}
+\end{enumerate}
+
+\newpage
+% =====================================================================
+\qhead{Q3. PEAS and the Seven Dimensions}
+
+A university deploys an agent on its inbound mail gateway. For each arriving message the agent
+chooses one action: \textit{deliver}, \textit{deliver with a warning banner}, \textit{quarantine},
+or \textit{escalate to a human analyst}. Attackers adapt their campaigns in response to what
+gets through.
+
+\begin{enumerate}
+\item Give a PEAS description for this task environment. Be specific; ``be accurate'' is not a
+performance measure.
+\ansspace{6.5cm}
+\begin{sol}
+One reasonable answer (students should produce concrete, measurable items in P, and should not
+collapse Environment into Sensors):
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{Performance:} fraction of malicious mail quarantined; false-positive rate on
+legitimate mail (weighted higher --- a quarantined payroll notice is costly); time-to-verdict;
+analyst hours consumed by escalations; expected loss from a missed credential-harvesting
+message.
+\item \textbf{Environment:} the inbound message stream; mailboxes and the users reading them;
+sending infrastructure and its reputation history; the attackers themselves; the quarantine and
+release workflow; the analysts.
+\item \textbf{Actuators:} deliver, banner, quarantine, escalate; also release-on-appeal, URL
+rewriting, attachment stripping, and (if in scope) a gateway block on the sender.
+\item \textbf{Sensors:} headers and authentication results (SPF/DKIM/DMARC), body text,
+attachments and detonation results, URL reputation and sandbox verdicts, sender history and
+volume, and user-submitted reports.
+\end{itemize}
+Grading note: award credit for a performance measure written in terms of \emph{outcomes in the
+environment} (mail correctly handled, loss avoided) rather than in terms of agent behavior
+(``flags suspicious mail''). That distinction is the setup for Q5(e).
+\end{sol}
+
+\item Classify this environment along all seven dimensions and justify the two you find most
+debatable.
+\ansspace{6.0cm}
+\begin{sol}
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{Partially observable:} the sender's intent, and whether a URL will be weaponized
+after delivery, are not in the percept.
+\item \textbf{Multiagent, and competitive:} attackers change behavior in response to what the
+filter does. This is the textbook test --- B's behavior is best described as maximizing a
+measure that depends on A's behavior.
+\item \textbf{Nondeterministic:} the same verdict on the same message does not determine what
+the user or the attacker does next.
+\item \textbf{Sequential (debatable):} treating each message as an isolated classification makes
+it look episodic, and per-message it nearly is. But a quarantine decision feeds retraining data,
+a gateway block changes the attacker's next move, and a campaign spans many messages --- so the
+current decision affects future decisions. Accept ``episodic'' only with an argument that
+scopes the agent to a single stateless classification.
+\item \textbf{Dynamic:} mail keeps arriving and linked content can change while the agent
+deliberates. ``Semidynamic'' is defensible if the only thing degrading during deliberation is
+the score (delivery latency).
+\item \textbf{Discrete:} messages and actions are discrete, though many features are
+real-valued.
+\item \textbf{Partly unknown:} the rules of email are known; the attacker's current tooling and
+techniques are not, which is why the agent must learn.
+\end{itemize}
+\end{sol}
+
+\item Fill in the table. Use the vocabulary from AIMA Figure 2.6.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\tabcolsep}{4pt}
+{\small
+\begin{tabular}{l|c|c|c|c|c|c}
+\toprule
+\textbf{Task environment} & \textbf{Observable} & \textbf{Agents} & \textbf{Determ.} &
+\textbf{Episodic} & \textbf{Static} & \textbf{Discrete} \\
+\midrule
+Crossword puzzle & \A{Fully} & \A{Single} & \A{Determ.} & \A{Sequential} & \A{Static} & \A{Discrete} \\
+\hline
+Poker & \A{Partially} & \A{Multi} & \A{Stochastic} & \A{Sequential} & \A{Static} & \A{Discrete} \\
+\hline
+Warehouse pallet robot & \A{Partially} & \A{Multi} & \A{Nondeterm.} & \A{Sequential} & \A{Dynamic} & \A{Continuous} \\
+\hline
+Mail-gateway agent (above) & \A{Partially} & \A{Multi} & \A{Nondeterm.} & \A{Sequential} & \A{Dynamic} & \A{Discrete} \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\begin{sol}
+Points worth drawing out:
+\begin{itemize}[leftmargin=1.5em]
+\item Crosswords are \emph{sequential}, not episodic --- an early wrong entry constrains every
+later one --- and \emph{static}, since the puzzle does not change while you think.
+\item Poker is \emph{stochastic} rather than merely nondeterministic: the model quantifies the
+probabilities of the deal, and the agent uses them. Reserve ``nondeterministic'' for models
+that list outcomes without probabilities.
+\item The warehouse robot is partially observable because occlusion and sensor noise hide parts
+of the floor; it is multiagent because other robots and humans share the space; it is
+continuous in state, time, and action (pose, velocity, steering).
+\item Nothing in this table is a ``known/unknown'' column --- see part (d).
+\end{itemize}
+\end{sol}
+
+\item Why is \textbf{known vs.\ unknown} not a property of the environment at all? Give one
+environment that is known but partially observable, and one that is unknown but fully
+observable.
+\ansspace{3.5cm}
+\begin{sol}
+Known/unknown describes the \emph{agent's or designer's} state of knowledge about the
+environment's transition model --- what the actions do --- rather than any physical feature of
+the environment. Two environments identical in every physical respect can be known to one agent
+and unknown to another.
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{Known but partially observable:} solitaire. You know the rules completely, but
+you cannot see the face-down cards.
+\item \textbf{Unknown but fully observable:} a new video game. The screen shows the entire game
+state, but you do not yet know what the buttons do.
+\end{itemize}
+\end{sol}
+\end{enumerate}
+
+\newpage
+% =====================================================================
+\qhead{Q4. Choosing an Agent Architecture}
+
+For each scenario, select the \textbf{simplest} agent architecture that suffices. Assume each
+scenario is independent.
+
+\begin{enumerate}
+\item A thermostat switches the heater on whenever the measured temperature falls below the
+setpoint and off when it rises above.
+
+\begin{center}
+\begin{tabular}{@{}p{4.6cm}p{4.6cm}p{4.6cm}@{}}
+\correct\ simple reflex & \opt\ model-based reflex & \opt\ goal-based \\[2pt]
+\opt\ utility-based & & \\
+\end{tabular}
+\end{center}
+\begin{sol}
+\textbf{Simple reflex.} The condition--action rule
+\textit{if temp-below-setpoint then heat-on} reads everything it needs from the current
+percept; no history, no goal representation, no tradeoff.
+\end{sol}
+
+\item A camera-based braking agent must decide whether the car ahead is braking. On older
+vehicles, taillights and brake lights are not distinguishable in a single frame --- only the
+transition from off to on identifies braking.
+
+\begin{center}
+\begin{tabular}{@{}p{4.6cm}p{4.6cm}p{4.6cm}@{}}
+\opt\ simple reflex & \correct\ model-based reflex & \opt\ goal-based \\[2pt]
+\opt\ utility-based & & \\
+\end{tabular}
+\end{center}
+\begin{sol}
+\textbf{Model-based reflex.} The condition ``car in front is braking'' is not determined by the
+current percept; the agent must retain the previous frame. That is internal state, plus a
+sensor model relating illuminated red regions to the world.
+\end{sol}
+
+\item A campus delivery robot operates in a fully mapped building. Its destination changes from
+run to run, and it must plan a route to whichever room it is given.
+
+\begin{center}
+\begin{tabular}{@{}p{4.6cm}p{4.6cm}p{4.6cm}@{}}
+\opt\ simple reflex & \opt\ model-based reflex & \correct\ goal-based \\[2pt]
+\opt\ utility-based & & \\
+\end{tabular}
+\end{center}
+\begin{sol}
+\textbf{Goal-based.} The right action depends on where the robot is trying to get to, so the
+goal must be represented explicitly and combined with the model to search for an action
+sequence. A reflex rule set would have to be replaced wholesale for each new destination ---
+the flexibility argument of AIMA \S 2.4.4.
+\end{sol}
+
+\item The same robot must now weigh delivery speed against battery consumption and the risk of
+collisions in crowded corridors, and no route satisfies all three.
+
+\begin{center}
+\begin{tabular}{@{}p{4.6cm}p{4.6cm}p{4.6cm}@{}}
+\opt\ simple reflex & \opt\ model-based reflex & \opt\ goal-based \\[2pt]
+\correct\ utility-based & & \\
+\end{tabular}
+\end{center}
+\begin{sol}
+\textbf{Utility-based.} Goals give only a binary happy/unhappy split. With conflicting
+objectives that cannot all be met, the agent needs a utility function to specify the tradeoff,
+and under uncertainty it should maximize \emph{expected} utility.
+\end{sol}
+
+\item A vacuum agent with location and dirt sensors must stop moving once the entire floor is
+clean, under a performance measure that penalizes movement.
+
+\begin{center}
+\begin{tabular}{@{}p{4.6cm}p{4.6cm}p{4.6cm}@{}}
+\opt\ simple reflex & \correct\ model-based reflex & \opt\ goal-based \\[2pt]
+\opt\ utility-based & & \\
+\end{tabular}
+\end{center}
+\begin{sol}
+\textbf{Model-based reflex}, by the argument of Q2(c). Students who answer ``goal-based'' should
+be pushed on it: the agent needs no search over action sequences and no explicit goal
+representation --- remembering that both squares were seen clean is enough.
+\end{sol}
+\end{enumerate}
+
+\vspace{0.5em}
+\noindent Mark each statement \textbf{T} or \textbf{F} and give a one-line reason.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{p{13.2cm}|c}
+\toprule
+A simple reflex agent can be rational. & \A{T} \\
+\hline
+Rationality requires knowing the actual outcome of one's actions. & \A{F} \\
+\hline
+Every utility-based agent must also be a model-based agent. & \A{F} \\
+\hline
+An autonomous agent is one that ignores knowledge supplied by its designer. & \A{F} \\
+\hline
+In a fully observable, deterministic environment, an agent need not maintain internal state to keep track of the world. & \A{T} \\
+\hline
+Randomized behavior is never rational. & \A{F} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{sol}
+\begin{enumerate}[label=\arabic*.,leftmargin=1.6em]
+\item \textbf{T.} The vacuum agent of Q2(a) is a simple reflex agent and is rational under
+$M_1$. Simplicity of the program says nothing about rationality; the measure and environment do.
+\item \textbf{F.} That is \emph{omniscience}, which is impossible. Rationality maximizes
+\emph{expected} performance given the percept sequence to date; perfection maximizes actual
+performance. Crossing the street and being hit by falling cargo does not make the crossing
+irrational.
+\item \textbf{F.} Model-free agents can learn which action is best in a situation without ever
+learning how the action changes the world (Chapters 22 and 26).
+\item \textbf{F.} Autonomy means learning to compensate for partial or incorrect prior
+knowledge --- not discarding prior knowledge. Complete autonomy from the start is unreasonable;
+an agent with no experience and no built-in knowledge can only act randomly.
+\item \textbf{T.} With full observability and determinism there are no unobserved aspects to
+track, so no internal world model is needed. (The agent may still keep state for other reasons,
+such as holding a plan.)
+\item \textbf{F.} Randomization can be rational in competitive multiagent environments, where
+predictability is exploitable, and it rescues simple reflex agents from infinite loops under
+partial observability, as in Q2(e).
+\end{enumerate}
+\end{sol}
+
+\newpage
+% =====================================================================
+\qhead{Q5. Learning Agents, Representations, and Bad Yardsticks}
+
+\begin{enumerate}
+\item A learning agent has four conceptual components. Name the component responsible for each
+job below.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{p{9.5cm}|p{4.5cm}}
+\toprule
+Selects the external action to take right now. & \A{Performance element} \\
+\hline
+Tells the agent how well it is doing against a fixed performance standard. & \A{Critic} \\
+\hline
+Modifies the agent's components so that it does better in future. & \A{Learning element} \\
+\hline
+Suggests deliberately suboptimal actions that would produce informative experience. & \A{Problem generator} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{sol}
+The performance element is what we called ``the whole agent'' in \S 2.4.2--2.4.5: percepts in,
+actions out. The learning element makes the improvements, the critic supplies the judgment it
+needs, and the problem generator drives exploration --- what a scientist does when running an
+experiment.
+\end{sol}
+
+\item Why must the performance standard be \emph{fixed} and conceptually \emph{outside} the
+agent? What goes wrong otherwise?
+\ansspace{3.0cm}
+\begin{sol}
+Because the learning element modifies the agent's components, and if the standard were one of
+those components the cheapest ``improvement'' available would be to lower the bar rather than
+raise performance. An agent that can rewrite its own yardstick will optimize the yardstick.
+
+Note also why the critic is needed at all: percepts do not announce success. A chess program
+can perceive that it has checkmated its opponent, but nothing in that percept says checkmate is
+good; the fixed standard supplies that.
+\end{sol}
+
+\item Classify each representation as \textbf{atomic}, \textbf{factored}, or
+\textbf{structured}.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{p{9.5cm}|p{4.5cm}}
+\toprule
+The state is the name of the city the driver is currently in. & \A{Atomic} \\
+\hline
+The state is a vector: GPS coordinates, fuel level, toll money, oil-light status. & \A{Factored} \\
+\hline
+``A truck ahead is reversing into a driveway that a loose cow is blocking.'' & \A{Structured} \\
+\hline
+The state is one of $N$ hidden labels in a hidden Markov model. & \A{Atomic} \\
+\hline
+A complete assignment to the variables of a constraint satisfaction problem. & \A{Factored} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{sol}
+The axis runs from atomic (states are indivisible black boxes; only equality is observable ---
+search, HMMs, MDPs) through factored (a fixed set of variables with values, so two states can
+share some attributes and differ in others --- CSPs, propositional logic, Bayes nets) to
+structured (objects and their relations, described explicitly --- first-order logic, relational
+databases, much of language).
+
+The reason it matters: expressiveness buys conciseness --- the rules of chess take a page or
+two in first-order logic, thousands of pages in propositional logic, and roughly $10^{38}$
+pages as a finite-state automaton --- but reasoning and learning get harder as expressiveness
+grows. Real systems often operate at several points on the axis at once.
+\end{sol}
+
+\item Explain why a \textbf{distributed} representation degrades more gracefully under bit
+corruption than a \textbf{localist} one.
+\ansspace{3.0cm}
+\begin{sol}
+In a localist representation the mapping from concept to memory location is arbitrary, so
+corrupting a few bits can land on an unrelated concept --- \textit{Truck} becomes
+\textit{Truce}. In a distributed representation a concept is a point in a
+high-dimensional space, spread over many locations, and each location participates in many
+concepts; corrupting a few bits moves you to a nearby point, whose meaning is similar. The
+error degrades meaning smoothly instead of substituting nonsense.
+\end{sol}
+
+\item A vendor proposes to evaluate a cleaning agent by \emph{the amount of dirt collected in an
+eight-hour shift}.
+\begin{enumerate}
+\item Describe the degenerate policy a rational agent would adopt under this measure.
+\item Propose a measure that does not admit that exploit.
+\item State the general design rule this illustrates, and say what an agent designer should do
+when the true measure cannot be written down correctly in advance.
+\end{enumerate}
+\ansspace{5.0cm}
+\begin{sol}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em]
+\item Clean up the dirt, dump it back on the floor, clean it up again, and repeat. Total dirt
+collected is maximized; the floor is no cleaner at the end of the shift than at the start. With
+a rational agent, what you ask for is what you get.
+\item Score the \emph{state of the environment}: one point per clean square per time step, with
+penalties for electricity and noise. There is no way to inflate this by manufacturing work,
+because the score never rewards the collecting, only the being-clean.
+\item The rule: design performance measures according to what you actually want achieved
+\emph{in the environment}, not according to how you imagine the agent should behave. Measures
+written over agent behavior invite the agent to perform the behavior instead of the outcome.
+
+When the true measure cannot be specified correctly in advance --- because the designer is
+unsure how to write it, or because different users have different preferences --- the right
+response is not to guess and freeze it. It is to design agents that hold \emph{uncertainty
+about the true objective} and learn more about it from interaction with the user, which also
+gives them a reason not to resist correction. This is the King Midas problem of \S 1.5, taken
+up in Chapters 16, 18, and 22.
+\end{enumerate}
+
+\textbf{Discussion prompt if time allows.} Ask the group for a measure from their own
+experience with the same defect --- tickets closed per hour, alerts triaged per shift, lines of
+code written. Every one of them is a measure over agent behavior rather than environment
+outcomes, and every one has a well-known degenerate policy.
+\end{sol}
+\end{enumerate}

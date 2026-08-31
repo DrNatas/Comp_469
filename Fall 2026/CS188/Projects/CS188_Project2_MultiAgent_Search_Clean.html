@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en-US" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Project 2: Multi-Agent Search | CS 188 Summer 2026</title>
+<meta name="description" content="Clean standalone copy of the UC Berkeley CS 188 Summer 2026 Project 2 assignment.">
+<style>
+:root{
+  --bg:#f5f7fb;--surface:#ffffff;--surface-2:#f0f4fa;--text:#182235;--muted:#667085;
+  --border:#d9e2ef;--accent:#003b71;--accent-2:#FDB515;--accent-soft:#eaf2fb;
+  --code:#0d1420;--code-text:#e8eef8;--shadow:0 14px 38px rgba(22,42,70,.09);
+  --radius:18px;--sidebar:292px;--content:900px;
+}
+html[data-theme="dark"]{
+  --bg:#0d1420;--surface:#111b2a;--surface-2:#172334;--text:#edf3fb;--muted:#9eacc0;
+  --border:#293a50;--accent:#6eb6ff;--accent-2:#f6c343;--accent-soft:#142a42;
+  --code:#080d14;--code-text:#e6edf6;--shadow:0 18px 44px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.68;font-size:16px}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}code,pre{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+.topbar{position:sticky;top:0;z-index:30;height:62px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;color:var(--text)}.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#0a6cc1);position:relative;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}.brand-mark:after{content:"188";position:absolute;inset:0;display:grid;place-items:center;color:white;font-size:11px;letter-spacing:.03em}.top-actions{display:flex;gap:8px}.icon-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);height:38px;padding:0 13px;border-radius:10px;font-weight:700;cursor:pointer}.icon-btn:hover{background:var(--surface-2)}
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,var(--content));justify-content:center;gap:38px;padding:34px 28px 80px}.sidebar{position:sticky;top:94px;align-self:start;max-height:calc(100vh - 120px);overflow:auto;padding:8px 8px 18px}.sidebar-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);margin:0 0 12px 10px}.toc-link{display:block;color:var(--muted);padding:8px 10px;border-radius:10px;font-size:14px;line-height:1.35;margin:2px 0}.toc-link:hover,.toc-link.active{background:var(--accent-soft);color:var(--accent);text-decoration:none}.toc-sub{padding-left:24px;font-size:13px}
+.main{min-width:0}.hero-card{display:grid;grid-template-columns:minmax(280px,1.05fr) minmax(310px,.95fr);gap:0;background:var(--surface);border:1px solid var(--border);border-radius:26px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:28px}.hero-art{display:flex;align-items:center;justify-content:center;min-height:320px;background:#05070a;padding:26px}.hero-image{display:block;width:100%;max-width:560px;height:auto;image-rendering:auto}.hero-copy{padding:46px 42px;display:flex;flex-direction:column;justify-content:center}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:800;color:var(--accent)}.hero-copy h1{font-size:clamp(2.15rem,5vw,3.65rem);line-height:1.02;letter-spacing:-.045em;margin:12px 0 22px}.due-chip{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:26px}.due-chip span{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--accent-2);color:#172035;border-radius:999px;padding:5px 9px}.due-chip strong{font-size:14px}.haiku{color:var(--muted);font-style:italic}.haiku>div{ text-align:left !important }
+.article{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:46px 54px;box-shadow:var(--shadow)}.article>h2:first-child{margin-top:0}.article h2,.article h3{scroll-margin-top:90px;letter-spacing:-.025em}.article h2{font-size:1.72rem;margin:2.7rem 0 1rem;padding-top:.3rem;border-top:1px solid var(--border);padding-top:2.2rem}.article h3{font-size:1.24rem;margin:2rem 0 .7rem}.article p{margin:1rem 0}.article ul,.article ol{padding-left:1.45rem}.article li{margin:.5rem 0}.article strong{font-weight:780}.article hr{border:0;border-top:1px solid var(--border);margin:2.5rem 0}.article img.content-image{display:block;max-width:100%;height:auto;margin:1.8rem auto;border-radius:14px;border:1px solid var(--border);background:#fff;box-shadow:0 8px 24px rgba(10,30,55,.08)}
+.article code:not(pre code){background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:.12em .38em;font-size:.91em;color:var(--text)}.article .highlight{margin:1.1rem 0;position:relative}.article pre{position:relative;overflow:auto;background:var(--code);color:var(--code-text);border-radius:13px;padding:17px 50px 17px 18px;border:1px solid color-mix(in srgb,var(--border) 70%,transparent);font-size:13.5px;line-height:1.6;margin:0}.article pre code{background:transparent;border:0;color:inherit;padding:0;white-space:pre}.copy-btn{position:absolute;right:9px;top:9px;border:1px solid #33445b;background:#172235;color:#dce7f5;border-radius:8px;font-size:11px;font-weight:800;padding:6px 8px;cursor:pointer;z-index:2}.copy-btn:hover{background:#20314a}
+.nt{color:#86c5ff}.nv{color:#f0c869}.o{color:#c9d7e8}
+.callout{border:1px solid var(--border);border-left:4px solid var(--accent);background:var(--accent-soft);padding:15px 17px;border-radius:0 12px 12px 0}.callout.grading{border-left-color:#7a4fc7;background:color-mix(in srgb,#8f67cf 10%,var(--surface))}.callout.important{border-left-color:#c44d4d;background:color-mix(in srgb,#d96767 10%,var(--surface))}.callout.note,.callout.hint{border-left-color:#2f8a62;background:color-mix(in srgb,#43a878 10%,var(--surface))}
+.table-scroll{overflow:auto;margin:1.35rem 0;border:1px solid var(--border);border-radius:14px}.table-scroll table{width:100%;border-collapse:collapse;min-width:620px}.table-scroll td,.table-scroll th{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}.table-scroll tr:last-child td{border-bottom:0}.table-scroll tr:nth-child(even){background:color-mix(in srgb,var(--surface-2) 55%,transparent)}
+.mobile-toc{display:none;margin-bottom:18px}.mobile-toc details{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px}.mobile-toc summary{font-weight:800;cursor:pointer}.mobile-toc .toc-link{margin-top:4px}
+.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}
+@media(max-width:1050px){.layout{grid-template-columns:1fr;max-width:980px;margin:auto}.sidebar{display:none}.mobile-toc{display:block}.hero-card{grid-template-columns:1fr}.hero-art{min-height:240px}.hero-copy{padding:32px}.article{padding:38px}}
+@media(max-width:640px){.topbar{padding:0 14px}.brand span:last-child{display:none}.layout{padding:18px 12px 56px}.hero-card{border-radius:18px}.hero-art{padding:14px}.hero-copy{padding:26px 22px}.article{padding:28px 20px;border-radius:18px}.article h2{font-size:1.45rem}.article pre{font-size:12.5px}.due-chip strong{width:100%}}
+@media print{.topbar,.sidebar,.mobile-toc,.copy-btn{display:none!important}.layout{display:block;padding:0}.main{max-width:none}.hero-card,.article{box-shadow:none;border:0}.hero-card{grid-template-columns:1fr 1fr}.article{padding:0}.article h2{break-after:avoid}.article pre,.table-scroll{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>CS 188 · Summer 2026</span></div>
+  <div class="top-actions"><button class="icon-btn" id="theme-toggle" type="button">Dark mode</button></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Project sections">
+    <div class="sidebar-title">Project 2</div>
+    <a class="toc-link " href="#introduction">Introduction</a>
+<a class="toc-link " href="#welcome-to-multi-agent-pacman">Welcome to Multi-Agent Pacman</a>
+<a class="toc-link " href="#q1-4-pts-reflex-agent">Q1 (4 pts): Reflex Agent</a>
+<a class="toc-link " href="#q2-5-pts-minimax">Q2 (5 pts): Minimax</a>
+<a class="toc-link toc-sub" href="#hints-and-observations">Hints and Observations</a>
+<a class="toc-link " href="#q3-5-pts-alpha-beta-pruning">Q3 (5 pts): Alpha-Beta Pruning</a>
+<a class="toc-link " href="#q4-5-pts-expectimax">Q4 (5 pts): Expectimax</a>
+<a class="toc-link " href="#q5-6-pts-evaluation-function">Q5 (6 pts): Evaluation Function</a>
+<a class="toc-link " href="#submission">Submission</a>
+  </aside>
+  <main class="main" id="main-content">
+    <section class="hero-card">
+          <div class="hero-art"><img alt="Pacman chased by ghosts" class="hero-image" loading="lazy" src="data:image/png;base64,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"/></div>
+          <div class="hero-copy">
+            <span class="eyebrow">UC Berkeley · CS 188 · Summer 2026</span>
+            <h1>Project 2: Multi-Agent Search</h1>
+            <div class="due-chip"><span>Due</span><strong>Friday, July 10, 11:59 PM PT </strong></div>
+            <div class="haiku"><div style="text-align:center;">
+Pacman, now with ghosts.<br>
+Minimax, Expectimax,<br>
+Evaluation
+</br></br></div></div>
+          </div>
+        </section>
+    <div class="mobile-toc"><details><summary>Project sections</summary><a class="toc-link " href="#introduction">Introduction</a>
+<a class="toc-link " href="#welcome-to-multi-agent-pacman">Welcome to Multi-Agent Pacman</a>
+<a class="toc-link " href="#q1-4-pts-reflex-agent">Q1 (4 pts): Reflex Agent</a>
+<a class="toc-link " href="#q2-5-pts-minimax">Q2 (5 pts): Minimax</a>
+<a class="toc-link toc-sub" href="#hints-and-observations">Hints and Observations</a>
+<a class="toc-link " href="#q3-5-pts-alpha-beta-pruning">Q3 (5 pts): Alpha-Beta Pruning</a>
+<a class="toc-link " href="#q4-5-pts-expectimax">Q4 (5 pts): Expectimax</a>
+<a class="toc-link " href="#q5-6-pts-evaluation-function">Q5 (6 pts): Evaluation Function</a>
+<a class="toc-link " href="#submission">Submission</a></details></div>
+    <article class="article">
+
+
+
+
+
+
+<h2 id="introduction">
+ Introduction
+  
+  
+</h2>
+<p>In this project, you will design agents for the classic version of Pacman, including ghosts. Along the way, you will implement both minimax and expectimax search and try your hand at evaluation function design.</p>
+<p>The code base has not changed much from the previous project, but please start with a fresh installation, rather than intermingling files from project 1.</p>
+<p>As in project 1, this project includes an autograder for you to grade your answers on your machine. This can be run on all questions with the command:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="1"><code class="">python autograder.py
+</code></pre></div></div>
+<p>It can be run for one particular question, such as q2, by:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="2"><code class="">python autograder.py <span class="nt">-q</span> q2
+</code></pre></div></div>
+<p>It can be run for one particular test by commands of the form:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="3"><code class="">python autograder.py <span class="nt">-t</span> test_cases/q2/0-small-tree
+</code></pre></div></div>
+<p>By default, the autograder displays graphics with the <code class="language-plaintext">-t</code> option, but doesn’t with the <code class="language-plaintext">-q</code> option. You can force graphics by using the <code class="language-plaintext">--graphics</code> flag, or force no graphics by using the <code class="language-plaintext">--no-graphics</code> flag.</p>
+<p>See the autograder tutorial in Project 0 for more information about using the autograder.</p>
+<p>The code for this project contains the following files, available as a <a href="https://web.archive.org/web/20260627063423/https://inst.eecs.berkeley.edu/~cs188/su26/assets/projects/multiagent.zip">zip archive</a>.</p>
+<div class="table-scroll"><table>
+<tbody>
+<tr>
+<td colspan="2"><b>Files you'll edit:</b></td>
+</tr>
+<tr>
+<td><code class="">multiAgents.py</code></td>
+<td>Where all of your multi-agent search agents will reside.</td>
+</tr>
+<tr>
+<td colspan="2"><b>Files you might want to look at:</b></td>
+</tr>
+<tr>
+<td><code class="">pacman.py</code></td>
+<td>The main file that runs Pacman games. This file also describes a Pacman GameState type, which you will use extensively in this project.</td>
+</tr>
+<tr>
+<td><code class="">game.py</code></td>
+<td>The logic behind how the Pacman world works. This file describes several supporting types like AgentState, Agent, Direction, and Grid.</td>
+</tr>
+<tr>
+<td><code class="">util.py</code></td>
+<td>Useful data structures for implementing search algorithms. You don't need to use these for this project, but may find other functions defined here to be useful.</td>
+</tr>
+<tr>
+<td colspan="2"><b>Supporting files you can ignore:</b></td>
+</tr>
+<tr>
+<td><code class="">graphicsDisplay.py</code></td>
+<td>Graphics for Pacman</td>
+</tr>
+<tr>
+<td><code class="">graphicsUtils.py</code></td>
+<td>Support for Pacman graphics</td>
+</tr>
+<tr>
+<td><code class="">textDisplay.py</code></td>
+<td>ASCII graphics for Pacman</td>
+</tr>
+<tr>
+<td><code class="">ghostAgents.py</code></td>
+<td>Agents to control ghosts</td>
+</tr>
+<tr>
+<td><code class="">keyboardAgents.py</code></td>
+<td>Keyboard interfaces to control Pacman</td>
+</tr>
+<tr>
+<td><code class="">layout.py</code></td>
+<td>Code for reading layout files and storing their contents</td>
+</tr>
+<tr>
+<td><code class="">autograder.py</code></td>
+<td>Project autograder</td>
+</tr>
+<tr>
+<td><code class="">testParser.py</code></td>
+<td>Parses autograder test and solution files</td>
+</tr>
+<tr>
+<td><code class="">testClasses.py</code></td>
+<td>General autograding test classes</td>
+</tr>
+<tr>
+<td><code class="">test_cases/</code></td>
+<td>Directory containing the test cases for each question</td>
+</tr>
+<tr>
+<td class="fit"><code class="">multiagentTestClasses.py</code></td>
+<td>Project 3 specific autograding test classes</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Files to Edit and Submit</strong>: You will fill in portions of <code class="language-plaintext">multiAgents.py</code> during the assignment. Once you have completed the assignment, you will submit these files to Gradescope (for instance, you can upload all <code class="language-plaintext">.py</code> files in the folder). Please do not change the other files in this distribution.</p>
+<p><strong>Evaluation</strong>: Your code will be autograded for technical correctness. Please do not change the names of any provided functions or classes within the code, or you will wreak havoc on the autograder. However, the correctness of your implementation – not the autograder’s judgements – will be the final judge of your score. If necessary, we will review and grade assignments individually to ensure that you receive due credit for your work.</p>
+<p><strong>Academic Dishonesty</strong>: We will be checking your code against other submissions in the class for logical redundancy. If you copy someone else’s code and submit it with minor changes, we will know. These cheat detectors are quite hard to fool, so please don’t try. We trust you all to submit your own work only; please don’t let us down. If you do, we will pursue the strongest consequences available to us.</p>
+<p><strong>Getting Help</strong>: You are not alone! If you find yourself stuck on something, contact the course staff for help. Office hours, section, and the discussion forum are there for your support; please use them. If you can’t make our office hours, let us know and we will schedule more. We want these projects to be rewarding and instructional, not frustrating and demoralizing. But, we don’t know when or how to help unless you ask.</p>
+<p><strong>Discussion</strong>: Please be careful not to post spoilers.</p>
+<p><strong>Topics needed for this project</strong>:</p>
+<ul>
+<li>Game Trees I: <a href="https://web.archive.org/web/20260627063423/https://www.youtube.com/watch?v=v6RgZBjc8og">Video 6</a>, <a href="https://web.archive.org/web/20260627063423/https://inst.eecs.berkeley.edu/~cs188/textbook/games/games.html">Note 3.1-3.2</a></li>
+<li>Game Trees II: <a href="https://web.archive.org/web/20260627063423/https://www.youtube.com/playlist?list=PLp8QV47qJEg6LsW3Ye46-3_SEodVEFWXc">Video 7</a>, <a href="https://web.archive.org/web/20260627063423/https://inst.eecs.berkeley.edu/~cs188/textbook/games/expectimax.html">Note 3.3-3.6</a></li>
+</ul><hr/>
+<h2 id="welcome-to-multi-agent-pacman">
+ Welcome to Multi-Agent Pacman
+  
+  
+</h2>
+<p>First, play a game of classic Pacman by running the following command:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="4"><code class="">python pacman.py
+</code></pre></div></div>
+<p>and using the arrow keys to move. Now, run the provided ReflexAgent in multiAgents.py</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="5"><code class="">python pacman.py <span class="nt">-p</span> ReflexAgent
+</code></pre></div></div>
+<p class="callout note">Note that it plays quite poorly even on simple layouts:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="6"><code class="">python pacman.py <span class="nt">-p</span> ReflexAgent <span class="nt">-l</span> testClassic
+</code></pre></div></div>
+<p>Inspect its code (in <code class="language-plaintext">multiAgents.py</code>) and make sure you understand what it’s doing.</p><hr/>
+<h2 id="q1-4-pts-reflex-agent">
+ Q1 (4 pts): Reflex Agent
+  
+  
+</h2>
+<p>Improve the <code class="language-plaintext">ReflexAgent</code> in <code class="language-plaintext">multiAgents.py</code> to play respectably. The provided reflex agent code provides some helpful examples of methods that query the <code class="language-plaintext">GameState</code> for information. A capable reflex agent will have to consider both food locations and ghost locations to perform well. Your agent should easily and reliably clear the <code class="language-plaintext">testClassic</code> layout:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="7"><code class="">python pacman.py <span class="nt">-p</span> ReflexAgent <span class="nt">-l</span> testClassic
+</code></pre></div></div>
+<p>Try out your reflex agent on the default <code class="language-plaintext">mediumClassic</code> layout with one ghost or two (and animation off to speed up the display):</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="8"><code class="">python pacman.py <span class="nt">--frameTime</span> 0 <span class="nt">-p</span> ReflexAgent <span class="nt">-k</span> 1
+</code></pre></div></div>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="9"><code class="">python pacman.py <span class="nt">--frameTime</span> 0 <span class="nt">-p</span> ReflexAgent <span class="nt">-k</span> 2
+</code></pre></div></div>
+<p>How does your agent fare? It will likely often die with 2 ghosts on the default board, unless your evaluation function is quite good.</p>
+<p class="callout note"><em>Note</em>: Remember that <code class="language-plaintext">newFood</code> has the function <code class="language-plaintext">asList()</code></p>
+<p class="callout note"><em>Note</em>: As features, try the reciprocal of important values (such as distance to food) rather than just the values themselves.</p>
+<p class="callout note"><em>Note</em>: The evaluation function you’re writing is evaluating state-action pairs; in later parts of the project, you’ll be evaluating states.</p>
+<p class="callout note"><em>Note</em>: You may find it useful to view the internal contents of various objects for debugging. You can do this by printing the objects’ string representations. For example, you can print <code class="language-plaintext">newGhostStates</code> with <code class="language-plaintext">print(newGhostStates)</code>.</p>
+<p>Options: Default ghosts are random; you can also play for fun with slightly smarter directional ghosts using <code class="language-plaintext">-g DirectionalGhost</code>. If the randomness is preventing you from telling whether your agent is improving, you can use <code class="language-plaintext">-f</code> to run with a fixed random seed (same random choices every game). You can also play multiple games in a row with <code class="language-plaintext">-n</code>. Turn off graphics with <code class="language-plaintext">-q</code> to run lots of games quickly.</p>
+<p class="callout grading"><em>Grading</em>: We will run your agent on the <code class="language-plaintext">openClassic</code> layout 10 times. You will receive 0 points if your agent times out, or never wins. You will receive 1 point if your agent wins at least 5 times, or 2 points if your agent wins all 10 games. You will receive an additional 1 point if your agent’s average score is greater than 500, or 2 points if it is greater than 1000. You can try your agent out under these conditions with</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="10"><code class="">python autograder.py <span class="nt">-q</span> q1
+</code></pre></div></div>
+<p>To run it without graphics, use:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="11"><code class="">python autograder.py <span class="nt">-q</span> q1 <span class="nt">--no-graphics</span>
+</code></pre></div></div>
+<p>Don’t spend too much time on this question, though, as the meat of the project lies ahead.</p><hr/>
+<h2 id="q2-5-pts-minimax">
+ Q2 (5 pts): Minimax
+  
+  
+</h2>
+<p>Now you will write an adversarial search agent in the provided <code class="language-plaintext">MinimaxAgent</code> class stub in <code class="language-plaintext">multiAgents.py</code>. Your minimax agent should work with any number of ghosts, so you’ll have to write an algorithm that is slightly more general than what you’ve previously seen in lecture. In particular, your minimax tree will have multiple min layers (one for each ghost) for every max layer.</p>
+<p>Your code should also expand the game tree to an arbitrary depth. Score the leaves of your minimax tree with the supplied <code class="language-plaintext">self.evaluationFunction</code>, which defaults to <code class="language-plaintext">scoreEvaluationFunction</code>. <code class="language-plaintext">MinimaxAgent</code> extends <code class="language-plaintext">MultiAgentSearchAgent</code>, which gives access to <code class="language-plaintext">self.depth</code> and <code class="language-plaintext">self.evaluationFunction</code>. Make sure your minimax code makes reference to these two variables where appropriate as these variables are populated in response to command line options.</p>
+<p class="callout important"><em>Important</em>: A single search ply is considered to be one Pacman move and all the ghosts’ responses, so depth 2 search will involve Pacman and each ghost moving two times (see diagram below).</p>
+<p><img alt="Minimax tree with depth 2" class="content-image" loading="lazy" src="https://web.archive.org/web/20260627063423im_/https://inst.eecs.berkeley.edu/~cs188/su26/assets/projects/minimax_depth.png"/></p>
+<p class="callout grading"><em>Grading</em>: We will be checking your code to determine whether it explores the correct number of game states. This is the only reliable way to detect some very subtle bugs in implementations of minimax. As a result, the autograder will be very picky about how many times you call <code class="language-plaintext">GameState.generateSuccessor</code>. If you call it any more or less than necessary, the autograder will complain. To test and debug your code, run</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="12"><code class="">python autograder.py <span class="nt">-q</span> q2
+</code></pre></div></div>
+<p>This will show what your algorithm does on a number of small trees, as well as a pacman game. To run it without graphics, use:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="13"><code class="">python autograder.py <span class="nt">-q</span> q2 <span class="nt">--no-graphics</span>
+</code></pre></div></div>
+<h3 id="hints-and-observations">
+ Hints and Observations
+  
+  
+</h3>
+<ul>
+<li>Implement the algorithm recursively using helper function(s).</li>
+<li>The correct implementation of minimax will lead to Pacman losing the game in some tests. This is not a problem: as it is correct behaviour, it will pass the tests.</li>
+<li>The evaluation function for the Pacman test in this part is already written (<code class="language-plaintext">self.evaluationFunction</code>). You shouldn’t change this function, but recognize that now we’re evaluating states rather than actions, as we were for the reflex agent. Look-ahead agents evaluate future states whereas reflex agents evaluate actions from the current state.</li>
+<li>The minimax values of the initial state in the <code class="language-plaintext">minimaxClassic</code> layout are 9, 8, 7, -492 for depths 1, 2, 3 and 4 respectively. Note that your minimax agent will often win (665/1000 games for us) despite the dire prediction of depth 4 minimax.
+    <div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="14"><code class="">  python pacman.py <span class="nt">-p</span> MinimaxAgent <span class="nt">-l</span> minimaxClassic <span class="nt">-a</span> <span class="nv">depth</span><span class="o">=</span>4
+</code></pre></div> </div>
+</li>
+<li>Pacman is always agent 0, and the agents move in order of increasing agent index.</li>
+<li>All states in minimax should be <code class="language-plaintext">GameStates</code>, either passed in to <code class="language-plaintext">getAction</code> or generated via <code class="language-plaintext">GameState.generateSuccessor</code>. In this project, you will not be abstracting to simplified states.</li>
+<li>On larger boards such as <code class="language-plaintext">openClassic</code> and <code class="language-plaintext">mediumClassic</code> (the default), you’ll find Pacman to be good at not dying, but quite bad at winning. He’ll often thrash around without making progress. He might even thrash around right next to a dot without eating it because he doesn’t know where he’d go after eating that dot. Don’t worry if you see this behavior, question 5 will clean up all of these issues.</li>
+<li>When Pacman believes that his death is unavoidable, he will try to end the game as soon as possible because of the constant penalty for living. Sometimes, this is the wrong thing to do with random ghosts, but minimax agents always assume the worst:
+    <div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="15"><code class="">  python pacman.py <span class="nt">-p</span> MinimaxAgent <span class="nt">-l</span> trappedClassic <span class="nt">-a</span> <span class="nv">depth</span><span class="o">=</span>3
+</code></pre></div> </div>
+<p>Make sure you understand why Pacman rushes the closest ghost in this case.</p>
+</li>
+</ul><hr/>
+<h2 id="q3-5-pts-alpha-beta-pruning">
+ Q3 (5 pts): Alpha-Beta Pruning
+  
+  
+</h2>
+<p>Make a new agent that uses alpha-beta pruning to more efficiently explore the minimax tree, in <code class="language-plaintext">AlphaBetaAgent</code>. Again, your algorithm will be slightly more general than the pseudocode from lecture, so part of the challenge is to extend the alpha-beta pruning logic appropriately to multiple minimizer agents.</p>
+<p>You should see a speed-up (perhaps depth 3 alpha-beta will run as fast as depth 2 minimax). Ideally, depth 3 on <code class="language-plaintext">smallClassic</code> should run in just a few seconds per move or faster.</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="16"><code class="">python pacman.py <span class="nt">-p</span> AlphaBetaAgent <span class="nt">-a</span> <span class="nv">depth</span><span class="o">=</span>3 <span class="nt">-l</span> smallClassic
+</code></pre></div></div>
+<p>The <code class="language-plaintext">AlphaBetaAgent</code> minimax values should be identical to the <code class="language-plaintext">MinimaxAgent</code> minimax values, although the actions it selects can vary because of different tie-breaking behavior. Again, the minimax values of the initial state in the <code class="language-plaintext">minimaxClassic</code> layout are 9, 8, 7 and -492 for depths 1, 2, 3 and 4 respectively.</p>
+<p class="callout grading"><em>Grading</em>: Because we check your code to determine whether it explores the correct number of states, it is important that you perform alpha-beta pruning without reordering children. In other words, successor states should always be processed in the order returned by <code class="language-plaintext">GameState.getLegalActions</code>. Again, do not call <code class="language-plaintext">GameState.generateSuccessor</code> more than necessary.</p>
+<p><strong>You must not prune on equality in order to match the set of states explored by our autograder.</strong> (Indeed, alternatively, but incompatible with our autograder, would be to also allow for pruning on equality and invoke alpha-beta once on each child of the root node, but this will not match the autograder.)</p>
+<p>The pseudo-code below represents the algorithm you should implement for this question.</p>
+<p><img alt="Alpha-Beta Implementation" class="content-image" loading="lazy" src="https://web.archive.org/web/20260627063423im_/https://inst.eecs.berkeley.edu/~cs188/su26/assets/projects/alpha_beta_impl.png"/></p>
+<p>To test and debug your code, run</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="17"><code class="">python autograder.py <span class="nt">-q</span> q3
+</code></pre></div></div>
+<p>This will show what your algorithm does on a number of small trees, as well as a pacman game. To run it without graphics, use:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="18"><code class="">python autograder.py <span class="nt">-q</span> q3 <span class="nt">--no-graphics</span>
+</code></pre></div></div>
+<p>The correct implementation of alpha-beta pruning will lead to Pacman losing some of the tests. This is not a problem: as it is correct behaviour, it will pass the tests.</p><hr/>
+<h2 id="q4-5-pts-expectimax">
+ Q4 (5 pts): Expectimax
+  
+  
+</h2>
+<p>Minimax and alpha-beta are great, but they both assume that you are playing against an adversary who makes optimal decisions. As anyone who has ever won tic-tac-toe can tell you, this is not always the case. In this question you will implement the <code class="language-plaintext">ExpectimaxAgent</code>, which is useful for modeling probabilistic behavior of agents who may make suboptimal choices.</p>
+<p>As with the search and problems yet to be covered in this class, the beauty of these algorithms is their general applicability. To expedite your own development, we’ve supplied some test cases based on generic trees. You can debug your implementation on small the game trees using the command:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="19"><code class="">python autograder.py <span class="nt">-q</span> q4
+</code></pre></div></div>
+<p>Debugging on these small and manageable test cases is recommended and will help you to find bugs quickly.</p>
+<p>Once your algorithm is working on small trees, you can observe its success in Pacman. Random ghosts are of course not optimal minimax agents, and so modeling them with minimax search may not be appropriate. <code class="language-plaintext">ExpectimaxAgent</code> will no longer take the min over all ghost actions, but the expectation according to your agent’s model of how the ghosts act. To simplify your code, assume you will only be running against an adversary which chooses amongst their <code class="language-plaintext">getLegalActions</code> uniformly at random.</p>
+<p>To see how the ExpectimaxAgent behaves in Pacman, run:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="20"><code class="">python pacman.py <span class="nt">-p</span> ExpectimaxAgent <span class="nt">-l</span> minimaxClassic <span class="nt">-a</span> <span class="nv">depth</span><span class="o">=</span>3
+</code></pre></div></div>
+<p>You should now observe a more cavalier approach in close quarters with ghosts. In particular, if Pacman perceives that he could be trapped but might escape to grab a few more pieces of food, he’ll at least try. Investigate the results of these two scenarios:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="21"><code class="">python pacman.py <span class="nt">-p</span> AlphaBetaAgent <span class="nt">-l</span> trappedClassic <span class="nt">-a</span> <span class="nv">depth</span><span class="o">=</span>3 <span class="nt">-q</span> <span class="nt">-n</span> 10
+</code></pre></div></div>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="22"><code class="">python pacman.py <span class="nt">-p</span> ExpectimaxAgent <span class="nt">-l</span> trappedClassic <span class="nt">-a</span> <span class="nv">depth</span><span class="o">=</span>3 <span class="nt">-q</span> <span class="nt">-n</span> 10
+</code></pre></div></div>
+<p>You should find that your <code class="language-plaintext">ExpectimaxAgent</code> wins about half the time, while your <code class="language-plaintext">AlphaBetaAgent</code> always loses. Make sure you understand why the behavior here differs from the minimax case.</p>
+<p>The correct implementation of expectimax will lead to Pacman losing some of the tests. This is not a problem: as it is correct behaviour, it will pass the tests.</p><hr/>
+<h2 id="q5-6-pts-evaluation-function">
+ Q5 (6 pts): Evaluation Function
+  
+  
+</h2>
+<p>Write a better evaluation function for Pacman in the provided function <code class="language-plaintext">betterEvaluationFunction</code>. The evaluation function should evaluate states, rather than actions like your reflex agent evaluation function did. With depth 2 search, your evaluation function should clear the <code class="language-plaintext">smallClassic</code> layout with one random ghost more than half the time and still run at a reasonable rate (to get full credit, Pacman should be averaging around 1000 points when he’s winning).</p>
+<p class="callout grading"><em>Grading</em>: the autograder will run your agent on the smallClassic layout 10 times. We will assign points to your evaluation function in the following way:</p>
+<ul>
+<li>If you win at least once without timing out the autograder, you receive 1 points. Any agent not satisfying these criteria will receive 0 points.</li>
+<li>+1 for winning at least 5 times, +2 for winning all 10 times</li>
+<li>+1 for an average score of at least 500, +2 for an average score of at least 1000 (including scores on lost games)</li>
+<li>+1 if your games take on average less than 30 seconds on the autograder machine, when run with <code class="language-plaintext">--no-graphics</code>.</li>
+<li>The additional points for average score and computation time will only be awarded if you win at least 5 times.</li>
+<li>Please do not copy any files from Project 1, as it will not pass the autograder on Gradescope.</li>
+</ul>
+<p>You can try your agent out under these conditions with</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="23"><code class="">python autograder.py <span class="nt">-q</span> q5
+</code></pre></div></div>
+<p>To run it without graphics, use:</p>
+<div class="language-bash"><div class="highlight"><pre class="highlight" data-code-id="24"><code class="">python autograder.py <span class="nt">-q</span> q5 <span class="nt">--no-graphics</span>
+</code></pre></div></div><hr/>
+<h2 id="submission">
+ Submission
+  
+  
+</h2>
+<p>In order to submit your project upload the Python files you edited. For instance, use Gradescope’s upload on all <code class="language-plaintext">.py</code> files in the project folder.</p>
+</article>
+    <div class="footer-note">CS 188 · Project 2 · Multi-Agent Search · standalone archived copy</div>
+  </main>
+</div>
+<script>
+(function(){
+  const root=document.documentElement;
+  const saved=localStorage.getItem('cs188-theme');
+  if(saved){root.dataset.theme=saved}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){root.dataset.theme='dark'}
+  const btn=document.getElementById('theme-toggle');
+  function label(){btn.textContent=root.dataset.theme==='dark'?'Light mode':'Dark mode'}
+  label();
+  btn.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('cs188-theme',root.dataset.theme);label()});
+
+  document.querySelectorAll('pre').forEach(pre=>{
+    const wrap=pre.parentElement;
+    if(!wrap || wrap.querySelector(':scope > .copy-btn')) return;
+    const b=document.createElement('button'); b.className='copy-btn'; b.type='button'; b.textContent='Copy';
+    b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pre.innerText);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1100)}catch(e){b.textContent='Select';}});
+    wrap.style.position='relative'; wrap.appendChild(b);
+  });
+
+  const links=[...document.querySelectorAll('.toc-link')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('active'));const a=map.get(e.target.id);if(a)a.classList.add('active')}})},{rootMargin:'-18% 0px -72% 0px'});
+  document.querySelectorAll('h2[id],h3[id]').forEach(h=>obs.observe(h));
+})();
+</script>
+</body>
+</html>

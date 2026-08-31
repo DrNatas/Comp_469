@@ -1,4 +1,0 @@
-agent,difficulty,trials,win_rate,caught_rate,mean_score,mean_decisions,mean_backtracks,mean_performance,stdev_performance
-student,normal,5,0.0,1.0,580.0,57.8,1.0,-433.56,0.09
-simple_reflex,normal,5,0.0,0.0,660.0,1500.0,289.0,-218.0,0.0
-random,normal,5,0.0,1.0,194.0,61.4,22.4,-863.08,16.61

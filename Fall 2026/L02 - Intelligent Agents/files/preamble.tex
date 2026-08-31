@@ -1,0 +1,68 @@
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[nointegrals]{wasysym}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{comment}
+\usepackage{fancyhdr}
+
+\definecolor{solblue}{RGB}{20,70,140}
+\definecolor{solbg}{RGB}{240,245,252}
+
+% ---- solution switching -------------------------------------------------
+\ifsolutions
+  \specialcomment{sol}
+    {\begin{mdframed}[backgroundcolor=solbg,linecolor=solblue,linewidth=0.6pt,
+       innertopmargin=6pt,innerbottommargin=6pt,skipabove=4pt,skipbelow=6pt]
+     \color{solblue}\noindent\textbf{Solution.}\ }
+    {\end{mdframed}}
+\else
+  \excludecomment{sol}
+\fi
+
+% answer content inside tables: shown only in the solutions edition
+\ifsolutions
+  \newcommand{\A}[1]{\textcolor{solblue}{#1}}
+  \newcommand{\correct}{\textcolor{solblue}{\CIRCLE}}
+  \newcommand{\ansspace}[1]{}
+\else
+  \newcommand{\A}[1]{\phantom{#1}}
+  \newcommand{\correct}{\Circle}
+  \newcommand{\ansspace}[1]{\vspace{#1}}
+\fi
+\newcommand{\opt}{\Circle}
+
+% ---- header -------------------------------------------------------------
+\newcommand{\worksheetheader}[3]{%
+  \noindent\rule{\textwidth}{2pt}\\[6pt]
+  \noindent
+  \begin{minipage}[b]{0.45\textwidth}
+    {\Large #1}\\{\Large #2}
+  \end{minipage}%
+  \begin{minipage}[b]{0.55\textwidth}
+    \raggedleft{\LARGE #3}
+  \end{minipage}\\[2pt]
+  \noindent\rule{\textwidth}{2pt}\\[1em]
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\setlist[enumerate,1]{label=\textbf{(\alph*)},leftmargin=2em}
+\setlist[enumerate,2]{label=(\roman*),leftmargin=2em}
+
+\newcommand{\qhead}[1]{\section*{#1}}
+
+\newcommand{\instrnote}[1]{%
+  \ifsolutions
+  \begin{mdframed}[backgroundcolor=solbg,linecolor=solblue,linewidth=0.6pt,
+     innertopmargin=6pt,innerbottommargin=6pt,skipabove=4pt,skipbelow=6pt]
+  \color{solblue}\noindent\textbf{Instructor notes.}\ #1
+  \end{mdframed}
+  \fi}
