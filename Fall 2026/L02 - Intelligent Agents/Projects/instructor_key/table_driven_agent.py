@@ -40,7 +40,7 @@ def _all_nonempty_subsets(items: tuple) -> list[tuple]:
 class TableDrivenAgent:
     percept_class = Percept
 
-    def __init__(self, maze: MazeModel):
+    def __init__(self, maze: MazeModel):                                # initializer method or dunder method.
         self.maze = maze
         self.last_reason = "Waiting for first percept."
         self.table: dict[tuple, tuple[int, int]] = self._build_table()
